@@ -7,7 +7,6 @@ Usage: #example
 * instantiatesCanonical = "http://example.org/guides/who/anc-cds/PlanDefinition/anc-contact-schedule"
 * status = #active
 * intent = #plan
-* category[AssessPlan] = USCoreCarePlanCategoryExtensionCodes#assess-plan "Assessment and Plan of Treatment"
 * subject.display = "Eve Everywoman"
 * period
   * start = "2019-05-24"

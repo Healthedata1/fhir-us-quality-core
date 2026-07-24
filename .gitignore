@@ -1,6 +1,7 @@
 temp/
 qa/
 output/
+!.claude/output/
 fsh-generated/
 /translations/
 /.idea

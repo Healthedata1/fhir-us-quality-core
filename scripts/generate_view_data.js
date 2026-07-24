@@ -1,8 +1,17 @@
 #!/usr/bin/env node
 
-const { GENERATED_DATA_DIR, US_CORE_PROFILE_PREFIX, path } = require('./lib/paths');
-const { configuredFhirDefinitions, parseFsh, sourceFshFiles } = require('./lib/sushi');
+const path = require('node:path');
+
+const {
+  labels,
+  local,
+  pages,
+  paths,
+  upstream
+} = require('./generator.config');
+const { configuredFhirDefinitions, parseFsh, sourceFshFiles, sushi } = require('./lib/sushi');
 const { ensureDir, readRestData, readUscdiQualityData, writeJson } = require('./lib/io');
+const { searchRequirementRows, usCoreDocumentationContext } = require('./lib/rest-documentation');
 const { fshPathToDisplayPath, getOrSet, jsonPathToFshPath, markdownText, urlTail } = require('./lib/text');
 const {
   displayTitle,
@@ -44,7 +53,9 @@ function usCoreProfileSummary(profile) {
 }
 
 function stripUscdiQualityPrefix(value) {
-  return markdownText(value).replace(/^\(USCDI\+ Quality\)\s*/, '');
+  const text = markdownText(value);
+  const prefix = `(${labels.uscdiQuality})`;
+  return text.startsWith(prefix) ? text.slice(prefix.length).trimStart() : text;
 }
 
 function noteId(dataElement) {
@@ -164,7 +175,7 @@ function usQualityCoreProfileTableRow(profile, depth, profilesById, profilesByNa
 
 function usCoreProfileTableRows(resource, urls, hasLocalProfiles, fhirDefs) {
   return urls
-    .filter(url => url.startsWith(US_CORE_PROFILE_PREFIX))
+    .filter(url => url.startsWith(upstream.usCore.profileUrlPrefix))
     .map(url => requireProfileDefinition(url, fhirDefs, `US Core profile ${url}`))
     .sort((a, b) => usCoreProfileSummary(a).title.localeCompare(usCoreProfileSummary(b).title))
     .map((profile, index) => ({
@@ -185,7 +196,9 @@ function profileTableData(
   fhirDefs
 ) {
   const resources = new Map();
-  const profiles = [...profilesById.values()].filter(profile => profile.id?.startsWith('us-quality-core-'));
+  const profiles = [...profilesById.values()].filter(profile =>
+    profile.id?.startsWith(local.profileIdPrefix)
+  );
 
   for (const profile of profiles) {
     getOrSet(resources, resourceTypes.get(profile.id), () => []).push(profile);
@@ -231,17 +244,19 @@ function searchCombinationData(searchCombinations) {
   }));
 }
 
-function profileSearchData(profile, resourceTypes, restResources) {
+function profileSearchData(profile, resourceTypes, restResources, documentationContext) {
   const resource = resourceTypes.get(profile.id);
   const resourceConfig = restResources[resource] ?? {};
   const searchParams = searchParamData(resourceConfig.searchParams);
   const searchCombinations = searchCombinationData(resourceConfig.searchCombinations);
+  const requiredSearches = searchRequirementRows(resource, resourceConfig, documentationContext);
 
   return {
     resource,
     hasSearchParameters: searchParams.length > 0 || searchCombinations.length > 0,
     searchParams,
-    searchCombinations
+    searchCombinations,
+    requiredSearches
   };
 }
 
@@ -262,7 +277,7 @@ function dataElementLink(dataElement) {
   return {
     class: dataElement.class,
     name: dataElement.name,
-    path: `uscdiquality.html#${dataElementId(dataElement)}`
+    path: `${pages.uscdiQualityDataElementPath}#${dataElementId(dataElement)}`
   };
 }
 
@@ -305,6 +320,7 @@ function profileNotesData(
   profilesByName,
   resourceTypes,
   restResources,
+  documentationContext,
   fhirDefs
 ) {
   const mappedElements = mappedDataElementsByProfilePath(dataElements);
@@ -333,7 +349,7 @@ function profileNotesData(
             uscdiQualityElements: elements,
             hasUsCoreLineage: Boolean(usCore),
             usCore: usCore ? usCoreProfileSummary(usCore) : null,
-            search: profileSearchData(profile, resourceTypes, restResources)
+            search: profileSearchData(profile, resourceTypes, restResources, documentationContext)
           }
         ];
       })
@@ -341,18 +357,22 @@ function profileNotesData(
 }
 
 function writeGeneratedData(files) {
-  ensureDir(GENERATED_DATA_DIR);
+  ensureDir(paths.generatedDataDir);
   for (const [filename, value] of Object.entries(files)) {
-    writeJson(path.join(GENERATED_DATA_DIR, filename), value);
+    writeJson(path.join(paths.generatedDataDir, filename), value);
   }
 }
 
 async function main(log) {
-  const { dataElements, restResources } = await log.step('Reading root JSON inputs', () => ({
+  const { config, dataElements, restResources } = await log.step('Reading root JSON inputs', () => ({
+    config: sushi.utils.readConfig(paths.igRoot),
     dataElements: readUscdiQualityData(),
     restResources: readRestData()
   }));
   const fhirDefs = await log.step('Loading configured FHIR definitions', configuredFhirDefinitions);
+  const documentationContext = await log.step('Indexing US Core search requirements', () =>
+    usCoreDocumentationContext(config, fhirDefs)
+  );
   const { profiles, byId: profilesById, byName: profilesByName } = await log.step('Parsing authored FSH profiles', () =>
     profileMaps(parseFsh(FSH_FILES))
   );
@@ -360,7 +380,7 @@ async function main(log) {
   await log.step('Checking USCDI+ Quality mappings', () => assertAllDataElementsMapped(dataElements));
   const resourceTypes = await log.step('Resolving profile resource types', () =>
     profileResourceTypes(
-      profiles.filter(profile => profile.id?.startsWith('us-quality-core-')),
+      profiles.filter(profile => profile.id?.startsWith(local.profileIdPrefix)),
       profilesById,
       profilesByName,
       fhirDefs
@@ -372,7 +392,7 @@ async function main(log) {
 
   await log.step('Writing generated view data', () =>
     writeGeneratedData({
-      'profile_notes.json': profileNotesData(
+      [paths.generatedViewDataFiles.profileNotes]: profileNotesData(
         profiles,
         ruleSets,
         dataElements,
@@ -380,16 +400,17 @@ async function main(log) {
         profilesByName,
         resourceTypes,
         restResources,
+        documentationContext,
         fhirDefs
       ),
-      'profile_table.json': profileTableData(
+      [paths.generatedViewDataFiles.profileTable]: profileTableData(
         profilesById,
         profilesByName,
         resourceTypes,
         supportedProfilesByResource,
         fhirDefs
       ),
-      'data_elements.json': uscdiQualityDataElementsData(
+      [paths.generatedViewDataFiles.dataElements]: uscdiQualityDataElementsData(
         dataElements,
         profilesById,
         fhirDefs
@@ -398,9 +419,9 @@ async function main(log) {
   );
 
   return [
-    `Generated view data files in ${GENERATED_DATA_DIR}`,
-    `Profiles indexed: ${profiles.filter(profile => profile.id?.startsWith('us-quality-core-')).length}`,
-    `USCDI+ Quality data elements: ${dataElements.length}`
+    `Generated view data files in ${paths.generatedDataDir}`,
+    `Profiles indexed: ${profiles.filter(profile => profile.id?.startsWith(local.profileIdPrefix)).length}`,
+    `${labels.uscdiQuality} data elements: ${dataElements.length}`
   ];
 }
 

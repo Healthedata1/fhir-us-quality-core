@@ -121,6 +121,23 @@
           "name": "subject + recorded-date",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`subject`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of AdverseEvent resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`subject` + `event`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of AdverseEvent resources filtered by event for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`subject` + `recorded-date`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of AdverseEvent resources filtered by recorded date so quality workflows can constrain results to relevant reporting periods."
+        }
       ]
     }
   },
@@ -209,7 +226,14 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#allergyintolerance).",
+          "rationale": "Supports patient-scoped retrieval of AllergyIntolerance resources for USCDI+ Quality workflows."
+        }
+      ]
     }
   },
   "us-quality-core-careplan": {
@@ -318,6 +342,13 @@
           "name": "patient + category",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#careplan).",
+          "rationale": "Supports patient-scoped retrieval of CarePlan resources filtered by category for USCDI+ Quality workflows."
+        }
       ]
     }
   },
@@ -382,6 +413,13 @@
         {
           "name": "patient + status",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#careteam).",
+          "rationale": "Supports patient-scoped retrieval of CareTeam resources filtered by status for status-sensitive quality workflows."
         }
       ]
     }
@@ -478,6 +516,18 @@
           "name": "subject + topic",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`subject`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`subject` + `topic`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources filtered by topic for USCDI+ Quality workflows."
+        }
       ]
     }
   },
@@ -573,6 +623,18 @@
           "name": "subject + topic",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`subject`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`subject` + `topic`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources filtered by topic for USCDI+ Quality workflows."
+        }
       ]
     }
   },
@@ -656,6 +718,18 @@
         {
           "name": "subject + topic",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`subject`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`subject` + `topic`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources filtered by topic for USCDI+ Quality workflows."
         }
       ]
     }
@@ -751,6 +825,23 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#condition).",
+          "rationale": "Supports patient-scoped retrieval of Condition resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#condition).",
+          "rationale": "Supports patient-scoped retrieval of Condition resources filtered by category for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#condition); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Condition resources filtered by code for USCDI+ Quality workflows."
         }
       ]
     }
@@ -929,6 +1020,23 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#condition).",
+          "rationale": "Supports patient-scoped retrieval of Condition resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#condition).",
+          "rationale": "Supports patient-scoped retrieval of Condition resources filtered by category for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#condition); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Condition resources filtered by code for USCDI+ Quality workflows."
         }
       ]
     }
@@ -1150,7 +1258,14 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#coverage).",
+          "rationale": "Supports patient-scoped retrieval of Coverage resources for USCDI+ Quality workflows."
+        }
+      ]
     }
   },
   "us-quality-core-deviceprohibited": {
@@ -1252,6 +1367,23 @@
         {
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by code for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `do-not-perform`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by a do-not-perform indicator to support negation workflows."
         }
       ]
     }
@@ -1398,6 +1530,23 @@
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by code for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `do-not-perform`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by a do-not-perform indicator to support negation workflows."
+        }
       ]
     }
   },
@@ -1511,6 +1660,23 @@
         {
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by code for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `do-not-perform`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by a do-not-perform indicator to support negation workflows."
         }
       ]
     }
@@ -1636,6 +1802,28 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#diagnosticreport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#diagnosticreport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by category for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category` + `date`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#diagnosticreport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by category and date so quality workflows can constrain results to relevant reporting periods."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#diagnosticreport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by code for USCDI+ Quality workflows."
         }
       ]
     }
@@ -1770,6 +1958,28 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#diagnosticreport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#diagnosticreport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by category for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category` + `date`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#diagnosticreport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by category and date so quality workflows can constrain results to relevant reporting periods."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#diagnosticreport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by code for USCDI+ Quality workflows."
         }
       ]
     }
@@ -1980,6 +2190,28 @@
           "name": "patient + date",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`_id`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#encounter).",
+          "rationale": "Supports retrieval of a known Encounter resource by id."
+        },
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#encounter).",
+          "rationale": "Supports patient-scoped retrieval of Encounter resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `type`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#encounter); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Encounter resources filtered by type for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `date`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#encounter).",
+          "rationale": "Supports patient-scoped retrieval of Encounter resources filtered by date so quality workflows can constrain results to relevant reporting periods."
+        }
       ]
     }
   },
@@ -2019,7 +2251,14 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#goal).",
+          "rationale": "Supports patient-scoped retrieval of Goal resources for USCDI+ Quality workflows."
+        }
+      ]
     }
   },
   "us-quality-core-imagingstudy": {
@@ -2072,7 +2311,14 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "label": "`subject`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of ImagingStudy resources for USCDI+ Quality workflows."
+        }
+      ]
     }
   },
   "us-quality-core-immunization": {
@@ -2174,6 +2420,18 @@
         {
           "name": "patient + status",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#immunization).",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#immunization); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources filtered by status for status-sensitive quality workflows."
         }
       ]
     }
@@ -2289,6 +2547,18 @@
           "name": "patient + status",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#immunization).",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#immunization); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources filtered by status for status-sensitive quality workflows."
+        }
       ]
     }
   },
@@ -2387,6 +2657,18 @@
           "name": "patient + status",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#immunization).",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#immunization); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources filtered by status for status-sensitive quality workflows."
+        }
       ]
     }
   },
@@ -2449,7 +2731,8 @@
       "resource": "Location",
       "hasSearchParameters": false,
       "searchParams": [],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": []
     }
   },
   "us-quality-core-medication": {
@@ -2483,7 +2766,14 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "label": "`code`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports retrieval of Medication resources filtered by code for USCDI+ Quality workflows."
+        }
+      ]
     }
   },
   "us-quality-core-medicationadministration": {
@@ -2630,6 +2920,28 @@
         {
           "name": "patient + effective-time",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by code for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `effective-time`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by effective time so quality workflows can constrain results to relevant reporting periods."
         }
       ]
     }
@@ -2779,6 +3091,28 @@
           "name": "patient + effective-time",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by code for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `effective-time`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by effective time so quality workflows can constrain results to relevant reporting periods."
+        }
       ]
     }
   },
@@ -2915,6 +3249,28 @@
         {
           "name": "patient + effective-time",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by code for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `effective-time`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by effective time so quality workflows can constrain results to relevant reporting periods."
         }
       ]
     }
@@ -3063,6 +3419,18 @@
           "name": "patient + status",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#medicationdispense).",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#medicationdispense); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources filtered by status for status-sensitive quality workflows."
+        }
       ]
     }
   },
@@ -3165,6 +3533,18 @@
         {
           "name": "patient + status",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#medicationdispense).",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#medicationdispense); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources filtered by status for status-sensitive quality workflows."
         }
       ]
     }
@@ -3323,6 +3703,18 @@
         {
           "name": "patient + status",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#medicationdispense).",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#medicationdispense); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources filtered by status for status-sensitive quality workflows."
         }
       ]
     }
@@ -3499,6 +3891,18 @@
         {
           "name": "patient + intent",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient` + `intent` + `do-not-perform`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent and a do-not-perform indicator to support negation workflows."
+        },
+        {
+          "label": "`patient` + `intent`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#medicationrequest).",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent for USCDI+ Quality workflows."
         }
       ]
     }
@@ -3872,6 +4276,18 @@
         {
           "name": "patient + intent",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient` + `intent` + `do-not-perform`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent and a do-not-perform indicator to support negation workflows."
+        },
+        {
+          "label": "`patient` + `intent`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#medicationrequest).",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent for USCDI+ Quality workflows."
         }
       ]
     }
@@ -4268,6 +4684,18 @@
           "name": "patient + intent",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient` + `intent` + `do-not-perform`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent and a do-not-perform indicator to support negation workflows."
+        },
+        {
+          "label": "`patient` + `intent`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#medicationrequest).",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent for USCDI+ Quality workflows."
+        }
       ]
     }
   },
@@ -4420,7 +4848,14 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of NutritionOrder resources for USCDI+ Quality workflows."
+        }
+      ]
     }
   },
   "us-quality-core-observation-clinical-result": {
@@ -4518,6 +4953,28 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient` + `category` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category` + `date`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and date so quality workflows can constrain results to relevant reporting periods."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by code for USCDI+ Quality workflows."
         }
       ]
     }
@@ -4709,6 +5166,28 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient` + `category` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category` + `date`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and date so quality workflows can constrain results to relevant reporting periods."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by code for USCDI+ Quality workflows."
         }
       ]
     }
@@ -4981,6 +5460,28 @@
           "name": "patient + code",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient` + `category` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category` + `date`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and date so quality workflows can constrain results to relevant reporting periods."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by code for USCDI+ Quality workflows."
+        }
       ]
     }
   },
@@ -5021,7 +5522,8 @@
       "resource": "Organization",
       "hasSearchParameters": false,
       "searchParams": [],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": []
     }
   },
   "us-quality-core-patient": {
@@ -5488,7 +5990,14 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "label": "`_id`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#patient).",
+          "rationale": "Supports retrieval of a known Patient resource by id."
+        }
+      ]
     }
   },
   "us-quality-core-practitioner": {
@@ -5715,7 +6224,8 @@
       "resource": "Practitioner",
       "hasSearchParameters": false,
       "searchParams": [],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": []
     }
   },
   "us-quality-core-practitionerrole": {
@@ -5843,7 +6353,8 @@
       "resource": "PractitionerRole",
       "hasSearchParameters": false,
       "searchParams": [],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": []
     }
   },
   "us-quality-core-procedure": {
@@ -5984,6 +6495,23 @@
         {
           "name": "patient + date",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#procedure); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `date`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by date so quality workflows can constrain results to relevant reporting periods."
         }
       ]
     }
@@ -6149,6 +6677,23 @@
           "name": "patient + date",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#procedure); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `date`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by date so quality workflows can constrain results to relevant reporting periods."
+        }
       ]
     }
   },
@@ -6312,6 +6857,23 @@
         {
           "name": "patient + date",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#procedure); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `date`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by date so quality workflows can constrain results to relevant reporting periods."
         }
       ]
     }
@@ -6509,6 +7071,18 @@
           "name": "patient + questionnaire",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#questionnaireresponse).",
+          "rationale": "Supports patient-scoped retrieval of QuestionnaireResponse resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `questionnaire`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#questionnaireresponse); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of QuestionnaireResponse resources filtered by questionnaire for USCDI+ Quality workflows."
+        }
       ]
     }
   },
@@ -6590,7 +7164,19 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "label": "`_id`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#relatedperson).",
+          "rationale": "Supports retrieval of a known RelatedPerson resource by id."
+        },
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#relatedperson); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of RelatedPerson resources for USCDI+ Quality workflows."
+        }
+      ]
     }
   },
   "us-quality-core-serviceprohibited": {
@@ -6884,6 +7470,38 @@
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`_id`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports retrieval of a known ServiceRequest resource by id."
+        },
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category` + `authored`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category and authored date so quality workflows can constrain results to relevant reporting periods."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by code for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `do-not-perform`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by a do-not-perform indicator to support negation workflows."
+        }
       ]
     }
   },
@@ -7146,6 +7764,38 @@
         {
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`_id`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports retrieval of a known ServiceRequest resource by id."
+        },
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category` + `authored`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category and authored date so quality workflows can constrain results to relevant reporting periods."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by code for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `do-not-perform`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by a do-not-perform indicator to support negation workflows."
         }
       ]
     }
@@ -7420,6 +8070,38 @@
         {
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`_id`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports retrieval of a known ServiceRequest resource by id."
+        },
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category` + `authored`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category and authored date so quality workflows can constrain results to relevant reporting periods."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#servicerequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by code for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `do-not-perform`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by a do-not-perform indicator to support negation workflows."
         }
       ]
     }
@@ -7853,6 +8535,28 @@
           "name": "patient + code",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient` + `category` + `status`",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `category`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `category` + `date`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and date so quality workflows can constrain results to relevant reporting periods."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by code for USCDI+ Quality workflows."
+        }
       ]
     }
   },
@@ -7989,6 +8693,23 @@
           "name": "patient + code",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by code for USCDI+ Quality workflows."
+        }
       ]
     }
   },
@@ -8124,6 +8845,23 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by code for USCDI+ Quality workflows."
         }
       ]
     }
@@ -8286,6 +9024,23 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "label": "`patient`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources for USCDI+ Quality workflows."
+        },
+        {
+          "label": "`patient` + `status`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by status for status-sensitive quality workflows."
+        },
+        {
+          "label": "`patient` + `code`",
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by code for USCDI+ Quality workflows."
         }
       ]
     }

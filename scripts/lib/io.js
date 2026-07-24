@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const { REST_DATA_PATH, USCDI_QUALITY_DATA_PATH } = require('./paths');
+const { paths } = require('../generator.config');
 
 function read(file) {
   return fs.readFileSync(file, 'utf8');
@@ -11,11 +11,11 @@ function readJson(file) {
 }
 
 function readUscdiQualityData() {
-  return readJson(USCDI_QUALITY_DATA_PATH);
+  return readJson(paths.uscdiQualityDataFile);
 }
 
 function readRestData() {
-  return readJson(REST_DATA_PATH);
+  return readJson(paths.restDataFile);
 }
 
 function write(file, text) {

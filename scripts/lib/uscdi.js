@@ -1,5 +1,5 @@
 const { fs } = require('./io');
-const { GENERATED_FLAGS_PATH, USCDI_QUALITY_RULESET_PREFIX } = require('./paths');
+const { generated, paths } = require('../generator.config');
 const {
   hasLocalAncestor,
   localProfileDepth,
@@ -12,15 +12,15 @@ const { canonicalUrl, getOrSet, urlTail } = require('./text');
 // These helpers read the generated USCDI+ Quality RuleSets so downstream page
 // generators describe exactly what the flag generator applied.
 function generatedUscdiQualityRuleSets() {
-  if (!fs.existsSync(GENERATED_FLAGS_PATH)) {
+  if (!fs.existsSync(paths.generatedFlagsFile)) {
     throw new Error(
-      `${GENERATED_FLAGS_PATH} does not exist. Run \`npm --prefix scripts run generate:flags\` before running generators that consume generated USCDI+ Quality flags.`
+      `${paths.generatedFlagsFile} does not exist. Run \`npm --prefix scripts run generate:flags\` before running generators that consume generated USCDI+ Quality flags.`
     );
   }
 
   const ruleSets = new Map();
 
-  for (const document of parseFsh([GENERATED_FLAGS_PATH])) {
+  for (const document of parseFsh([paths.generatedFlagsFile])) {
     for (const ruleSet of document.ruleSets.values()) {
       ruleSets.set(ruleSet.name, ruleSet);
     }
@@ -31,7 +31,10 @@ function generatedUscdiQualityRuleSets() {
 
 function generatedUscdiQualityRuleSetName(profile) {
   const insertRules = profile.rules.filter(rule => {
-    return rule.constructorName === 'InsertRule' && rule.ruleSet?.startsWith(USCDI_QUALITY_RULESET_PREFIX);
+    return (
+      rule.constructorName === 'InsertRule' &&
+      rule.ruleSet?.startsWith(`${generated.uscdiQualityFlagsRuleSetPrefix}For`)
+    );
   });
 
   if (insertRules.length > 1) {
@@ -47,7 +50,9 @@ function generatedUscdiQualityElements(profile, ruleSets) {
 
   const ruleSet = ruleSets.get(ruleSetName);
   if (!ruleSet) {
-    throw new Error(`${profile.name} inserts ${ruleSetName}, but no matching RuleSet exists in ${GENERATED_FLAGS_PATH}.`);
+    throw new Error(
+      `${profile.name} inserts ${ruleSetName}, but no matching RuleSet exists in ${paths.generatedFlagsFile}.`
+    );
   }
 
   return ruleSet.rules

@@ -1,41 +1,32 @@
 #!/usr/bin/env node
 
-const { GENERATED_DIR, GENERATED_SEARCH_PARAMETER_DIR, IG_ROOT, US_QUALITY_CORE_PROFILE_PREFIX, path } = require('./lib/paths');
+const path = require('node:path');
+
+const {
+  fhir,
+  generated,
+  labels,
+  local,
+  paths,
+  rest,
+  upstream
+} = require('./generator.config');
 const { configuredFhirDefinitions, parseFsh, sourceFshFiles, sushi } = require('./lib/sushi');
 const { canonicalWithVersion } = require('./lib/text');
 const { ensureDir, fs, readRestData, readUscdiQualityData, write } = require('./lib/io');
 const { addAssignment, addCodeAssignment, generatedFshFile, ruleSetToFsh } = require('./lib/fsh-output');
 const { profileMaps, requireProfileDefinition } = require('./lib/profiles');
+const {
+  searchRequirementDocumentation,
+  usCoreDocumentationContext
+} = require('./lib/rest-documentation');
 const { mappedProfilesByResource } = require('./lib/uscdi');
 const { runGenerator } = require('./lib/runner');
 
 const { Type } = sushi.utils;
 const { Instance, RuleSet } = sushi.fshtypes;
 
-const GENERATED_PATH = path.join(GENERATED_DIR, 'USQualityCoreCapabilityStatementRest.fsh');
-const SEARCH_PARAMETER_DIR = GENERATED_SEARCH_PARAMETER_DIR;
-const RULESET_NAME = 'GeneratedUSQualityCoreCapabilityStatementRest';
-const EXPECTATION_EXTENSION = 'http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation';
-const SEARCH_COMBINATION_EXTENSION =
-  'http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination';
 const FSH_FILES = sourceFshFiles();
-const SYSTEM_INTERACTIONS = {
-  transaction: 'MAY',
-  batch: 'MAY',
-  'search-system': 'MAY',
-  'history-system': 'MAY'
-};
-const DATE_COMPARATORS = {
-  eq: 'MAY',
-  ne: 'MAY',
-  gt: 'SHALL',
-  ge: 'SHALL',
-  lt: 'SHALL',
-  le: 'SHALL',
-  sa: 'MAY',
-  eb: 'MAY',
-  ap: 'MAY'
-};
 
 function kebabCase(value) {
   return String(value)
@@ -62,16 +53,19 @@ function addCode(ruleSet, pathValue, code) {
 }
 
 function addExpectation(ruleSet, basePath, expectation) {
-  add(ruleSet, `${basePath}.url`, EXPECTATION_EXTENSION);
+  add(ruleSet, `${basePath}.url`, fhir.capabilityExpectationExtensionUrl);
   addCode(ruleSet, `${basePath}.valueCode`, expectation);
 }
 
-function resourceHasUsQualityCoreProfile(supportedProfiles) {
-  return supportedProfiles.some(url => url.startsWith(US_QUALITY_CORE_PROFILE_PREFIX));
+function resourceHasLocalProfile(supportedProfiles, config) {
+  const localProfileUrlPrefix = `${config.canonical.replace(/\/$/, '')}/StructureDefinition/`;
+  return supportedProfiles.some(url => url.startsWith(localProfileUrlPrefix));
 }
 
 function localSearchParameterId(resource, code) {
-  return `us-quality-core-${kebabCase(resource)}-${code.replace(/^_/, '').replace(/_/g, '-')}`;
+  return `${local.searchParameterIdPrefix}${kebabCase(resource)}-${code
+    .replace(/^_/, '')
+    .replace(/_/g, '-')}`;
 }
 
 function localSearchParameterUrl(config, resource, code) {
@@ -79,16 +73,21 @@ function localSearchParameterUrl(config, resource, code) {
 }
 
 function localSearchParameterName(resource, code) {
-  return `USQualityCore${resource}${pascalCase(code)}`;
+  return `${local.searchParameterNamePrefix}${resource}${pascalCase(code)}`;
 }
 
 function localSearchParameterFile(resource, code) {
-  return path.join(SEARCH_PARAMETER_DIR, `${localSearchParameterName(resource, code)}.fsh`);
+  return path.join(
+    paths.generatedSearchParameterDir,
+    `${localSearchParameterName(resource, code)}.fsh`
+  );
 }
 
 function usCoreSearchParameter(resource, code, fhirDefs) {
-  const id = `us-core-${resource.toLowerCase()}-${code.replace(/^_/, '').replace(/_/g, '-')}`;
-  const url = `http://hl7.org/fhir/us/core/SearchParameter/${id}`;
+  const id = `${upstream.usCore.searchParameterIdPrefix}${resource.toLowerCase()}-${code
+    .replace(/^_/, '')
+    .replace(/_/g, '-')}`;
+  const url = `${upstream.usCore.searchParameterUrlPrefix}${id}`;
   const searchParameter = fhirDefs.fishForFHIR(url, Type.Instance);
 
   if (
@@ -103,7 +102,9 @@ function usCoreSearchParameter(resource, code, fhirDefs) {
 }
 
 function searchParameterDefinition(config, resource, supportedProfiles, code, fhirDefs) {
-  if (resourceHasUsQualityCoreProfile(supportedProfiles)) return localSearchParameterUrl(config, resource, code);
+  if (resourceHasLocalProfile(supportedProfiles, config)) {
+    return localSearchParameterUrl(config, resource, code);
+  }
   return canonicalWithVersion(usCoreSearchParameter(resource, code, fhirDefs));
 }
 
@@ -112,7 +113,9 @@ function usCoreProfileReference(url, fhirDefs) {
 }
 
 function supportedProfileReference(url, fhirDefs) {
-  return url.includes('/us/core/StructureDefinition/') ? usCoreProfileReference(url, fhirDefs) : url;
+  return url.startsWith(upstream.usCore.profileUrlPrefix)
+    ? usCoreProfileReference(url, fhirDefs)
+    : url;
 }
 
 function addSearchCombination(ruleSet, basePath, combination) {
@@ -121,7 +124,7 @@ function addSearchCombination(ruleSet, basePath, combination) {
     add(ruleSet, `${basePath}.extension[${index + 1}].url`, 'required');
     add(ruleSet, `${basePath}.extension[${index + 1}].valueString`, param);
   });
-  add(ruleSet, `${basePath}.url`, SEARCH_COMBINATION_EXTENSION);
+  add(ruleSet, `${basePath}.url`, fhir.searchParameterCombinationExtensionUrl);
 }
 
 function addSupportedProfiles(ruleSet, resourcePath, profiles, fhirDefs) {
@@ -147,7 +150,7 @@ function addRevIncludes(ruleSet, resourcePath, revIncludes) {
 }
 
 function addDateComparators(instance) {
-  Object.entries(DATE_COMPARATORS).forEach(([comparator, expectation], index) => {
+  Object.entries(rest.dateComparators).forEach(([comparator, expectation], index) => {
     const comparatorPath = `comparator[${index}]`;
     addCode(instance, comparatorPath, comparator);
     addExpectation(instance, `${comparatorPath}.extension[0]`, expectation);
@@ -177,7 +180,16 @@ function addSearchParams(ruleSet, resourcePath, resource, resourceConfig, suppor
   });
 }
 
-function addResource(ruleSet, resource, resourceConfig, supportedProfiles, index, config, fhirDefs) {
+function addResource(
+  ruleSet,
+  resource,
+  resourceConfig,
+  supportedProfiles,
+  index,
+  config,
+  fhirDefs,
+  documentationContext
+) {
   const resourcePath = `resource[${index}]`;
   addExpectation(ruleSet, `${resourcePath}.extension[0]`, 'SHALL');
   (resourceConfig.searchCombinations ?? []).forEach((combination, combinationIndex) => {
@@ -185,7 +197,15 @@ function addResource(ruleSet, resource, resourceConfig, supportedProfiles, index
   });
   addCode(ruleSet, `${resourcePath}.type`, resource);
   addSupportedProfiles(ruleSet, resourcePath, supportedProfiles, fhirDefs);
-  if (resourceConfig.documentation) add(ruleSet, `${resourcePath}.documentation`, resourceConfig.documentation);
+  add(
+    ruleSet,
+    `${resourcePath}.documentation`,
+    searchRequirementDocumentation(
+      resource,
+      resourceConfig,
+      documentationContext
+    )
+  );
   addInteractions(ruleSet, resourcePath, resourceConfig.interactions);
   addCode(ruleSet, `${resourcePath}.referencePolicy[0]`, 'resolves');
   addRevIncludes(ruleSet, resourcePath, resourceConfig.revIncludes);
@@ -193,7 +213,7 @@ function addResource(ruleSet, resource, resourceConfig, supportedProfiles, index
 }
 
 function addSystemInteractions(ruleSet) {
-  Object.entries(SYSTEM_INTERACTIONS).forEach(([interaction, expectation], index) => {
+  Object.entries(rest.systemInteractions).forEach(([interaction, expectation], index) => {
     const interactionPath = `interaction[${index}]`;
     addExpectation(ruleSet, `${interactionPath}.extension[0]`, expectation);
     addCode(ruleSet, `${interactionPath}.code`, interaction);
@@ -218,7 +238,9 @@ function generatedSearchParameterFsh(instance) {
 
 function searchParameterInstance(config, resource, code, searchParam) {
   const instance = new Instance(localSearchParameterId(resource, code));
-  const contact = config.contact.find(item => item.name === 'Clinical Quality Information WG') ?? config.contact[0];
+  const contact =
+    config.contact.find(item => item.name === local.preferredContactName) ??
+    config.contact[0];
   instance.instanceOf = 'SearchParameter';
   instance.usage = 'Definition';
 
@@ -231,7 +253,11 @@ function searchParameterInstance(config, resource, code, searchParam) {
   add(instance, 'contact[0].name', contact.name);
   addCode(instance, 'contact[0].telecom[0].system', contact.telecom[0].system);
   add(instance, 'contact[0].telecom[0].value', contact.telecom[0].value);
-  add(instance, 'description', `US Quality Core ${resource} ${code} Search Parameter`);
+  add(
+    instance,
+    'description',
+    `${labels.implementationGuide} ${resource} ${code} Search Parameter`
+  );
   addCode(instance, 'code', code);
   addCode(instance, 'base[0]', resource);
   addCode(instance, 'type', searchParam.type);
@@ -244,10 +270,10 @@ function searchParameterInstance(config, resource, code, searchParam) {
   return instance;
 }
 
-function localSearchParameters(resources, supportedProfilesByResource) {
+function localSearchParameters(resources, supportedProfilesByResource, config) {
   return Object.entries(resources).flatMap(([resource, resourceConfig]) => {
     const supportedProfiles = supportedProfilesByResource.get(resource) ?? [];
-    if (!resourceHasUsQualityCoreProfile(supportedProfiles)) return [];
+    if (!resourceHasLocalProfile(supportedProfiles, config)) return [];
 
     return Object.entries(resourceConfig.searchParams ?? {}).map(([code, searchParam]) => {
       assertSearchParamCanBeGenerated(resource, code, searchParam);
@@ -257,7 +283,7 @@ function localSearchParameters(resources, supportedProfilesByResource) {
 }
 
 function writeSearchParameters(entries, config) {
-  ensureDir(SEARCH_PARAMETER_DIR);
+  ensureDir(paths.generatedSearchParameterDir);
   const expectedFiles = new Set(
     entries.map(({ resource, code, searchParam }) => {
       const file = localSearchParameterFile(resource, code);
@@ -266,9 +292,9 @@ function writeSearchParameters(entries, config) {
     })
   );
 
-  fs.readdirSync(SEARCH_PARAMETER_DIR)
+  fs.readdirSync(paths.generatedSearchParameterDir)
     .filter(file => file.endsWith('.fsh'))
-    .map(file => path.join(SEARCH_PARAMETER_DIR, file))
+    .map(file => path.join(paths.generatedSearchParameterDir, file))
     .filter(file => !expectedFiles.has(file))
     .forEach(file => fs.unlinkSync(file));
 
@@ -302,38 +328,53 @@ async function main(log) {
   const { resources, dataElements, config } = await log.step('Reading JSON inputs and IG config', () => ({
     resources: readRestData(),
     dataElements: readUscdiQualityData(),
-    config: sushi.utils.readConfig(IG_ROOT)
+    config: sushi.utils.readConfig(paths.igRoot)
   }));
   const fhirDefs = await log.step('Loading configured FHIR definitions', configuredFhirDefinitions);
+  const documentationContext = await log.step('Indexing US Core search requirements', () =>
+    usCoreDocumentationContext(config, fhirDefs)
+  );
   const { byId: profilesById, byName: profilesByName } = await log.step('Parsing authored FSH profiles', () =>
     profileMaps(parseFsh(FSH_FILES))
   );
   const supportedProfilesByResource = await log.step('Inferring supported profiles by REST resource', () =>
     mappedProfilesByResource(dataElements, profilesById, profilesByName, fhirDefs)
   );
-  const ruleSet = new RuleSet(RULESET_NAME);
+  const ruleSet = new RuleSet(generated.capabilityStatementRestRuleSetName);
   let searchParameterCount = 0;
 
   await log.step('Building CapabilityStatement rest RuleSet', () => {
     assertResourceCoverage(resources, supportedProfilesByResource);
     Object.entries(resources).forEach(([resource, resourceConfig], index) => {
-      addResource(ruleSet, resource, resourceConfig, supportedProfilesByResource.get(resource), index, config, fhirDefs);
+      addResource(
+        ruleSet,
+        resource,
+        resourceConfig,
+        supportedProfilesByResource.get(resource),
+        index,
+        config,
+        fhirDefs,
+        documentationContext
+      );
     });
     addSystemInteractions(ruleSet);
   });
 
   await log.step('Writing generated SearchParameters', () => {
-    searchParameterCount = writeSearchParameters(localSearchParameters(resources, supportedProfilesByResource), config);
+    searchParameterCount = writeSearchParameters(
+      localSearchParameters(resources, supportedProfilesByResource, config),
+      config
+    );
   });
 
   await log.step('Writing generated CapabilityStatement rest RuleSet', () => {
-    ensureDir(GENERATED_DIR);
-    write(GENERATED_PATH, generatedFsh(ruleSet));
+    ensureDir(paths.generatedFshDir);
+    write(paths.generatedCapabilityStatementRestFile, generatedFsh(ruleSet));
   });
 
   return [
-    `Generated ${GENERATED_PATH}`,
-    `Generated ${searchParameterCount} SearchParameter definitions in ${SEARCH_PARAMETER_DIR}`,
+    `Generated ${paths.generatedCapabilityStatementRestFile}`,
+    `Generated ${searchParameterCount} SearchParameter definitions in ${paths.generatedSearchParameterDir}`,
     `CapabilityStatement rest resources: ${Object.keys(resources).length}`,
     `Supported profiles: ${[...supportedProfilesByResource.values()].reduce((sum, profiles) => sum + profiles.length, 0)}`
   ];

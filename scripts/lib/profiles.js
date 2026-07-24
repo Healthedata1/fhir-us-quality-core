@@ -1,9 +1,12 @@
-const { US_CORE_PROFILE_PREFIX } = require('./paths');
+const { labels, local, upstream } = require('../generator.config');
 const { sushi } = require('./sushi');
 const { canonicalUrl, getOrSet, urlTail } = require('./text');
 
 function displayTitle(profile) {
-  return profile.title ?? profile.name.replace(/^USQualityCore/, 'US Quality Core ');
+  if (profile.title != null) return profile.title;
+  return profile.name.startsWith(local.profileNamePrefix)
+    ? `${labels.implementationGuide} ${profile.name.slice(local.profileNamePrefix.length)}`
+    : profile.name;
 }
 
 function sortByDisplayTitle(profiles) {
@@ -110,7 +113,9 @@ function usCoreAncestor(profile, profilesById, profilesByName, fhirDefs, seen = 
   if (parent) return usCoreAncestor(parent, profilesById, profilesByName, fhirDefs, seen);
 
   const parentDefinition = structureDefinition(profile.parent, fhirDefs);
-  return canonicalUrl(parentDefinition?.url).startsWith(US_CORE_PROFILE_PREFIX) ? parentDefinition : null;
+  return canonicalUrl(parentDefinition?.url).startsWith(upstream.usCore.profileUrlPrefix)
+    ? parentDefinition
+    : null;
 }
 
 function hasUsCoreLineage(profile, profilesById, profilesByName, fhirDefs) {

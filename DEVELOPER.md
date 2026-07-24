@@ -12,6 +12,7 @@ common update workflows.
 - [Automation-Driven Content](#automation-driven-content)
 - [Hand-Maintained Content](#hand-maintained-content)
 - [Generators](#generators)
+- [Generator Configuration](#generator-configuration)
 - [Generated Files](#generated-files)
 
 ## Source Layout
@@ -29,6 +30,7 @@ us-quality-core/
 |   |-- uscdi_plus_quality.json        USCDI+ Quality data element and profile mappings
 |   `-- rest.json                      REST/search conformance requirements
 |-- scripts/                           Node-based generators and shared helper code
+|   |-- generator.config.js            Shared generator paths, identifiers, and behavior
 |   |-- generate_flags.js              Generates USCDI+ Quality flag RuleSets
 |   |-- generate_rest.js               Generates REST RuleSets and SearchParameters
 |   |-- generate_uscdi_quality_csv.js  Generates the USCDI+ Quality CSV download
@@ -124,7 +126,6 @@ resource's CapabilityStatement and search requirements:
 ```json
 {
   "Observation": {
-    "documentation": "Resource-level guidance in Markdown.",
     "interactions": {
       "read": "SHALL",
       "search-type": "SHALL"
@@ -165,16 +166,27 @@ resource's CapabilityStatement and search requirements:
 - Each top-level key is an R4 resource type. The configured resource types must
   exactly match those inferred from the profile mappings in
   `data/uscdi_plus_quality.json`.
-- `documentation` is the resource-level CapabilityStatement guidance. It may be
-  an empty string when no additional text is needed.
+- Resource-level CapabilityStatement documentation is generated from the
+  required search parameter and combination metadata. The generator compares
+  each requirement with the configured US Core Server CapabilityStatement to
+  describe whether it is required, recommended, optional, or absent in US Core.
+  It also generates rationale text from the resource type and search shape.
+  Combination matching is independent of parameter order, and matching
+  individual parameters must have the same search type.
+  When a resource has no required searches, the generator emits the standard
+  no-additional-search guidance.
 - `interactions` maps FHIR resource interaction codes to expectation codes such
   as `SHALL` or `MAY`.
 - `revIncludes` lists supported `_revinclude` values and their expectations.
 - `searchParams` is keyed by search parameter code. Every configured search
   parameter requires `type`, `documentation`, `expectation`, and `expression`.
+  A search parameter with a `SHALL` expectation may define a non-empty
+  `rationaleOverride` when the generated rationale needs additional clinical
+  context.
 - `searchCombinations` lists required parameter combinations. Each `params`
   array contains search parameter codes and `expectation` states the
-  combination's conformance level.
+  combination's conformance level. A combination with a `SHALL` expectation may
+  also define `rationaleOverride`.
 - `revIncludes`, `searchParams`, and `searchCombinations` may be empty when a
   resource has no requirements of that kind. Supported profile URLs are
   inferred from `data/uscdi_plus_quality.json` and are not repeated here.
@@ -237,7 +249,7 @@ Edit `data/rest.json`.
 Use this file when adding or changing:
 
 - supported REST resources
-- resource-level documentation
+- optional required-search rationale overrides
 - search parameters
 - search parameter expectations
 - search parameter expressions
@@ -362,9 +374,37 @@ The npm scripts are:
 - `generate:flags` - generates USCDI+ Quality element flagging FSH from the data
   element mapping JSON.
 - `generate:view-data` - generates JSON under `input/data/generated` for
-  rendered profile guidance, profile tables, and USCDI+ Quality scope tables.
+  rendered profile guidance, search rationale tables, profile tables, and
+  USCDI+ Quality scope tables.
 - `generate:uscdi-quality-csv` - generates the USCDI+ Quality CSV download
   under `input/images/generated`.
+
+## Generator Configuration
+
+Shared generator settings are centralized in `scripts/generator.config.js`.
+Change that file when generator behavior needs a project-wide update instead of
+adding constants to individual generator entry points.
+
+The configuration is grouped by purpose:
+
+- `labels` and `local` define project terminology, local profile and
+  SearchParameter naming, the preferred publisher contact, and the USCDI+
+  Quality extension id.
+- `upstream` identifies the US Core package and canonical artifacts used for
+  profile, SearchParameter, and CapabilityStatement lookups.
+- `fhir` contains standard extension URLs shared by REST generation and US Core
+  comparison.
+- `generated` contains generated RuleSet names and the required profile insert
+  comment.
+- `rest`, `csv`, and `pages` contain shared output behavior and narrative
+  settings.
+- `paths` defines all maintained generator inputs and generated output
+  locations relative to the IG root.
+
+IG publication metadata—including the canonical URL, package id, version,
+dependency versions, publisher, and publication date—continues to come from
+`sushi-config.yaml`. Do not duplicate those values in the generator
+configuration when they can be read from SUSHI config.
 
 ### Important Inputs
 
@@ -385,7 +425,8 @@ mappings in `data/uscdi_plus_quality.json`. It writes SearchParameter FSH files 
 `input/fsh/generated/USQualityCoreCapabilityStatementRest.fsh`, which is
 inserted into the authored server and client CapabilityStatement instances.
 Supported profile lists are inferred from `data/uscdi_plus_quality.json`; do not
-duplicate them in `data/rest.json`.
+duplicate them in `data/rest.json`. The generated search alignment and rationale
+rows are also reused by profile notes through the view-data generator.
 
 ### `generate_flags.js`
 
@@ -411,6 +452,8 @@ Those files are consumed by Liquid includes in `input/includes` and rendered by
 Jekyll during the IG build. Generated profile guidance uses
 `data/uscdi_plus_quality.json` to link flagged profile elements back to the
 USCDI+ Quality data class and element rows that caused each path to be flagged.
+It also uses the shared REST documentation helper to add the same required
+search alignment and rationale rows used by the CapabilityStatements.
 
 This script depends on `input/fsh/generated/USCDIQualityFlags.fsh`, which is
 created by `generate_flags.js`. Run

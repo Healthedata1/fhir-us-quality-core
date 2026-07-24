@@ -1,5 +1,7 @@
 {:toc}
 
+### Background
+
 **USCDI+ Quality** is part of the [USCDI+ initiative](https://www.healthit.gov/topic/interoperability/uscdi-plus). The USCDI+ initiative supports the identification and establishment of domain- or program-specific data element lists that operate as extensions to the existing USCDI data element list.
  
 USCDI+ Quality is intended to improve healthcare interoperability across quality programs by establishing a consistent baseline of harmonized data elements for a wide range of quality measurement and reporting use cases. The USCDI+ Quality data element list serves as a baseline dataset to support digital quality measurement and reporting across the healthcare ecosystem.
@@ -16,7 +18,7 @@ USCDI+ Quality includes [two data element lists](https://uscdiplus.healthit.gov/
 
 
 
-### USCDI+ Quality and US Quality Core Implementation Guide
+### USCDI+ Quality and US Quality Core
 
 **USCDI+ Quality** defines high-level data requirements, and the **US Quality Core Implementation Guide** provides detailed FHIR-based profiles to meet those requirements. This guidance is necessary to achieve interoperability and consistency in quality-related healthcare data exchange in the United States, given the flexibility of the FHIR standard in representing this data.
 

@@ -1,6 +1,6 @@
 {:toc}
 
-### Relationship with US Core and QI-Core
+### US Core and QI-Core
 
 US Quality Core implements [USCDI+
 Quality](https://uscdiplus.healthit.gov/uscdiplus) requirements in FHIR.

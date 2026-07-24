@@ -2,11 +2,19 @@
 
 ### Relationship with US Core and QI-Core
 
-US Quality Core v1.0.0 is based on QI-Core 8.0.0-ballot and uses US Core
-9.0.0 as its direct US Core dependency. QI-Core 8.0.0-ballot was developed on
-US Core 8.0.0, so this guide preserves the QI-Core 8 profile lineage while
-updating its US Core alignment to US Core 9.0.0. The earlier US Quality Core
-v0.5.0 draft was based on QI-Core 6.0.0, which depended on US Core 6.1.0.
+US Quality Core implements [USCDI+
+Quality](https://uscdiplus.healthit.gov/uscdiplus) requirements in FHIR.
+Content in US Quality Core is derived from
+[QI-Core](https://hl7.org/fhir/us/qicore/) and align to [US
+Core](https://hl7.org/fhir/us/core/). The following table shows the relationship
+between USCDI+ Quality and US Quality Core versions, as well as the
+corresponding US Core and QI-Core versions:
+
+{: .table-bordered}
+| USCDI+ Quality Version | US Quality Core IG Version | US Core Version | QI-Core Version |
+|---|---|---|---|
+| V2 | 1.0.0-ballot | 9.0.0 | 8.0.0-ballot |
+| V1 | 0.5.0 (published via FHIR foundation)| 6.1.0 | 6.0.0 |
 
 The profiles defined in US Quality Core are derived from US Core profiles
 whenever possible. As a result, conforming to US Core automatically satisfies a
@@ -24,7 +32,7 @@ US Quality Core profiles use the same bindings as US Core.
 {: #search-expectations-and-us-core}
 
 The US Quality Core CapabilityStatements identify the RESTful API capabilities
-specifically needed for [USCDI+ Quality V2
+specifically needed for [USCDI+ Quality
 data](uscdiquality.html). They do not
 repeat every US Core search expectation. For the search selection approach and
 conformance details, see [API

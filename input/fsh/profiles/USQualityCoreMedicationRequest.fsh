@@ -32,7 +32,6 @@ Description: "Profile of MedicationRequest for decision support/quality metrics.
 * reported[x] MS
   * ^short = "Reported rather than primary record"
 * medication[x] from $vsac-medication-clinical-drug (extensible)
-  * ^binding.strength = #preferred
   * ^short = "Medication to be taken"
   * ^condition = "mrq-1"
   * extension contains $codeOptions named codeOptions 0..1

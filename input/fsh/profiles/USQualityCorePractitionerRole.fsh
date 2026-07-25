@@ -33,7 +33,7 @@ Description: "Profile of PractitionerRole for decision support/quality metrics. 
 * code from http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1099.30 (extensible)
   * ^short = "Roles which this practitioner may perform"
   * ^binding.description = "Indicates specific responsibility of an individual within the care team, such as Primary physician, Team coordinator, Caregiver, etc."
-* specialty from http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.1066 (extensible)
+* specialty from http://hl7.org/fhir/us/core/ValueSet/us-core-practitionerrole-specialty (extensible)
   * ^short = "Specific specialty of the practitioner"
 * location only Reference(USQualityCoreLocation)
   * ^short = "The location(s) at which this practitioner provides care"

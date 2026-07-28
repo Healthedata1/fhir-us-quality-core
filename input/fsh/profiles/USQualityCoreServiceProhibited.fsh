@@ -22,15 +22,8 @@ Description: "Negation profile of ServiceRequest for decision support/quality me
 * authoredOn 1..1
   * ^short = "Date request signed"
 * reasonCode only CodeableConcept
-* reasonCode from http://hl7.org/fhir/us/core/ValueSet/us-core-condition-code (extensible)
+* reasonCode from USQualityCoreNegationReasonCodes (extensible)
   * ^short = "Explanation/Justification for procedure or service"
-  * ^binding.extension.extension[0].url = "purpose"
-  * ^binding.extension.extension[=].valueCode = #extensible
-  * ^binding.extension.extension[+].url = "valueSet"
-  * ^binding.extension.extension[=].valueCanonical = "http://hl7.org/fhir/us/quality-core/ValueSet/us-quality-core-negation-reason-codes"
-  * ^binding.extension.extension[+].url = "key"
-  * ^binding.extension.extension[=].valueId = "3fdfb5b5-0d5e-4b02-bda5-562629399813"
-  * ^binding.extension.url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
 * reasonReference ^short = "Explanation/Justification for service or service"
 * intent ^short = "proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option"
 * requester ^short = "Who/what is requesting service"

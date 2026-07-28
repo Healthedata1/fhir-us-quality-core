@@ -18,5 +18,5 @@ Usage: #example
 * encounter.reference = "Encounter/example"
 * occurrenceDateTime = "2013-04-05"
 * authoredOn = "2013-04-04"
-* reasonCode = $sct#416406003 "Procedure discontinued (situation)"
+* reasonCode = $sct#713247000 "Procedure discontinued by patient"
 * bodySite = $sct#66754008 "Appendix structure"

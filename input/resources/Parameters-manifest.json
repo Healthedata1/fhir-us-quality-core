@@ -1,0 +1,22 @@
+{
+    "resourceType": "Parameters",
+    "id": "manifest",
+    "meta": {
+        "extension": [
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/instance-name",
+                "valueString": "Expansion Parameters"
+            },
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/instance-description",
+                "valueMarkdown": "This Parameters resource represents a manifest to the versions of the [canonical artifacts](https://hl7.org/fhir/canonicalresource.html), such as  *CodeSystem*, *ValueSet*, *StructureDefinition* and *SearchParameter* used in this IG. It also specifies the [SNOMED CT Edition](https://terminology.hl7.org/en/SNOMEDCT.html)."
+            }
+        ]
+    },
+    "parameter": [
+        {
+            "name": "system-version",
+            "valueCanonical": "http://snomed.info/sct|http://snomed.info/sct/731000124108"
+        }
+    ]
+}

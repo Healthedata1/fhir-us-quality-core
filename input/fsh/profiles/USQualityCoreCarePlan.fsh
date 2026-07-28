@@ -12,38 +12,12 @@ Description: "Defines constraints and extensions on the CarePlan resource for th
 * ^contact.telecom.value = "http://www.hl7.org/Special/committees/cqi"
 * ^jurisdiction = urn:iso:std:iso:3166#US
 * text ^short = "Text summary of the resource, for human interpretation"
-* category ..* SU
+// US Core 9 removes the assess-plan category slice: there is no distinction
+// between a Care Plan and an Assessment and Plan of Treatment. Align with the
+// US Core 9 parent element: 0..1, preferred binding to CarePlanCategory.
+* category 0..1 SU
 * category only CodeableConcept
 * category from CarePlanCategory (preferred)
-  * ^slicing.discriminator.type = #value
-  * ^slicing.discriminator.path = "$this"
-  * ^slicing.rules = #open
-  * ^short = "Type of plan"
-  * ^definition = "Type of plan."
-  * ^comment = "There may be multiple axes of categorization and one plan may serve multiple purposes.  In some cases, this may be redundant with references to CarePlan.concern."
-  * ^requirements = "Identifies what \"kind\" of plan this is to support differentiation between multiple co-existing plans; e.g. \"Home health\", \"psychiatric\", \"asthma\", \"disease management\", \"wellness plan\", etc."
-  * ^base.path = "CarePlan.category"
-  * ^base.min = 0
-  * ^base.max = "*"
-  * ^isModifier = false
-  * ^binding.extension.url = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"
-  * ^binding.extension.valueString = "CarePlanCategory"
-  * ^binding.description = "Identifies what \"kind\" of plan this is to support differentiation between multiple co-existing plans; e.g. \"Home health\", \"psychiatric\", \"asthma\", \"disease management\", etc."
-* category contains AssessPlan 1..1 SU
-* category[AssessPlan] only CodeableConcept
-* category[AssessPlan] = USCoreCarePlanCategoryExtensionCodes#assess-plan
-* category[AssessPlan] from CarePlanCategory (preferred)
-  * ^short = "Type of plan"
-  * ^definition = "Type of plan."
-  * ^comment = "There may be multiple axes of categorization and one plan may serve multiple purposes.  In some cases, this may be redundant with references to CarePlan.concern."
-  * ^requirements = "Identifies what \"kind\" of plan this is to support differentiation between multiple co-existing plans; e.g. \"Home health\", \"psychiatric\", \"asthma\", \"disease management\", \"wellness plan\", etc."
-  * ^base.path = "CarePlan.category"
-  * ^base.min = 0
-  * ^base.max = "*"
-  * ^isModifier = false
-  * ^binding.extension.url = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"
-  * ^binding.extension.valueString = "CarePlanCategory"
-  * ^binding.description = "Identifies what \"kind\" of plan this is to support differentiation between multiple co-existing plans; e.g. \"Home health\", \"psychiatric\", \"asthma\", \"disease management\", etc."
 * subject 1..1
 * subject only Reference(USQualityCorePatient)
   * ^short = "Who the care plan is for."

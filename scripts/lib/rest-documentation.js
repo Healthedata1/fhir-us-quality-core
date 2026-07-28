@@ -161,7 +161,7 @@ function usCoreAlignment(resource, search, usCoreIndex, usCoreCapabilityStatemen
   const match = usCoreRequirement(search, usCoreIndex.get(resource));
   if (!match) return `Added in ${labels.implementationGuide}.`;
 
-  const link = `[US Core](${usCoreCapabilityStatementUrl}#${resource.toLowerCase()})`;
+  const link = `[US Core](${usCoreCapabilityStatementUrl}#Server_${resource})`;
   if (match.expectation === 'SHALL') return `Required by ${link}.`;
   if (match.expectation === 'SHOULD') {
     return `Recommended by ${link}; ${labels.implementationGuide} strengthens this to SHALL.`;

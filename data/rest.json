@@ -161,6 +161,12 @@
         "documentation": "The client **MAY** provide a code value.",
         "expectation": "MAY",
         "expression": "Communication.topic"
+      },
+      "status": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a status.",
+        "expectation": "MAY",
+        "expression": "Communication.status"
       }
     },
     "searchCombinations": [
@@ -170,6 +176,14 @@
           "topic"
         ],
         "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "subject",
+          "status"
+        ],
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports subject-scoped retrieval of Communication resources filtered by status; status is used to indicate negation."
       }
     ]
   },
@@ -603,7 +617,8 @@
           "patient",
           "status"
         ],
-        "expectation": "SHALL"
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports patient-scoped retrieval of Immunization resources filtered by status; status is used to indicate negation."
       }
     ]
   },
@@ -674,7 +689,8 @@
           "patient",
           "status"
         ],
-        "expectation": "SHALL"
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by status; status is used to indicate negation."
       },
       {
         "params": [
@@ -723,7 +739,8 @@
           "patient",
           "status"
         ],
-        "expectation": "SHALL"
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports patient-scoped retrieval of MedicationDispense resources filtered by status; status is used to indicate negation."
       }
     ]
   },
@@ -956,7 +973,8 @@
           "patient",
           "status"
         ],
-        "expectation": "SHALL"
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports patient-scoped retrieval of Procedure resources filtered by status; status is used to indicate negation."
       },
       {
         "params": [
@@ -1178,7 +1196,8 @@
           "patient",
           "status"
         ],
-        "expectation": "SHALL"
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports patient-scoped retrieval of Task resources filtered by status; status is used to indicate negation."
       },
       {
         "params": [

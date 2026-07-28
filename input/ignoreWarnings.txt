@@ -25,7 +25,7 @@ Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/medication-a
 Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/medicationdispense-status|4.0.1
 Reference to draft ValueSet http://hl7.org/fhir/ValueSet/servicerequest-category|4.0.1
 
-# 04. The publisher reports this even though the expansion parameters file is referenced by path-expansion-params
+# 04. The auto-generated expansion-params.xhtml fragment does not faithfully reproduce the entire manifest, so it is not included on any page. The complete snapshot of pinned versions is published as Parameters-manifest.html instead. Suppress the resulting "fragment not included" notice.
 %The HTML fragment 'expansion-params.xhtml' is not included anywhere in the produced implementation guide
 
 # 05. US Core 9 uses capabilitystatement-expectation as a child of capabilitystatement-search-parameter-combination; the expectation extension explicitly allows that context.
@@ -38,3 +38,22 @@ Reference to draft ValueSet http://hl7.org/fhir/ValueSet/servicerequest-category
 # 07. The pattern is set in a repeating slice. The pattern is expected to hold for all repetitions of that slice. (It's fixing the 'system' for the identifier.)
 
 The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
+
+# 08. === This informational message confirms that this guide is pinned to all most recent versions used at the time this guide was published. For more guidance on pinning in US Core, see the Terminology Page. ===
+
+Pinned the version of http://terminology.hl7.org/CodeSystem/%
+Pinned the version of http://terminology.hl7.org/ValueSet/%
+Pinned the version of http://hl7.org/fhir/%
+Pinned the version of http://phinvads.cdc.gov/fhir/ValueSet/%
+
+# 09. As explained in the section "Terminology Bindings " US Quality Core "pins" the published version to the latest versions of code systems and value sets and other canonical resources.  A manifest of the "pinned" versions can be found at "Parameters-manifest.html"  Despite this, in addition the the informational message, the validator is producing these warning presumably due to multiple versions of a dependency/loaded package (e.g.: extensions 5.2.0/5.3.0/5.3.0-ballot-tc1) Since the manifests pins to the most recent version, these warnings can be ignored.
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/codeOptions'%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/event-recorded'%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate'%
+%There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/USPS-State'%
+%There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/v2-0116'%
+%There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/v2-0092'%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/task-status'%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/request-status'%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/event-status'%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/CodeSystem/medicationrequest-status'%

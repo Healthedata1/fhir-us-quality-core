@@ -40,15 +40,17 @@ parameters:
   path-resource: resources
   path-liquid: templates\liquid
   apply-version: true
-  path-expansion-params: ../../input/_resources/exp-params.json
   find-other-resources: true
   apply-jurisdiction: true
   generate:
     - xml
     - JSON
-  special-url: http://hl7.org/fhir/StructureDefinition/codeOptions
-  pin-canonicals: pin-multiples
   auto-oid-root: 2.16.840.1.113883.4.642.40.78
+  # ======== Manifest Creation Parameters ==========
+  path-expansion-params: '../../input/resources/Parameters-manifest.json' # relative path from ig resource for using US ed of SNOMED
+  pin-canonicals: pin-all #<<<< comment out to speed up
+  pin-manifest: manifest #<<<< comment out to speed up
+  # ==================================================
 pages:
   index.md:
     title: US Quality Core Implementation Guide

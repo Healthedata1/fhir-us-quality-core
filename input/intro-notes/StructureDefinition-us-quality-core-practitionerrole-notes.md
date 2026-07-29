@@ -1,3 +1,3 @@
-{% include profile-search-param-guidance.md profile="us-quality-core-practitionerrole" %}
-
 {% include profile-conformance-indicators.md profile="us-quality-core-practitionerrole" %}
+
+{% include profile-search-param-guidance.md profile="us-quality-core-practitionerrole" %}

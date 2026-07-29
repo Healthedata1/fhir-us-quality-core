@@ -8,6 +8,10 @@ INFORMATION: StructureDefinition/us-quality-core-organization: StructureDefiniti
 INFORMATION: StructureDefinition/us-quality-core-practitioner: StructureDefinition.snapshot.element[18].pattern.ofType(Identifier): The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
 WARNING: StructureDefinition/us-quality-core-organization: StructureDefinition.snapshot: The slice 'CLIA' on path 'Organization.identifier' is not marked as 'must-support' which is not consistent with the element that defines the slicing, where 'must-support' is true
 WARNING: StructureDefinition/us-quality-core-organization: StructureDefinition.snapshot: The slice 'NAIC' on path 'Organization.identifier' is not marked as 'must-support' which is not consistent with the element that defines the slicing, where 'must-support' is true
+INFORMATION: StructureDefinition/us-quality-core-adverseevent: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.3.0 is deprecated with the note: 'Use additionalBinding extension or element instead'
+INFORMATION: StructureDefinition/us-quality-core-patient: Patient.address.extension: The extension http://hl7.org/fhir/StructureDefinition/iso21090-preferred|5.3.0 is deprecated with the note: 'Use rank element or "rank extension" (StructureDefinition-rank.html) instead'
+INFORMATION: StructureDefinition/us-quality-core-questionnaireresponse: StructureDefinition.snapshot.element[29].type[0].extension[1]: The extension http://hl7.org/fhir/StructureDefinition/regex|5.3.0 is deprecated with the note: 'This was deprecated in favor of using a constraint on the element using FHIRPath, since constraints allow for the provision of a human readable message associated with the regex'
+INFORMATION: StructureDefinition/us-quality-core-simple-observation: StructureDefinition.snapshot.element[14].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-minValueSet|5.3.0 is deprecated with the note: 'Use additionalBinding extension or element instead'
 
 # 02. The following messages are being generated from FHIR R4 ImagingStudy resource.
 A definition could not be found for Canonical URL 'http://www.rsna.org/RadLex_Playbook.aspx'
@@ -45,6 +49,8 @@ Pinned the version of http://terminology.hl7.org/CodeSystem/%
 Pinned the version of http://terminology.hl7.org/ValueSet/%
 Pinned the version of http://hl7.org/fhir/%
 Pinned the version of http://phinvads.cdc.gov/fhir/ValueSet/%
+Pinned the version of http://dicom.nema.org/%
+Pinned the version of https://www.cms.gov/%
 
 # 09. As explained in the section "Terminology Bindings " US Quality Core "pins" the published version to the latest versions of code systems and value sets and other canonical resources.  A manifest of the "pinned" versions can be found at "Parameters-manifest.html"  Despite this, in addition the the informational message, the validator is producing these warning presumably due to multiple versions of a dependency/loaded package (e.g.: extensions 5.2.0/5.3.0/5.3.0-ballot-tc1) Since the manifests pins to the most recent version, these warnings can be ignored.
 %There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/codeOptions'%

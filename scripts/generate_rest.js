@@ -13,7 +13,13 @@ const {
 } = require('./generator.config');
 const { configuredFhirDefinitions, parseFsh, sourceFshFiles, sushi } = require('./lib/sushi');
 const { canonicalWithVersion } = require('./lib/text');
-const { ensureDir, fs, readRestData, readUscdiQualityData, write } = require('./lib/io');
+const {
+  ensureDir,
+  fs,
+  readSearchCapabilities,
+  readUscdiQualityDefinitions,
+  write
+} = require('./lib/io');
 const { addAssignment, addCodeAssignment, generatedFshFile, ruleSetToFsh } = require('./lib/fsh-output');
 const { profileMaps, requireProfileDefinition } = require('./lib/profiles');
 const {
@@ -318,7 +324,10 @@ function addSystemInteractions(ruleSet) {
 function generatedFsh(ruleSet) {
   return generatedFshFile({
     scriptName: 'generate_rest.js',
-    inputPaths: ['data/rest.json', 'data/uscdi_plus_quality.json'],
+    inputPaths: [
+      'definitions/search-capabilities.json',
+      'definitions/uscdi_plus_quality.json'
+    ],
     content: ruleSetToFsh(ruleSet)
   });
 }
@@ -326,7 +335,7 @@ function generatedFsh(ruleSet) {
 function generatedSearchParameterFsh(instance) {
   return generatedFshFile({
     scriptName: 'generate_rest.js',
-    inputPaths: ['data/rest.json'],
+    inputPaths: ['definitions/search-capabilities.json'],
     content: instance.toFSH()
   });
 }
@@ -406,7 +415,7 @@ function assertResourceCoverage(resources, supportedProfilesByResource) {
 
   if (missingConfigs.length) {
     throw new Error(
-      `Mapped USCDI+ Quality profile resources are missing from data/rest.json:\n- ${missingConfigs.join(
+      `Mapped USCDI+ Quality profile resources are missing from definitions/search-capabilities.json:\n- ${missingConfigs.join(
         '\n- '
       )}`
     );
@@ -414,7 +423,7 @@ function assertResourceCoverage(resources, supportedProfilesByResource) {
 
   if (unmappedConfigs.length) {
     throw new Error(
-      `data/rest.json includes resources with no data/uscdi_plus_quality.json profile mappings:\n- ${unmappedConfigs.join(
+      `definitions/search-capabilities.json includes resources with no definitions/uscdi_plus_quality.json profile mappings:\n- ${unmappedConfigs.join(
         '\n- '
       )}`
     );
@@ -423,8 +432,8 @@ function assertResourceCoverage(resources, supportedProfilesByResource) {
 
 async function main(log) {
   const { resources, dataElements, config } = await log.step('Reading JSON inputs and IG config', () => ({
-    resources: readRestData(),
-    dataElements: readUscdiQualityData(),
+    resources: readSearchCapabilities(),
+    dataElements: readUscdiQualityDefinitions(),
     config: sushi.utils.readConfig(paths.igRoot)
   }));
   const fhirDefs = await log.step('Loading configured FHIR definitions', configuredFhirDefinitions);

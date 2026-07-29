@@ -10,12 +10,12 @@ function readJson(file) {
   return JSON.parse(read(file));
 }
 
-function readUscdiQualityData() {
-  return readJson(paths.uscdiQualityDataFile);
+function readUscdiQualityDefinitions() {
+  return readJson(paths.uscdiQualityDefinitionsFile);
 }
 
-function readRestData() {
-  return readJson(paths.restDataFile);
+function readSearchCapabilities() {
+  return readJson(paths.searchCapabilitiesFile);
 }
 
 function write(file, text) {
@@ -34,8 +34,8 @@ module.exports = {
   fs,
   read,
   readJson,
-  readRestData,
-  readUscdiQualityData,
+  readSearchCapabilities,
+  readUscdiQualityDefinitions,
   write,
   writeJson,
   ensureDir

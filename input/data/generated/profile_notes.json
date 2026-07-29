@@ -8349,7 +8349,7 @@
       },
       {
         "path": "performer.actor",
-        "short": "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: The reference to the practitioner",
+        "short": "The reference to the practitioner",
         "dataElements": [
           {
             "class": "Provenance",
@@ -8570,7 +8570,7 @@
       },
       {
         "path": "performer.actor",
-        "short": "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: The reference to the practitioner",
+        "short": "The reference to the practitioner",
         "dataElements": [
           {
             "class": "Provenance",

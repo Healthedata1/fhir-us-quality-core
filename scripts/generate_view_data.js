@@ -10,7 +10,12 @@ const {
   upstream
 } = require('./generator.config');
 const { configuredFhirDefinitions, parseFsh, sourceFshFiles, sushi } = require('./lib/sushi');
-const { ensureDir, readRestData, readUscdiQualityData, writeJson } = require('./lib/io');
+const {
+  ensureDir,
+  readSearchCapabilities,
+  readUscdiQualityDefinitions,
+  writeJson
+} = require('./lib/io');
 const { searchRequirementRows, usCoreDocumentationContext } = require('./lib/rest-documentation');
 const { fshPathToDisplayPath, getOrSet, jsonPathToFshPath, markdownText, urlTail } = require('./lib/text');
 const {
@@ -411,12 +416,19 @@ function documentedSearchRequirement(profile, resource, resourceConfig, requirem
   };
 }
 
-function profileSearchData(profile, resourceTypes, restResources, documentationContext) {
+function profileSearchData(
+  profile,
+  resourceTypes,
+  searchCapabilities,
+  documentationContext
+) {
   const resource = resourceTypes.get(profile.id);
-  const resourceConfig = restResources[resource] ?? {};
-  const resourceIndex = Object.keys(restResources).indexOf(resource);
+  const resourceConfig = searchCapabilities[resource] ?? {};
+  const resourceIndex = Object.keys(searchCapabilities).indexOf(resource);
   if (resourceIndex < 0) {
-    throw new Error(`${profile.id} resolves to ${resource}, which is not configured in data/rest.json.`);
+    throw new Error(
+      `${profile.id} resolves to ${resource}, which is not configured in definitions/search-capabilities.json.`
+    );
   }
   const searchParams = searchParamData(resourceConfig.searchParams);
   const searchCombinations = searchCombinationData(resourceConfig.searchCombinations);
@@ -435,10 +447,16 @@ function profileSearchData(profile, resourceTypes, restResources, documentationC
   };
 }
 
-function assertProfileExampleOverrides(profiles, resourceTypes, restResources) {
+function assertProfileExampleOverrides(
+  profiles,
+  resourceTypes,
+  searchCapabilities
+) {
   const profileIds = new Set(profiles.map(profile => profile.id));
 
-  for (const [resource, resourceConfig] of Object.entries(restResources)) {
+  for (const [resource, resourceConfig] of Object.entries(
+    searchCapabilities
+  )) {
     for (const [profileId, overrides] of Object.entries(resourceConfig.profileExampleOverrides ?? {})) {
       if (!profileIds.has(profileId)) {
         throw new Error(`${resource}.profileExampleOverrides references unknown profile ${profileId}.`);
@@ -512,7 +530,7 @@ function mappedDataElementsForFlag(profile, element, mappedElements) {
   if (links.length) return links;
 
   throw new Error(
-    `No data/uscdi_plus_quality.json data element mapping found for generated flag ${profile.id}.${element.path}.`
+    `No definitions/uscdi_plus_quality.json data element mapping found for generated flag ${profile.id}.${element.path}.`
   );
 }
 
@@ -523,11 +541,11 @@ function profileNotesData(
   profilesById,
   profilesByName,
   resourceTypes,
-  restResources,
+  searchCapabilities,
   documentationContext,
   fhirDefs
 ) {
-  assertProfileExampleOverrides(profiles, resourceTypes, restResources);
+  assertProfileExampleOverrides(profiles, resourceTypes, searchCapabilities);
   const mappedElements = mappedDataElementsByProfilePath(dataElements);
   const profileElements = [...profiles]
     .sort((a, b) => a.id.localeCompare(b.id))
@@ -554,7 +572,12 @@ function profileNotesData(
             uscdiQualityElements: elements,
             hasUsCoreLineage: Boolean(usCore),
             usCore: usCore ? usCoreProfileSummary(usCore) : null,
-            search: profileSearchData(profile, resourceTypes, restResources, documentationContext)
+            search: profileSearchData(
+              profile,
+              resourceTypes,
+              searchCapabilities,
+              documentationContext
+            )
           }
         ];
       })
@@ -569,10 +592,10 @@ function writeGeneratedData(files) {
 }
 
 async function main(log) {
-  const { config, dataElements, restResources } = await log.step('Reading root JSON inputs', () => ({
+  const { config, dataElements, searchCapabilities } = await log.step('Reading definition inputs', () => ({
     config: sushi.utils.readConfig(paths.igRoot),
-    dataElements: readUscdiQualityData(),
-    restResources: readRestData()
+    dataElements: readUscdiQualityDefinitions(),
+    searchCapabilities: readSearchCapabilities()
   }));
   const fhirDefs = await log.step('Loading configured FHIR definitions', configuredFhirDefinitions);
   const documentationContext = await log.step('Indexing US Core search requirements', () =>
@@ -604,7 +627,7 @@ async function main(log) {
         profilesById,
         profilesByName,
         resourceTypes,
-        restResources,
+        searchCapabilities,
         documentationContext,
         fhirDefs
       ),

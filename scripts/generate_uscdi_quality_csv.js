@@ -4,7 +4,11 @@ const path = require('node:path');
 
 const { csv, labels, paths } = require('./generator.config');
 const { parseFsh, sourceFshFiles } = require('./lib/sushi');
-const { ensureDir, readUscdiQualityData, write } = require('./lib/io');
+const {
+  ensureDir,
+  readUscdiQualityDefinitions,
+  write
+} = require('./lib/io');
 const { urlTail } = require('./lib/text');
 const { profileMaps } = require('./lib/profiles');
 const { assertAllDataElementsMapped } = require('./lib/uscdi');
@@ -99,7 +103,7 @@ function writeUscdiQualityCsv(dataElements, profilesById) {
 async function main(log) {
   const dataElements = await log.step(
     `Reading ${labels.uscdiQuality} mappings`,
-    readUscdiQualityData
+    readUscdiQualityDefinitions
   );
   const { byId: profilesById } = await log.step('Parsing authored FSH profiles', () =>
     profileMaps(parseFsh(FSH_FILES))

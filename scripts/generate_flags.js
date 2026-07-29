@@ -3,7 +3,12 @@
 const { generated, labels, local, paths } = require('./generator.config');
 const { assertNoSushiErrors, compileFsh, parseFsh, profileSourceFshFiles, sushi } = require('./lib/sushi');
 const { elementIdToFshPath, getOrSet, joinLines, jsonPathToFshPath, splitLines, urlTail } = require('./lib/text');
-const { ensureDir, read, readUscdiQualityData, write } = require('./lib/io');
+const {
+  ensureDir,
+  read,
+  readUscdiQualityDefinitions,
+  write
+} = require('./lib/io');
 const { generatedFshFile, ruleSetToFsh } = require('./lib/fsh-output');
 const { profileMaps } = require('./lib/profiles');
 const { assertAllDataElementsMapped } = require('./lib/uscdi');
@@ -22,7 +27,7 @@ function rulesetName(profileName) {
 function readMappings() {
   const flags = new Map();
   const sources = new Map();
-  const dataElements = readUscdiQualityData();
+  const dataElements = readUscdiQualityDefinitions();
 
   assertAllDataElementsMapped(dataElements);
 
@@ -277,7 +282,7 @@ function buildRuleSets(flags, profilesById, profileData, igConfig) {
 function generatedFsh(ruleSets) {
   return generatedFshFile({
     scriptName: 'generate_flags.js',
-    inputPaths: ['data/uscdi_plus_quality.json'],
+    inputPaths: ['definitions/uscdi_plus_quality.json'],
     content: ruleSets.map(ruleSetToFsh).join('\n\n')
   });
 }
@@ -292,7 +297,7 @@ function generatedRuleSetInsertHint(message) {
   }
   return [
     message,
-    `This usually means a profile still contains a generated ${labels.uscdiQuality} RuleSet insert, but data/uscdi_plus_quality.json no longer has mappings for that profile.`,
+    `This usually means a profile still contains a generated ${labels.uscdiQuality} RuleSet insert, but definitions/uscdi_plus_quality.json no longer has mappings for that profile.`,
     `If this profile no longer has any mappings, you may need to remove the generated insert and comment from the profile FSH:\n${generated.uscdiQualityFlagInsertComment}\n* insert ${generated.uscdiQualityFlagsRuleSetPrefix}For...`
   ].join('\n');
 }

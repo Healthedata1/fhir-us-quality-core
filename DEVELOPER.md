@@ -8,7 +8,7 @@ common update workflows.
 
 - [Source Layout](#source-layout)
 - [How To Make Changes](#how-to-make-changes)
-- [Maintained Input Schemas](#maintained-input-schemas)
+- [Maintained Definition Schemas](#maintained-definition-schemas)
 - [Automation-Driven Content](#automation-driven-content)
 - [Hand-Maintained Content](#hand-maintained-content)
 - [Generators](#generators)
@@ -26,9 +26,9 @@ us-quality-core/
 |-- sushi-config.yaml                  IG metadata, dependencies, pages, and build parameters
 |-- ig.ini                             IG Publisher entry point
 |-- fsh.ini                            SUSHI configuration used by the IG Publisher
-|-- data/                              Maintained JSON inputs for project-specific generators
-|   |-- uscdi_plus_quality.json        USCDI+ Quality data element and profile mappings
-|   `-- rest.json                      REST/search conformance requirements
+|-- definitions/                       Maintained JSON definitions for project-specific generators
+|   |-- uscdi_plus_quality.json         USCDI+ Quality data element and profile mappings
+|   `-- search-capabilities.json        REST/search conformance requirements
 |-- scripts/                           Node-based generators and shared helper code
 |   |-- generator.config.js            Shared generator paths, identifiers, and behavior
 |   |-- generate_flags.js              Generates USCDI+ Quality flag RuleSets
@@ -59,8 +59,8 @@ us-quality-core/
 
 Most IG maintenance falls into two categories:
 
-1. **Automation-driven content** - maintained in JSON under `data/`, then
-   expanded into generated FSH and generated Jekyll data.
+1. **Automation-driven content** - maintained as JSON definitions under
+   `definitions/`, then expanded into generated FSH and generated Jekyll data.
 2. **Hand-maintained content** - authored directly in FSH or Markdown under
    `input/`.
 
@@ -68,13 +68,14 @@ Do not edit files under `input/fsh/generated/` or `input/data/generated/` by
 hand. If generated output is wrong, update the maintained JSON or authored
 source and rerun the relevant generator.
 
-## Maintained Input Schemas
+## Maintained Definition Schemas
 
-The two JSON files under `data/` are hand-maintained generator inputs. The
-examples below show their basic shapes; arrays may contain any number of entries,
-including none where the corresponding behavior is not needed.
+The two JSON files under `definitions/` are hand-maintained generator
+definitions. The examples below show their basic shapes; arrays may contain any
+number of entries, including none where the corresponding behavior is not
+needed.
 
-### `data/uscdi_plus_quality.json`
+### `definitions/uscdi_plus_quality.json`
 
 This file is an array with one object per USCDI+ Quality data element:
 
@@ -118,7 +119,7 @@ This file is an array with one object per USCDI+ Quality data element:
   the FHIR resource type, for example `AdverseEvent.resultingCondition`.
 - Every data element must have at least one US Core or US Quality Core mapping.
 
-### `data/rest.json`
+### `definitions/search-capabilities.json`
 
 This file is an object keyed by FHIR resource type. Each value describes the
 resource's CapabilityStatement and search requirements:
@@ -188,7 +189,7 @@ resource's CapabilityStatement and search requirements:
 
 - Each top-level key is an R4 resource type. The configured resource types must
   exactly match those inferred from the profile mappings in
-  `data/uscdi_plus_quality.json`.
+  `definitions/uscdi_plus_quality.json`.
 - Resource-level CapabilityStatement documentation is generated from the
   required search parameter and combination metadata. The generator compares
   each requirement with the configured US Core Server CapabilityStatement to
@@ -224,7 +225,7 @@ resource's CapabilityStatement and search requirements:
   also define `rationaleOverride`.
 - `revIncludes`, `searchParams`, and `searchCombinations` may be empty when a
   resource has no requirements of that kind. Supported profile URLs are
-  inferred from `data/uscdi_plus_quality.json` and are not repeated here.
+  inferred from `definitions/uscdi_plus_quality.json` and are not repeated here.
 
 ## Automation-Driven Content
 
@@ -234,7 +235,7 @@ CapabilityStatement REST content, or generated SearchParameters.
 
 ### Add Or Revise USCDI+ Quality Mappings
 
-Edit `data/uscdi_plus_quality.json`.
+Edit `definitions/uscdi_plus_quality.json`.
 
 Use this file when adding or changing:
 
@@ -279,7 +280,7 @@ Check affected profile pages, `uscdiquality.html`, `profiles.html`, and
 
 ### Change REST, Search, Or CapabilityStatement Expectations
 
-Edit `data/rest.json`.
+Edit `definitions/search-capabilities.json`.
 
 Use this file when adding or changing:
 
@@ -290,9 +291,9 @@ Use this file when adding or changing:
 - search parameter expressions
 - required search parameter combinations
 
-The REST generator uses this data, together with mappings in
-`data/uscdi_plus_quality.json`, to generate CapabilityStatement REST rules and local
-SearchParameter FSH.
+The REST generator uses this definition, together with mappings in
+`definitions/uscdi_plus_quality.json`, to generate CapabilityStatement REST
+rules and local SearchParameter FSH.
 
 After editing REST/search requirements, run:
 
@@ -372,10 +373,10 @@ Review affected pages and `output/qa.html`.
 
 ## Generators
 
-Project-specific generators live under `scripts/`. Maintained JSON inputs live
-under `data/`. Scripts use those inputs, authored FSH, and SUSHI-resolved
-profile metadata to generate formal FSH, view data for rendered IG pages, and
-downloadable mapping files.
+Project-specific generators live under `scripts/`. Maintained JSON definitions
+live under `definitions/`. Scripts use those definitions, authored FSH, and
+SUSHI-resolved profile metadata to generate formal FSH, view data for rendered
+IG pages, and downloadable mapping files.
 
 Install script dependencies once from the IG root:
 
@@ -441,34 +442,40 @@ dependency versions, publisher, and publication date—continues to come from
 `sushi-config.yaml`. Do not duplicate those values in the generator
 configuration when they can be read from SUSHI config.
 
-### Important Inputs
+### Important Definitions
 
-- `data/uscdi_plus_quality.json` - the data element mapping source for USCDI+
-  Quality flagging. This file identifies the US Quality Core profiles and
-  element paths that should receive the USCDI+ Quality extension and short-text
-  prefix. Its US Core and US Quality Core profile mappings also determine which
-  profiles are supported in generated CapabilityStatement rest rules.
-- `data/rest.json` - the RESTful interaction and search requirement source for
-  generated SearchParameter definitions and CapabilityStatement rest rules.
+- `definitions/uscdi_plus_quality.json` - the data element mapping source for
+  USCDI+ Quality flagging. This file identifies the US Quality Core profiles
+  and element paths that should receive the USCDI+ Quality extension and
+  short-text prefix. Its US Core and US Quality Core profile mappings also
+  determine which profiles are supported in generated CapabilityStatement rest
+  rules.
+- `definitions/search-capabilities.json` - the RESTful interaction and search
+  requirement source for generated SearchParameter definitions and
+  CapabilityStatement rest rules.
 
 ### `generate_rest.js`
 
 This script keeps local SearchParameter definitions and the repeated
-CapabilityStatement rest section driven by `data/rest.json` and the profile
-mappings in `data/uscdi_plus_quality.json`. It writes SearchParameter FSH files under
+CapabilityStatement rest section driven by
+`definitions/search-capabilities.json` and the profile mappings in
+`definitions/uscdi_plus_quality.json`. It writes SearchParameter FSH files under
 `input/fsh/generated/search-parameters/` and generates
 `input/fsh/generated/USQualityCoreCapabilityStatementRest.fsh`, which is
 inserted into the authored server and client CapabilityStatement instances.
-Supported profile lists are inferred from `data/uscdi_plus_quality.json`; do not
-duplicate them in `data/rest.json`. The generated search alignment and rationale
-rows are also reused by profile notes through the view-data generator.
+Supported profile lists are inferred from
+`definitions/uscdi_plus_quality.json`; do not duplicate them in
+`definitions/search-capabilities.json`. The generated search alignment and
+rationale rows are also reused by profile notes through the view-data
+generator.
 
 ### `generate_flags.js`
 
 This script keeps USCDI+ Quality element flagging driven by
-`data/uscdi_plus_quality.json`. It generates USCDI+ Quality flagging RuleSets and
-validates that mapped element paths both exist in the compiled profile snapshot
-and are explicitly authored in the target profile FSH before writing updates.
+`definitions/uscdi_plus_quality.json`. It generates USCDI+ Quality flagging
+RuleSets and validates that mapped element paths both exist in the compiled
+profile snapshot and are explicitly authored in the target profile FSH before
+writing updates.
 
 Flagged profiles are expected to contain a stable
 `* insert GeneratedUSCDIQualityFlagsFor...` rule at the end of the profile. The
@@ -485,8 +492,9 @@ short text. Do not add one-off path exceptions to the generator.
 This script writes generated view-data JSON files under `input/data/generated`.
 Those files are consumed by Liquid includes in `input/includes` and rendered by
 Jekyll during the IG build. Generated profile guidance uses
-`data/uscdi_plus_quality.json` to link flagged profile elements back to the
-USCDI+ Quality data class and element rows that caused each path to be flagged.
+`definitions/uscdi_plus_quality.json` to link flagged profile elements back to
+the USCDI+ Quality data class and element rows that caused each path to be
+flagged.
 It also uses the shared REST documentation helper to add the same required
 search alignment and rationale rows used by the CapabilityStatements.
 
@@ -508,18 +516,18 @@ Core mapped elements column.
 
 This repository commits a small set of generated source files so the IG source
 is reviewable and can be built without rerunning project-specific generators.
-Do not edit these files by hand; update the source JSON or authored FSH, then
-rerun the relevant npm script from the IG root.
+Do not edit these files by hand; update the source definition or authored FSH,
+then rerun the relevant npm script from the IG root.
 
 | File | Generator | Primary inputs |
 | --- | --- | --- |
-| `input/fsh/generated/USQualityCoreCapabilityStatementRest.fsh` | `npm --prefix scripts run generate:rest` | `data/rest.json`, `data/uscdi_plus_quality.json`, authored FSH |
-| `input/fsh/generated/search-parameters/*.fsh` | `npm --prefix scripts run generate:rest` | `data/rest.json`, `data/uscdi_plus_quality.json`, authored FSH |
-| `input/fsh/generated/USCDIQualityFlags.fsh` | `npm --prefix scripts run generate:flags` | `data/uscdi_plus_quality.json`, authored profile FSH |
-| `input/data/generated/profile_notes.json` | `npm --prefix scripts run generate:view-data` | `data/uscdi_plus_quality.json`, `data/rest.json`, generated flag RuleSets, authored profile FSH |
-| `input/data/generated/profile_table.json` | `npm --prefix scripts run generate:view-data` | `data/uscdi_plus_quality.json`, authored profile FSH, generated flag RuleSets |
-| `input/data/generated/data_elements.json` | `npm --prefix scripts run generate:view-data` | `data/uscdi_plus_quality.json`, authored profile FSH |
-| `input/images/generated/uscdi-quality-data-elements.csv` | `npm --prefix scripts run generate:uscdi-quality-csv` | `data/uscdi_plus_quality.json`, authored profile FSH |
+| `input/fsh/generated/USQualityCoreCapabilityStatementRest.fsh` | `npm --prefix scripts run generate:rest` | `definitions/search-capabilities.json`, `definitions/uscdi_plus_quality.json`, authored FSH |
+| `input/fsh/generated/search-parameters/*.fsh` | `npm --prefix scripts run generate:rest` | `definitions/search-capabilities.json`, `definitions/uscdi_plus_quality.json`, authored FSH |
+| `input/fsh/generated/USCDIQualityFlags.fsh` | `npm --prefix scripts run generate:flags` | `definitions/uscdi_plus_quality.json`, authored profile FSH |
+| `input/data/generated/profile_notes.json` | `npm --prefix scripts run generate:view-data` | `definitions/uscdi_plus_quality.json`, `definitions/search-capabilities.json`, generated flag RuleSets, authored profile FSH |
+| `input/data/generated/profile_table.json` | `npm --prefix scripts run generate:view-data` | `definitions/uscdi_plus_quality.json`, authored profile FSH, generated flag RuleSets |
+| `input/data/generated/data_elements.json` | `npm --prefix scripts run generate:view-data` | `definitions/uscdi_plus_quality.json`, authored profile FSH |
+| `input/images/generated/uscdi-quality-data-elements.csv` | `npm --prefix scripts run generate:uscdi-quality-csv` | `definitions/uscdi_plus_quality.json`, authored profile FSH |
 
 Generated RuleSet FSH files are inserted from authored FSH using RuleSet
 inserts. Generated SearchParameter FSH files are regular FSH instance

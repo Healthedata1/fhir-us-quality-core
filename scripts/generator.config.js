@@ -1,7 +1,7 @@
 const path = require('node:path');
 
 const igRoot = path.resolve(__dirname, '..');
-const sourceDataDir = path.join(igRoot, 'data');
+const definitionsDir = path.join(igRoot, 'definitions');
 const fshDir = path.join(igRoot, 'input', 'fsh');
 const generatedFshDir = path.join(fshDir, 'generated');
 const generatedDataDir = path.join(igRoot, 'input', 'data', 'generated');
@@ -83,7 +83,7 @@ module.exports = {
 
   paths: {
     igRoot,
-    sourceDataDir,
+    definitionsDir,
     fshDir,
     generatedFshDir,
     generatedSearchParameterDir: path.join(
@@ -108,10 +108,13 @@ module.exports = {
       generatedStaticAssetsDir,
       'uscdi-quality-data-elements.csv'
     ),
-    uscdiQualityDataFile: path.join(
-      sourceDataDir,
+    uscdiQualityDefinitionsFile: path.join(
+      definitionsDir,
       'uscdi_plus_quality.json'
     ),
-    restDataFile: path.join(sourceDataDir, 'rest.json')
+    searchCapabilitiesFile: path.join(
+      definitionsDir,
+      'search-capabilities.json'
+    )
   }
 };

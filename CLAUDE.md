@@ -89,6 +89,12 @@ USCDI+ Quality data Class and descriptions are in `input/data/` json files and p
 - Do not invent: bindings, mustSupport flags, USCDI mappings, extensions or history not present in the source SD. If a fact is needed and not
   in the file, ask rather than fabricate.
 
+## Tooling preferences
+- For shell work and data extraction, prefer `bash`, `jq`, `yq`, and `python`. Do not use `node`/`node -e` for querying or transforming JSON/YAML.
+
+## Output location
+- Write generated output files (tables, reports, extracted data) to `/.claude/output/` when that directory is present. Prompt the user if they want the output written somewhere else.
+
 ## Common tasks
 
 - "Run build"

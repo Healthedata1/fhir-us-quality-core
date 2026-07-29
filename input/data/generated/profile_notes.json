@@ -95,6 +95,84 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "actuality",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "event",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "date",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "detected",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "recordedDate",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "resultingCondition",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "outcome",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "recorder",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "suspectEntity.instance",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "AdverseEvent",
       "capabilityStatementAnchor": "AdverseEvent1-1",
@@ -272,6 +350,100 @@
       "id": "us-core-allergyintolerance",
       "title": "US Core AllergyIntolerance Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "clinicalStatus",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "verificationStatus",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "patient",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "onset[x]",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "recordedDate",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "recorder",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "lastOccurrence",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reaction",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reaction.manifestation",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "AllergyIntolerance",
       "capabilityStatementAnchor": "AllergyIntolerance1-2",
@@ -393,6 +565,115 @@
       "id": "us-core-careplan",
       "title": "US Core CarePlan Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "text",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "text.status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "text.div",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "contributor",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "addresses",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "activity.detail.status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "CarePlan",
       "capabilityStatementAnchor": "CarePlan1-3",
@@ -484,6 +765,61 @@
     "usCore": {
       "id": "us-core-careteam",
       "title": "US Core CareTeam Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "participant",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "participant.role",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "participant.member",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
     },
     "search": {
       "resource": "CareTeam",
@@ -607,6 +943,62 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "topic",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "topic.extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "sent",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "payload.content[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Communication",
       "capabilityStatementAnchor": "Communication1-5",
@@ -779,6 +1171,62 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "topic",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "topic.extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "sent",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "payload.content[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Communication",
       "capabilityStatementAnchor": "Communication1-5",
@@ -940,6 +1388,85 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "extension",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "extension:event-recorded",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "topic",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "topic.extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "sent",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "payload.content[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Communication",
       "capabilityStatementAnchor": "Communication1-5",
@@ -1103,6 +1630,102 @@
     "usCore": {
       "id": "us-core-condition-encounter-diagnosis",
       "title": "US Core Condition Encounter Diagnosis Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "extension:assertedDate",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mustSupport": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "onset[x]",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "abatement[x]",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "recordedDate",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "recorder",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "Condition",
@@ -1350,6 +1973,152 @@
     "usCore": {
       "id": "us-core-condition-problems-health-concerns",
       "title": "US Core Condition Problems and Health Concerns Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "meta",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "meta.lastUpdated",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "extension:assertedDate",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "clinicalStatus",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "verificationStatus",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category:screening-assessment",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "mustSupport": true
+          }
+        },
+        {
+          "path": "severity",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "onset[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "abatement[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "recordedDate",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "recorder",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "Condition",
@@ -1657,6 +2426,239 @@
       "id": "us-core-coverage",
       "title": "US Core Coverage Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "identifier",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier:memberid",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier:memberid.type",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "type",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subscriberId",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "beneficiary",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "relationship",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "period",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "payor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "class",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "class.type",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "class.value",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "class:group",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "class:group.type",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "class:group.value",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "class:group.name",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "class:plan",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "class:plan.type",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "class:plan.value",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "class:plan.name",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "costToBeneficiary.value[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "costToBeneficiary.exception.type",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Coverage",
       "capabilityStatementAnchor": "Coverage1-7",
@@ -1764,6 +2766,101 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "modifierExtension",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "modifierExtension:doNotPerform",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "modifierExtension:doNotPerform.url",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "modifierExtension:doNotPerform.value[x]",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code[x]:codeCodeableConcept.extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "authoredOn",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
+    },
     "search": {
       "resource": "DeviceRequest",
       "capabilityStatementAnchor": "DeviceRequest1-9",
@@ -1978,6 +3075,78 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "modifierExtension:doNotPerform",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code[x]:codeCodeableConcept.extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "authoredOn",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
+    },
     "search": {
       "resource": "DeviceRequest",
       "capabilityStatementAnchor": "DeviceRequest1-9",
@@ -2161,6 +3330,92 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "modifierExtension:doNotPerform",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "modifierExtension:doNotPerform.url",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "modifierExtension:doNotPerform.value[x]",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code[x]:codeCodeableConcept.extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "authoredOn",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
+    },
     "search": {
       "resource": "DeviceRequest",
       "capabilityStatementAnchor": "DeviceRequest1-9",
@@ -2346,6 +3601,144 @@
     "usCore": {
       "id": "us-core-diagnosticreport-lab",
       "title": "US Core DiagnosticReport Profile for Laboratory Results Reporting"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "meta",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "meta.lastUpdated",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category:LaboratorySlice",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "effective[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "issued",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "resultsInterpreter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "result",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "media.link",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "DiagnosticReport",
@@ -2581,6 +3974,139 @@
     "usCore": {
       "id": "us-core-diagnosticreport-note",
       "title": "US Core DiagnosticReport Profile for Report and Note Exchange"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "code",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "effective[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "issued",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "resultsInterpreter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "result",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "imagingStudy",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "media.link",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "presentedForm",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
     },
     "search": {
       "resource": "DiagnosticReport",
@@ -2896,6 +4422,298 @@
       "id": "us-core-encounter",
       "title": "US Core Encounter Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "meta",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "meta.lastUpdated",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "extension:interpreterRequired",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier.system",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier.value",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusHistory.status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "statusHistory.period",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "class",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "classHistory.class",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "classHistory.period",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "type",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "priority",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "participant",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "participant.type",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "participant.period",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "participant.individual",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "period",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "reasonReference",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "diagnosis",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "diagnosis.extension:diagnosisPresentOnAdmission",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mustSupport": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "diagnosis.condition",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "diagnosis.use",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "diagnosis.rank",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "hospitalization",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "hospitalization.dischargeDisposition",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "location",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "location.location",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "serviceProvider",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Encounter",
       "capabilityStatementAnchor": "Encounter1-12",
@@ -3050,6 +4868,75 @@
       "id": "us-core-goal",
       "title": "US Core Goal Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "lifecycleStatus",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "description",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "start[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "target",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "target.due[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "expressedBy",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Goal",
       "capabilityStatementAnchor": "Goal1-14",
@@ -3124,6 +5011,71 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "interpreter",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "series.uid",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "series.modality",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "series.performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "series.instance.uid",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "series.instance.sopClass",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "ImagingStudy",
       "capabilityStatementAnchor": "ImagingStudy1-15",
@@ -3238,6 +5190,129 @@
     "usCore": {
       "id": "us-core-immunization",
       "title": "US Core Immunization Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "vaccineCode",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "patient",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "occurrence[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "primarySource",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "location",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "lotNumber",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "protocolApplied.doseNumber[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "Immunization",
@@ -3398,6 +5473,131 @@
       "id": "us-core-immunization",
       "title": "US Core Immunization Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "vaccineCode",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "patient",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "occurrence[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "primarySource",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "location",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "lotNumber",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "protocolApplied.doseNumber[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Immunization",
       "capabilityStatementAnchor": "Immunization1-16",
@@ -3541,6 +5741,150 @@
       "id": "us-core-immunization",
       "title": "US Core Immunization Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "vaccineCode",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "vaccineCode.extension:codeOptions",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "patient",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "occurrence[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "recorded",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "primarySource",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "location",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "lotNumber",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "protocolApplied.doseNumber[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Immunization",
       "capabilityStatementAnchor": "Immunization1-16",
@@ -3662,6 +6006,151 @@
       "id": "us-core-location",
       "title": "US Core Location Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "identifier",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "name",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "type",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "type.coding",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "type.coding.system",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "type.coding.code",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "telecom",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "address",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.line",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "address.city",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "address.state",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "address.postalCode",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "position.longitude",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "position.latitude",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "managingOrganization",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Location",
       "capabilityStatementAnchor": "Location1-17",
@@ -3692,6 +6181,30 @@
     "usCore": {
       "id": "us-core-medication",
       "title": "US Core Medication Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "code",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "ingredient.item[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "Medication",
@@ -3841,6 +6354,82 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x].extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "effective[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosage",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosage.route",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosage.dose",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
+    },
     "search": {
       "resource": "MedicationAdministration",
       "capabilityStatementAnchor": "MedicationAdministration1-19",
@@ -4085,6 +6674,82 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x].extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "effective[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosage",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosage.route",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosage.dose",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
+    },
     "search": {
       "resource": "MedicationAdministration",
       "capabilityStatementAnchor": "MedicationAdministration1-19",
@@ -4318,6 +6983,90 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x].extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "effective[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosage",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosage.route",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosage.dose",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
+    },
     "search": {
       "resource": "MedicationAdministration",
       "capabilityStatementAnchor": "MedicationAdministration1-19",
@@ -4577,6 +7326,180 @@
       "id": "us-core-medicationdispense",
       "title": "US Core MedicationDispense Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "context",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "authorizingPrescription",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "type",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "quantity",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "daysSupply",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "whenHandedOver",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "dosageInstruction",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.text",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.route",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate.dose[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "substitution.wasSubstituted",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "MedicationDispense",
       "capabilityStatementAnchor": "MedicationDispense1-20",
@@ -4724,6 +7647,216 @@
     "usCore": {
       "id": "us-core-medicationdispense",
       "title": "US Core MedicationDispense Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "extension",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "extension:recorded",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason[x]",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x].extension:codeOptions",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "context",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "authorizingPrescription",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "type",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "quantity",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "daysSupply",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "whenHandedOver",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "dosageInstruction",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.text",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.route",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate.dose[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "substitution.wasSubstituted",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "MedicationDispense",
@@ -4927,6 +8060,182 @@
     "usCore": {
       "id": "us-core-medicationdispense",
       "title": "US Core MedicationDispense Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "context",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "authorizingPrescription",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "type",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "quantity",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "daysSupply",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "whenHandedOver",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "dosageInstruction",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.text",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.route",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate.dose[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "substitution.wasSubstituted",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "MedicationDispense",
@@ -5140,6 +8449,344 @@
     "usCore": {
       "id": "us-core-medicationrequest",
       "title": "US Core MedicationRequest Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "extension:medicationAdherence",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "doNotPerform",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reported[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "reported[x]:reportedReference",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x].extension:codeOptions",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "authoredOn",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonReference",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.text",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.bounds[x]",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.frequency",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.frequencyMax",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.period",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.periodMax",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.periodUnit",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.asNeeded[x]",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.route",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate.dose[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.validityPeriod",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.numberOfRepeatsAllowed",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.quantity",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.expectedSupplyDuration",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "substitution.allowed[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "MedicationRequest",
@@ -5569,6 +9216,331 @@
     "usCore": {
       "id": "us-core-medicationrequest",
       "title": "US Core MedicationRequest Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "extension:medicationAdherence",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "doNotPerform",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reported[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "medication[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x].extension:codeOptions",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "authoredOn",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonReference",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.text",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.bounds[x]",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.frequency",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.frequencyMax",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.period",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.periodMax",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.periodUnit",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.asNeeded[x]",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.route",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate.dose[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.validityPeriod",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.numberOfRepeatsAllowed",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.quantity",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.expectedSupplyDuration",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "substitution.allowed[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "MedicationRequest",
@@ -6021,6 +9993,341 @@
       "id": "us-core-medicationrequest",
       "title": "US Core MedicationRequest Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "extension:medicationAdherence",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "doNotPerform",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reported[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "reported[x]:reportedReference",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "medication[x].extension:codeOptions",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "authoredOn",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonReference",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.text",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.bounds[x]",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.frequency",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.frequencyMax",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.period",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.periodMax",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.timing.repeat.periodUnit",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.asNeeded[x]",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.route",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dosageInstruction.doseAndRate.dose[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.validityPeriod",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.numberOfRepeatsAllowed",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.quantity",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dispenseRequest.expectedSupplyDuration",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "substitution.allowed[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "MedicationRequest",
       "capabilityStatementAnchor": "MedicationRequest1-21",
@@ -6246,6 +10553,113 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "patient",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dateTime",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "orderer",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "oralDiet",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "oralDiet.type",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "oralDiet.type.extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "supplement",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "supplement.type",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "supplement.type.extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "enteralFormula",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "enteralFormula.baseFormulaType",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "enteralFormula.baseFormulaType.extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
+    },
     "search": {
       "resource": "NutritionOrder",
       "capabilityStatementAnchor": "NutritionOrder1-22",
@@ -6332,6 +10746,111 @@
     "usCore": {
       "id": "us-core-observation-clinical-result",
       "title": "US Core Observation Clinical Result Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "code",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "effective[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "value[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dataAbsentReason",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "component.code",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "Observation",
@@ -6635,6 +11154,180 @@
     "usCore": {
       "id": "us-core-observation-lab",
       "title": "US Core Laboratory Result Observation Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "meta",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "meta.lastUpdated",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code.text",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "effective[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "issued",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "value[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dataAbsentReason",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "interpretation",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "specimen",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "referenceRange",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "component.code",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "Observation",
@@ -7019,6 +11712,134 @@
       "id": "us-core-observation-screening-assessment",
       "title": "US Core Observation Screening Assessment Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category:survey",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category:screening-assessment",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "mustSupport": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "effective[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "value[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "dataAbsentReason",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "hasMember",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "derivedFrom",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "component.code",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Observation",
       "capabilityStatementAnchor": "Observation1-23",
@@ -7208,6 +12029,235 @@
     "usCore": {
       "id": "us-core-organization",
       "title": "US Core Organization Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "identifier",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier.system",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier.value",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier:NPI",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier:NPI.system",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier:NPI.value",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier:CLIA.system",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier:CLIA.value",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier:NAIC.system",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier:NAIC.value",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier:ccn.use",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "identifier:ccn.system",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mustSupport": true
+          }
+        },
+        {
+          "path": "identifier:ccn.value",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "mustSupport": true
+          }
+        },
+        {
+          "path": "identifier:ein.use",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "identifier:ein.system",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mustSupport": true
+          }
+        },
+        {
+          "path": "identifier:ein.value",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "mustSupport": true
+          }
+        },
+        {
+          "path": "active",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "name",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "telecom.system",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "telecom.value",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "address",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "address.line",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "address.city",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "address.state",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "address.postalCode",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "address.country",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "Organization",
@@ -7673,6 +12723,325 @@
       "id": "us-core-patient",
       "title": "US Core Patient Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "extension:race",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "extension:ethnicity",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "extension:tribalAffiliation",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "extension:sex",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "extension:interpreterRequired",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier.system",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier.value",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "name",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "name.use",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "name.family",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "name.given",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "name.suffix",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "name.period",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom.system",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom.value",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom.use",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "birthDate",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "deceased[x]",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.use",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.line",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.city",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.state",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.postalCode",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.period",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "communication",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "communication.language",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "link.other",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "link.type",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Patient",
       "capabilityStatementAnchor": "Patient1-25",
@@ -7930,6 +13299,257 @@
       "id": "us-core-practitioner",
       "title": "US Core Practitioner Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "identifier",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier.system",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier.value",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier:NPI",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier:NPI.system",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier:NPI.value",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier:NCSBNID",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mustSupport": true
+          }
+        },
+        {
+          "path": "identifier:NCSBNID.system",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier:NCSBNID.value",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier:ein",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier:ein.use",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "identifier:ein.system",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "mustSupport": true
+          }
+        },
+        {
+          "path": "identifier:ein.value",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "mustSupport": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "name",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "name.family",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom.system",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom.value",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.line",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.city",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.state",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.postalCode",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address.country",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "qualification.code",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Practitioner",
       "capabilityStatementAnchor": "Practitioner1-26",
@@ -8060,6 +13680,158 @@
       "id": "us-core-practitionerrole",
       "title": "US Core PractitionerRole Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "identifier",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier.use",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "identifier.system",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "identifier.value",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "active",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "period",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "practitioner",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "organization",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "specialty",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "location",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom.system",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom.value",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "notAvailable.description",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "endpoint",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "PractitionerRole",
       "capabilityStatementAnchor": "PractitionerRole1-27",
@@ -8181,6 +13953,148 @@
     "usCore": {
       "id": "us-core-procedure",
       "title": "US Core Procedure Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "extension",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "extension:recorded",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "basedOn",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "partOf",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performed[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonReference",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "focalDevice.manipulated",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "Procedure",
@@ -8418,6 +14332,158 @@
       "id": "us-core-procedure",
       "title": "US Core Procedure Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "extension",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "extension:recorded",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "basedOn",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "partOf",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performed[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "asserter",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonReference",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "focalDevice.manipulated",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Procedure",
       "capabilityStatementAnchor": "Procedure1-28",
@@ -8653,6 +14719,168 @@
     "usCore": {
       "id": "us-core-procedure",
       "title": "US Core Procedure Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "extension",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "extension:recorded",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "basedOn",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "partOf",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code.extension:codeOptions",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performed[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "asserter",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "performer.actor",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonReference",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "focalDevice.manipulated",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "Procedure",
@@ -8930,6 +15158,194 @@
       "id": "us-core-questionnaireresponse",
       "title": "US Core QuestionnaireResponse Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "extension:adheresTo.url",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "extension:adheresTo.value[x]",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "extension:triggeredBy.url",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "extension:triggeredBy.value[x]",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "identifier",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "questionnaire",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "questionnaire.extension:questionnaireDisplay",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "questionnaire.extension:url",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "authored",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "author",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "source.extension:r5Source.url",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        },
+        {
+          "path": "source.extension:r5Source.value[x]",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "item",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "item.linkId",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "item.text",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "item.answer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "item.answer.value[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "item.answer.item",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "item.item",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "QuestionnaireResponse",
       "capabilityStatementAnchor": "QuestionnaireResponse1-30",
@@ -9056,6 +15472,79 @@
     "usCore": {
       "id": "us-core-relatedperson",
       "title": "US Core RelatedPerson Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "active",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "patient",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "relationship",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "name",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "telecom",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "address",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdi": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "communication.language",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
     },
     "search": {
       "resource": "RelatedPerson",
@@ -9360,6 +15849,154 @@
     "usCore": {
       "id": "us-core-servicerequest",
       "title": "US Core ServiceRequest Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "doNotPerform",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code.extension:codeOptions",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code.text",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "occurrence[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "authoredOn",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonReference",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
     },
     "search": {
       "resource": "ServiceRequest",
@@ -9770,6 +16407,150 @@
     "usCore": {
       "id": "us-core-servicerequest",
       "title": "US Core ServiceRequest Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "doNotPerform",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code.extension:codeOptions",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code.text",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "occurrence[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "authoredOn",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonReference",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
     },
     "search": {
       "resource": "ServiceRequest",
@@ -10191,6 +16972,152 @@
     "usCore": {
       "id": "us-core-servicerequest",
       "title": "US Core ServiceRequest Profile"
+    },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "doNotPerform",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code.extension:codeOptions",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code.text",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "subject",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "encounter",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "occurrence[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "authoredOn",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonReference",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        }
+      ]
     },
     "search": {
       "resource": "ServiceRequest",
@@ -10775,6 +17702,110 @@
       "id": "us-core-simple-observation",
       "title": "US Core Simple Observation Profile"
     },
+    "requirementSources": {
+      "hasUsCoreLineage": true,
+      "elements": [
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "category:us-core",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {
+            "mustSupport": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "subject",
+          "fhir": {},
+          "usCore": {
+            "mandatory": true,
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "effective[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "performer",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "value[x]",
+          "fhir": {},
+          "usCore": {
+            "mustSupport": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "derivedFrom",
+          "fhir": {},
+          "usCore": {
+            "uscdi": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "component.code",
+          "fhir": {
+            "mandatory": true
+          },
+          "usCore": {},
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Observation",
       "capabilityStatementAnchor": "Observation1-23",
@@ -11039,6 +18070,120 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "basedOn",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "priority",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "focus",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "for",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "executionPeriod",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "input.type",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "input.value[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "output.type",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "output.value[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Task",
       "capabilityStatementAnchor": "Task1-34",
@@ -11244,6 +18389,120 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "basedOn",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "priority",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true
+          }
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "focus",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "for",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "executionPeriod",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "input.type",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "input.value[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "output.type",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "output.value[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Task",
       "capabilityStatementAnchor": "Task1-34",
@@ -11475,6 +18734,120 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
+    "requirementSources": {
+      "hasUsCoreLineage": false,
+      "elements": [
+        {
+          "path": "basedOn",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "status",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "statusReason",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "intent",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "code",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "code.extension:codeOptions",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "focus",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "for",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "executionPeriod",
+          "fhir": {},
+          "usQualityCore": {
+            "mandatory": true,
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "requester",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "reasonCode",
+          "fhir": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
+          "path": "input.type",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "input.value[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "output.type",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        },
+        {
+          "path": "output.value[x]",
+          "fhir": {
+            "mandatory": true
+          },
+          "usQualityCore": {}
+        }
+      ]
+    },
     "search": {
       "resource": "Task",
       "capabilityStatementAnchor": "Task1-34",

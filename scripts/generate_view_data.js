@@ -9,9 +9,18 @@ const {
   paths,
   upstream
 } = require('./generator.config');
-const { configuredFhirDefinitions, parseFsh, sourceFshFiles, sushi } = require('./lib/sushi');
+const {
+  assertNoSushiErrors,
+  compileFsh,
+  configuredFhirDefinitions,
+  parseFsh,
+  profileSourceFshFiles,
+  sourceFshFiles,
+  sushi
+} = require('./lib/sushi');
 const {
   ensureDir,
+  read,
   readSearchCapabilities,
   readUscdiQualityDefinitions,
   writeJson
@@ -24,9 +33,11 @@ const {
   profileMaps,
   profileResourceTypes,
   requireProfileDefinition,
+  requireStructureDefinition,
   sortByDisplayTitle,
   usCoreAncestor
 } = require('./lib/profiles');
+const { profileRequirementSources } = require('./lib/requirement-sources');
 const {
   assertAllDataElementsMapped,
   generatedUscdiQualityElements,
@@ -36,6 +47,20 @@ const {
 const { runGenerator } = require('./lib/runner');
 
 const FSH_FILES = sourceFshFiles();
+
+async function compiledProfileDefinitions(profileIds) {
+  const result = await compileFsh(profileSourceFshFiles(), {
+    extraInputs: [read(paths.generatedFlagsFile)],
+    snapshot: true
+  });
+  assertNoSushiErrors(result, 'SUSHI reported errors while compiling profile requirement sources');
+
+  return new Map(
+    result.fhir
+      .filter(resource => resource.resourceType === 'StructureDefinition' && profileIds.has(resource.id))
+      .map(profile => [profile.id, profile])
+  );
+}
 
 function profilePath(profileOrId) {
   const id = typeof profileOrId === 'string' ? profileOrId : profileOrId.id;
@@ -536,6 +561,7 @@ function mappedDataElementsForFlag(profile, element, mappedElements) {
 
 function profileNotesData(
   profiles,
+  compiledProfilesById,
   ruleSets,
   dataElements,
   profilesById,
@@ -564,6 +590,15 @@ function profileNotesData(
     profileElements
       .map(({ profile, elements }) => {
         const usCore = usCoreAncestor(profile, profilesById, profilesByName, fhirDefs);
+        const compiledProfile = compiledProfilesById.get(profile.id);
+        if (!compiledProfile) throw new Error(`No compiled StructureDefinition found for ${profile.id}.`);
+
+        const resourceType = resourceTypes.get(profile.id);
+        const baseResource = requireStructureDefinition(
+          resourceType,
+          fhirDefs,
+          `base FHIR resource ${resourceType} for ${profile.id}`
+        );
 
         return [
           profile.id,
@@ -572,6 +607,7 @@ function profileNotesData(
             uscdiQualityElements: elements,
             hasUsCoreLineage: Boolean(usCore),
             usCore: usCore ? usCoreProfileSummary(usCore) : null,
+            requirementSources: profileRequirementSources(compiledProfile, baseResource, usCore),
             search: profileSearchData(
               profile,
               resourceTypes,
@@ -605,6 +641,9 @@ async function main(log) {
     profileMaps(parseFsh(FSH_FILES))
   );
   const ruleSets = await log.step('Reading generated USCDI+ Quality RuleSets', generatedUscdiQualityRuleSets);
+  const compiledProfilesById = await log.step('Compiling profile requirement sources', () =>
+    compiledProfileDefinitions(new Set(profiles.map(profile => profile.id)))
+  );
   await log.step('Checking USCDI+ Quality mappings', () => assertAllDataElementsMapped(dataElements));
   const resourceTypes = await log.step('Resolving profile resource types', () =>
     profileResourceTypes(
@@ -622,6 +661,7 @@ async function main(log) {
     writeGeneratedData({
       [paths.generatedViewDataFiles.profileNotes]: profileNotesData(
         profiles,
+        compiledProfilesById,
         ruleSets,
         dataElements,
         profilesById,

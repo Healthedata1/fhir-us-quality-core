@@ -25,7 +25,7 @@ Badges identify the profile layer where each conformance indicator is first intr
       {% assign us_core_layer = element.usCore %}
       {% assign us_quality_core_layer = element.usQualityCore %}
       <tr>
-        <th scope="row"><code>{{ element.path | escape }}</code></th>
+        <th scope="row"><code class="language-plaintext highlighter-rouge">{{ element.path | escape }}</code></th>
         <td>
           {% if fhir_layer.mandatory %}<span class="label">Mandatory</span>{% endif %}
           {% if fhir_layer.mustSupport %}<span class="label">Must Support</span>{% endif %}

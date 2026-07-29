@@ -427,7 +427,7 @@ function profileSearchData(
   const resourceIndex = Object.keys(searchCapabilities).indexOf(resource);
   if (resourceIndex < 0) {
     throw new Error(
-      `${profile.id} resolves to ${resource}, which is not configured in definitions/search-capabilities.json.`
+      `${profile.id} resolves to ${resource}, which is not configured in definitions/capabilities.json.`
     );
   }
   const searchParams = searchParamData(resourceConfig.searchParams);

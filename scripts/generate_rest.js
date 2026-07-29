@@ -325,7 +325,7 @@ function generatedFsh(ruleSet) {
   return generatedFshFile({
     scriptName: 'generate_rest.js',
     inputPaths: [
-      'definitions/search-capabilities.json',
+      'definitions/capabilities.json',
       'definitions/uscdi_plus_quality.json'
     ],
     content: ruleSetToFsh(ruleSet)
@@ -335,7 +335,7 @@ function generatedFsh(ruleSet) {
 function generatedSearchParameterFsh(instance) {
   return generatedFshFile({
     scriptName: 'generate_rest.js',
-    inputPaths: ['definitions/search-capabilities.json'],
+    inputPaths: ['definitions/capabilities.json'],
     content: instance.toFSH()
   });
 }
@@ -415,7 +415,7 @@ function assertResourceCoverage(resources, supportedProfilesByResource) {
 
   if (missingConfigs.length) {
     throw new Error(
-      `Mapped USCDI+ Quality profile resources are missing from definitions/search-capabilities.json:\n- ${missingConfigs.join(
+      `Mapped USCDI+ Quality profile resources are missing from definitions/capabilities.json:\n- ${missingConfigs.join(
         '\n- '
       )}`
     );
@@ -423,7 +423,7 @@ function assertResourceCoverage(resources, supportedProfilesByResource) {
 
   if (unmappedConfigs.length) {
     throw new Error(
-      `definitions/search-capabilities.json includes resources with no definitions/uscdi_plus_quality.json profile mappings:\n- ${unmappedConfigs.join(
+      `definitions/capabilities.json includes resources with no definitions/uscdi_plus_quality.json profile mappings:\n- ${unmappedConfigs.join(
         '\n- '
       )}`
     );

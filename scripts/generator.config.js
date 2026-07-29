@@ -114,7 +114,7 @@ module.exports = {
     ),
     searchCapabilitiesFile: path.join(
       definitionsDir,
-      'search-capabilities.json'
+      'capabilities.json'
     )
   }
 };

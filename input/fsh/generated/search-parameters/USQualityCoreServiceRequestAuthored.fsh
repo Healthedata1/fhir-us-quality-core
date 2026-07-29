@@ -22,7 +22,11 @@ Usage: #definition
 * expression = "ServiceRequest.authoredOn"
 * xpathUsage = #normal
 * multipleOr = true
+* multipleOr.extension[0].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* multipleOr.extension[0].valueCode = #MAY
 * multipleAnd = true
+* multipleAnd.extension[0].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* multipleAnd.extension[0].valueCode = #SHOULD
 * comparator[0] = #eq
 * comparator[0].extension[0].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * comparator[0].extension[0].valueCode = #MAY

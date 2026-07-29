@@ -244,20 +244,224 @@ function searchCombinationData(searchCombinations) {
   }));
 }
 
+function searchValuePattern(param, type) {
+  if (param === '_id') return '[id]';
+  if (param === 'patient' || param === 'subject') return '{Patient/}[id]';
+  if (param === 'questionnaire') return '{Questionnaire/}[id]';
+  if (type === 'reference') return `[${param}-reference]`;
+  if (type === 'date') return '{gt|lt|ge|le}[dateTime]';
+  if (param === 'do-not-perform') return '[true|false]';
+  if (param === 'status') return '[status]';
+  if (param === 'intent') return '[intent]';
+  if (type === 'token') return '{system|}[search_code]';
+  return `[${param}-value]`;
+}
+
+function assertSearchBehavior(resource, param, searchParam) {
+  for (const name of ['multipleOr', 'multipleAnd']) {
+    const behavior = searchParam[name];
+    if (behavior == null || typeof behavior !== 'object' || Array.isArray(behavior)) {
+      throw new Error(`${resource}.${param}.${name} must be an object.`);
+    }
+    if (typeof behavior.value !== 'boolean') {
+      throw new Error(`${resource}.${param}.${name}.value must be a boolean.`);
+    }
+    if (!['SHALL', 'SHOULD', 'MAY'].includes(behavior.expectation)) {
+      throw new Error(`${resource}.${param}.${name}.expectation must be SHALL, SHOULD, or MAY.`);
+    }
+  }
+
+  if (searchParam.type === 'date') {
+    if (
+      searchParam.comparators == null ||
+      typeof searchParam.comparators !== 'object' ||
+      Array.isArray(searchParam.comparators)
+    ) {
+      throw new Error(`${resource}.${param}.comparators must be an object for a date search parameter.`);
+    }
+    const validComparators = new Set(['eq', 'ne', 'gt', 'ge', 'lt', 'le', 'sa', 'eb', 'ap']);
+    for (const [comparator, expectation] of Object.entries(searchParam.comparators)) {
+      if (!validComparators.has(comparator)) {
+        throw new Error(`${resource}.${param}.comparators contains unsupported comparator ${comparator}.`);
+      }
+      if (!['SHALL', 'SHOULD', 'MAY'].includes(expectation)) {
+        throw new Error(
+          `${resource}.${param}.comparators.${comparator} must be SHALL, SHOULD, or MAY.`
+        );
+      }
+    }
+  } else if (searchParam.comparators != null) {
+    throw new Error(`${resource}.${param}.comparators is only valid for date search parameters.`);
+  }
+}
+
+function searchBehaviorRequirements(resource, requirement, resourceConfig) {
+  return requirement.params.flatMap((param, index) => {
+    const searchParam = resourceConfig.searchParams?.[param];
+    if (!searchParam) {
+      throw new Error(`${resource} required search references unknown search parameter ${param}.`);
+    }
+    assertSearchBehavior(resource, param, searchParam);
+
+    const type = requirement.types[index];
+    const pattern = searchValuePattern(param, type);
+    const requirements = [];
+
+    if (type === 'token' && searchParam.multipleOr.value) {
+      const optional = searchParam.multipleOr.expectation === 'SHALL' ? '' : 'optional ';
+      requirements.push({
+        text:
+          `Including ${optional}support for OR search on \`${param}\` ` +
+          `(e.g.\`${param}=${pattern},${pattern},...\`)`
+      });
+    }
+
+    if (type === 'date' && searchParam.multipleAnd.value) {
+      requirements.push({
+        text:
+          `Including optional support for AND search on \`${param}\` ` +
+          `(e.g.\`${param}=[date]&${param}=[date]&...\`)`
+      });
+    }
+
+    const comparatorDisplayOrder = ['gt', 'lt', 'ge', 'le', 'eq', 'ne', 'sa', 'eb', 'ap'];
+    const requiredComparators = Object.entries(searchParam.comparators ?? {})
+      .filter(([, expectation]) => expectation === 'SHALL')
+      .map(([comparator]) => comparator)
+      .sort((left, right) => comparatorDisplayOrder.indexOf(left) - comparatorDisplayOrder.indexOf(right))
+      .map(comparator => `"${comparator}"`);
+    if (requiredComparators.length) {
+      requirements.push({
+        text: `Including support for these \`${param}\` comparators: ${requiredComparators.join(', ')}`
+      });
+    }
+
+    return requirements;
+  });
+}
+
+const searchGuidanceByType = {
+  reference: '[how to search by reference](https://hl7.org/fhir/R4/search.html#reference)',
+  token: '[how to search by token](https://hl7.org/fhir/R4/search.html#token)',
+  date: '[how to search by date](https://hl7.org/fhir/R4/search.html#date)'
+};
+
+function searchGuidance(types) {
+  const links = [...new Set(types)]
+    .map(type => searchGuidanceByType[type])
+    .filter(Boolean);
+  return links.length ? `See ${joinedLabels(links)}.` : '';
+}
+
+function searchValueExample(profile, resource, resourceConfig, param) {
+  const profileValue = resourceConfig.profileExampleOverrides?.[profile.id]?.[param];
+  const resourceValue = resourceConfig.searchParams?.[param]?.exampleValue;
+  const value = profileValue ?? resourceValue;
+
+  if (typeof value !== 'string' || value.trim() === '') {
+    throw new Error(
+      `${resource}.${param} is used by a required search for ${profile.id} but does not define a non-empty exampleValue.`
+    );
+  }
+
+  return value.trim();
+}
+
+function searchQuery(resource, requirement, valueFor) {
+  const query = requirement.params
+    .map((param, index) => `${param}=${valueFor(param, requirement.types[index])}`)
+    .join('&');
+  return `GET [base]/${resource}?${query}`;
+}
+
+function searchRequirementStatement(resource, requirement) {
+  const parameterNames = requirement.params.map(param => `\`${param}\``);
+  const patientScoped = requirement.params.some(param => param === 'patient' || param === 'subject');
+  const resourceScope = patientScoped
+    ? `all ${resource} resources for a patient`
+    : requirement.params[0] === '_id'
+      ? `a ${resource} resource by id`
+      : `all ${resource} resources`;
+
+  if (parameterNames.length === 1) {
+    return `searching for ${resourceScope} using the ${parameterNames[0]} search parameter`;
+  }
+
+  return `searching for ${resourceScope} using the combination of the ${joinedLabels(
+    parameterNames
+  )} search parameters`;
+}
+
+function joinedLabels(values) {
+  if (values.length === 1) return values[0];
+  if (values.length === 2) return `${values[0]} and ${values[1]}`;
+  return `${values.slice(0, -1).join(', ')}, and ${values.at(-1)}`;
+}
+
+function documentedSearchRequirement(profile, resource, resourceConfig, requirement) {
+  return {
+    ...requirement,
+    statement: searchRequirementStatement(resource, requirement),
+    additionalRequirements: searchBehaviorRequirements(resource, requirement, resourceConfig),
+    searchGuidance: searchGuidance(requirement.types),
+    request: searchQuery(resource, requirement, searchValuePattern),
+    example: searchQuery(resource, requirement, param =>
+      searchValueExample(profile, resource, resourceConfig, param)
+    )
+  };
+}
+
 function profileSearchData(profile, resourceTypes, restResources, documentationContext) {
   const resource = resourceTypes.get(profile.id);
   const resourceConfig = restResources[resource] ?? {};
+  const resourceIndex = Object.keys(restResources).indexOf(resource);
+  if (resourceIndex < 0) {
+    throw new Error(`${profile.id} resolves to ${resource}, which is not configured in data/rest.json.`);
+  }
   const searchParams = searchParamData(resourceConfig.searchParams);
   const searchCombinations = searchCombinationData(resourceConfig.searchCombinations);
-  const requiredSearches = searchRequirementRows(resource, resourceConfig, documentationContext);
+  const requiredSearches = searchRequirementRows(resource, resourceConfig, documentationContext)
+    .map(requirement =>
+      documentedSearchRequirement(profile, resource, resourceConfig, requirement)
+    );
 
   return {
     resource,
+    capabilityStatementAnchor: `${resource}1-${resourceIndex + 1}`,
     hasSearchParameters: searchParams.length > 0 || searchCombinations.length > 0,
     searchParams,
     searchCombinations,
     requiredSearches
   };
+}
+
+function assertProfileExampleOverrides(profiles, resourceTypes, restResources) {
+  const profileIds = new Set(profiles.map(profile => profile.id));
+
+  for (const [resource, resourceConfig] of Object.entries(restResources)) {
+    for (const [profileId, overrides] of Object.entries(resourceConfig.profileExampleOverrides ?? {})) {
+      if (!profileIds.has(profileId)) {
+        throw new Error(`${resource}.profileExampleOverrides references unknown profile ${profileId}.`);
+      }
+      if (resourceTypes.get(profileId) !== resource) {
+        throw new Error(
+          `${resource}.profileExampleOverrides references ${profileId}, which is not based on ${resource}.`
+        );
+      }
+      for (const [param, value] of Object.entries(overrides)) {
+        if (!resourceConfig.searchParams?.[param]) {
+          throw new Error(
+            `${resource}.profileExampleOverrides.${profileId} references unknown search parameter ${param}.`
+          );
+        }
+        if (typeof value !== 'string' || value.trim() === '') {
+          throw new Error(
+            `${resource}.profileExampleOverrides.${profileId}.${param} must be a non-empty string.`
+          );
+        }
+      }
+    }
+  }
 }
 
 function assertProfilesHaveUscdiQualityElements(profileElements) {
@@ -323,6 +527,7 @@ function profileNotesData(
   documentationContext,
   fhirDefs
 ) {
+  assertProfileExampleOverrides(profiles, resourceTypes, restResources);
   const mappedElements = mappedDataElementsByProfilePath(dataElements);
   const profileElements = [...profiles]
     .sort((a, b) => a.id.localeCompare(b.id))

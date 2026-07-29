@@ -235,16 +235,34 @@ function markdownTableCell(value) {
 }
 
 function searchRequirementRows(resource, resourceConfig, documentationContext) {
-  return requiredSearches(resource, resourceConfig).map(search => ({
-    label: search.label,
-    usCoreAlignment: usCoreAlignment(
-      resource,
+  return requiredSearches(resource, resourceConfig).map(search => {
+    const usCoreMatch = usCoreRequirement(
       search,
-      documentationContext.usCoreIndex,
-      documentationContext.usCoreCapabilityStatementUrl
-    ),
-    rationale: generatedRationale(resource, search)
-  }));
+      documentationContext.usCoreIndex.get(resource)
+    );
+    const types = search.params.map(param => {
+      const type = resourceConfig.searchParams?.[param]?.type;
+      if (!type) {
+        throw new Error(`${search.context} references search parameter ${param} without a type.`);
+      }
+      return type;
+    });
+
+    return {
+      kind: search.kind,
+      params: search.params,
+      types,
+      label: search.label,
+      usCoreExpectation: usCoreMatch?.expectation ?? null,
+      usCoreAlignment: usCoreAlignment(
+        resource,
+        search,
+        documentationContext.usCoreIndex,
+        documentationContext.usCoreCapabilityStatementUrl
+      ),
+      rationale: generatedRationale(resource, search)
+    };
+  });
 }
 
 function searchRequirementDocumentation(

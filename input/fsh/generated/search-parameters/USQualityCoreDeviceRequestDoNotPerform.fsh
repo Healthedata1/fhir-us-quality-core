@@ -22,4 +22,8 @@ Usage: #definition
 * expression = "DeviceRequest.modifierExtension.where(url='http://hl7.org/fhir/5.0/StructureDefinition/extension-DeviceRequest.doNotPerform').value"
 * xpathUsage = #normal
 * multipleOr = true
+* multipleOr.extension[0].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* multipleOr.extension[0].valueCode = #MAY
 * multipleAnd = true
+* multipleAnd.extension[0].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* multipleAnd.extension[0].valueCode = #MAY

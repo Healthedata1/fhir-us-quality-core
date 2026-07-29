@@ -22,4 +22,8 @@ Usage: #definition
 * expression = "Observation.code"
 * xpathUsage = #normal
 * multipleOr = true
+* multipleOr.extension[0].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* multipleOr.extension[0].valueCode = #SHOULD
 * multipleAnd = true
+* multipleAnd.extension[0].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* multipleAnd.extension[0].valueCode = #MAY

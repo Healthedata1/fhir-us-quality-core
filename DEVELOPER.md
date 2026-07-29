@@ -125,7 +125,7 @@ resource's CapabilityStatement and search requirements:
 
 ```json
 {
-  "Observation": {
+  "Immunization": {
     "interactions": {
       "read": "SHALL",
       "search-type": "SHALL"
@@ -141,20 +141,43 @@ resource's CapabilityStatement and search requirements:
         "type": "reference",
         "documentation": "Search parameter guidance in Markdown.",
         "expectation": "SHALL",
-        "expression": "Observation.subject.where(resolve() is Patient)"
+        "expression": "Immunization.patient",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
       },
-      "date": {
-        "type": "date",
+      "status": {
+        "type": "token",
         "documentation": "Search parameter guidance in Markdown.",
         "expectation": "MAY",
-        "expression": "Observation.effective"
+        "expression": "Immunization.status",
+        "exampleValue": "completed",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "profileExampleOverrides": {
+      "us-quality-core-immunizationnotdone": {
+        "status": "not-done"
       }
     },
     "searchCombinations": [
       {
         "params": [
           "patient",
-          "date"
+          "status"
         ],
         "expectation": "SHALL"
       }
@@ -179,10 +202,22 @@ resource's CapabilityStatement and search requirements:
   as `SHALL` or `MAY`.
 - `revIncludes` lists supported `_revinclude` values and their expectations.
 - `searchParams` is keyed by search parameter code. Every configured search
-  parameter requires `type`, `documentation`, `expectation`, and `expression`.
+  parameter requires `type`, `documentation`, `expectation`, `expression`, and
+  a non-empty `exampleValue`, plus `multipleOr` and `multipleAnd` objects. Each
+  multiplicity object declares the boolean SearchParameter value and its
+  `SHALL`, `SHOULD`, or `MAY` conformance expectation. Profile-page request
+  examples are composed from these values; complete `GET` requests are not
+  maintained by hand.
   A search parameter with a `SHALL` expectation may define a non-empty
   `rationaleOverride` when the generated rationale needs additional clinical
   context.
+- Date search parameters also require a `comparators` object mapping each
+  supported comparator (`eq`, `ne`, `gt`, `ge`, `lt`, `le`, `sa`, `eb`, or
+  `ap`) to its conformance expectation.
+- `profileExampleOverrides` optionally maps a local profile id to parameter
+  values that differ from the resource-level examples. Use this for constrained
+  profiles such as negation profiles whose required status value is
+  `not-done`, `declined`, or `rejected`.
 - `searchCombinations` lists required parameter combinations. Each `params`
   array contains search parameter codes and `expectation` states the
   combination's conformance level. A combination with a `SHALL` expectation may

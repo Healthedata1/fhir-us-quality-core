@@ -1,0 +1,16 @@
+.note-to-balloters {
+  margin: 5px;
+  padding: 10px;
+  border-left: solid #ffa0ff;
+  background-color: #fff2ff;
+}
+
+.note-to-balloters::before {
+  display: block;
+  content: "Note to Balloters";
+  width: fit-content;
+  padding: 1px 3px;
+  background-color: yellow;
+  color: red;
+  font-weight: bold;
+}

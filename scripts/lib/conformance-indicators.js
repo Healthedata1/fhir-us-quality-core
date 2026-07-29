@@ -1,6 +1,6 @@
-const USCDI_REQUIREMENT_EXTENSION =
+const USCDI_INDICATOR_EXTENSION =
   'http://hl7.org/fhir/us/core/StructureDefinition/uscdi-requirement';
-const USCDI_QUALITY_REQUIREMENT_EXTENSION =
+const USCDI_QUALITY_INDICATOR_EXTENSION =
   'http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension';
 
 function snapshotElements(structureDefinition) {
@@ -70,9 +70,9 @@ function matchingElement(element, index) {
   const identityMatch = onlyElement(index.byIdentity.get(elementIdentityKey(element)));
   if (identityMatch) return identityMatch;
 
-  // A slice does not inherit element-level requirements merely because its
-  // unsliced parent has them. Nested children may still match their underlying
-  // unsliced FHIR/ancestor path when that path is unambiguous.
+  // A slice does not inherit element-level conformance indicators merely
+  // because its unsliced parent has them. Nested children may still match their
+  // underlying unsliced FHIR/ancestor path when that path is unambiguous.
   if (isSliceRoot(element)) return null;
   return onlyElement(index.unslicedByPath.get(elementPath(element)));
 }
@@ -137,15 +137,15 @@ function matchingTargetProfileMetadata(type, targetIndex, ancestorType) {
   return ancestorIndex < 0 ? null : targetProfileMetadata(ancestorType, ancestorIndex);
 }
 
-function hasIntroducedRequirement(layer) {
+function hasIntroducedConformanceIndicator(layer) {
   return Boolean(layer && Object.values(layer).some(value => value === true));
 }
 
-function addRequirement(layer, requirement) {
-  layer[requirement] = true;
+function addConformanceIndicator(layer, indicator) {
+  layer[indicator] = true;
 }
 
-function emptyRequirementSourceRow(path, hasUsCoreLineage) {
+function emptyConformanceIndicatorRow(path, hasUsCoreLineage) {
   return {
     path,
     fhir: {},
@@ -154,46 +154,53 @@ function emptyRequirementSourceRow(path, hasUsCoreLineage) {
   };
 }
 
-function addExtensionRequirement(row, requirement, url, finalMetadata, baseMetadata, usCoreMetadata) {
+function addExtensionConformanceIndicator(
+  row,
+  indicator,
+  url,
+  finalMetadata,
+  baseMetadata,
+  usCoreMetadata
+) {
   if (!hasBooleanExtension(finalMetadata, url)) return;
 
   if (hasBooleanExtension(baseMetadata, url)) {
-    addRequirement(row.fhir, requirement);
+    addConformanceIndicator(row.fhir, indicator);
   } else if (row.usCore && hasBooleanExtension(usCoreMetadata, url)) {
-    addRequirement(row.usCore, requirement);
+    addConformanceIndicator(row.usCore, indicator);
   } else {
-    addRequirement(row.usQualityCore, requirement);
+    addConformanceIndicator(row.usQualityCore, indicator);
   }
 }
 
-function addUscdiExtensionRequirements(row, finalMetadata, baseMetadata, usCoreMetadata) {
-  addExtensionRequirement(
+function addUscdiExtensionConformanceIndicators(row, finalMetadata, baseMetadata, usCoreMetadata) {
+  addExtensionConformanceIndicator(
     row,
     'uscdi',
-    USCDI_REQUIREMENT_EXTENSION,
+    USCDI_INDICATOR_EXTENSION,
     finalMetadata,
     baseMetadata,
     usCoreMetadata
   );
-  addExtensionRequirement(
+  addExtensionConformanceIndicator(
     row,
     'uscdiQuality',
-    USCDI_QUALITY_REQUIREMENT_EXTENSION,
+    USCDI_QUALITY_INDICATOR_EXTENSION,
     finalMetadata,
     baseMetadata,
     usCoreMetadata
   );
 }
 
-function addTypeUscdiExtensionRequirements(row, element, baseElement, usCoreElement) {
+function addTypeUscdiExtensionConformanceIndicators(row, element, baseElement, usCoreElement) {
   for (const [typeIndex, type] of (element.type ?? []).entries()) {
     const baseType = matchingType(type, typeIndex, baseElement);
     const usCoreType = matchingType(type, typeIndex, usCoreElement);
-    addUscdiExtensionRequirements(row, type, baseType, usCoreType);
+    addUscdiExtensionConformanceIndicators(row, type, baseType, usCoreType);
 
     const targetCount = Math.max(type.targetProfile?.length ?? 0, type._targetProfile?.length ?? 0);
     for (let targetIndex = 0; targetIndex < targetCount; targetIndex += 1) {
-      addUscdiExtensionRequirements(
+      addUscdiExtensionConformanceIndicators(
         row,
         targetProfileMetadata(type, targetIndex),
         matchingTargetProfileMetadata(type, targetIndex, baseType),
@@ -247,46 +254,46 @@ function assertInheritedMustSupport(profile, profileIndex, usCoreProfile, usCore
   );
 }
 
-function requirementSourceRow(element, baseIndex, usCoreIndex = null) {
+function conformanceIndicatorRow(element, baseIndex, usCoreIndex = null) {
   const baseElement = matchingElement(element, baseIndex);
   const usCoreElement = usCoreIndex ? matchingElement(element, usCoreIndex) : null;
-  const row = emptyRequirementSourceRow(elementDisplayPath(element), Boolean(usCoreIndex));
+  const row = emptyConformanceIndicatorRow(elementDisplayPath(element), Boolean(usCoreIndex));
 
   if (minimumCardinality(element) > 0) {
     if (fhirMinimumCardinality(element, baseIndex) > 0) {
-      addRequirement(row.fhir, 'mandatory');
+      addConformanceIndicator(row.fhir, 'mandatory');
     } else if (usCoreIndex && minimumCardinality(usCoreElement) > 0) {
-      addRequirement(row.usCore, 'mandatory');
+      addConformanceIndicator(row.usCore, 'mandatory');
     } else {
-      addRequirement(row.usQualityCore, 'mandatory');
+      addConformanceIndicator(row.usQualityCore, 'mandatory');
     }
   }
 
   if (element.mustSupport === true) {
     if (baseElement?.mustSupport === true) {
-      addRequirement(row.fhir, 'mustSupport');
+      addConformanceIndicator(row.fhir, 'mustSupport');
     } else if (usCoreElement?.mustSupport === true) {
-      addRequirement(row.usCore, 'mustSupport');
+      addConformanceIndicator(row.usCore, 'mustSupport');
     } else {
-      addRequirement(row.usQualityCore, 'mustSupport');
+      addConformanceIndicator(row.usQualityCore, 'mustSupport');
     }
   }
 
-  addUscdiExtensionRequirements(row, element, baseElement, usCoreElement);
-  addTypeUscdiExtensionRequirements(row, element, baseElement, usCoreElement);
+  addUscdiExtensionConformanceIndicators(row, element, baseElement, usCoreElement);
+  addTypeUscdiExtensionConformanceIndicators(row, element, baseElement, usCoreElement);
 
   return row;
 }
 
-function hasRequirementSource(row) {
+function hasConformanceIndicator(row) {
   return (
-    hasIntroducedRequirement(row.fhir) ||
-    hasIntroducedRequirement(row.usCore) ||
-    hasIntroducedRequirement(row.usQualityCore)
+    hasIntroducedConformanceIndicator(row.fhir) ||
+    hasIntroducedConformanceIndicator(row.usCore) ||
+    hasIntroducedConformanceIndicator(row.usQualityCore)
   );
 }
 
-function profileRequirementSources(profile, baseResource, usCoreProfile = null) {
+function profileConformanceIndicators(profile, baseResource, usCoreProfile = null) {
   const profileIndex = snapshotElementIndex(profile);
   const baseIndex = snapshotElementIndex(baseResource);
   const usCoreIndex = usCoreProfile ? snapshotElementIndex(usCoreProfile) : null;
@@ -297,8 +304,8 @@ function profileRequirementSources(profile, baseResource, usCoreProfile = null) 
 
   const elements = profileIndex.elements
     .filter(element => element.id?.includes('.') && element.max !== '0')
-    .map(element => requirementSourceRow(element, baseIndex, usCoreIndex))
-    .filter(hasRequirementSource);
+    .map(element => conformanceIndicatorRow(element, baseIndex, usCoreIndex))
+    .filter(hasConformanceIndicator);
 
   return {
     hasUsCoreLineage: Boolean(usCoreProfile),
@@ -307,8 +314,8 @@ function profileRequirementSources(profile, baseResource, usCoreProfile = null) 
 }
 
 module.exports = {
-  USCDI_QUALITY_REQUIREMENT_EXTENSION,
-  USCDI_REQUIREMENT_EXTENSION,
+  USCDI_INDICATOR_EXTENSION,
+  USCDI_QUALITY_INDICATOR_EXTENSION,
   hasBooleanExtension,
-  profileRequirementSources
+  profileConformanceIndicators
 };

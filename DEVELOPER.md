@@ -410,8 +410,8 @@ The npm scripts are:
 - `generate:flags` - generates USCDI+ Quality element flagging FSH from the data
   element mapping JSON.
 - `generate:view-data` - generates JSON under `input/data/generated` for
-  rendered profile guidance, search rationale tables, profile tables, and
-  USCDI+ Quality scope tables.
+  rendered profile guidance, conformance-indicator tables, search rationale
+  tables, profile tables, and USCDI+ Quality scope tables.
 - `generate:uscdi-quality-csv` - generates the USCDI+ Quality CSV download
   under `input/images/generated`.
 
@@ -497,6 +497,10 @@ the USCDI+ Quality data class and element rows that caused each path to be
 flagged.
 It also uses the shared REST documentation helper to add the same required
 search alignment and rationale rows used by the CapabilityStatements.
+For each profile, it also compares the compiled profile snapshot with the base
+FHIR resource and any US Core ancestor to derive the element conformance
+indicators—Mandatory, Must Support, Additional USCDI, and USCDI+ Quality—and
+identify the layer where each indicator is first introduced.
 
 This script depends on `input/fsh/generated/USCDIQualityFlags.fsh`, which is
 created by `generate_flags.js`. Run

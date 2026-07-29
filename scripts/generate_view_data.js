@@ -37,7 +37,7 @@ const {
   sortByDisplayTitle,
   usCoreAncestor
 } = require('./lib/profiles');
-const { profileRequirementSources } = require('./lib/requirement-sources');
+const { profileConformanceIndicators } = require('./lib/conformance-indicators');
 const {
   assertAllDataElementsMapped,
   generatedUscdiQualityElements,
@@ -53,7 +53,7 @@ async function compiledProfileDefinitions(profileIds) {
     extraInputs: [read(paths.generatedFlagsFile)],
     snapshot: true
   });
-  assertNoSushiErrors(result, 'SUSHI reported errors while compiling profile requirement sources');
+  assertNoSushiErrors(result, 'SUSHI reported errors while compiling profile conformance indicators');
 
   return new Map(
     result.fhir
@@ -607,7 +607,7 @@ function profileNotesData(
             uscdiQualityElements: elements,
             hasUsCoreLineage: Boolean(usCore),
             usCore: usCore ? usCoreProfileSummary(usCore) : null,
-            requirementSources: profileRequirementSources(compiledProfile, baseResource, usCore),
+            conformanceIndicators: profileConformanceIndicators(compiledProfile, baseResource, usCore),
             search: profileSearchData(
               profile,
               resourceTypes,
@@ -641,7 +641,7 @@ async function main(log) {
     profileMaps(parseFsh(FSH_FILES))
   );
   const ruleSets = await log.step('Reading generated USCDI+ Quality RuleSets', generatedUscdiQualityRuleSets);
-  const compiledProfilesById = await log.step('Compiling profile requirement sources', () =>
+  const compiledProfilesById = await log.step('Compiling profile conformance indicators', () =>
     compiledProfileDefinitions(new Set(profiles.map(profile => profile.id)))
   );
   await log.step('Checking USCDI+ Quality mappings', () => assertAllDataElementsMapped(dataElements));

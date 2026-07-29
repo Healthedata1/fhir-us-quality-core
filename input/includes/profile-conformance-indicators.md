@@ -1,26 +1,26 @@
 {% assign profile_notes = site.data.generated.profile_notes[include.profile] %}
-{% assign requirement_sources = profile_notes.requirementSources %}
+{% assign conformance_indicators = profile_notes.conformanceIndicators %}
 
-{% if requirement_sources and requirement_sources.elements.size > 0 %}
-### Element Requirements by Profile Layer
+{% if conformance_indicators and conformance_indicators.elements.size > 0 %}
+#### Element Conformance Indicators by Profile Layer
 
-Badges identify the profile layer where each requirement first applies. Requirements introduced in an earlier layer remain in effect in later derived profiles.
+Badges identify the profile layer where each conformance indicator is first introduced. Indicators introduced in an earlier layer remain applicable in later derived profiles.
 
-<div class="usqc-requirement-table-scroll" role="region" aria-label="Element requirements by profile layer" tabindex="0">
-  <table class="table table-bordered usqc-generated-table usqc-profile-requirement-sources">
-    <caption class="assistive-text">Element requirements organized by the profile layer where they first apply</caption>
+<div class="usqc-conformance-indicator-table-scroll" role="region" aria-label="Element conformance indicators by profile layer" tabindex="0">
+  <table class="table table-bordered usqc-generated-table usqc-profile-conformance-indicators">
+    <caption class="assistive-text">Element conformance indicators organized by the profile layer where they are first introduced</caption>
     <thead>
       <tr>
         <th scope="col">Profile element</th>
         <th scope="col">FHIR</th>
-        {% if requirement_sources.hasUsCoreLineage %}
+        {% if conformance_indicators.hasUsCoreLineage %}
         <th scope="col">US Core</th>
         {% endif %}
         <th scope="col">US Quality Core</th>
       </tr>
     </thead>
     <tbody>
-      {% for element in requirement_sources.elements %}
+      {% for element in conformance_indicators.elements %}
       {% assign fhir_layer = element.fhir %}
       {% assign us_core_layer = element.usCore %}
       {% assign us_quality_core_layer = element.usQualityCore %}
@@ -32,7 +32,7 @@ Badges identify the profile layer where each requirement first applies. Requirem
           {% if fhir_layer.uscdi %}<span class="label">Additional USCDI</span>{% endif %}
           {% if fhir_layer.uscdiQuality %}<span class="label">USCDI+ Quality</span>{% endif %}
         </td>
-        {% if requirement_sources.hasUsCoreLineage %}
+        {% if conformance_indicators.hasUsCoreLineage %}
         <td>
           {% if us_core_layer.mandatory %}<span class="label">Mandatory</span>{% endif %}
           {% if us_core_layer.mustSupport %}<span class="label">Must Support</span>{% endif %}
@@ -52,5 +52,5 @@ Badges identify the profile layer where each requirement first applies. Requirem
   </table>
 </div>
 
-> **Cardinality note:** “Mandatory” means the element has a minimum cardinality greater than zero. For nested elements, the requirement applies when the containing element is present.
+> **Cardinality note:** “Mandatory” means the element has a minimum cardinality greater than zero. For nested elements, the cardinality indicator applies when the containing element is present.
 {% endif %}

@@ -95,7 +95,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -350,7 +350,7 @@
       "id": "us-core-allergyintolerance",
       "title": "US Core AllergyIntolerance Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -565,7 +565,7 @@
       "id": "us-core-careplan",
       "title": "US Core CarePlan Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -766,7 +766,7 @@
       "id": "us-core-careteam",
       "title": "US Core CareTeam Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -943,7 +943,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -1171,7 +1171,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -1388,7 +1388,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -1631,7 +1631,7 @@
       "id": "us-core-condition-encounter-diagnosis",
       "title": "US Core Condition Encounter Diagnosis Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -1974,7 +1974,7 @@
       "id": "us-core-condition-problems-health-concerns",
       "title": "US Core Condition Problems and Health Concerns Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -2426,7 +2426,7 @@
       "id": "us-core-coverage",
       "title": "US Core Coverage Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -2766,7 +2766,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -3075,7 +3075,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -3330,7 +3330,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -3602,7 +3602,7 @@
       "id": "us-core-diagnosticreport-lab",
       "title": "US Core DiagnosticReport Profile for Laboratory Results Reporting"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -3975,7 +3975,7 @@
       "id": "us-core-diagnosticreport-note",
       "title": "US Core DiagnosticReport Profile for Report and Note Exchange"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -4422,7 +4422,7 @@
       "id": "us-core-encounter",
       "title": "US Core Encounter Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -4868,7 +4868,7 @@
       "id": "us-core-goal",
       "title": "US Core Goal Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -5011,7 +5011,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -5191,7 +5191,7 @@
       "id": "us-core-immunization",
       "title": "US Core Immunization Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -5473,7 +5473,7 @@
       "id": "us-core-immunization",
       "title": "US Core Immunization Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -5741,7 +5741,7 @@
       "id": "us-core-immunization",
       "title": "US Core Immunization Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -6006,7 +6006,7 @@
       "id": "us-core-location",
       "title": "US Core Location Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -6182,7 +6182,7 @@
       "id": "us-core-medication",
       "title": "US Core Medication Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -6354,7 +6354,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -6674,7 +6674,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -6983,7 +6983,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -7326,7 +7326,7 @@
       "id": "us-core-medicationdispense",
       "title": "US Core MedicationDispense Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -7648,7 +7648,7 @@
       "id": "us-core-medicationdispense",
       "title": "US Core MedicationDispense Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -8061,7 +8061,7 @@
       "id": "us-core-medicationdispense",
       "title": "US Core MedicationDispense Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -8450,7 +8450,7 @@
       "id": "us-core-medicationrequest",
       "title": "US Core MedicationRequest Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -9217,7 +9217,7 @@
       "id": "us-core-medicationrequest",
       "title": "US Core MedicationRequest Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -9993,7 +9993,7 @@
       "id": "us-core-medicationrequest",
       "title": "US Core MedicationRequest Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -10553,7 +10553,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -10747,7 +10747,7 @@
       "id": "us-core-observation-clinical-result",
       "title": "US Core Observation Clinical Result Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -11155,7 +11155,7 @@
       "id": "us-core-observation-lab",
       "title": "US Core Laboratory Result Observation Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -11712,7 +11712,7 @@
       "id": "us-core-observation-screening-assessment",
       "title": "US Core Observation Screening Assessment Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -12030,7 +12030,7 @@
       "id": "us-core-organization",
       "title": "US Core Organization Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -12723,7 +12723,7 @@
       "id": "us-core-patient",
       "title": "US Core Patient Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -13299,7 +13299,7 @@
       "id": "us-core-practitioner",
       "title": "US Core Practitioner Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -13680,7 +13680,7 @@
       "id": "us-core-practitionerrole",
       "title": "US Core PractitionerRole Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -13954,7 +13954,7 @@
       "id": "us-core-procedure",
       "title": "US Core Procedure Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -14332,7 +14332,7 @@
       "id": "us-core-procedure",
       "title": "US Core Procedure Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -14720,7 +14720,7 @@
       "id": "us-core-procedure",
       "title": "US Core Procedure Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -15158,7 +15158,7 @@
       "id": "us-core-questionnaireresponse",
       "title": "US Core QuestionnaireResponse Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -15473,7 +15473,7 @@
       "id": "us-core-relatedperson",
       "title": "US Core RelatedPerson Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -15850,7 +15850,7 @@
       "id": "us-core-servicerequest",
       "title": "US Core ServiceRequest Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -16408,7 +16408,7 @@
       "id": "us-core-servicerequest",
       "title": "US Core ServiceRequest Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -16973,7 +16973,7 @@
       "id": "us-core-servicerequest",
       "title": "US Core ServiceRequest Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -17702,7 +17702,7 @@
       "id": "us-core-simple-observation",
       "title": "US Core Simple Observation Profile"
     },
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": true,
       "elements": [
         {
@@ -18070,7 +18070,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -18389,7 +18389,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {
@@ -18734,7 +18734,7 @@
     ],
     "hasUsCoreLineage": false,
     "usCore": null,
-    "requirementSources": {
+    "conformanceIndicators": {
       "hasUsCoreLineage": false,
       "elements": [
         {

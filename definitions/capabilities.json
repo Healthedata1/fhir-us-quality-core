@@ -1,0 +1,2001 @@
+{
+  "AdverseEvent": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "subject": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "AdverseEvent.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "event": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "AdverseEvent.event",
+        "exampleValue": "http://snomed.info/sct|725119006",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "recorded-date": {
+        "type": "date",
+        "documentation": "The client **MAY** provide a date value.",
+        "expectation": "MAY",
+        "expression": "AdverseEvent.recordedDate",
+        "exampleValue": "ge2020-01-01T00:00:00Z",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "comparators": {
+          "eq": "MAY",
+          "ne": "MAY",
+          "gt": "SHALL",
+          "ge": "SHALL",
+          "lt": "SHALL",
+          "le": "SHALL",
+          "sa": "MAY",
+          "eb": "MAY",
+          "ap": "MAY"
+        }
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "subject",
+          "event"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "subject",
+          "recorded-date"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "AllergyIntolerance": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "AllergyIntolerance.patient",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": []
+  },
+  "CarePlan": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "MAY",
+        "expression": "CarePlan.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "category": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "CarePlan.category",
+        "exampleValue": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category|assess-plan",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "category"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "CareTeam": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "MAY",
+        "expression": "CareTeam.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "status": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "CareTeam.status",
+        "exampleValue": "active",
+        "multipleOr": {
+          "value": true,
+          "expectation": "SHOULD"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "status"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "Communication": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "subject": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "Communication.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "topic": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "Communication.topic",
+        "exampleValue": "http://terminology.hl7.org/CodeSystem/communication-topic|progress-update",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "status": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a status.",
+        "expectation": "MAY",
+        "expression": "Communication.status",
+        "exampleValue": "completed",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "profileExampleOverrides": {
+      "us-quality-core-communicationnotdone": {
+        "status": "not-done"
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "subject",
+          "topic"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "subject",
+          "status"
+        ],
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports subject-scoped retrieval of Communication resources filtered by status; status is used to indicate negation."
+      }
+    ]
+  },
+  "Condition": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "Condition.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "category": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a category.",
+        "expectation": "MAY",
+        "expression": "Condition.category",
+        "exampleValue": "http://terminology.hl7.org/CodeSystem/condition-category|encounter-diagnosis",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "code": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "Condition.code",
+        "exampleValue": "http://snomed.info/sct|74400008",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "category"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "code"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "Coverage": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "Coverage.beneficiary",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": []
+  },
+  "Device": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "Device.patient",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "type": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "Device.type",
+        "exampleValue": "http://snomed.info/sct|86184003",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "type"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "DeviceRequest": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "DeviceRequest.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "code": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "DeviceRequest.code.as(CodeableConcept)",
+        "exampleValue": "http://snomed.info/sct|86184003",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "do-not-perform": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a token value.",
+        "expectation": "MAY",
+        "expression": "DeviceRequest.modifierExtension.where(url='http://hl7.org/fhir/5.0/StructureDefinition/extension-DeviceRequest.doNotPerform').value",
+        "exampleValue": "true",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "profileExampleOverrides": {
+      "us-quality-core-devicerequested": {
+        "do-not-perform": "false"
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "code"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "do-not-perform"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "DiagnosticReport": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "DiagnosticReport.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "category": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a category.",
+        "expectation": "MAY",
+        "expression": "DiagnosticReport.category",
+        "exampleValue": "http://terminology.hl7.org/CodeSystem/v2-0074|LAB",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "code": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "DiagnosticReport.code",
+        "exampleValue": "http://loinc.org|58410-2",
+        "multipleOr": {
+          "value": true,
+          "expectation": "SHOULD"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "date": {
+        "type": "date",
+        "documentation": "The client **MAY** provide a date value.",
+        "expectation": "MAY",
+        "expression": "DiagnosticReport.effective",
+        "exampleValue": "ge2020-01-01T00:00:00Z",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "SHOULD"
+        },
+        "comparators": {
+          "eq": "MAY",
+          "ne": "MAY",
+          "gt": "SHALL",
+          "ge": "SHALL",
+          "lt": "SHALL",
+          "le": "SHALL",
+          "sa": "MAY",
+          "eb": "MAY",
+          "ap": "MAY"
+        }
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "category"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "category",
+          "date"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "code"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "DocumentReference": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "DocumentReference.patient",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "_id": {
+        "type": "token",
+        "documentation": "The client **SHALL** provide a token value.",
+        "expectation": "SHALL",
+        "expression": "Resource.id",
+        "exampleValue": "example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "category": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a token value.",
+        "expectation": "MAY",
+        "expression": "DocumentReference.category",
+        "exampleValue": "http://loinc.org|LP29684-5",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "date": {
+        "type": "date",
+        "documentation": "The client **MAY** provide a date value.",
+        "expectation": "MAY",
+        "expression": "DocumentReference.date",
+        "exampleValue": "ge2020-01-01T00:00:00Z",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "SHOULD"
+        },
+        "comparators": {
+          "eq": "MAY",
+          "ne": "MAY",
+          "gt": "SHALL",
+          "ge": "SHALL",
+          "lt": "SHALL",
+          "le": "SHALL",
+          "sa": "MAY",
+          "eb": "MAY",
+          "ap": "MAY"
+        }
+      },
+      "type": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a token value.",
+        "expectation": "MAY",
+        "expression": "DocumentReference.type",
+        "exampleValue": "http://loinc.org|30746-2",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "type"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "category"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "category",
+          "date"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "Encounter": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "_id": {
+        "type": "token",
+        "documentation": "The client **SHALL** provide an id value.",
+        "expectation": "SHALL",
+        "expression": "Resource.id",
+        "exampleValue": "example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "Encounter.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "type": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "Encounter.type",
+        "exampleValue": "http://www.ama-assn.org/go/cpt|99223",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "date": {
+        "type": "date",
+        "documentation": "The client **MAY** provide a date value.",
+        "expectation": "MAY",
+        "expression": "Encounter.period",
+        "exampleValue": "ge2020-01-01T00:00:00Z",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "SHOULD"
+        },
+        "comparators": {
+          "eq": "MAY",
+          "ne": "MAY",
+          "gt": "SHALL",
+          "ge": "SHALL",
+          "lt": "SHALL",
+          "le": "SHALL",
+          "sa": "MAY",
+          "eb": "MAY",
+          "ap": "MAY"
+        }
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "type"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "date"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "FamilyMemberHistory": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "FamilyMemberHistory.patient",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": []
+  },
+  "Goal": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "Goal.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": []
+  },
+  "ImagingStudy": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "subject": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "ImagingStudy.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": []
+  },
+  "Immunization": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "Immunization.patient",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "status": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a status.",
+        "expectation": "MAY",
+        "expression": "Immunization.status",
+        "exampleValue": "completed",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "profileExampleOverrides": {
+      "us-quality-core-immunizationnotdone": {
+        "status": "not-done"
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "status"
+        ],
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports patient-scoped retrieval of Immunization resources filtered by status; status is used to indicate negation."
+      }
+    ]
+  },
+  "Location": {
+    "interactions": {
+      "read": "SHALL"
+    },
+    "revIncludes": [],
+    "searchParams": {},
+    "searchCombinations": []
+  },
+  "Medication": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [],
+    "searchParams": {
+      "code": {
+        "type": "token",
+        "documentation": "The client **SHALL** provide a code value.",
+        "expectation": "SHALL",
+        "expression": "Medication.code",
+        "exampleValue": "http://www.nlm.nih.gov/research/umls/rxnorm|1594663",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": []
+  },
+  "MedicationAdministration": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "MedicationAdministration.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "status": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a status.",
+        "expectation": "MAY",
+        "expression": "MedicationAdministration.status",
+        "exampleValue": "completed",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "code": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "MedicationAdministration.medication.as(CodeableConcept)",
+        "exampleValue": "http://www.nlm.nih.gov/research/umls/rxnorm|1594663",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "effective-time": {
+        "type": "date",
+        "documentation": "The client **MAY** provide a date value.",
+        "expectation": "MAY",
+        "expression": "MedicationAdministration.effective",
+        "exampleValue": "ge2020-01-01T00:00:00Z",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "comparators": {
+          "eq": "MAY",
+          "ne": "MAY",
+          "gt": "SHALL",
+          "ge": "SHALL",
+          "lt": "SHALL",
+          "le": "SHALL",
+          "sa": "MAY",
+          "eb": "MAY",
+          "ap": "MAY"
+        }
+      }
+    },
+    "profileExampleOverrides": {
+      "us-quality-core-medicationadministrationnotdone": {
+        "status": "not-done"
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "status"
+        ],
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by status; status is used to indicate negation."
+      },
+      {
+        "params": [
+          "patient",
+          "code"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "effective-time"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "MedicationDispense": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "MedicationDispense.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "status": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a status.",
+        "expectation": "MAY",
+        "expression": "MedicationDispense.status",
+        "exampleValue": "completed",
+        "multipleOr": {
+          "value": true,
+          "expectation": "SHALL"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "profileExampleOverrides": {
+      "us-quality-core-medicationdispensedeclined": {
+        "status": "declined"
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "status"
+        ],
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports patient-scoped retrieval of MedicationDispense resources filtered by status; status is used to indicate negation."
+      }
+    ]
+  },
+  "MedicationRequest": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "MAY",
+        "expression": "MedicationRequest.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "intent": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a token value.",
+        "expectation": "MAY",
+        "expression": "MedicationRequest.intent",
+        "exampleValue": "order",
+        "multipleOr": {
+          "value": true,
+          "expectation": "SHALL"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "do-not-perform": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a token value.",
+        "expectation": "MAY",
+        "expression": "MedicationRequest.doNotPerform",
+        "exampleValue": "true",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "profileExampleOverrides": {
+      "us-quality-core-medicationrequested": {
+        "do-not-perform": "false"
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "intent",
+          "do-not-perform"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "intent"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "NutritionOrder": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "NutritionOrder.patient",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": []
+  },
+  "Observation": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "MAY",
+        "expression": "Observation.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "category": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a category.",
+        "expectation": "MAY",
+        "expression": "Observation.category",
+        "exampleValue": "http://terminology.hl7.org/CodeSystem/observation-category|exam",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "status": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a status.",
+        "expectation": "MAY",
+        "expression": "Observation.status",
+        "exampleValue": "final",
+        "multipleOr": {
+          "value": true,
+          "expectation": "SHALL"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "code": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "Observation.code",
+        "exampleValue": "http://loinc.org|8884-9",
+        "multipleOr": {
+          "value": true,
+          "expectation": "SHOULD"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "date": {
+        "type": "date",
+        "documentation": "The client **MAY** provide a date value.",
+        "expectation": "MAY",
+        "expression": "Observation.effective",
+        "exampleValue": "ge2020-01-01T00:00:00Z",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "SHOULD"
+        },
+        "comparators": {
+          "eq": "MAY",
+          "ne": "MAY",
+          "gt": "SHALL",
+          "ge": "SHALL",
+          "lt": "SHALL",
+          "le": "SHALL",
+          "sa": "MAY",
+          "eb": "MAY",
+          "ap": "MAY"
+        }
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "category",
+          "status"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "category"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "category",
+          "date"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "code"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "Organization": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "MAY"
+    },
+    "revIncludes": [],
+    "searchParams": {},
+    "searchCombinations": []
+  },
+  "Patient": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "_id": {
+        "type": "token",
+        "documentation": "The client **SHALL** provide an id value.",
+        "expectation": "SHALL",
+        "expression": "Resource.id",
+        "exampleValue": "example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": []
+  },
+  "Practitioner": {
+    "interactions": {
+      "read": "SHALL"
+    },
+    "revIncludes": [],
+    "searchParams": {},
+    "searchCombinations": []
+  },
+  "PractitionerRole": {
+    "interactions": {
+      "read": "SHALL"
+    },
+    "revIncludes": [],
+    "searchParams": {},
+    "searchCombinations": []
+  },
+  "Procedure": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "Procedure.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "status": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a status.",
+        "expectation": "MAY",
+        "expression": "Procedure.status",
+        "exampleValue": "completed",
+        "multipleOr": {
+          "value": true,
+          "expectation": "SHALL"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "date": {
+        "type": "date",
+        "documentation": "The client **MAY** provide a date value.",
+        "expectation": "MAY",
+        "expression": "Procedure.performed",
+        "exampleValue": "ge2020-01-01T00:00:00Z",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "SHOULD"
+        },
+        "comparators": {
+          "eq": "MAY",
+          "ne": "MAY",
+          "gt": "SHALL",
+          "ge": "SHALL",
+          "lt": "SHALL",
+          "le": "SHALL",
+          "sa": "MAY",
+          "eb": "MAY",
+          "ap": "MAY"
+        }
+      }
+    },
+    "profileExampleOverrides": {
+      "us-quality-core-procedurenotdone": {
+        "status": "not-done"
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "status"
+        ],
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports patient-scoped retrieval of Procedure resources filtered by status; status is used to indicate negation."
+      },
+      {
+        "params": [
+          "patient",
+          "date"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "Provenance": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "MAY"
+    },
+    "revIncludes": [],
+    "searchParams": {},
+    "searchCombinations": []
+  },
+  "QuestionnaireResponse": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "QuestionnaireResponse.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "questionnaire": {
+        "type": "reference",
+        "documentation": "The client **MAY** provide a reference value.",
+        "expectation": "MAY",
+        "expression": "QuestionnaireResponse.questionnaire",
+        "exampleValue": "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-PHQ9",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "questionnaire"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "RelatedPerson": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "_id": {
+        "type": "token",
+        "documentation": "The client **SHALL** provide an id value.",
+        "expectation": "SHALL",
+        "expression": "Resource.id",
+        "exampleValue": "example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "RelatedPerson.patient",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": []
+  },
+  "ServiceRequest": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "_id": {
+        "type": "token",
+        "documentation": "The client **SHALL** provide an id value.",
+        "expectation": "SHALL",
+        "expression": "Resource.id",
+        "exampleValue": "example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "ServiceRequest.subject.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "category": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a category.",
+        "expectation": "MAY",
+        "expression": "ServiceRequest.category",
+        "exampleValue": "http://snomed.info/sct|387713003",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "code": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "ServiceRequest.code",
+        "exampleValue": "http://snomed.info/sct|80146002",
+        "multipleOr": {
+          "value": true,
+          "expectation": "SHOULD"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "authored": {
+        "type": "date",
+        "documentation": "The client **MAY** provide a date value.",
+        "expectation": "MAY",
+        "expression": "ServiceRequest.authoredOn",
+        "exampleValue": "ge2020-01-01T00:00:00Z",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "SHOULD"
+        },
+        "comparators": {
+          "eq": "MAY",
+          "ne": "MAY",
+          "gt": "SHALL",
+          "ge": "SHALL",
+          "lt": "SHALL",
+          "le": "SHALL",
+          "sa": "MAY",
+          "eb": "MAY",
+          "ap": "MAY"
+        }
+      },
+      "do-not-perform": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a token value.",
+        "expectation": "MAY",
+        "expression": "ServiceRequest.doNotPerform",
+        "exampleValue": "true",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "profileExampleOverrides": {
+      "us-quality-core-servicerequested": {
+        "do-not-perform": "false"
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "category"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "category",
+          "authored"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "code"
+        ],
+        "expectation": "SHALL"
+      },
+      {
+        "params": [
+          "patient",
+          "do-not-perform"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  },
+  "Specimen": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "MAY",
+        "expression": "Specimen.patient",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "_id": {
+        "type": "token",
+        "documentation": "The client **SHALL** provide a token value.",
+        "expectation": "SHALL",
+        "expression": "Resource.id",
+        "exampleValue": "example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "searchCombinations": []
+  },
+  "Task": {
+    "interactions": {
+      "read": "SHALL",
+      "search-type": "SHALL"
+    },
+    "revIncludes": [
+      {
+        "value": "Provenance:target",
+        "expectation": "SHALL"
+      }
+    ],
+    "searchParams": {
+      "patient": {
+        "type": "reference",
+        "documentation": "The client **SHALL** provide an id value for the reference.",
+        "expectation": "SHALL",
+        "expression": "Task.for.where(resolve() is Patient)",
+        "exampleValue": "Patient/example",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "status": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a status.",
+        "expectation": "MAY",
+        "expression": "Task.status",
+        "exampleValue": "completed",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      },
+      "code": {
+        "type": "token",
+        "documentation": "The client **MAY** provide a code value.",
+        "expectation": "MAY",
+        "expression": "Task.code",
+        "exampleValue": "http://www.ama-assn.org/go/cpt|99483",
+        "multipleOr": {
+          "value": true,
+          "expectation": "MAY"
+        },
+        "multipleAnd": {
+          "value": true,
+          "expectation": "MAY"
+        }
+      }
+    },
+    "profileExampleOverrides": {
+      "us-quality-core-taskrejected": {
+        "status": "rejected"
+      }
+    },
+    "searchCombinations": [
+      {
+        "params": [
+          "patient",
+          "status"
+        ],
+        "expectation": "SHALL",
+        "rationaleOverride": "Supports patient-scoped retrieval of Task resources filtered by status; status is used to indicate negation."
+      },
+      {
+        "params": [
+          "patient",
+          "code"
+        ],
+        "expectation": "SHALL"
+      }
+    ]
+  }
+}

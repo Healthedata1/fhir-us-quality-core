@@ -165,6 +165,7 @@
 <artifact id="SearchParameter/us-quality-core-care-plan-patient" key="SearchParameter-us-quality-core-care-plan-patient" name="us-quality-core-care-plan-patient"/>
 <artifact id="SearchParameter/us-quality-core-care-team-patient" key="SearchParameter-us-quality-core-care-team-patient" name="us-quality-core-care-team-patient"/>
 <artifact id="SearchParameter/us-quality-core-care-team-status" key="SearchParameter-us-quality-core-care-team-status" name="us-quality-core-care-team-status"/>
+<artifact id="SearchParameter/us-quality-core-communication-status" key="SearchParameter-us-quality-core-communication-status" name="us-quality-core-communication-status"/>
 <artifact id="SearchParameter/us-quality-core-communication-subject" key="SearchParameter-us-quality-core-communication-subject" name="us-quality-core-communication-subject"/>
 <artifact id="SearchParameter/us-quality-core-communication-topic" key="SearchParameter-us-quality-core-communication-topic" name="us-quality-core-communication-topic"/>
 <artifact id="SearchParameter/us-quality-core-condition-category" key="SearchParameter-us-quality-core-condition-category" name="us-quality-core-condition-category"/>

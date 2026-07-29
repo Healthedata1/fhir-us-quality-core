@@ -21,7 +21,7 @@
 ### Summary
 {: #summary}
 
-The US Quality Core Implementation Guide provides guidance for implementing United States Core Data for Interoperability [(USCDI+ Quality)](https://uscdiplus.healthit.gov/uscdiplus) in FHIR to support
+The US Quality Core Implementation Guide provides guidance for implementing [United States Core Data for Interoperability (USCDI)+ Quality)](https://uscdiplus.healthit.gov/uscdiplus) in FHIR to support
 standardized, interoperable representation and exchange of quality data for
 quality measurement and reporting programs. It defines profiles that derive from
 and extend the base [FHIR version R4](http://hl7.org/fhir/R4/index.html)

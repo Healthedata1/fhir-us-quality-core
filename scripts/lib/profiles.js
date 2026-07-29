@@ -118,14 +118,9 @@ function usCoreAncestor(profile, profilesById, profilesByName, fhirDefs, seen = 
     : null;
 }
 
-function hasUsCoreLineage(profile, profilesById, profilesByName, fhirDefs) {
-  return Boolean(usCoreAncestor(profile, profilesById, profilesByName, fhirDefs));
-}
-
 module.exports = {
   displayTitle,
   hasLocalAncestor,
-  hasUsCoreLineage,
   localParent,
   localProfileDepth,
   profileDefinition,

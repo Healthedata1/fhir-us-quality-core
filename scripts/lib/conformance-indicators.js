@@ -145,11 +145,11 @@ function addConformanceIndicator(layer, indicator) {
   layer[indicator] = true;
 }
 
-function emptyConformanceIndicatorRow(path, hasUsCoreLineage) {
+function emptyConformanceIndicatorRow(path, includeUsCoreLayer) {
   return {
     path,
     fhir: {},
-    ...(hasUsCoreLineage && { usCore: {} }),
+    ...(includeUsCoreLayer && { usCore: {} }),
     usQualityCore: {}
   };
 }
@@ -307,15 +307,9 @@ function profileConformanceIndicators(profile, baseResource, usCoreProfile = nul
     .map(element => conformanceIndicatorRow(element, baseIndex, usCoreIndex))
     .filter(hasConformanceIndicator);
 
-  return {
-    hasUsCoreLineage: Boolean(usCoreProfile),
-    elements
-  };
+  return { elements };
 }
 
 module.exports = {
-  USCDI_INDICATOR_EXTENSION,
-  USCDI_QUALITY_INDICATOR_EXTENSION,
-  hasBooleanExtension,
   profileConformanceIndicators
 };

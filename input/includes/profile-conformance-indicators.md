@@ -13,7 +13,7 @@ Badges identify the profile layer where each conformance indicator is first intr
       <tr>
         <th scope="col">Profile element</th>
         <th scope="col">FHIR</th>
-        {% if conformance_indicators.hasUsCoreLineage %}
+        {% if profile_notes.usCore %}
         <th scope="col">US Core</th>
         {% endif %}
         <th scope="col">US Quality Core</th>
@@ -32,7 +32,7 @@ Badges identify the profile layer where each conformance indicator is first intr
           {% if fhir_layer.uscdi %}<span class="label">Additional USCDI</span>{% endif %}
           {% if fhir_layer.uscdiQuality %}<span class="label">USCDI+ Quality</span>{% endif %}
         </td>
-        {% if conformance_indicators.hasUsCoreLineage %}
+        {% if profile_notes.usCore %}
         <td>
           {% if us_core_layer.mandatory %}<span class="label">Mandatory</span>{% endif %}
           {% if us_core_layer.mustSupport %}<span class="label">Must Support</span>{% endif %}

@@ -529,8 +529,8 @@ then rerun the relevant npm script from the IG root.
 | `input/fsh/generated/search-parameters/*.fsh` | `npm --prefix scripts run generate:rest` | `definitions/capabilities.json`, `definitions/uscdi_plus_quality.json`, authored FSH |
 | `input/fsh/generated/USCDIQualityFlags.fsh` | `npm --prefix scripts run generate:flags` | `definitions/uscdi_plus_quality.json`, authored profile FSH |
 | `input/data/generated/profile_notes.json` | `npm --prefix scripts run generate:view-data` | `definitions/uscdi_plus_quality.json`, `definitions/capabilities.json`, generated flag RuleSets, authored profile FSH, configured FHIR and US Core definitions |
-| `input/data/generated/profile_table.json` | `npm --prefix scripts run generate:view-data` | `definitions/uscdi_plus_quality.json`, authored profile FSH, generated flag RuleSets |
-| `input/data/generated/data_elements.json` | `npm --prefix scripts run generate:view-data` | `definitions/uscdi_plus_quality.json`, authored profile FSH |
+| `input/data/generated/profile_table.json` | `npm --prefix scripts run generate:view-data` | `definitions/uscdi_plus_quality.json`, authored profile FSH, configured FHIR and US Core definitions |
+| `input/data/generated/data_elements.json` | `npm --prefix scripts run generate:view-data` | `definitions/uscdi_plus_quality.json`, authored profile FSH, configured US Core definitions |
 | `input/images/generated/uscdi-quality-data-elements.csv` | `npm --prefix scripts run generate:uscdi-quality-csv` | `definitions/uscdi_plus_quality.json`, authored profile FSH |
 
 Generated RuleSet FSH files are inserted from authored FSH using RuleSet

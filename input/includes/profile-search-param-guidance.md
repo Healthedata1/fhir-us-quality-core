@@ -1,48 +1,44 @@
 {% assign profile_notes = site.data.generated.profile_notes[include.profile] %}
 {% assign search = profile_notes.search %}
-{% assign search_params = search.searchParams %}
-{% assign search_combinations = search.searchCombinations %}
 {% assign required_searches = search.requiredSearches %}
 
-{% if search and search.hasSearchParameters %}
-### Search Parameter Expectations
+{% if search %}
+{% if required_searches.size > 0 or profile_notes.usCore %}
+#### Mandatory US Quality Core Server Search Parameters
 
-The following search parameters are defined for the underlying `{{ search.resource }}` resource in the [US Quality Core Server CapabilityStatement](CapabilityStatement-us-quality-core-server.html).
+The searches below are the focused set identified by US Quality Core as needed to retrieve USCDI+ Quality data for quality measurement and reporting. See the [US Core FHIR RESTful Search API Requirements]({{ site.data.fhir.ver.uscore }}/general-requirements.html#fhir-restful-search-api-requirements) for detailed information on requirements by search parameter type.
 
-{% if search_params.size > 0 %}
-**Individual Search Parameters**
+{% if profile_notes.usCore %}
+Because this profile derives directly or indirectly from US Core, servers **SHALL** also support all mandatory searches described in the [US Core Server CapabilityStatement requirements for `{{ search.resource }}`]({{ site.data.fhir.ver.uscore }}/CapabilityStatement-us-core-server.html#Server_{{ search.resource | escape }}). When possible, this guide reuses mandatory searches from US Core and notes them with the **EXISTING US CORE REQUIREMENT** flag. While US Quality Core may restate US Core requirements to highlight searches directly relevant to USCDI+ Quality data access, US Core requirements not restated here remain applicable.
 
-{: .table-bordered .usqc-generated-table .usqc-search-param-table}
-| Name | Expectation |
-|---|---|
-{% for search_param in search_params -%}
-| `{{ search_param.name }}` | {{ search_param.expectation | replace: "SHALL", "Required" | replace: "SHOULD", "Recommended" | replace: "MAY", "Optional" }} |
-{% endfor %}
 {% endif %}
 
-{% if search_combinations.size > 0 %}
-**Search Parameter Combinations**
-
-{: .table-bordered .usqc-generated-table .usqc-search-param-table}
-| Name | Expectation |
-|---|---|
-{% for combination in search_combinations -%}
-| `{{ combination.name }}` | {{ combination.expectation | replace: "SHALL", "Required" | replace: "SHOULD", "Recommended" | replace: "MAY", "Optional" }} |
-{% endfor %}
-{% endif %}
+See the [US Quality Core Server CapabilityStatement](CapabilityStatement-us-quality-core-server.html#{{ search.capabilityStatementAnchor }}) for complete requirements for the underlying `{{ search.resource }}` resource and [Search Requirement Selection](us-quality-core-general-requirements.html#search-requirement-selection) for how this focused set was selected.
 
 {% if required_searches.size > 0 %}
-**Required Search Rationale**
+Servers supporting this profile **SHALL** support the following search parameters and search parameter combinations:
 
-These required searches apply to the underlying `{{ search.resource }}` resource and therefore to every US Quality Core profile based on that resource.
+{% for requirement in required_searches %}
+1. **SHALL** support {{ requirement.statement }}.{% if requirement.usCoreExpectation == "SHALL" %} **EXISTING US CORE REQUIREMENT**{% endif %}
 
-{: .table-bordered .usqc-generated-table .usqc-search-rationale-table}
-| Required search | US Core alignment | Rationale |
-|---|---|---|
-{% for requirement in required_searches -%}
-{%- assign alignment = requirement.usCoreAlignment | replace: "|", "&#124;" -%}
-{%- assign rationale = requirement.rationale | replace: "|", "&#124;" -%}
-| {{ requirement.label }} | {{ alignment }} | {{ rationale }} |
+{% for additional_requirement in requirement.additionalRequirements %}
+    - {{ additional_requirement.text }}.
 {% endfor %}
+
+    `{{ requirement.request }}`
+
+    **Example:**
+
+    > `{{ requirement.example }}`
+
+    **Implementation Notes:** Fetches a bundle of {{ profile_notes.title }} resources matching the specified search criteria. {{ requirement.searchGuidance }}
+
+    **Rationale for inclusion:** {{ requirement.rationale }}
+
+{% endfor %}
+{% else %}
+US Quality Core does not identify searches of specific interest for the underlying `{{ search.resource }}` resource.
+{% endif %}
+
 {% endif %}
 {% endif %}

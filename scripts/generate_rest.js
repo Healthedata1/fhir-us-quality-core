@@ -101,11 +101,54 @@ function usCoreSearchParameter(resource, code, fhirDefs) {
   return searchParameter;
 }
 
-function searchParameterDefinition(config, resource, supportedProfiles, code, fhirDefs) {
+function primitiveExpectation(primitive) {
+  return (primitive?.extension ?? [])
+    .find(extension => extension.url === fhir.capabilityExpectationExtensionUrl)
+    ?.valueCode ?? null;
+}
+
+function comparatorExpectations(searchParameter) {
+  return Object.fromEntries(
+    (searchParameter.comparator ?? []).map((comparator, index) => [
+      comparator,
+      primitiveExpectation(searchParameter._comparator?.[index])
+    ])
+  );
+}
+
+function assertUsCoreSearchBehavior(resource, code, configured, searchParameter) {
+  for (const name of ['multipleOr', 'multipleAnd']) {
+    const upstream = {
+      value: searchParameter[name],
+      expectation: primitiveExpectation(searchParameter[`_${name}`])
+    };
+    if (
+      configured[name].value !== upstream.value ||
+      configured[name].expectation !== upstream.expectation
+    ) {
+      throw new Error(
+        `${resource}.${code}.${name} does not match US Core ${searchParameter.id}: ` +
+        `${JSON.stringify(configured[name])} != ${JSON.stringify(upstream)}.`
+      );
+    }
+  }
+
+  const upstreamComparators = comparatorExpectations(searchParameter);
+  if (JSON.stringify(configured.comparators ?? {}) !== JSON.stringify(upstreamComparators)) {
+    throw new Error(
+      `${resource}.${code}.comparators does not match US Core ${searchParameter.id}: ` +
+      `${JSON.stringify(configured.comparators ?? {})} != ${JSON.stringify(upstreamComparators)}.`
+    );
+  }
+}
+
+function searchParameterDefinition(config, resource, supportedProfiles, code, searchParam, fhirDefs) {
   if (resourceHasLocalProfile(supportedProfiles, config)) {
     return localSearchParameterUrl(config, resource, code);
   }
-  return canonicalWithVersion(usCoreSearchParameter(resource, code, fhirDefs));
+  const searchParameter = usCoreSearchParameter(resource, code, fhirDefs);
+  assertUsCoreSearchBehavior(resource, code, searchParam, searchParameter);
+  return canonicalWithVersion(searchParameter);
 }
 
 function usCoreProfileReference(url, fhirDefs) {
@@ -149,19 +192,71 @@ function addRevIncludes(ruleSet, resourcePath, revIncludes) {
   });
 }
 
-function addDateComparators(instance) {
-  Object.entries(rest.dateComparators).forEach(([comparator, expectation], index) => {
+function addComparators(instance, comparators) {
+  Object.entries(comparators ?? {}).forEach(([comparator, expectation], index) => {
     const comparatorPath = `comparator[${index}]`;
     addCode(instance, comparatorPath, comparator);
     addExpectation(instance, `${comparatorPath}.extension[0]`, expectation);
   });
 }
 
+function assertExpectation(context, value) {
+  if (!['SHALL', 'SHOULD', 'MAY'].includes(value)) {
+    throw new Error(`${context} must be SHALL, SHOULD, or MAY.`);
+  }
+}
+
+function assertMultiplicity(resource, code, searchParam, name) {
+  const value = searchParam[name];
+  if (value == null || typeof value !== 'object' || Array.isArray(value)) {
+    throw new Error(`${resource}.${code}.${name} must be an object.`);
+  }
+  if (typeof value.value !== 'boolean') {
+    throw new Error(`${resource}.${code}.${name}.value must be a boolean.`);
+  }
+  assertExpectation(`${resource}.${code}.${name}.expectation`, value.expectation);
+}
+
+function assertComparators(resource, code, searchParam) {
+  const comparators = searchParam.comparators;
+  if (searchParam.type !== 'date') {
+    if (comparators != null) {
+      throw new Error(`${resource}.${code}.comparators is only valid for date search parameters.`);
+    }
+    return;
+  }
+  if (comparators == null || typeof comparators !== 'object' || Array.isArray(comparators)) {
+    throw new Error(`${resource}.${code}.comparators must be an object for a date search parameter.`);
+  }
+  const validComparators = new Set(['eq', 'ne', 'gt', 'ge', 'lt', 'le', 'sa', 'eb', 'ap']);
+  for (const [comparator, expectation] of Object.entries(comparators)) {
+    if (!validComparators.has(comparator)) {
+      throw new Error(`${resource}.${code}.comparators contains unsupported comparator ${comparator}.`);
+    }
+    assertExpectation(`${resource}.${code}.comparators.${comparator}`, expectation);
+  }
+}
+
 function assertSearchParamCanBeGenerated(resource, code, searchParam) {
-  const missing = ['type', 'documentation', 'expectation', 'expression'].filter(key => searchParam[key] == null);
+  const missing = [
+    'type',
+    'documentation',
+    'expectation',
+    'expression',
+    'exampleValue',
+    'multipleOr',
+    'multipleAnd'
+  ]
+    .filter(key => searchParam[key] == null);
   if (missing.length) {
     throw new Error(`${resource}.${code} is missing required search parameter key(s): ${missing.join(', ')}`);
   }
+  if (typeof searchParam.exampleValue !== 'string' || searchParam.exampleValue.trim() === '') {
+    throw new Error(`${resource}.${code}.exampleValue must be a non-empty string.`);
+  }
+  assertMultiplicity(resource, code, searchParam, 'multipleOr');
+  assertMultiplicity(resource, code, searchParam, 'multipleAnd');
+  assertComparators(resource, code, searchParam);
 }
 
 function addSearchParams(ruleSet, resourcePath, resource, resourceConfig, supportedProfiles, config, fhirDefs) {
@@ -173,7 +268,7 @@ function addSearchParams(ruleSet, resourcePath, resource, resourceConfig, suppor
     add(
       ruleSet,
       `${searchParamPath}.definition`,
-      searchParameterDefinition(config, resource, supportedProfiles, code, fhirDefs)
+      searchParameterDefinition(config, resource, supportedProfiles, code, searchParam, fhirDefs)
     );
     addCode(ruleSet, `${searchParamPath}.type`, searchParam.type);
     add(ruleSet, `${searchParamPath}.documentation`, searchParam.documentation);
@@ -263,9 +358,11 @@ function searchParameterInstance(config, resource, code, searchParam) {
   addCode(instance, 'type', searchParam.type);
   add(instance, 'expression', searchParam.expression);
   addCode(instance, 'xpathUsage', 'normal');
-  add(instance, 'multipleOr', true);
-  add(instance, 'multipleAnd', true);
-  if (searchParam.type === 'date') addDateComparators(instance);
+  for (const name of ['multipleOr', 'multipleAnd']) {
+    add(instance, name, searchParam[name].value);
+    addExpectation(instance, `${name}.extension[0]`, searchParam[name].expectation);
+  }
+  addComparators(instance, searchParam.comparators);
 
   return instance;
 }

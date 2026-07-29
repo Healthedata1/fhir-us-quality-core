@@ -57,17 +57,6 @@ module.exports = {
       'search-system': 'MAY',
       'history-system': 'MAY'
     },
-    dateComparators: {
-      eq: 'MAY',
-      ne: 'MAY',
-      gt: 'SHALL',
-      ge: 'SHALL',
-      lt: 'SHALL',
-      le: 'SHALL',
-      sa: 'MAY',
-      eb: 'MAY',
-      ap: 'MAY'
-    },
     rationale: {
       temporalSearchParameters: [
         'authored',

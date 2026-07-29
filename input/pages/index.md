@@ -4,11 +4,24 @@
 
 {% include disclaimer.md %}
 
+{: .note-to-balloters}
+> US Quality Core currently provides guidance for implementing United States Core Data for Interoperability Plus (USCDI+ Quality) Draft Version 2 (V2). This guidance will be updated through the ballot reconciliation process when the final USCDI+ Quality V2 dataset is published.
+> [USCDI+ Quality Page](uscdiquality.html): Implementor feedback is requested on the proposed United States Core Data for Interoperability (USCDI+ Quality) mappings to US Quality Core and US Core profiles below. Specific feedback on the following elements are requested:  
+> - **Diagnostic Imaging: Diagnostic Imaging Reference:** We are seeking feedback on the level of detail ncessary for quality reporting. This element is currently mapped to the `DiagnosticReport` profile. Additional considered mappings to `DocumentReference.content.attachment.url` or `ImagingStudy.endpoint` were considered to semantically align with the USCDI+ Quality data element definition by identifying the location of the referenced document content, but feedback through the US Quality Core IG will help determine if these additional mappings should be added.
+> - **Encounter Information: Diagnosis Rank:** In QI-Core, information about principal diagnosis is represented using the `Claim` profile. In US Quality Core v1.0.0-ballot, support for the `Claim` profile is not required for conformance. We encourage the quality community to provide additional input on information needed to support quality measurement use cases for this USCDI+ Quality data element.
+> - **Encounter Information: Present on Admission:** In QI-Core, information about present on admission is represented using the `Claim` profile. In US Quality Core v1.0.0-ballot, support for the `Claim` profile is not required for conformance. We have reintroduced the Present on Admission extension for `Encounter.diagnosis` in this US Quality Core v1.0.0-ballot and it is (USCDI+ Quality) tagged.
+> - **Goals and Preferences: Patient Goals and SDOH Goals:** We are seeking feedback on the use of additional Goal elements (e.g., `Goal.target`) as it relates to this USCDI+ Quality data element and quality measure use cases.
+> - **Orders: Nutrition Order:** We are seeking feedback on whether US Quality Core should include mappings for Nutrition Order beyond `NutritionOrder.oralDiet` to also include `NutritionOrder.enteralFormula` and `NutritionOrder.supplement`. These elements align with the broader Nutrition Order definition which includes enteral feedings and nutritional supplements; however, their implementation support and need in quality reporting requires additional feedback.
+> - **Procedures: Procedures:** In QI-Core, information about principal procedure is represented using the `Claim` profile. In US Quality Core v1.0.0-ballot, support for the `Claim` profile is not required for conformance. Implementers may determine the appropriate implementation approach to support this USCDI+ Quality data element. We encourage the quality community to provide additional input on information needed to support quality measurement use cases for this USCDI+ Quality data element.
+> Specific feedback on the following profiles is also requested: 
+> - [Adverse Event Profile](StructureDefinition-us-quality-core-adverseevent.html): We are seeking feedback on how adverse event information is used in quality measures and made available through clinical data systems. Input will help determine the need for and appropriate representation of this data element in US Quality Core.
+> - [Task Profile](StructureDefinition-us-quality-core-task.html): We are seeking feedback on the scope and implementation requirements from supporting Task data elements. Implementers have noted that the Task profile is broad, and feedback is needed on how Task requirements can be represented clearly in quality measures and USCDI+ Quality.
+
+
 ### Summary
 {: #summary}
 
-The US Quality Core Implementation Guide provides guidance for implementing
-[USCDI+ Quality](https://uscdiplus.healthit.gov/uscdiplus) in FHIR to support
+The US Quality Core Implementation Guide provides guidance for implementing United States Core Data for Interoperability [(USCDI+ Quality)](https://uscdiplus.healthit.gov/uscdiplus) in FHIR to support
 standardized, interoperable representation and exchange of quality data for
 quality measurement and reporting programs. It defines profiles that derive from
 and extend the base [FHIR version R4](http://hl7.org/fhir/R4/index.html)

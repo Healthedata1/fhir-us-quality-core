@@ -8,7 +8,7 @@ Usage: #example
   * url = "http://hl7.org/fhir/StructureDefinition/event-recorded"
   * valueDateTime = "2014-12-12T18:01:10-08:00"
 * status = #not-done
-* statusReason = $sct#184081006 "Patient has moved away (finding)"
+* statusReason = $sct#107724000 "Patient transfer"
 * category = $communication-category#alert
   * text = "Alert"
 * medium = $v3-ParticipationMode#WRITTEN "written"

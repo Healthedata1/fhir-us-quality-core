@@ -1,9 +1,14 @@
 #!/usr/bin/env node
 
-const { GENERATED_DIR, GENERATED_FLAGS_PATH } = require('./lib/paths');
+const { generated, labels, local, paths } = require('./generator.config');
 const { assertNoSushiErrors, compileFsh, parseFsh, profileSourceFshFiles, sushi } = require('./lib/sushi');
 const { elementIdToFshPath, getOrSet, joinLines, jsonPathToFshPath, splitLines, urlTail } = require('./lib/text');
-const { ensureDir, read, readUscdiQualityData, write } = require('./lib/io');
+const {
+  ensureDir,
+  read,
+  readUscdiQualityDefinitions,
+  write
+} = require('./lib/io');
 const { generatedFshFile, ruleSetToFsh } = require('./lib/fsh-output');
 const { profileMaps } = require('./lib/profiles');
 const { assertAllDataElementsMapped } = require('./lib/uscdi');
@@ -13,23 +18,16 @@ const { fshrules, fshtypes } = sushi;
 const { CaretValueRule, InsertRule } = fshrules;
 const { RuleSet } = fshtypes;
 
-const GENERATED_PATH = GENERATED_FLAGS_PATH;
-const EXTENSION_URL =
-  'http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension';
-const EXTENSION_VALUE_CARET_PATH = `extension[${EXTENSION_URL}].valueBoolean`;
-const RULESET_PREFIX = 'GeneratedUSCDIQualityFlags';
-const INSERT_COMMENT =
-  '// Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.';
 const FSH_FILES = profileSourceFshFiles();
 
 function rulesetName(profileName) {
-  return `${RULESET_PREFIX}For${profileName}`;
+  return `${generated.uscdiQualityFlagsRuleSetPrefix}For${profileName}`;
 }
 
 function readMappings() {
   const flags = new Map();
   const sources = new Map();
-  const dataElements = readUscdiQualityData();
+  const dataElements = readUscdiQualityDefinitions();
 
   assertAllDataElementsMapped(dataElements);
 
@@ -58,14 +56,23 @@ function readMappings() {
 }
 
 function isGeneratedInsert(rule) {
-  return rule.constructorName === 'InsertRule' && rule.ruleSet?.startsWith(`${RULESET_PREFIX}For`);
+  return (
+    rule.constructorName === 'InsertRule' &&
+    rule.ruleSet?.startsWith(`${generated.uscdiQualityFlagsRuleSetPrefix}For`)
+  );
 }
 
 function stripGeneratedInsertLines(text) {
   const { lines, trailingNewline } = splitLines(text);
   const nextLines = lines.filter(line => {
-    if (line.trimEnd() === INSERT_COMMENT) return false;
-    if (line.trim().startsWith(`* insert ${RULESET_PREFIX}For`)) return false;
+    if (line.trimEnd() === generated.uscdiQualityFlagInsertComment) return false;
+    if (
+      line
+        .trim()
+        .startsWith(`* insert ${generated.uscdiQualityFlagsRuleSetPrefix}For`)
+    ) {
+      return false;
+    }
     return true;
   });
 
@@ -107,7 +114,11 @@ function assertGeneratedInsertsAreLast(profilesById, flags) {
     const lastRule = profile?.rules.at(-1);
     if (!lastRule || !isGeneratedInsert(lastRule) || lastRule.ruleSet !== rulesetName(profile.name)) {
       const profileName = profile?.name ?? id;
-      errors.push(`${profileName} must end with:\n${INSERT_COMMENT}\n${insertRule(profileName).toFSH()}`);
+      errors.push(
+        `${profileName} must end with:\n${generated.uscdiQualityFlagInsertComment}\n${insertRule(
+          profileName
+        ).toFSH()}`
+      );
     }
   }
 
@@ -236,11 +247,19 @@ function caretRule(pathValue, caretPath, value) {
 }
 
 function flaggedShort(short) {
-  return `(USCDI+ Quality) ${String(short).replace(/^\(USCDI\+ Quality\)\s*/, '')}`;
+  const prefix = `(${labels.uscdiQuality})`;
+  const value = String(short);
+  return `${prefix} ${
+    value.startsWith(prefix) ? value.slice(prefix.length).trimStart() : value
+  }`;
 }
 
-function buildRuleSets(flags, profilesById, profileData) {
+function buildRuleSets(flags, profilesById, profileData, igConfig) {
   const ruleSets = [];
+  const canonical = igConfig.canonical.replace(/\/$/, '');
+  const extensionUrl =
+    `${canonical}/StructureDefinition/${local.uscdiQualityExtensionId}`;
+  const extensionValueCaretPath = `extension[${extensionUrl}].valueBoolean`;
 
   for (const [id, paths] of flags.entries()) {
     if (!paths.length) continue;
@@ -250,7 +269,7 @@ function buildRuleSets(flags, profilesById, profileData) {
     const shorts = profileData.get(id).shorts;
 
     for (const fshPath of paths) {
-      ruleSet.rules.push(caretRule(fshPath, EXTENSION_VALUE_CARET_PATH, true));
+      ruleSet.rules.push(caretRule(fshPath, extensionValueCaretPath, true));
       ruleSet.rules.push(caretRule(fshPath, 'short', flaggedShort(shorts.get(fshPath))));
     }
 
@@ -263,17 +282,23 @@ function buildRuleSets(flags, profilesById, profileData) {
 function generatedFsh(ruleSets) {
   return generatedFshFile({
     scriptName: 'generate_flags.js',
-    inputPaths: ['data/uscdi_plus_quality.json'],
+    inputPaths: ['definitions/uscdi_plus_quality.json'],
     content: ruleSets.map(ruleSetToFsh).join('\n\n')
   });
 }
 
 function generatedRuleSetInsertHint(message) {
-  if (!message.includes(`RuleSet ${RULESET_PREFIX}For`)) return message;
+  if (
+    !message.includes(
+      `RuleSet ${generated.uscdiQualityFlagsRuleSetPrefix}For`
+    )
+  ) {
+    return message;
+  }
   return [
     message,
-    'This usually means a profile still contains a generated USCDI+ Quality RuleSet insert, but data/uscdi_plus_quality.json no longer has mappings for that profile.',
-    `If this profile no longer has any mappings, you may need to remove the generated insert and comment from the profile FSH:\n${INSERT_COMMENT}\n* insert ${RULESET_PREFIX}For...`
+    `This usually means a profile still contains a generated ${labels.uscdiQuality} RuleSet insert, but definitions/uscdi_plus_quality.json no longer has mappings for that profile.`,
+    `If this profile no longer has any mappings, you may need to remove the generated insert and comment from the profile FSH:\n${generated.uscdiQualityFlagInsertComment}\n* insert ${generated.uscdiQualityFlagsRuleSetPrefix}For...`
   ].join('\n');
 }
 
@@ -288,11 +313,12 @@ function assertNoGeneratedFlagValidationErrors(result) {
 }
 
 function writeOutputs(generated) {
-  ensureDir(GENERATED_DIR);
-  write(GENERATED_PATH, generated);
+  ensureDir(paths.generatedFshDir);
+  write(paths.generatedFlagsFile, generated);
 }
 
 async function main(log) {
+  const igConfig = sushi.utils.readConfig(paths.igRoot);
   const { cleanContents, profilesById, sourceProfilesById } = await log.step('Parsing authored FSH profiles', () => {
     const sourceDocuments = parseFsh(FSH_FILES);
     const nextCleanContents = profileContentsWithoutGeneratedInserts();
@@ -319,7 +345,7 @@ async function main(log) {
   );
 
   const generated = await log.step('Building generated USCDI+ Quality RuleSets', () =>
-    generatedFsh(buildRuleSets(flags, profilesById, profileData))
+    generatedFsh(buildRuleSets(flags, profilesById, profileData, igConfig))
   );
   await log.step('Validating generated RuleSets with SUSHI', async () => {
     const validation = await compileFsh(FSH_FILES, { extraInputs: [generated] });
@@ -329,7 +355,7 @@ async function main(log) {
   await log.step('Writing generated flags', () => writeOutputs(generated));
 
   return [
-    `Generated ${GENERATED_PATH}`,
+    `Generated ${paths.generatedFlagsFile}`,
     `Flagged profiles: ${[...flags.values()].filter(paths => paths.length > 0).length}`,
     `Flagged elements: ${[...flags.values()].reduce((total, paths) => total + paths.length, 0)}`
   ];

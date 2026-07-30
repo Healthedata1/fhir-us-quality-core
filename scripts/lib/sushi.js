@@ -15,7 +15,9 @@ try {
 const { sushiImport, utils } = sushi;
 utils.logger.level = 'error';
 
-const { FSH_DIR, GENERATED_DIR, IG_ROOT, path } = require('./paths');
+const path = require('node:path');
+
+const { paths } = require('../generator.config');
 const { read } = require('./io');
 
 function isInDirectory(file, dir) {
@@ -28,11 +30,11 @@ function isInDirectory(file, dir) {
 // `{ generated: 'exclude' }` so stale generated files cannot affect results.
 function fshFiles({ generated = 'include' } = {}) {
   return utils
-    .getFilesRecursive(FSH_DIR)
+    .getFilesRecursive(paths.fshDir)
     .filter(file => file.endsWith('.fsh'))
     .filter(file => {
       if (generated === 'include') return true;
-      const isGenerated = isInDirectory(file, GENERATED_DIR);
+      const isGenerated = isInDirectory(file, paths.generatedFshDir);
       return generated === 'only' ? isGenerated : !isGenerated;
     })
     .sort();
@@ -45,7 +47,7 @@ function sourceFshFiles() {
 // Profile-focused compiles do not need authored examples or CapabilityStatement
 // instances; excluding them avoids depending on generated RuleSet inserts.
 function profileSourceFshFiles() {
-  const instancesDir = path.join(FSH_DIR, 'instances');
+  const instancesDir = path.join(paths.fshDir, 'instances');
   return sourceFshFiles().filter(file => !isInDirectory(file, instancesDir));
 }
 
@@ -61,7 +63,7 @@ function fshInputs(files, overrides = new Map(), extraInputs = []) {
 
 async function compileFsh(files, { overrides = new Map(), extraInputs = [], snapshot = false } = {}) {
   const { sushiClient } = sushi;
-  const config = utils.readConfig(IG_ROOT);
+  const config = utils.readConfig(paths.igRoot);
   return sushiClient.fshToFhir(fshInputs(files, overrides, extraInputs), {
     canonical: config.canonical,
     version: config.version,
@@ -74,7 +76,7 @@ async function compileFsh(files, { overrides = new Map(), extraInputs = [], snap
 
 async function configuredFhirDefinitions() {
   const defs = await sushi.fhirdefs.createFHIRDefinitions();
-  await utils.loadExternalDependencies(defs, utils.readConfig(IG_ROOT));
+  await utils.loadExternalDependencies(defs, utils.readConfig(paths.igRoot));
   return defs;
 }
 

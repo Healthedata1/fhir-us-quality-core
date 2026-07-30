@@ -23,7 +23,7 @@ Description: "This value set defines the set of codes that can be used to indica
 * SNOMED_CT#224198000 "Delay in receiving benefits"
 * SNOMED_CT#242990004 "Drug not available for administration"
 * SNOMED_CT#266756008 "Medical care unavailable"
-* SNOMED_CT#270459005 "Patient on waiting list"
+* SNOMED_CT#308340000 "Waiting list status"
 * SNOMED_CT#309017000 "Referred to doctor"
 * SNOMED_CT#419808006 "Finding related to health insurance issues"
 * SNOMED_CT#424553001 "Uninsured medical expenses"

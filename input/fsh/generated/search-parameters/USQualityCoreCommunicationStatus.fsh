@@ -3,27 +3,27 @@
 // Source input: definitions/capabilities.json
 // See scripts/README.md for developer documentation.
 
-Instance: us-quality-core-procedure-status
+Instance: us-quality-core-communication-status
 InstanceOf: SearchParameter
 Usage: #definition
-* url = "http://hl7.org/fhir/us/quality-core/SearchParameter/us-quality-core-procedure-status"
+* url = "http://hl7.org/fhir/us/quality-core/SearchParameter/us-quality-core-communication-status"
 * version = "1.0.0"
-* name = "USQualityCoreProcedureStatus"
+* name = "USQualityCoreCommunicationStatus"
 * status = #active
 * date = "2026-06-30"
 * publisher = "HL7 International / Clinical Quality Information"
 * contact[0].name = "Clinical Quality Information WG"
 * contact[0].telecom[0].system = #url
 * contact[0].telecom[0].value = "http://www.hl7.org/Special/committees/cqi"
-* description = "US Quality Core Procedure status Search Parameter"
+* description = "US Quality Core Communication status Search Parameter"
 * code = #status
-* base[0] = #Procedure
+* base[0] = #Communication
 * type = #token
-* expression = "Procedure.status"
+* expression = "Communication.status"
 * xpathUsage = #normal
 * multipleOr = true
 * multipleOr.extension[0].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* multipleOr.extension[0].valueCode = #SHALL
+* multipleOr.extension[0].valueCode = #MAY
 * multipleAnd = true
 * multipleAnd.extension[0].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * multipleAnd.extension[0].valueCode = #MAY

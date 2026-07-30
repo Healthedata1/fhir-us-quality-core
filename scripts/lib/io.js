@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const { REST_DATA_PATH, USCDI_QUALITY_DATA_PATH } = require('./paths');
+const { paths } = require('../generator.config');
 
 function read(file) {
   return fs.readFileSync(file, 'utf8');
@@ -10,12 +10,12 @@ function readJson(file) {
   return JSON.parse(read(file));
 }
 
-function readUscdiQualityData() {
-  return readJson(USCDI_QUALITY_DATA_PATH);
+function readUscdiQualityDefinitions() {
+  return readJson(paths.uscdiQualityDefinitionsFile);
 }
 
-function readRestData() {
-  return readJson(REST_DATA_PATH);
+function readSearchCapabilities() {
+  return readJson(paths.searchCapabilitiesFile);
 }
 
 function write(file, text) {
@@ -34,8 +34,8 @@ module.exports = {
   fs,
   read,
   readJson,
-  readRestData,
-  readUscdiQualityData,
+  readSearchCapabilities,
+  readUscdiQualityDefinitions,
   write,
   writeJson,
   ensureDir

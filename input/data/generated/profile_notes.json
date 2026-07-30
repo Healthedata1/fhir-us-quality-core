@@ -97,6 +97,7 @@
     "usCore": null,
     "search": {
       "resource": "AdverseEvent",
+      "capabilityStatementAnchor": "AdverseEvent1-1",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -120,6 +121,77 @@
         {
           "name": "subject + recorded-date",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "subject"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`subject`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of AdverseEvent resources for USCDI+ Quality workflows.",
+          "statement": "searching for all AdverseEvent resources for a patient using the `subject` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/AdverseEvent?subject={Patient/}[id]",
+          "example": "GET [base]/AdverseEvent?subject=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "subject",
+            "event"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`subject` + `event`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of AdverseEvent resources filtered by event for USCDI+ Quality workflows.",
+          "statement": "searching for all AdverseEvent resources for a patient using the combination of the `subject` and `event` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `event` (e.g.`event={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/AdverseEvent?subject={Patient/}[id]&event={system|}[search_code]",
+          "example": "GET [base]/AdverseEvent?subject=Patient/example&event=http://snomed.info/sct|725119006"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "subject",
+            "recorded-date"
+          ],
+          "types": [
+            "reference",
+            "date"
+          ],
+          "label": "`subject` + `recorded-date`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of AdverseEvent resources filtered by recorded date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all AdverseEvent resources for a patient using the combination of the `subject` and `recorded-date` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for AND search on `recorded-date` (e.g.`recorded-date=[date]&recorded-date=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `recorded-date` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/AdverseEvent?subject={Patient/}[id]&recorded-date={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/AdverseEvent?subject=Patient/example&recorded-date=ge2020-01-01T00:00:00Z"
         }
       ]
     }
@@ -202,6 +274,7 @@
     },
     "search": {
       "resource": "AllergyIntolerance",
+      "capabilityStatementAnchor": "AllergyIntolerance1-2",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -209,7 +282,27 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_AllergyIntolerance).",
+          "rationale": "Supports patient-scoped retrieval of AllergyIntolerance resources for USCDI+ Quality workflows.",
+          "statement": "searching for all AllergyIntolerance resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/AllergyIntolerance?patient={Patient/}[id]",
+          "example": "GET [base]/AllergyIntolerance?patient=Patient/example"
+        }
+      ]
     }
   },
   "us-quality-core-careplan": {
@@ -302,6 +395,7 @@
     },
     "search": {
       "resource": "CarePlan",
+      "capabilityStatementAnchor": "CarePlan1-3",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -317,6 +411,32 @@
         {
           "name": "patient + category",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_CarePlan).",
+          "rationale": "Supports patient-scoped retrieval of CarePlan resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all CarePlan resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/CarePlan?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/CarePlan?patient=Patient/example&category=http://hl7.org/fhir/us/core/CodeSystem/careplan-category|assess-plan"
         }
       ]
     }
@@ -367,6 +487,7 @@
     },
     "search": {
       "resource": "CareTeam",
+      "capabilityStatementAnchor": "CareTeam1-4",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -382,6 +503,32 @@
         {
           "name": "patient + status",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_CareTeam).",
+          "rationale": "Supports patient-scoped retrieval of CareTeam resources filtered by status for status-sensitive quality workflows.",
+          "statement": "searching for all CareTeam resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/CareTeam?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/CareTeam?patient=Patient/example&status=active"
         }
       ]
     }
@@ -462,6 +609,7 @@
     "usCore": null,
     "search": {
       "resource": "Communication",
+      "capabilityStatementAnchor": "Communication1-5",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -471,12 +619,88 @@
         {
           "name": "topic",
           "expectation": "MAY"
+        },
+        {
+          "name": "status",
+          "expectation": "MAY"
         }
       ],
       "searchCombinations": [
         {
           "name": "subject + topic",
           "expectation": "SHALL"
+        },
+        {
+          "name": "subject + status",
+          "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "subject"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`subject`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Communication resources for a patient using the `subject` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Communication?subject={Patient/}[id]",
+          "example": "GET [base]/Communication?subject=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "subject",
+            "topic"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`subject` + `topic`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources filtered by topic for USCDI+ Quality workflows.",
+          "statement": "searching for all Communication resources for a patient using the combination of the `subject` and `topic` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `topic` (e.g.`topic={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Communication?subject={Patient/}[id]&topic={system|}[search_code]",
+          "example": "GET [base]/Communication?subject=Patient/example&topic=http://terminology.hl7.org/CodeSystem/communication-topic|progress-update"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "subject",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`subject` + `status`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Communication resources for a patient using the combination of the `subject` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Communication?subject={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Communication?subject=Patient/example&status=completed"
         }
       ]
     }
@@ -557,6 +781,7 @@
     "usCore": null,
     "search": {
       "resource": "Communication",
+      "capabilityStatementAnchor": "Communication1-5",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -566,12 +791,88 @@
         {
           "name": "topic",
           "expectation": "MAY"
+        },
+        {
+          "name": "status",
+          "expectation": "MAY"
         }
       ],
       "searchCombinations": [
         {
           "name": "subject + topic",
           "expectation": "SHALL"
+        },
+        {
+          "name": "subject + status",
+          "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "subject"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`subject`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Communication resources for a patient using the `subject` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Communication?subject={Patient/}[id]",
+          "example": "GET [base]/Communication?subject=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "subject",
+            "topic"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`subject` + `topic`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources filtered by topic for USCDI+ Quality workflows.",
+          "statement": "searching for all Communication resources for a patient using the combination of the `subject` and `topic` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `topic` (e.g.`topic={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Communication?subject={Patient/}[id]&topic={system|}[search_code]",
+          "example": "GET [base]/Communication?subject=Patient/example&topic=http://terminology.hl7.org/CodeSystem/communication-topic|progress-update"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "subject",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`subject` + `status`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Communication resources for a patient using the combination of the `subject` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Communication?subject={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Communication?subject=Patient/example&status=completed"
         }
       ]
     }
@@ -641,6 +942,7 @@
     "usCore": null,
     "search": {
       "resource": "Communication",
+      "capabilityStatementAnchor": "Communication1-5",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -650,12 +952,88 @@
         {
           "name": "topic",
           "expectation": "MAY"
+        },
+        {
+          "name": "status",
+          "expectation": "MAY"
         }
       ],
       "searchCombinations": [
         {
           "name": "subject + topic",
           "expectation": "SHALL"
+        },
+        {
+          "name": "subject + status",
+          "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "subject"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`subject`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Communication resources for a patient using the `subject` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Communication?subject={Patient/}[id]",
+          "example": "GET [base]/Communication?subject=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "subject",
+            "topic"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`subject` + `topic`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources filtered by topic for USCDI+ Quality workflows.",
+          "statement": "searching for all Communication resources for a patient using the combination of the `subject` and `topic` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `topic` (e.g.`topic={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Communication?subject={Patient/}[id]&topic={system|}[search_code]",
+          "example": "GET [base]/Communication?subject=Patient/example&topic=http://terminology.hl7.org/CodeSystem/communication-topic|progress-update"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "subject",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`subject` + `status`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of Communication resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Communication resources for a patient using the combination of the `subject` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Communication?subject={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Communication?subject=Patient/example&status=not-done"
         }
       ]
     }
@@ -728,6 +1106,7 @@
     },
     "search": {
       "resource": "Condition",
+      "capabilityStatementAnchor": "Condition1-6",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -751,6 +1130,74 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Condition).",
+          "rationale": "Supports patient-scoped retrieval of Condition resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Condition resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Condition?patient={Patient/}[id]",
+          "example": "GET [base]/Condition?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Condition).",
+          "rationale": "Supports patient-scoped retrieval of Condition resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all Condition resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Condition?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/Condition?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/condition-category|encounter-diagnosis"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Condition); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Condition resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all Condition resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Condition?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/Condition?patient=Patient/example&code=http://snomed.info/sct|74400008"
         }
       ]
     }
@@ -906,6 +1353,7 @@
     },
     "search": {
       "resource": "Condition",
+      "capabilityStatementAnchor": "Condition1-6",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -929,6 +1377,74 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Condition).",
+          "rationale": "Supports patient-scoped retrieval of Condition resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Condition resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Condition?patient={Patient/}[id]",
+          "example": "GET [base]/Condition?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Condition).",
+          "rationale": "Supports patient-scoped retrieval of Condition resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all Condition resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Condition?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/Condition?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/condition-category|encounter-diagnosis"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Condition); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Condition resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all Condition resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Condition?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/Condition?patient=Patient/example&code=http://snomed.info/sct|74400008"
         }
       ]
     }
@@ -1143,6 +1659,7 @@
     },
     "search": {
       "resource": "Coverage",
+      "capabilityStatementAnchor": "Coverage1-7",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -1150,7 +1667,27 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Coverage).",
+          "rationale": "Supports patient-scoped retrieval of Coverage resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Coverage resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Coverage?patient={Patient/}[id]",
+          "example": "GET [base]/Coverage?patient=Patient/example"
+        }
+      ]
     }
   },
   "us-quality-core-deviceprohibited": {
@@ -1229,6 +1766,7 @@
     "usCore": null,
     "search": {
       "resource": "DeviceRequest",
+      "capabilityStatementAnchor": "DeviceRequest1-9",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -1252,6 +1790,74 @@
         {
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources for USCDI+ Quality workflows.",
+          "statement": "searching for all DeviceRequest resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/DeviceRequest?patient={Patient/}[id]",
+          "example": "GET [base]/DeviceRequest?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all DeviceRequest resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/DeviceRequest?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/DeviceRequest?patient=Patient/example&code=http://snomed.info/sct|86184003"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "do-not-perform"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `do-not-perform`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by a do-not-perform indicator to support negation workflows.",
+          "statement": "searching for all DeviceRequest resources for a patient using the combination of the `patient` and `do-not-perform` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `do-not-perform` (e.g.`do-not-perform=[true|false],[true|false],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/DeviceRequest?patient={Patient/}[id]&do-not-perform=[true|false]",
+          "example": "GET [base]/DeviceRequest?patient=Patient/example&do-not-perform=true"
         }
       ]
     }
@@ -1374,6 +1980,7 @@
     "usCore": null,
     "search": {
       "resource": "DeviceRequest",
+      "capabilityStatementAnchor": "DeviceRequest1-9",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -1397,6 +2004,74 @@
         {
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources for USCDI+ Quality workflows.",
+          "statement": "searching for all DeviceRequest resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/DeviceRequest?patient={Patient/}[id]",
+          "example": "GET [base]/DeviceRequest?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all DeviceRequest resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/DeviceRequest?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/DeviceRequest?patient=Patient/example&code=http://snomed.info/sct|86184003"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "do-not-perform"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `do-not-perform`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by a do-not-perform indicator to support negation workflows.",
+          "statement": "searching for all DeviceRequest resources for a patient using the combination of the `patient` and `do-not-perform` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `do-not-perform` (e.g.`do-not-perform=[true|false],[true|false],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/DeviceRequest?patient={Patient/}[id]&do-not-perform=[true|false]",
+          "example": "GET [base]/DeviceRequest?patient=Patient/example&do-not-perform=true"
         }
       ]
     }
@@ -1488,6 +2163,7 @@
     "usCore": null,
     "search": {
       "resource": "DeviceRequest",
+      "capabilityStatementAnchor": "DeviceRequest1-9",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -1511,6 +2187,74 @@
         {
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources for USCDI+ Quality workflows.",
+          "statement": "searching for all DeviceRequest resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/DeviceRequest?patient={Patient/}[id]",
+          "example": "GET [base]/DeviceRequest?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all DeviceRequest resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/DeviceRequest?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/DeviceRequest?patient=Patient/example&code=http://snomed.info/sct|86184003"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "do-not-perform"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `do-not-perform`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of DeviceRequest resources filtered by a do-not-perform indicator to support negation workflows.",
+          "statement": "searching for all DeviceRequest resources for a patient using the combination of the `patient` and `do-not-perform` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `do-not-perform` (e.g.`do-not-perform=[true|false],[true|false],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/DeviceRequest?patient={Patient/}[id]&do-not-perform=[true|false]",
+          "example": "GET [base]/DeviceRequest?patient=Patient/example&do-not-perform=false"
         }
       ]
     }
@@ -1605,6 +2349,7 @@
     },
     "search": {
       "resource": "DiagnosticReport",
+      "capabilityStatementAnchor": "DiagnosticReport1-10",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -1636,6 +2381,106 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_DiagnosticReport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources for USCDI+ Quality workflows.",
+          "statement": "searching for all DiagnosticReport resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/DiagnosticReport?patient={Patient/}[id]",
+          "example": "GET [base]/DiagnosticReport?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_DiagnosticReport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all DiagnosticReport resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/DiagnosticReport?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/DiagnosticReport?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/v2-0074|LAB"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "date"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "date"
+          ],
+          "label": "`patient` + `category` + `date`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_DiagnosticReport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by category and date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all DiagnosticReport resources for a patient using the combination of the `patient`, `category`, and `date` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including optional support for AND search on `date` (e.g.`date=[date]&date=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `date` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference), [how to search by token](https://hl7.org/fhir/R4/search.html#token), and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/DiagnosticReport?patient={Patient/}[id]&category={system|}[search_code]&date={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/DiagnosticReport?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/v2-0074|LAB&date=ge2020-01-01T00:00:00Z"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_DiagnosticReport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all DiagnosticReport resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/DiagnosticReport?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/DiagnosticReport?patient=Patient/example&code=http://loinc.org|58410-2"
         }
       ]
     }
@@ -1739,6 +2584,7 @@
     },
     "search": {
       "resource": "DiagnosticReport",
+      "capabilityStatementAnchor": "DiagnosticReport1-10",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -1770,6 +2616,106 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_DiagnosticReport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources for USCDI+ Quality workflows.",
+          "statement": "searching for all DiagnosticReport resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/DiagnosticReport?patient={Patient/}[id]",
+          "example": "GET [base]/DiagnosticReport?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_DiagnosticReport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all DiagnosticReport resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/DiagnosticReport?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/DiagnosticReport?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/v2-0074|LAB"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "date"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "date"
+          ],
+          "label": "`patient` + `category` + `date`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_DiagnosticReport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by category and date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all DiagnosticReport resources for a patient using the combination of the `patient`, `category`, and `date` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including optional support for AND search on `date` (e.g.`date=[date]&date=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `date` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference), [how to search by token](https://hl7.org/fhir/R4/search.html#token), and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/DiagnosticReport?patient={Patient/}[id]&category={system|}[search_code]&date={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/DiagnosticReport?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/v2-0074|LAB&date=ge2020-01-01T00:00:00Z"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_DiagnosticReport).",
+          "rationale": "Supports patient-scoped retrieval of DiagnosticReport resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all DiagnosticReport resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/DiagnosticReport?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/DiagnosticReport?patient=Patient/example&code=http://loinc.org|58410-2"
         }
       ]
     }
@@ -1952,6 +2898,7 @@
     },
     "search": {
       "resource": "Encounter",
+      "capabilityStatementAnchor": "Encounter1-12",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -1979,6 +2926,99 @@
         {
           "name": "patient + date",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "_id"
+          ],
+          "types": [
+            "token"
+          ],
+          "label": "`_id`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Encounter).",
+          "rationale": "Supports retrieval of a known Encounter resource by id.",
+          "statement": "searching for a Encounter resource by id using the `_id` search parameter",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `_id` (e.g.`_id=[id],[id],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Encounter?_id=[id]",
+          "example": "GET [base]/Encounter?_id=example"
+        },
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Encounter).",
+          "rationale": "Supports patient-scoped retrieval of Encounter resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Encounter resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Encounter?patient={Patient/}[id]",
+          "example": "GET [base]/Encounter?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "type"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `type`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Encounter); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Encounter resources filtered by type for USCDI+ Quality workflows.",
+          "statement": "searching for all Encounter resources for a patient using the combination of the `patient` and `type` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `type` (e.g.`type={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Encounter?patient={Patient/}[id]&type={system|}[search_code]",
+          "example": "GET [base]/Encounter?patient=Patient/example&type=http://www.ama-assn.org/go/cpt|99223"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "date"
+          ],
+          "types": [
+            "reference",
+            "date"
+          ],
+          "label": "`patient` + `date`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Encounter).",
+          "rationale": "Supports patient-scoped retrieval of Encounter resources filtered by date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all Encounter resources for a patient using the combination of the `patient` and `date` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for AND search on `date` (e.g.`date=[date]&date=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `date` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/Encounter?patient={Patient/}[id]&date={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/Encounter?patient=Patient/example&date=ge2020-01-01T00:00:00Z"
         }
       ]
     }
@@ -2012,6 +3052,7 @@
     },
     "search": {
       "resource": "Goal",
+      "capabilityStatementAnchor": "Goal1-14",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -2019,7 +3060,27 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Goal).",
+          "rationale": "Supports patient-scoped retrieval of Goal resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Goal resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Goal?patient={Patient/}[id]",
+          "example": "GET [base]/Goal?patient=Patient/example"
+        }
+      ]
     }
   },
   "us-quality-core-imagingstudy": {
@@ -2065,6 +3126,7 @@
     "usCore": null,
     "search": {
       "resource": "ImagingStudy",
+      "capabilityStatementAnchor": "ImagingStudy1-15",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -2072,7 +3134,27 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "subject"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`subject`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports subject-scoped retrieval of ImagingStudy resources for USCDI+ Quality workflows.",
+          "statement": "searching for all ImagingStudy resources for a patient using the `subject` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/ImagingStudy?subject={Patient/}[id]",
+          "example": "GET [base]/ImagingStudy?subject=Patient/example"
+        }
+      ]
     }
   },
   "us-quality-core-immunization": {
@@ -2159,6 +3241,7 @@
     },
     "search": {
       "resource": "Immunization",
+      "capabilityStatementAnchor": "Immunization1-16",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -2174,6 +3257,50 @@
         {
           "name": "patient + status",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Immunization).",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Immunization resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Immunization?patient={Patient/}[id]",
+          "example": "GET [base]/Immunization?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Immunization); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Immunization resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Immunization?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Immunization?patient=Patient/example&status=completed"
         }
       ]
     }
@@ -2273,6 +3400,7 @@
     },
     "search": {
       "resource": "Immunization",
+      "capabilityStatementAnchor": "Immunization1-16",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -2288,6 +3416,50 @@
         {
           "name": "patient + status",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Immunization).",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Immunization resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Immunization?patient={Patient/}[id]",
+          "example": "GET [base]/Immunization?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Immunization); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Immunization resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Immunization?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Immunization?patient=Patient/example&status=completed"
         }
       ]
     }
@@ -2371,6 +3543,7 @@
     },
     "search": {
       "resource": "Immunization",
+      "capabilityStatementAnchor": "Immunization1-16",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -2386,6 +3559,50 @@
         {
           "name": "patient + status",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Immunization).",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Immunization resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Immunization?patient={Patient/}[id]",
+          "example": "GET [base]/Immunization?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Immunization); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Immunization resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Immunization resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Immunization?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Immunization?patient=Patient/example&status=not-done"
         }
       ]
     }
@@ -2447,9 +3664,11 @@
     },
     "search": {
       "resource": "Location",
+      "capabilityStatementAnchor": "Location1-17",
       "hasSearchParameters": false,
       "searchParams": [],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": []
     }
   },
   "us-quality-core-medication": {
@@ -2476,6 +3695,7 @@
     },
     "search": {
       "resource": "Medication",
+      "capabilityStatementAnchor": "Medication1-18",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -2483,7 +3703,31 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "code"
+          ],
+          "types": [
+            "token"
+          ],
+          "label": "`code`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports retrieval of Medication resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all Medication resources using the `code` search parameter",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Medication?code={system|}[search_code]",
+          "example": "GET [base]/Medication?code=http://www.nlm.nih.gov/research/umls/rxnorm|1594663"
+        }
+      ]
     }
   },
   "us-quality-core-medicationadministration": {
@@ -2599,6 +3843,7 @@
     "usCore": null,
     "search": {
       "resource": "MedicationAdministration",
+      "capabilityStatementAnchor": "MedicationAdministration1-19",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -2630,6 +3875,101 @@
         {
           "name": "patient + effective-time",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example&status=completed"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example&code=http://www.nlm.nih.gov/research/umls/rxnorm|1594663"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "effective-time"
+          ],
+          "types": [
+            "reference",
+            "date"
+          ],
+          "label": "`patient` + `effective-time`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by effective time so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the combination of the `patient` and `effective-time` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for AND search on `effective-time` (e.g.`effective-time=[date]&effective-time=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `effective-time` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]&effective-time={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example&effective-time=ge2020-01-01T00:00:00Z"
         }
       ]
     }
@@ -2747,6 +4087,7 @@
     "usCore": null,
     "search": {
       "resource": "MedicationAdministration",
+      "capabilityStatementAnchor": "MedicationAdministration1-19",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -2778,6 +4119,101 @@
         {
           "name": "patient + effective-time",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example&status=completed"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example&code=http://www.nlm.nih.gov/research/umls/rxnorm|1594663"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "effective-time"
+          ],
+          "types": [
+            "reference",
+            "date"
+          ],
+          "label": "`patient` + `effective-time`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by effective time so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the combination of the `patient` and `effective-time` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for AND search on `effective-time` (e.g.`effective-time=[date]&effective-time=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `effective-time` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]&effective-time={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example&effective-time=ge2020-01-01T00:00:00Z"
         }
       ]
     }
@@ -2884,6 +4320,7 @@
     "usCore": null,
     "search": {
       "resource": "MedicationAdministration",
+      "capabilityStatementAnchor": "MedicationAdministration1-19",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -2915,6 +4352,101 @@
         {
           "name": "patient + effective-time",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example&status=not-done"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example&code=http://www.nlm.nih.gov/research/umls/rxnorm|1594663"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "effective-time"
+          ],
+          "types": [
+            "reference",
+            "date"
+          ],
+          "label": "`patient` + `effective-time`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationAdministration resources filtered by effective time so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all MedicationAdministration resources for a patient using the combination of the `patient` and `effective-time` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for AND search on `effective-time` (e.g.`effective-time=[date]&effective-time=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `effective-time` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/MedicationAdministration?patient={Patient/}[id]&effective-time={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/MedicationAdministration?patient=Patient/example&effective-time=ge2020-01-01T00:00:00Z"
         }
       ]
     }
@@ -3047,6 +4579,7 @@
     },
     "search": {
       "resource": "MedicationDispense",
+      "capabilityStatementAnchor": "MedicationDispense1-20",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -3062,6 +4595,50 @@
         {
           "name": "patient + status",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_MedicationDispense).",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationDispense resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/MedicationDispense?patient={Patient/}[id]",
+          "example": "GET [base]/MedicationDispense?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_MedicationDispense); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all MedicationDispense resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationDispense?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/MedicationDispense?patient=Patient/example&status=completed"
         }
       ]
     }
@@ -3150,6 +4727,7 @@
     },
     "search": {
       "resource": "MedicationDispense",
+      "capabilityStatementAnchor": "MedicationDispense1-20",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -3165,6 +4743,50 @@
         {
           "name": "patient + status",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_MedicationDispense).",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationDispense resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/MedicationDispense?patient={Patient/}[id]",
+          "example": "GET [base]/MedicationDispense?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_MedicationDispense); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all MedicationDispense resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationDispense?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/MedicationDispense?patient=Patient/example&status=declined"
         }
       ]
     }
@@ -3308,6 +4930,7 @@
     },
     "search": {
       "resource": "MedicationDispense",
+      "capabilityStatementAnchor": "MedicationDispense1-20",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -3323,6 +4946,50 @@
         {
           "name": "patient + status",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_MedicationDispense).",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationDispense resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/MedicationDispense?patient={Patient/}[id]",
+          "example": "GET [base]/MedicationDispense?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_MedicationDispense); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of MedicationDispense resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all MedicationDispense resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationDispense?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/MedicationDispense?patient=Patient/example&status=completed"
         }
       ]
     }
@@ -3476,6 +5143,7 @@
     },
     "search": {
       "resource": "MedicationRequest",
+      "capabilityStatementAnchor": "MedicationRequest1-21",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -3499,6 +5167,61 @@
         {
           "name": "patient + intent",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "intent",
+            "do-not-perform"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "token"
+          ],
+          "label": "`patient` + `intent` + `do-not-perform`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent and a do-not-perform indicator to support negation workflows.",
+          "statement": "searching for all MedicationRequest resources for a patient using the combination of the `patient`, `intent`, and `do-not-perform` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `intent` (e.g.`intent=[intent],[intent],...`)"
+            },
+            {
+              "text": "Including optional support for OR search on `do-not-perform` (e.g.`do-not-perform=[true|false],[true|false],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationRequest?patient={Patient/}[id]&intent=[intent]&do-not-perform=[true|false]",
+          "example": "GET [base]/MedicationRequest?patient=Patient/example&intent=order&do-not-perform=true"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "intent"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `intent`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_MedicationRequest).",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationRequest resources for a patient using the combination of the `patient` and `intent` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `intent` (e.g.`intent=[intent],[intent],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationRequest?patient={Patient/}[id]&intent=[intent]",
+          "example": "GET [base]/MedicationRequest?patient=Patient/example&intent=order"
         }
       ]
     }
@@ -3849,6 +5572,7 @@
     },
     "search": {
       "resource": "MedicationRequest",
+      "capabilityStatementAnchor": "MedicationRequest1-21",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -3872,6 +5596,61 @@
         {
           "name": "patient + intent",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "intent",
+            "do-not-perform"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "token"
+          ],
+          "label": "`patient` + `intent` + `do-not-perform`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent and a do-not-perform indicator to support negation workflows.",
+          "statement": "searching for all MedicationRequest resources for a patient using the combination of the `patient`, `intent`, and `do-not-perform` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `intent` (e.g.`intent=[intent],[intent],...`)"
+            },
+            {
+              "text": "Including optional support for OR search on `do-not-perform` (e.g.`do-not-perform=[true|false],[true|false],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationRequest?patient={Patient/}[id]&intent=[intent]&do-not-perform=[true|false]",
+          "example": "GET [base]/MedicationRequest?patient=Patient/example&intent=order&do-not-perform=true"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "intent"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `intent`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_MedicationRequest).",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationRequest resources for a patient using the combination of the `patient` and `intent` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `intent` (e.g.`intent=[intent],[intent],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationRequest?patient={Patient/}[id]&intent=[intent]",
+          "example": "GET [base]/MedicationRequest?patient=Patient/example&intent=order"
         }
       ]
     }
@@ -4244,6 +6023,7 @@
     },
     "search": {
       "resource": "MedicationRequest",
+      "capabilityStatementAnchor": "MedicationRequest1-21",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -4267,6 +6047,61 @@
         {
           "name": "patient + intent",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "intent",
+            "do-not-perform"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "token"
+          ],
+          "label": "`patient` + `intent` + `do-not-perform`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent and a do-not-perform indicator to support negation workflows.",
+          "statement": "searching for all MedicationRequest resources for a patient using the combination of the `patient`, `intent`, and `do-not-perform` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `intent` (e.g.`intent=[intent],[intent],...`)"
+            },
+            {
+              "text": "Including optional support for OR search on `do-not-perform` (e.g.`do-not-perform=[true|false],[true|false],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationRequest?patient={Patient/}[id]&intent=[intent]&do-not-perform=[true|false]",
+          "example": "GET [base]/MedicationRequest?patient=Patient/example&intent=order&do-not-perform=false"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "intent"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `intent`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_MedicationRequest).",
+          "rationale": "Supports patient-scoped retrieval of MedicationRequest resources filtered by intent for USCDI+ Quality workflows.",
+          "statement": "searching for all MedicationRequest resources for a patient using the combination of the `patient` and `intent` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `intent` (e.g.`intent=[intent],[intent],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/MedicationRequest?patient={Patient/}[id]&intent=[intent]",
+          "example": "GET [base]/MedicationRequest?patient=Patient/example&intent=order"
         }
       ]
     }
@@ -4413,6 +6248,7 @@
     "usCore": null,
     "search": {
       "resource": "NutritionOrder",
+      "capabilityStatementAnchor": "NutritionOrder1-22",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -4420,7 +6256,27 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of NutritionOrder resources for USCDI+ Quality workflows.",
+          "statement": "searching for all NutritionOrder resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/NutritionOrder?patient={Patient/}[id]",
+          "example": "GET [base]/NutritionOrder?patient=Patient/example"
+        }
+      ]
     }
   },
   "us-quality-core-observation-clinical-result": {
@@ -4479,6 +6335,7 @@
     },
     "search": {
       "resource": "Observation",
+      "capabilityStatementAnchor": "Observation1-23",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -4518,6 +6375,117 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "token"
+          ],
+          "label": "`patient` + `category` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and status for status-sensitive quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient`, `category`, and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]&status=[status]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam&status=final"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "date"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "date"
+          ],
+          "label": "`patient` + `category` + `date`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient`, `category`, and `date` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including optional support for AND search on `date` (e.g.`date=[date]&date=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `date` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference), [how to search by token](https://hl7.org/fhir/R4/search.html#token), and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]&date={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam&date=ge2020-01-01T00:00:00Z"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/Observation?patient=Patient/example&code=http://loinc.org|8884-9"
         }
       ]
     }
@@ -4670,6 +6638,7 @@
     },
     "search": {
       "resource": "Observation",
+      "capabilityStatementAnchor": "Observation1-23",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -4709,6 +6678,117 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "token"
+          ],
+          "label": "`patient` + `category` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and status for status-sensitive quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient`, `category`, and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]&status=[status]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam&status=final"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "date"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "date"
+          ],
+          "label": "`patient` + `category` + `date`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient`, `category`, and `date` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including optional support for AND search on `date` (e.g.`date=[date]&date=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `date` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference), [how to search by token](https://hl7.org/fhir/R4/search.html#token), and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]&date={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam&date=ge2020-01-01T00:00:00Z"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/Observation?patient=Patient/example&code=http://loinc.org|8884-9"
         }
       ]
     }
@@ -4941,6 +7021,7 @@
     },
     "search": {
       "resource": "Observation",
+      "capabilityStatementAnchor": "Observation1-23",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -4981,6 +7062,117 @@
           "name": "patient + code",
           "expectation": "SHALL"
         }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "token"
+          ],
+          "label": "`patient` + `category` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and status for status-sensitive quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient`, `category`, and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]&status=[status]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam&status=final"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "date"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "date"
+          ],
+          "label": "`patient` + `category` + `date`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient`, `category`, and `date` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including optional support for AND search on `date` (e.g.`date=[date]&date=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `date` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference), [how to search by token](https://hl7.org/fhir/R4/search.html#token), and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]&date={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam&date=ge2020-01-01T00:00:00Z"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/Observation?patient=Patient/example&code=http://loinc.org|8884-9"
+        }
       ]
     }
   },
@@ -5019,9 +7211,11 @@
     },
     "search": {
       "resource": "Organization",
+      "capabilityStatementAnchor": "Organization1-24",
       "hasSearchParameters": false,
       "searchParams": [],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": []
     }
   },
   "us-quality-core-patient": {
@@ -5481,6 +7675,7 @@
     },
     "search": {
       "resource": "Patient",
+      "capabilityStatementAnchor": "Patient1-25",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -5488,7 +7683,31 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "_id"
+          ],
+          "types": [
+            "token"
+          ],
+          "label": "`_id`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Patient).",
+          "rationale": "Supports retrieval of a known Patient resource by id.",
+          "statement": "searching for a Patient resource by id using the `_id` search parameter",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `_id` (e.g.`_id=[id],[id],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Patient?_id=[id]",
+          "example": "GET [base]/Patient?_id=example"
+        }
+      ]
     }
   },
   "us-quality-core-practitioner": {
@@ -5713,9 +7932,11 @@
     },
     "search": {
       "resource": "Practitioner",
+      "capabilityStatementAnchor": "Practitioner1-26",
       "hasSearchParameters": false,
       "searchParams": [],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": []
     }
   },
   "us-quality-core-practitionerrole": {
@@ -5841,9 +8062,11 @@
     },
     "search": {
       "resource": "PractitionerRole",
+      "capabilityStatementAnchor": "PractitionerRole1-27",
       "hasSearchParameters": false,
       "searchParams": [],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": []
     }
   },
   "us-quality-core-procedure": {
@@ -5961,6 +8184,7 @@
     },
     "search": {
       "resource": "Procedure",
+      "capabilityStatementAnchor": "Procedure1-28",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -5984,6 +8208,77 @@
         {
           "name": "patient + date",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Procedure resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Procedure?patient={Patient/}[id]",
+          "example": "GET [base]/Procedure?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Procedure); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Procedure resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Procedure?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Procedure?patient=Patient/example&status=completed"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "date"
+          ],
+          "types": [
+            "reference",
+            "date"
+          ],
+          "label": "`patient` + `date`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all Procedure resources for a patient using the combination of the `patient` and `date` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for AND search on `date` (e.g.`date=[date]&date=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `date` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/Procedure?patient={Patient/}[id]&date={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/Procedure?patient=Patient/example&date=ge2020-01-01T00:00:00Z"
         }
       ]
     }
@@ -6054,7 +8349,7 @@
       },
       {
         "path": "performer.actor",
-        "short": "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: The reference to the practitioner",
+        "short": "The reference to the practitioner",
         "dataElements": [
           {
             "class": "Provenance",
@@ -6125,6 +8420,7 @@
     },
     "search": {
       "resource": "Procedure",
+      "capabilityStatementAnchor": "Procedure1-28",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -6148,6 +8444,77 @@
         {
           "name": "patient + date",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Procedure resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Procedure?patient={Patient/}[id]",
+          "example": "GET [base]/Procedure?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Procedure); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Procedure resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Procedure?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Procedure?patient=Patient/example&status=completed"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "date"
+          ],
+          "types": [
+            "reference",
+            "date"
+          ],
+          "label": "`patient` + `date`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all Procedure resources for a patient using the combination of the `patient` and `date` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for AND search on `date` (e.g.`date=[date]&date=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `date` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/Procedure?patient={Patient/}[id]&date={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/Procedure?patient=Patient/example&date=ge2020-01-01T00:00:00Z"
         }
       ]
     }
@@ -6203,7 +8570,7 @@
       },
       {
         "path": "performer.actor",
-        "short": "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: The reference to the practitioner",
+        "short": "The reference to the practitioner",
         "dataElements": [
           {
             "class": "Provenance",
@@ -6289,6 +8656,7 @@
     },
     "search": {
       "resource": "Procedure",
+      "capabilityStatementAnchor": "Procedure1-28",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -6312,6 +8680,77 @@
         {
           "name": "patient + date",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Procedure resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Procedure?patient={Patient/}[id]",
+          "example": "GET [base]/Procedure?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Procedure); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Procedure resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Procedure?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Procedure?patient=Patient/example&status=not-done"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "date"
+          ],
+          "types": [
+            "reference",
+            "date"
+          ],
+          "label": "`patient` + `date`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Procedure).",
+          "rationale": "Supports patient-scoped retrieval of Procedure resources filtered by date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all Procedure resources for a patient using the combination of the `patient` and `date` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for AND search on `date` (e.g.`date=[date]&date=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `date` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/Procedure?patient={Patient/}[id]&date={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/Procedure?patient=Patient/example&date=ge2020-01-01T00:00:00Z"
         }
       ]
     }
@@ -6493,6 +8932,7 @@
     },
     "search": {
       "resource": "QuestionnaireResponse",
+      "capabilityStatementAnchor": "QuestionnaireResponse1-30",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -6508,6 +8948,46 @@
         {
           "name": "patient + questionnaire",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_QuestionnaireResponse).",
+          "rationale": "Supports patient-scoped retrieval of QuestionnaireResponse resources for USCDI+ Quality workflows.",
+          "statement": "searching for all QuestionnaireResponse resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/QuestionnaireResponse?patient={Patient/}[id]",
+          "example": "GET [base]/QuestionnaireResponse?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "questionnaire"
+          ],
+          "types": [
+            "reference",
+            "reference"
+          ],
+          "label": "`patient` + `questionnaire`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_QuestionnaireResponse); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of QuestionnaireResponse resources filtered by questionnaire for USCDI+ Quality workflows.",
+          "statement": "searching for all QuestionnaireResponse resources for a patient using the combination of the `patient` and `questionnaire` search parameters",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/QuestionnaireResponse?patient={Patient/}[id]&questionnaire={Questionnaire/}[id]",
+          "example": "GET [base]/QuestionnaireResponse?patient=Patient/example&questionnaire=http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-PHQ9"
         }
       ]
     }
@@ -6579,6 +9059,7 @@
     },
     "search": {
       "resource": "RelatedPerson",
+      "capabilityStatementAnchor": "RelatedPerson1-31",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -6590,7 +9071,49 @@
           "expectation": "SHALL"
         }
       ],
-      "searchCombinations": []
+      "searchCombinations": [],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "_id"
+          ],
+          "types": [
+            "token"
+          ],
+          "label": "`_id`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_RelatedPerson).",
+          "rationale": "Supports retrieval of a known RelatedPerson resource by id.",
+          "statement": "searching for a RelatedPerson resource by id using the `_id` search parameter",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `_id` (e.g.`_id=[id],[id],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/RelatedPerson?_id=[id]",
+          "example": "GET [base]/RelatedPerson?_id=example"
+        },
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_RelatedPerson); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of RelatedPerson resources for USCDI+ Quality workflows.",
+          "statement": "searching for all RelatedPerson resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/RelatedPerson?patient={Patient/}[id]",
+          "example": "GET [base]/RelatedPerson?patient=Patient/example"
+        }
+      ]
     }
   },
   "us-quality-core-serviceprohibited": {
@@ -6840,6 +9363,7 @@
     },
     "search": {
       "resource": "ServiceRequest",
+      "capabilityStatementAnchor": "ServiceRequest1-32",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -6883,6 +9407,152 @@
         {
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "_id"
+          ],
+          "types": [
+            "token"
+          ],
+          "label": "`_id`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports retrieval of a known ServiceRequest resource by id.",
+          "statement": "searching for a ServiceRequest resource by id using the `_id` search parameter",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `_id` (e.g.`_id=[id],[id],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?_id=[id]",
+          "example": "GET [base]/ServiceRequest?_id=example"
+        },
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources for USCDI+ Quality workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&category=http://snomed.info/sct|387713003"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "authored"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "date"
+          ],
+          "label": "`patient` + `category` + `authored`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category and authored date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient`, `category`, and `authored` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including optional support for AND search on `authored` (e.g.`authored=[date]&authored=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `authored` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference), [how to search by token](https://hl7.org/fhir/R4/search.html#token), and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&category={system|}[search_code]&authored={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&category=http://snomed.info/sct|387713003&authored=ge2020-01-01T00:00:00Z"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&code=http://snomed.info/sct|80146002"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "do-not-perform"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `do-not-perform`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by a do-not-perform indicator to support negation workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient` and `do-not-perform` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `do-not-perform` (e.g.`do-not-perform=[true|false],[true|false],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&do-not-perform=[true|false]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&do-not-perform=true"
         }
       ]
     }
@@ -7103,6 +9773,7 @@
     },
     "search": {
       "resource": "ServiceRequest",
+      "capabilityStatementAnchor": "ServiceRequest1-32",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -7146,6 +9817,152 @@
         {
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "_id"
+          ],
+          "types": [
+            "token"
+          ],
+          "label": "`_id`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports retrieval of a known ServiceRequest resource by id.",
+          "statement": "searching for a ServiceRequest resource by id using the `_id` search parameter",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `_id` (e.g.`_id=[id],[id],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?_id=[id]",
+          "example": "GET [base]/ServiceRequest?_id=example"
+        },
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources for USCDI+ Quality workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&category=http://snomed.info/sct|387713003"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "authored"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "date"
+          ],
+          "label": "`patient` + `category` + `authored`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category and authored date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient`, `category`, and `authored` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including optional support for AND search on `authored` (e.g.`authored=[date]&authored=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `authored` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference), [how to search by token](https://hl7.org/fhir/R4/search.html#token), and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&category={system|}[search_code]&authored={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&category=http://snomed.info/sct|387713003&authored=ge2020-01-01T00:00:00Z"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&code=http://snomed.info/sct|80146002"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "do-not-perform"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `do-not-perform`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by a do-not-perform indicator to support negation workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient` and `do-not-perform` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `do-not-perform` (e.g.`do-not-perform=[true|false],[true|false],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&do-not-perform=[true|false]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&do-not-perform=true"
         }
       ]
     }
@@ -7377,6 +10194,7 @@
     },
     "search": {
       "resource": "ServiceRequest",
+      "capabilityStatementAnchor": "ServiceRequest1-32",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -7420,6 +10238,152 @@
         {
           "name": "patient + do-not-perform",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "_id"
+          ],
+          "types": [
+            "token"
+          ],
+          "label": "`_id`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports retrieval of a known ServiceRequest resource by id.",
+          "statement": "searching for a ServiceRequest resource by id using the `_id` search parameter",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `_id` (e.g.`_id=[id],[id],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?_id=[id]",
+          "example": "GET [base]/ServiceRequest?_id=example"
+        },
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources for USCDI+ Quality workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&category=http://snomed.info/sct|387713003"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "authored"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "date"
+          ],
+          "label": "`patient` + `category` + `authored`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by category and authored date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient`, `category`, and `authored` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including optional support for AND search on `authored` (e.g.`authored=[date]&authored=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `authored` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference), [how to search by token](https://hl7.org/fhir/R4/search.html#token), and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&category={system|}[search_code]&authored={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&category=http://snomed.info/sct|387713003&authored=ge2020-01-01T00:00:00Z"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_ServiceRequest).",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&code=http://snomed.info/sct|80146002"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "do-not-perform"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `do-not-perform`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of ServiceRequest resources filtered by a do-not-perform indicator to support negation workflows.",
+          "statement": "searching for all ServiceRequest resources for a patient using the combination of the `patient` and `do-not-perform` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `do-not-perform` (e.g.`do-not-perform=[true|false],[true|false],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/ServiceRequest?patient={Patient/}[id]&do-not-perform=[true|false]",
+          "example": "GET [base]/ServiceRequest?patient=Patient/example&do-not-perform=false"
         }
       ]
     }
@@ -7813,6 +10777,7 @@
     },
     "search": {
       "resource": "Observation",
+      "capabilityStatementAnchor": "Observation1-23",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -7852,6 +10817,117 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "token"
+          ],
+          "label": "`patient` + `category` + `status`",
+          "usCoreExpectation": "SHOULD",
+          "usCoreAlignment": "Recommended by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation); US Quality Core strengthens this to SHALL.",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and status for status-sensitive quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient`, `category`, and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]&status=[status]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam&status=final"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `category`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category for USCDI+ Quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient` and `category` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "category",
+            "date"
+          ],
+          "types": [
+            "reference",
+            "token",
+            "date"
+          ],
+          "label": "`patient` + `category` + `date`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by category and date so quality workflows can constrain results to relevant reporting periods.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient`, `category`, and `date` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `category` (e.g.`category={system|}[search_code],{system|}[search_code],...`)"
+            },
+            {
+              "text": "Including optional support for AND search on `date` (e.g.`date=[date]&date=[date]&...`)"
+            },
+            {
+              "text": "Including support for these `date` comparators: \"gt\", \"lt\", \"ge\", \"le\""
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference), [how to search by token](https://hl7.org/fhir/R4/search.html#token), and [how to search by date](https://hl7.org/fhir/R4/search.html#date).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&category={system|}[search_code]&date={gt|lt|ge|le}[dateTime]",
+          "example": "GET [base]/Observation?patient=Patient/example&category=http://terminology.hl7.org/CodeSystem/observation-category|exam&date=ge2020-01-01T00:00:00Z"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": "SHALL",
+          "usCoreAlignment": "Required by [US Core](https://hl7.org/fhir/us/core/STU9/CapabilityStatement-us-core-server.html#Server_Observation).",
+          "rationale": "Supports patient-scoped retrieval of Observation resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all Observation resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Observation?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/Observation?patient=Patient/example&code=http://loinc.org|8884-9"
         }
       ]
     }
@@ -7965,6 +11041,7 @@
     "usCore": null,
     "search": {
       "resource": "Task",
+      "capabilityStatementAnchor": "Task1-34",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -7988,6 +11065,74 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Task resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Task?patient={Patient/}[id]",
+          "example": "GET [base]/Task?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Task resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Task?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Task?patient=Patient/example&status=completed"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all Task resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Task?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/Task?patient=Patient/example&code=http://www.ama-assn.org/go/cpt|99483"
         }
       ]
     }
@@ -8101,6 +11246,7 @@
     "usCore": null,
     "search": {
       "resource": "Task",
+      "capabilityStatementAnchor": "Task1-34",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -8124,6 +11270,74 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Task resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Task?patient={Patient/}[id]",
+          "example": "GET [base]/Task?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Task resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Task?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Task?patient=Patient/example&status=completed"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all Task resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Task?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/Task?patient=Patient/example&code=http://www.ama-assn.org/go/cpt|99483"
         }
       ]
     }
@@ -8263,6 +11477,7 @@
     "usCore": null,
     "search": {
       "resource": "Task",
+      "capabilityStatementAnchor": "Task1-34",
       "hasSearchParameters": true,
       "searchParams": [
         {
@@ -8286,6 +11501,74 @@
         {
           "name": "patient + code",
           "expectation": "SHALL"
+        }
+      ],
+      "requiredSearches": [
+        {
+          "kind": "parameter",
+          "params": [
+            "patient"
+          ],
+          "types": [
+            "reference"
+          ],
+          "label": "`patient`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources for USCDI+ Quality workflows.",
+          "statement": "searching for all Task resources for a patient using the `patient` search parameter",
+          "additionalRequirements": [],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference).",
+          "request": "GET [base]/Task?patient={Patient/}[id]",
+          "example": "GET [base]/Task?patient=Patient/example"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "status"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `status`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by status; status is used to indicate negation.",
+          "statement": "searching for all Task resources for a patient using the combination of the `patient` and `status` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `status` (e.g.`status=[status],[status],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Task?patient={Patient/}[id]&status=[status]",
+          "example": "GET [base]/Task?patient=Patient/example&status=rejected"
+        },
+        {
+          "kind": "combination",
+          "params": [
+            "patient",
+            "code"
+          ],
+          "types": [
+            "reference",
+            "token"
+          ],
+          "label": "`patient` + `code`",
+          "usCoreExpectation": null,
+          "usCoreAlignment": "Added in US Quality Core.",
+          "rationale": "Supports patient-scoped retrieval of Task resources filtered by code for USCDI+ Quality workflows.",
+          "statement": "searching for all Task resources for a patient using the combination of the `patient` and `code` search parameters",
+          "additionalRequirements": [
+            {
+              "text": "Including optional support for OR search on `code` (e.g.`code={system|}[search_code],{system|}[search_code],...`)"
+            }
+          ],
+          "searchGuidance": "See [how to search by reference](https://hl7.org/fhir/R4/search.html#reference) and [how to search by token](https://hl7.org/fhir/R4/search.html#token).",
+          "request": "GET [base]/Task?patient={Patient/}[id]&code={system|}[search_code]",
+          "example": "GET [base]/Task?patient=Patient/example&code=http://www.ama-assn.org/go/cpt|99483"
         }
       ]
     }

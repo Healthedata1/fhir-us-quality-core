@@ -24,7 +24,7 @@ Usage: #example
       * frequency = 3
       * period = 1
       * periodUnit = #d
-  * route = $sct#394899003 "oral administration of treatment"
+  * route = $sct#26643006 "Oral route"
   * doseAndRate
     * type = $dose-rate-type#ordered "Ordered"
     * doseQuantity = 5 'mL' "mL"

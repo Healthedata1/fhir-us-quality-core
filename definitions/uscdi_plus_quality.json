@@ -4899,6 +4899,12 @@
           ]
         },
         {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-immunization",
+          "elements": [
+            "Immunization.performer.actor"
+          ]
+        },
+        {
           "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-immunizationdone",
           "elements": [
             "Immunization.performer.actor"
@@ -4929,6 +4935,12 @@
           ]
         },
         {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-medicationdispense",
+          "elements": [
+            "MedicationDispense.performer.actor"
+          ]
+        },
+        {
           "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-medicationdispensedone",
           "elements": [
             "MedicationDispense.performer.actor"
@@ -4938,6 +4950,13 @@
           "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-medicationdispensedeclined",
           "elements": [
             "MedicationDispense.performer.actor"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-medicationrequest",
+          "elements": [
+            "MedicationRequest.requester",
+            "MedicationRequest.reported[x]:reportedReference"
           ]
         },
         {
@@ -4961,6 +4980,12 @@
           ]
         },
         {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-procedure",
+          "elements": [
+            "Procedure.performer.actor"
+          ]
+        },
+        {
           "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-proceduredone",
           "elements": [
             "Procedure.asserter",
@@ -4972,6 +4997,12 @@
           "elements": [
             "Procedure.asserter",
             "Procedure.performer.actor"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-servicerequest",
+          "elements": [
+            "ServiceRequest.requester"
           ]
         },
         {
@@ -5002,6 +5033,79 @@
           "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-taskrejected",
           "elements": [
             "Task.requester"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-allergyintolerance",
+          "elements": [
+            "AllergyIntolerance.recorder"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-careplan",
+          "elements": [
+            "CarePlan.contributor"
+        ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-condition-encounter-diagnosis",
+          "elements": [
+            "Condition.recorder"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-condition-problems-health-concerns",
+          "elements": [
+            "Condition.recorder"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-diagnosticreport-lab",
+          "elements": [
+            "DiagnosticReport.performer"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-diagnosticreport-note",
+          "elements": [
+            "DiagnosticReport.performer",
+            "DiagnosticReport.resultsInterpreter"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-goal",
+          "elements": [
+            "Goal.expressedBy"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-observation-lab",
+          "elements": [
+            "Observation.performer"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-observation-clinical-result",
+          "elements": [
+            "Observation.performer"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-observation-screening-assessment",
+          "elements": [
+            "Observation.performer"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-simple-observation",
+          "elements": [
+            "Observation.performer"
+          ]
+        },
+        {
+          "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-questionnaireresponse",
+          "elements": [
+            "QuestionnaireResponse.author"
           ]
         }
       ]

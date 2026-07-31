@@ -15,7 +15,12 @@
         {
           "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-adverseevent",
           "elements": [
-            "AdverseEvent.resultingCondition"
+            "AdverseEvent.event",
+            "AdverseEvent.date",
+            "AdverseEvent.recordedDate",
+            "AdverseEvent.detected",
+            "AdverseEvent.actuality",
+            "AdverseEvent.subject"
           ]
         }
       ]
@@ -37,12 +42,7 @@
         {
           "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-adverseevent",
           "elements": [
-            "AdverseEvent.outcome",
-            "AdverseEvent.event",
-            "AdverseEvent.date",
-            "AdverseEvent.recordedDate",
-            "AdverseEvent.detected",
-            "AdverseEvent.actuality"
+            "AdverseEvent.outcome"
           ]
         }
       ]

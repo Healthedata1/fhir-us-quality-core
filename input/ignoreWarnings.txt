@@ -61,3 +61,7 @@ Pinned the version of https://www.cms.gov/%
 %There are multiple different potential matches for the url 'http://hl7.org/fhir/request-status'%
 %There are multiple different potential matches for the url 'http://hl7.org/fhir/event-status'%
 %There are multiple different potential matches for the url 'http://hl7.org/fhir/CodeSystem/medicationrequest-status'%
+
+# 10. Task.code (Task Codes) and Observation.code (Screening and Assessment Survey Codes) carry preferred bindings. These preferred bindings contain a representative set of codes, but do not encompass the many use cases for the element. The codes in these examples are appropriate for the examples. (See issue #8; see also issue #19 to relax the Task.code binding to example.)
+%None of the codings provided are in the value set 'Task Codes'.*cpt#99483.*CODEINVALID%
+%None of the codings provided are in the value set 'Screening and Assessment Survey Codes'.*loinc#32402-0.*CODEINVALID%

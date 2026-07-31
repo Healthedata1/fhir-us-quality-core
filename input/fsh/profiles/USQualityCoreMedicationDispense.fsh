@@ -49,5 +49,6 @@ Description: "Profile of MedicationDispense for decision support/quality metrics
       * ^short = "Amount of medication per dose"
       * ^type.extension.url = "http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support"
       * ^type.extension.valueBoolean = true
+* performer.actor ^short = "Individual who was performing"
 // Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.
 * insert GeneratedUSCDIQualityFlagsForUSQualityCoreMedicationDispense

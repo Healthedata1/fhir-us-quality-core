@@ -61,5 +61,6 @@ Description: "Profile of DiagnosticReport for Note exchange for decision support
 * imagingStudy ^type[0].targetProfile[0] = "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-imagingstudy"
 * media ^short = "Key images associated with this report"
 * presentedForm ^short = "Entire report as issued"
+* resultsInterpreter ^short = "Primary result interpreter"
 // Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.
 * insert GeneratedUSCDIQualityFlagsForUSQualityCoreDiagnosticReportNote

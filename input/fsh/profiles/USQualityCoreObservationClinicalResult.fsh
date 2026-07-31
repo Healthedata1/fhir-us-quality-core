@@ -65,5 +65,6 @@ Description: "This profile sets minimum expectations for the Observation resourc
   * ^binding.extension.url = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"
   * ^binding.extension.valueString = "ObservationValueAbsentReason"
   * ^binding.description = "Codes specifying why the result (`Observation.value[x]`) is missing."
+* performer ^short = "Who is responsible for the observation"
 // Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.
 * insert GeneratedUSCDIQualityFlagsForUSQualityCoreObservationClinicalResult

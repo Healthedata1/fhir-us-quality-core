@@ -5,6 +5,8 @@ Description: "Example of a coverage resource used to provide information about a
 Usage: #example
 * id = "example"
 * identifier.type = $v2-0203#MB
+* identifier.system = "http://example.org/health-plan/member-id"
+* identifier.value = "9876810"
 * status = #active
 * policyHolder.reference = "Patient/example"
 * subscriber.reference = "Patient/example"

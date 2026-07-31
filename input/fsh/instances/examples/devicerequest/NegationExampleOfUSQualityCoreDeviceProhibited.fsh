@@ -16,4 +16,4 @@ Usage: #example
   * text = "Value Set: Venous Foot Pumps (VFP)"
 * subject.reference = "Patient/example"
 * authoredOn = "2016-04-05T09:20:00-04:00"
-* reasonCode = $sct#182890002 "Patient requests alternative treatment"
+* reasonCode = $sct#1303950002 "Request for alternative treatment"

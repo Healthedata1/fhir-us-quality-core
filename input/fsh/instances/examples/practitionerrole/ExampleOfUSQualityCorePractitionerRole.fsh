@@ -16,7 +16,7 @@ Usage: #example
   * reference = "Practitioner/example"
   * display = "Dr Adam Careful"
 * organization.reference = "Organization/example"
-* code = $provider-taxonomy#261Q00000X "Clinic/Center"
+* code = $sct#106289002 "Dentist (occupation)"
 * specialty = $provider-taxonomy#122300000X "Dentist"
 * location.reference = "Location/example"
 * telecom

@@ -9,7 +9,7 @@ Usage: #example
 * category = $sct#387713003 "Surgical Procedure"
 * priority = #urgent
 * doNotPerform = true
-* code = $sct#348681001 "Graduated compression elastic hosiery (physical object)"
+* code = $sct#229511001 "Application of graduated compression garment"
 * subject.reference = "Patient/example"
 * encounter.reference = "Encounter/example"
 * occurrenceDateTime = "2013-04-05"

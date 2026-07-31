@@ -6,7 +6,7 @@ Usage: #example
 * status = #active
 * intent = #proposal
 * priority = #urgent
-* code = $sct#348681001 "Graduated compression elastic hosiery (physical object)"
+* code = $sct#229511001 "Application of graduated compression garment"
 * subject.reference = "Patient/example"
 * encounter.reference = "Encounter/example"
 * occurrenceDateTime = "2013-04-05"

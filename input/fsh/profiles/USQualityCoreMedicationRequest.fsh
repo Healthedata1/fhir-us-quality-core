@@ -74,5 +74,7 @@ Description: "Profile of MedicationRequest for decision support/quality metrics.
   * numberOfRepeatsAllowed ^short = "Number of refills authorized"
   * quantity ^short = "Amount of medication to supply per dispense"
   * expectedSupplyDuration ^short = "Number of days supply per dispense"
+  * reportedReference ^short = "Reported rather than primary record"
+  * reported[x][reportedReference] ^short = "Reported rather than primary record"
 // Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.
 * insert GeneratedUSCDIQualityFlagsForUSQualityCoreMedicationRequest

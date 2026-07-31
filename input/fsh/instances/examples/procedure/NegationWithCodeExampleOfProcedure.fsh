@@ -13,4 +13,4 @@ Usage: #example
   * version = "http://snomed.info/sct/731000124108"
 * subject = Reference(Patient/example)
 * encounter = Reference(Encounter/example)
-* reasonCode = $sct#182890002 "Patient requests alternative treatment"
+* reasonCode = $sct#1303950002 "Request for alternative treatment"

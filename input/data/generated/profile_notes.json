@@ -8,8 +8,8 @@
         "dataElements": [
           {
             "class": "Adverse Events",
-            "name": "Adverse Event Outcome",
-            "path": "uscdiquality.html#data-element-adverse-events-adverse-event-outcome"
+            "name": "Adverse Event Condition",
+            "path": "uscdiquality.html#data-element-adverse-events-adverse-event-condition"
           }
         ]
       },
@@ -19,8 +19,8 @@
         "dataElements": [
           {
             "class": "Adverse Events",
-            "name": "Adverse Event Outcome",
-            "path": "uscdiquality.html#data-element-adverse-events-adverse-event-outcome"
+            "name": "Adverse Event Condition",
+            "path": "uscdiquality.html#data-element-adverse-events-adverse-event-condition"
           }
         ]
       },
@@ -30,8 +30,8 @@
         "dataElements": [
           {
             "class": "Adverse Events",
-            "name": "Adverse Event Outcome",
-            "path": "uscdiquality.html#data-element-adverse-events-adverse-event-outcome"
+            "name": "Adverse Event Condition",
+            "path": "uscdiquality.html#data-element-adverse-events-adverse-event-condition"
           }
         ]
       },
@@ -41,8 +41,8 @@
         "dataElements": [
           {
             "class": "Adverse Events",
-            "name": "Adverse Event Outcome",
-            "path": "uscdiquality.html#data-element-adverse-events-adverse-event-outcome"
+            "name": "Adverse Event Condition",
+            "path": "uscdiquality.html#data-element-adverse-events-adverse-event-condition"
           }
         ]
       },
@@ -63,8 +63,8 @@
         "dataElements": [
           {
             "class": "Adverse Events",
-            "name": "Adverse Event Outcome",
-            "path": "uscdiquality.html#data-element-adverse-events-adverse-event-outcome"
+            "name": "Adverse Event Condition",
+            "path": "uscdiquality.html#data-element-adverse-events-adverse-event-condition"
           }
         ]
       },
@@ -80,8 +80,8 @@
         ]
       },
       {
-        "path": "resultingCondition",
-        "short": "Effect on the subject due to this event",
+        "path": "subject",
+        "short": "Subject impacted by event",
         "dataElements": [
           {
             "class": "Adverse Events",
@@ -281,6 +281,17 @@
             "path": "uscdiquality.html#data-element-allergies-and-intolerances-allergy-intolerance-recorded-date-and-time"
           }
         ]
+      },
+      {
+        "path": "recorder",
+        "short": "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the sensitivity",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
       }
     ],
     "usCore": {
@@ -429,6 +440,11 @@
             "class": "Care Plans",
             "name": "Care Plan",
             "path": "uscdiquality.html#data-element-care-plans-care-plan"
+          },
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
           }
         ]
       },
@@ -1297,6 +1313,17 @@
             "path": "uscdiquality.html#data-element-problems-date-of-diagnosis"
           }
         ]
+      },
+      {
+        "path": "recorder",
+        "short": "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the condition",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
       }
     ],
     "usCore": {
@@ -1562,6 +1589,17 @@
             "class": "Problems",
             "name": "Date of Diagnosis",
             "path": "uscdiquality.html#data-element-problems-date-of-diagnosis"
+          }
+        ]
+      },
+      {
+        "path": "recorder",
+        "short": "𝗔𝗗𝗗𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the condition",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
           }
         ]
       },
@@ -2927,6 +2965,17 @@
         ]
       },
       {
+        "path": "performer",
+        "short": "Responsible Diagnostic Service",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
+      },
+      {
         "path": "result",
         "short": "Observations",
         "dataElements": [
@@ -3193,6 +3242,17 @@
         ]
       },
       {
+        "path": "performer",
+        "short": "Responsible Diagnostic Service",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
+      },
+      {
         "path": "presentedForm",
         "short": "Entire report as issued",
         "dataElements": [
@@ -3221,6 +3281,17 @@
             "class": "Diagnostic Imaging",
             "name": "Diagnostic Imaging Report",
             "path": "uscdiquality.html#data-element-diagnostic-imaging-diagnostic-imaging-report"
+          }
+        ]
+      },
+      {
+        "path": "resultsInterpreter",
+        "short": "Primary result interpreter",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
           }
         ]
       },
@@ -3978,6 +4049,17 @@
             "path": "uscdiquality.html#data-element-goals-and-preferences-sdoh-goals"
           }
         ]
+      },
+      {
+        "path": "expressedBy",
+        "short": "Who's responsible for creating Goal?",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
       }
     ],
     "usCore": {
@@ -4224,6 +4306,17 @@
             "class": "Procedures",
             "name": "Performance Time",
             "path": "uscdiquality.html#data-element-procedures-performance-time"
+          }
+        ]
+      },
+      {
+        "path": "performer.actor",
+        "short": "Individual or organization who was performing",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
           }
         ]
       },
@@ -5986,6 +6079,17 @@
         ]
       },
       {
+        "path": "performer.actor",
+        "short": "Individual who was performing",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
+      },
+      {
         "path": "quantity",
         "short": "Amount dispensed",
         "dataElements": [
@@ -7712,6 +7816,28 @@
         ]
       },
       {
+        "path": "reported[x][reportedReference]",
+        "short": "Reported rather than primary record",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
+      },
+      {
+        "path": "requester",
+        "short": "Who/What requested the Request",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
+      },
+      {
         "path": "status",
         "short": "active | on-hold | cancelled | completed | entered-in-error | stopped | draft | unknown",
         "dataElements": [
@@ -9099,6 +9225,17 @@
         ]
       },
       {
+        "path": "performer",
+        "short": "Who is responsible for the observation",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
+      },
+      {
         "path": "status",
         "short": "registered | preliminary | final | amended | corrected | cancelled | entered-in-error | unknown",
         "dataElements": [
@@ -9368,6 +9505,17 @@
             "class": "Laboratory",
             "name": "Laboratory Result Report Date and Time",
             "path": "uscdiquality.html#data-element-laboratory-laboratory-result-report-date-and-time"
+          }
+        ]
+      },
+      {
+        "path": "performer",
+        "short": "Who is responsible for the observation",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
           }
         ]
       },
@@ -9814,6 +9962,17 @@
             "class": "Health Status Assessments",
             "name": "Substance Use",
             "path": "uscdiquality.html#data-element-health-status-assessments-substance-use"
+          }
+        ]
+      },
+      {
+        "path": "performer",
+        "short": "Who is responsible for the observation",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
           }
         ]
       },
@@ -11958,6 +12117,17 @@
         ]
       },
       {
+        "path": "performer.actor",
+        "short": "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: The reference to the practitioner",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
+      },
+      {
         "path": "reasonCode",
         "short": "Coded reason procedure performed",
         "dataElements": [
@@ -12871,6 +13041,17 @@
   "us-quality-core-questionnaireresponse": {
     "title": "US Quality Core QuestionnaireResponse",
     "uscdiQualityElements": [
+      {
+        "path": "author",
+        "short": "Person who received and recorded the answers",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
+      },
       {
         "path": "authored",
         "short": "Date the answers were gathered",
@@ -14067,6 +14248,17 @@
         ]
       },
       {
+        "path": "requester",
+        "short": "Who/what is requesting service",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
+          }
+        ]
+      },
+      {
         "path": "status",
         "short": "draft | active | on-hold | revoked | completed | entered-in-error | unknown",
         "dataElements": [
@@ -15015,6 +15207,17 @@
             "class": "Health Status Assessments",
             "name": "Substance Use",
             "path": "uscdiquality.html#data-element-health-status-assessments-substance-use"
+          }
+        ]
+      },
+      {
+        "path": "performer",
+        "short": "Who is responsible for the observation",
+        "dataElements": [
+          {
+            "class": "Provenance",
+            "name": "Author",
+            "path": "uscdiquality.html#data-element-provenance-author"
           }
         ]
       },

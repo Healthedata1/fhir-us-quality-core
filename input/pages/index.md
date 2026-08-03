@@ -93,3 +93,7 @@ This guide is divided into several pages, which are listed at the top of each pa
     * [Examples](examples.html): Examples used in this guide
 * [Downloads](downloads.html): Downloadable artifacts
 * [Change Log](changes.html): Change Log that lists changes to this guide across versions
+
+---
+
+Primary Authors: Eric Haas, Yan Heras, Adam Holmes, Rob Scanlon, Eryn Yuasa

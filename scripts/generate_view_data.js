@@ -9,9 +9,18 @@ const {
   paths,
   upstream
 } = require('./generator.config');
-const { configuredFhirDefinitions, parseFsh, sourceFshFiles, sushi } = require('./lib/sushi');
+const {
+  assertNoSushiErrors,
+  compileFsh,
+  configuredFhirDefinitions,
+  parseFsh,
+  profileSourceFshFiles,
+  sourceFshFiles,
+  sushi
+} = require('./lib/sushi');
 const {
   ensureDir,
+  read,
   readSearchCapabilities,
   readUscdiQualityDefinitions,
   writeJson
@@ -24,9 +33,11 @@ const {
   profileMaps,
   profileResourceTypes,
   requireProfileDefinition,
+  requireStructureDefinition,
   sortByDisplayTitle,
   usCoreAncestor
 } = require('./lib/profiles');
+const { profileConformanceIndicators } = require('./lib/conformance-indicators');
 const {
   assertAllDataElementsMapped,
   generatedUscdiQualityElements,
@@ -37,17 +48,23 @@ const { runGenerator } = require('./lib/runner');
 
 const FSH_FILES = sourceFshFiles();
 
+async function compiledProfileDefinitions(profileIds) {
+  const result = await compileFsh(profileSourceFshFiles(), {
+    extraInputs: [read(paths.generatedFlagsFile)],
+    snapshot: true
+  });
+  assertNoSushiErrors(result, 'SUSHI reported errors while compiling profile conformance indicators');
+
+  return new Map(
+    result.fhir
+      .filter(resource => resource.resourceType === 'StructureDefinition' && profileIds.has(resource.id))
+      .map(profile => [profile.id, profile])
+  );
+}
+
 function profilePath(profileOrId) {
   const id = typeof profileOrId === 'string' ? profileOrId : profileOrId.id;
   return `StructureDefinition-${id}.html`;
-}
-
-function profileSummary(profile) {
-  return {
-    id: profile.id,
-    title: displayTitle(profile),
-    path: profilePath(profile)
-  };
 }
 
 function usCoreProfileSummary(profile) {
@@ -79,7 +96,22 @@ function groupsByClass(dataElements) {
   for (const dataElement of dataElements) {
     getOrSet(groups, dataElement.class, () => []).push(dataElement);
   }
-  return [...groups.entries()].map(([name, elements]) => ({ name, elements }));
+  return [...groups.entries()].map(([name, elements]) => ({
+    name,
+    elements: elements.map(groupDataElement)
+  }));
+}
+
+function groupDataElement(element) {
+  return {
+    name: element.name,
+    description: element.description,
+    dataElementId: element.dataElementId,
+    noteId: element.noteId,
+    profileOverride: element.profileOverride,
+    usQualityCore: element.usQualityCore,
+    usCore: element.usCore
+  };
 }
 
 function uniqueMappings(mappings) {
@@ -90,7 +122,6 @@ function usQualityCoreMapping(mapping, profilesById) {
   const id = urlTail(mapping.profile);
   const profile = profilesById.get(id);
   return {
-    id,
     title: profile ? displayTitle(profile) : id,
     path: profilePath(id)
   };
@@ -118,7 +149,7 @@ function resolvedDataElement(dataElement, profilesById, fhirDefs) {
     name: dataElement.name,
     description: markdownText(dataElement.description ?? ''),
     dataElementId: dataElementId(dataElement),
-    noteId: noteId(dataElement),
+    noteId: note == null ? null : noteId(dataElement),
     note,
     profileOverride,
     usQualityCore: uniqueMappings(dataElement.mappings.usQualityCore).map(mapping =>
@@ -133,7 +164,13 @@ function uscdiQualityDataElementsData(dataElements, profilesById, fhirDefs) {
 
   return {
     groups: groupsByClass(elements),
-    notes: elements.filter(element => element.note != null)
+    notes: elements
+      .filter(element => element.note != null)
+      .map(element => ({
+        class: element.class,
+        name: element.name,
+        note: element.note
+      }))
   };
 }
 
@@ -171,21 +208,20 @@ function usQualityCoreProfileTableRow(profile, depth, profilesById, profilesByNa
   const usCore = usCoreAncestor(profile, profilesById, profilesByName, fhirDefs);
 
   return {
-    ...profileSummary(profile),
+    title: displayTitle(profile),
+    path: profilePath(profile),
     depth,
     showResource: depth === 0,
     usCore: usCore ? usCoreProfileSummary(usCore) : null
   };
 }
 
-function usCoreProfileTableRows(resource, urls, hasLocalProfiles, fhirDefs) {
+function usCoreProfileTableRows(urls, hasLocalProfiles, fhirDefs) {
   return urls
     .filter(url => url.startsWith(upstream.usCore.profileUrlPrefix))
     .map(url => requireProfileDefinition(url, fhirDefs, `US Core profile ${url}`))
     .sort((a, b) => usCoreProfileSummary(a).title.localeCompare(usCoreProfileSummary(b).title))
     .map((profile, index) => ({
-      id: profile.id,
-      title: usCoreProfileSummary(profile).title,
       path: null,
       depth: 0,
       showResource: !hasLocalProfiles && index === 0,
@@ -220,7 +256,6 @@ function profileTableData(
         usQualityCoreProfileTableRow(profile, depth, profilesById, profilesByName, fhirDefs)
       );
       const usCoreRows = usCoreProfileTableRows(
-        resource,
         supportedProfilesByResource.get(resource) ?? [],
         localRows.length > 0,
         fhirDefs
@@ -233,20 +268,6 @@ function profileTableData(
       };
     })
   };
-}
-
-function searchParamData(searchParams) {
-  return Object.entries(searchParams ?? {}).map(([code, searchParam]) => ({
-    name: code,
-    expectation: searchParam.expectation ?? ''
-  }));
-}
-
-function searchCombinationData(searchCombinations) {
-  return (searchCombinations ?? []).map(combination => ({
-    name: (combination.params ?? []).join(' + '),
-    expectation: combination.expectation ?? ''
-  }));
 }
 
 function searchValuePattern(param, type) {
@@ -405,7 +426,8 @@ function joinedLabels(values) {
 
 function documentedSearchRequirement(profile, resource, resourceConfig, requirement) {
   return {
-    ...requirement,
+    usCoreExpectation: requirement.usCoreExpectation,
+    rationale: requirement.rationale,
     statement: searchRequirementStatement(resource, requirement),
     additionalRequirements: searchBehaviorRequirements(resource, requirement, resourceConfig),
     searchGuidance: searchGuidance(requirement.types),
@@ -430,8 +452,6 @@ function profileSearchData(
       `${profile.id} resolves to ${resource}, which is not configured in definitions/capabilities.json.`
     );
   }
-  const searchParams = searchParamData(resourceConfig.searchParams);
-  const searchCombinations = searchCombinationData(resourceConfig.searchCombinations);
   const requiredSearches = searchRequirementRows(resource, resourceConfig, documentationContext)
     .map(requirement =>
       documentedSearchRequirement(profile, resource, resourceConfig, requirement)
@@ -440,9 +460,6 @@ function profileSearchData(
   return {
     resource,
     capabilityStatementAnchor: `${resource}1-${resourceIndex + 1}`,
-    hasSearchParameters: searchParams.length > 0 || searchCombinations.length > 0,
-    searchParams,
-    searchCombinations,
     requiredSearches
   };
 }
@@ -536,6 +553,7 @@ function mappedDataElementsForFlag(profile, element, mappedElements) {
 
 function profileNotesData(
   profiles,
+  compiledProfilesById,
   ruleSets,
   dataElements,
   profilesById,
@@ -564,14 +582,23 @@ function profileNotesData(
     profileElements
       .map(({ profile, elements }) => {
         const usCore = usCoreAncestor(profile, profilesById, profilesByName, fhirDefs);
+        const compiledProfile = compiledProfilesById.get(profile.id);
+        if (!compiledProfile) throw new Error(`No compiled StructureDefinition found for ${profile.id}.`);
+
+        const resourceType = resourceTypes.get(profile.id);
+        const baseResource = requireStructureDefinition(
+          resourceType,
+          fhirDefs,
+          `base FHIR resource ${resourceType} for ${profile.id}`
+        );
 
         return [
           profile.id,
           {
-            ...profileSummary(profile),
+            title: displayTitle(profile),
             uscdiQualityElements: elements,
-            hasUsCoreLineage: Boolean(usCore),
             usCore: usCore ? usCoreProfileSummary(usCore) : null,
+            conformanceIndicators: profileConformanceIndicators(compiledProfile, baseResource, usCore),
             search: profileSearchData(
               profile,
               resourceTypes,
@@ -605,6 +632,9 @@ async function main(log) {
     profileMaps(parseFsh(FSH_FILES))
   );
   const ruleSets = await log.step('Reading generated USCDI+ Quality RuleSets', generatedUscdiQualityRuleSets);
+  const compiledProfilesById = await log.step('Compiling profile conformance indicators', () =>
+    compiledProfileDefinitions(new Set(profiles.map(profile => profile.id)))
+  );
   await log.step('Checking USCDI+ Quality mappings', () => assertAllDataElementsMapped(dataElements));
   const resourceTypes = await log.step('Resolving profile resource types', () =>
     profileResourceTypes(
@@ -622,6 +652,7 @@ async function main(log) {
     writeGeneratedData({
       [paths.generatedViewDataFiles.profileNotes]: profileNotesData(
         profiles,
+        compiledProfilesById,
         ruleSets,
         dataElements,
         profilesById,

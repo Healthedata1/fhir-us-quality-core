@@ -13,7 +13,6 @@ Because this profile derives directly or indirectly from US Core, servers **SHAL
 
 {% endif %}
 
-{% if required_searches.size > 0 %}
 See the [US Quality Core Server CapabilityStatement](CapabilityStatement-us-quality-core-server.html#{{ search.capabilityStatementAnchor }}) for complete requirements for the underlying `{{ search.resource }}` resource and [Search Requirement Selection](us-quality-core-general-requirements.html#search-requirement-selection) for how this focused set was selected.
 
 Servers supporting this profile **SHALL** support the following search parameters and search parameter combinations:
@@ -36,9 +35,6 @@ Servers supporting this profile **SHALL** support the following search parameter
     **Rationale for inclusion:** {{ requirement.rationale }}
 
 {% endfor %}
-{% else %}
-US Quality Core does not specify mandatory searches for the `{{ search.resource }}` resource.
-{% endif %}
 
 {% endif %}
 {% endif %}

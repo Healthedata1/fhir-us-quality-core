@@ -611,7 +611,7 @@
           "description": "The technical details of the retrieval access path to indicate network services that can be used to access DICOM studies, series, or instances content and metadata (e.g., a DICOMweb server endpoint providing QIDO-RS, WADO-RS, or WADO-URI).",
           "dataElementId": "data-element-diagnostic-imaging-diagnostic-imaging-reference",
           "noteId": "diagnostic-imaging-diagnostic-imaging-reference",
-          "note": "We are seeking implementer feedback on whether this level of detail is necessary for quality reporting. The proposed mapping to DocumentReference.content.attachment.url semantically aligns with the USCDI+ Quality data element definition by identifying the location of the referenced document content, but feedback through US Quality Core will help determine whether this mapping should be retained.",
+          "note": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -699,7 +699,7 @@
           "description": "Ordinal number or code that identifies the priority or significance of a diagnosis for a given encounter.",
           "dataElementId": "data-element-encounter-information-diagnosis-rank",
           "noteId": "encounter-information-diagnosis-rank",
-          "note": "In QI-Core, information about principal diagnosis is represented using the Claim profile. In US Quality Core v1.0.0-ballot, support for the Claim profile is not required for conformance. We encourage the quality community to provide additional input on information needed to support quality measurement use cases through the HL7 ballot process for US Quality Core.",
+          "note": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -857,7 +857,7 @@
           "description": "An indicator of whether a patient's condition or diagnosis was known to be present at the time of admission.",
           "dataElementId": "data-element-encounter-information-present-on-admission",
           "noteId": "encounter-information-present-on-admission",
-          "note": "In QI-Core, information about present on admission is represented using the Claim profile. In US Quality Core v1.0.0, support for the Claim profile is not required for conformance. We have reintroduced the Present on Admission extension for Encounter.diagnosis in this US Quality Core v1.0.0-ballot and it is (USCDI+ Quality) tagged.",
+          "note": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -1009,7 +1009,7 @@
           "description": "Desired outcomes of patient's care. Examples include but are not limited to blood pressure control, functional ability, and nutrition.",
           "dataElementId": "data-element-goals-and-preferences-patient-goals",
           "noteId": "goals-and-preferences-patient-goals",
-          "note": "We are seeking feedback on the use of additional Goal elements (e.g., Goal.target) as it relates to this USCDI+ Quality data element.",
+          "note": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -1026,7 +1026,7 @@
           "description": "Desired future states for an identified Social Determinants of Health-related health concern, condition, or diagnosis. Examples include but are not limited to food security, transportation security, and ability to access health care.",
           "dataElementId": "data-element-goals-and-preferences-sdoh-goals",
           "noteId": "goals-and-preferences-sdoh-goals",
-          "note": "We are seeking feedback on the use of additional Goal elements (e.g., Goal.target) as it relates to this USCDI+ Quality data element.",
+          "note": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -2678,7 +2678,7 @@
           "description": "A provider-authored request for nutrition support such as therapeutic diets, enteral feedings, parenteral nutrition, or oral nutritional supplements.",
           "dataElementId": "data-element-orders-nutrition-order",
           "noteId": "orders-nutrition-order",
-          "note": "We are seeking implementer feedback on whether US Quality Core should include mappings for Nutrition Order beyond NutritionOrder.oralDiet to also include NutritionOrder.enteralFormula and NutritionOrder.supplement. These elements align with the broader Nutrition Order definition which includes enteral feedings and nutritional supplements; however, their implementation support and need in quality reporting requires additional feedback.",
+          "note": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -3567,7 +3567,7 @@
           "description": "Activity performed for or on a patient as part of the provision of care.",
           "dataElementId": "data-element-procedures-procedures",
           "noteId": "procedures-procedures",
-          "note": "In QI-Core, information about principal procedure is represented using the Claim profile. In US Quality Core v1.0.0, support for the Claim profile is not required for conformance. Implementers may determine the appropriate implementation approach to support this USCDI+ Quality data element. We encourage the quality community to provide additional input on information needed to support quality measurement use cases through the HL7 ballot process for US Quality Core.",
+          "note": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -4294,130 +4294,5 @@
       ]
     }
   ],
-  "notes": [
-    {
-      "class": "Diagnostic Imaging",
-      "name": "Diagnostic Imaging Reference",
-      "description": "The technical details of the retrieval access path to indicate network services that can be used to access DICOM studies, series, or instances content and metadata (e.g., a DICOMweb server endpoint providing QIDO-RS, WADO-RS, or WADO-URI).",
-      "dataElementId": "data-element-diagnostic-imaging-diagnostic-imaging-reference",
-      "noteId": "diagnostic-imaging-diagnostic-imaging-reference",
-      "note": "We are seeking implementer feedback on whether this level of detail is necessary for quality reporting. The proposed mapping to DocumentReference.content.attachment.url semantically aligns with the USCDI+ Quality data element definition by identifying the location of the referenced document content, but feedback through US Quality Core will help determine whether this mapping should be retained.",
-      "profileOverride": null,
-      "usQualityCore": [
-        {
-          "id": "us-quality-core-diagnosticreport-note",
-          "title": "US Quality Core DiagnosticReport Profile for Report and Note Exchange",
-          "path": "StructureDefinition-us-quality-core-diagnosticreport-note.html"
-        }
-      ],
-      "usCore": []
-    },
-    {
-      "class": "Encounter Information",
-      "name": "Diagnosis Rank",
-      "description": "Ordinal number or code that identifies the priority or significance of a diagnosis for a given encounter.",
-      "dataElementId": "data-element-encounter-information-diagnosis-rank",
-      "noteId": "encounter-information-diagnosis-rank",
-      "note": "In QI-Core, information about principal diagnosis is represented using the Claim profile. In US Quality Core v1.0.0-ballot, support for the Claim profile is not required for conformance. We encourage the quality community to provide additional input on information needed to support quality measurement use cases through the HL7 ballot process for US Quality Core.",
-      "profileOverride": null,
-      "usQualityCore": [
-        {
-          "id": "us-quality-core-encounter",
-          "title": "US Quality Core Encounter",
-          "path": "StructureDefinition-us-quality-core-encounter.html"
-        }
-      ],
-      "usCore": []
-    },
-    {
-      "class": "Encounter Information",
-      "name": "Present on Admission",
-      "description": "An indicator of whether a patient's condition or diagnosis was known to be present at the time of admission.",
-      "dataElementId": "data-element-encounter-information-present-on-admission",
-      "noteId": "encounter-information-present-on-admission",
-      "note": "In QI-Core, information about present on admission is represented using the Claim profile. In US Quality Core v1.0.0, support for the Claim profile is not required for conformance. We have reintroduced the Present on Admission extension for Encounter.diagnosis in this US Quality Core v1.0.0-ballot and it is (USCDI+ Quality) tagged.",
-      "profileOverride": null,
-      "usQualityCore": [
-        {
-          "id": "us-quality-core-encounter",
-          "title": "US Quality Core Encounter",
-          "path": "StructureDefinition-us-quality-core-encounter.html"
-        }
-      ],
-      "usCore": []
-    },
-    {
-      "class": "Goals and Preferences",
-      "name": "Patient Goals",
-      "description": "Desired outcomes of patient's care. Examples include but are not limited to blood pressure control, functional ability, and nutrition.",
-      "dataElementId": "data-element-goals-and-preferences-patient-goals",
-      "noteId": "goals-and-preferences-patient-goals",
-      "note": "We are seeking feedback on the use of additional Goal elements (e.g., Goal.target) as it relates to this USCDI+ Quality data element.",
-      "profileOverride": null,
-      "usQualityCore": [
-        {
-          "id": "us-quality-core-goal",
-          "title": "US Quality Core Goal",
-          "path": "StructureDefinition-us-quality-core-goal.html"
-        }
-      ],
-      "usCore": []
-    },
-    {
-      "class": "Goals and Preferences",
-      "name": "SDOH Goals",
-      "description": "Desired future states for an identified Social Determinants of Health-related health concern, condition, or diagnosis. Examples include but are not limited to food security, transportation security, and ability to access health care.",
-      "dataElementId": "data-element-goals-and-preferences-sdoh-goals",
-      "noteId": "goals-and-preferences-sdoh-goals",
-      "note": "We are seeking feedback on the use of additional Goal elements (e.g., Goal.target) as it relates to this USCDI+ Quality data element.",
-      "profileOverride": null,
-      "usQualityCore": [
-        {
-          "id": "us-quality-core-goal",
-          "title": "US Quality Core Goal",
-          "path": "StructureDefinition-us-quality-core-goal.html"
-        }
-      ],
-      "usCore": []
-    },
-    {
-      "class": "Orders",
-      "name": "Nutrition Order",
-      "description": "A provider-authored request for nutrition support such as therapeutic diets, enteral feedings, parenteral nutrition, or oral nutritional supplements.",
-      "dataElementId": "data-element-orders-nutrition-order",
-      "noteId": "orders-nutrition-order",
-      "note": "We are seeking implementer feedback on whether US Quality Core should include mappings for Nutrition Order beyond NutritionOrder.oralDiet to also include NutritionOrder.enteralFormula and NutritionOrder.supplement. These elements align with the broader Nutrition Order definition which includes enteral feedings and nutritional supplements; however, their implementation support and need in quality reporting requires additional feedback.",
-      "profileOverride": null,
-      "usQualityCore": [
-        {
-          "id": "us-quality-core-nutritionorder",
-          "title": "US Quality Core NutritionOrder",
-          "path": "StructureDefinition-us-quality-core-nutritionorder.html"
-        }
-      ],
-      "usCore": []
-    },
-    {
-      "class": "Procedures",
-      "name": "Procedures",
-      "description": "Activity performed for or on a patient as part of the provision of care.",
-      "dataElementId": "data-element-procedures-procedures",
-      "noteId": "procedures-procedures",
-      "note": "In QI-Core, information about principal procedure is represented using the Claim profile. In US Quality Core v1.0.0, support for the Claim profile is not required for conformance. Implementers may determine the appropriate implementation approach to support this USCDI+ Quality data element. We encourage the quality community to provide additional input on information needed to support quality measurement use cases through the HL7 ballot process for US Quality Core.",
-      "profileOverride": null,
-      "usQualityCore": [
-        {
-          "id": "us-quality-core-procedure",
-          "title": "US Quality Core Procedure",
-          "path": "StructureDefinition-us-quality-core-procedure.html"
-        },
-        {
-          "id": "us-quality-core-proceduredone",
-          "title": "US Quality Core Procedure Done",
-          "path": "StructureDefinition-us-quality-core-proceduredone.html"
-        }
-      ],
-      "usCore": []
-    }
-  ]
+  "notes": []
 }

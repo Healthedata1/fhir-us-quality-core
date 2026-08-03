@@ -32,7 +32,7 @@ Usage: #example
   * severity = #severe
   * exposureRoute = $sct#34206005 "Subcutaneous route"
 * reaction[+]
-  * manifestation = $sct#64305001 "Urticaria"
+  * manifestation = $sct#247472004 "Urticarial rash"
   * onset = "2004"
   * severity = #moderate
   * note

@@ -9,8 +9,8 @@ Usage: #example
   * valueDateTime = "2013-04-05T10:30:00-04:00"
 * status = #not-done
 * statusReason = $sct#35688006 "Complication of medical care (disorder)"
-* code.coding = $sct#348681001 "Graduated compression elastic hosiery (physical object)"
+* code.coding = $sct#229511001 "Application of graduated compression garment"
   * version = "http://snomed.info/sct/731000124108"
 * subject = Reference(Patient/example)
 * encounter = Reference(Encounter/example)
-* reasonCode = $sct#182890002 "Patient requests alternative treatment"
+* reasonCode = $sct#1303950002 "Request for alternative treatment"

@@ -16,4 +16,4 @@ Usage: #example
   * text = "Value Set: Intermittent pneumatic compression devices (IPC)"
 * subject.reference = "Patient/example"
 * encounter.reference = "Encounter/example"
-* reasonCode = $sct#182890002 "Patient requests alternative treatment"
+* reasonCode = $sct#1303950002 "Request for alternative treatment"

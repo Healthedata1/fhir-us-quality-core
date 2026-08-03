@@ -9,7 +9,7 @@ Usage: #example
   * valueDateTime = "2017-01-17"
 * status = #declined
 * statusReasonCodeableConcept = $sct#183966005 "Drug treatment not indicated (situation)"
-* medicationCodeableConcept = $rxnorm#1000087 "alcaftadine 2.5 MG/ML [Lastacaft]"
+* medicationCodeableConcept = $rxnorm#1000085 "alcaftadine 2.5 MG/ML Ophthalmic Solution"
 * subject.reference = "Patient/example"
 * authorizingPrescription.reference = "MedicationRequest/example"
 * dosageInstruction
@@ -17,7 +17,7 @@ Usage: #example
     * frequency = 3
     * period = 1
     * periodUnit = #d
-  * route = $sct#394899003 "oral administration of treatment"
+  * route = $sct#26643006 "Oral route"
   * doseAndRate
     * type = $dose-rate-type#ordered "Ordered"
     * doseQuantity = 5 'mL' "mL"

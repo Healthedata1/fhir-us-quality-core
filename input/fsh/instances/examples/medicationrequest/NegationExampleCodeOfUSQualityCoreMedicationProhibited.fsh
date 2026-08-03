@@ -8,7 +8,7 @@ Usage: #example
 * intent = #order
 * category = $medicationrequest-category#community
 * doNotPerform = true
-* medicationCodeableConcept = $sct#1336006 "Deoxycortone"
+* medicationCodeableConcept = $rxnorm#309675 "desoxycorticosterone 25 MG/ML Injectable Suspension"
 * subject.reference = "Patient/example"
 * authoredOn = "2015-03-25T19:32:52-05:00"
 * requester.reference = "Practitioner/example"

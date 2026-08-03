@@ -61,3 +61,13 @@ Pinned the version of https://www.cms.gov/%
 %There are multiple different potential matches for the url 'http://hl7.org/fhir/request-status'%
 %There are multiple different potential matches for the url 'http://hl7.org/fhir/event-status'%
 %There are multiple different potential matches for the url 'http://hl7.org/fhir/CodeSystem/medicationrequest-status'%
+
+# 10. Task.code (Task Codes) and Observation.code (Screening and Assessment Survey Codes) carry preferred bindings. These preferred bindings contain a representative set of codes, but can not anticipate the many use cases for measure developers. The codes in these examples are appropriate for the examples. (See issue #8; see also issue #19 to relax the Task.code binding to example.)
+
+INFORMATION: Observation/example-screening-assessment-10-minute-apgar-heart-rate: Observation.code: None of the codings provided are in the value set 'Screening and Assessment Survey Codes' (http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1267.13|20260422), and a coding is recommended to come from this value set (codes = http://loinc.org#32402-0)
+INFORMATION: Task/done-example: Task.code: None of the codings provided are in the value set 'Task Codes' (http://hl7.org/fhir/ValueSet/task-code|4.0.1), and a coding is recommended to come from this value set (codes = http://www.ama-assn.org/go/cpt#99483)
+INFORMATION: Task/example: Task.code: None of the codings provided are in the value set 'Task Codes' (http://hl7.org/fhir/ValueSet/task-code|4.0.1), and a coding is recommended to come from this value set (codes = http://www.ama-assn.org/go/cpt#99483)
+
+# 11. RelatedPerson.relationship (Personal And Legal Relationship Role Type) carries a preferred binding. The example models an emergency contact (v2-0131 C), for which the preferred value set has no appropriate substitute. The code in this example is appropriate for the example.
+
+INFORMATION: RelatedPerson/example: RelatedPerson.relationship[0]: None of the codings provided are in the value set 'Personal And Legal Relationship Role Type' (http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.11.20.12.1|20251204), and a coding is recommended to come from this value set (codes = http://terminology.hl7.org/CodeSystem/v2-0131#C)

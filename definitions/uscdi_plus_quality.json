@@ -4988,14 +4988,12 @@
         {
           "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-proceduredone",
           "elements": [
-            "Procedure.asserter",
             "Procedure.performer.actor"
           ]
         },
         {
           "profile": "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-procedurenotdone",
           "elements": [
-            "Procedure.asserter",
             "Procedure.performer.actor"
           ]
         },

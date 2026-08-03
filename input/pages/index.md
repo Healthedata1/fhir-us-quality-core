@@ -5,7 +5,7 @@
 {% include disclaimer.md %}
 
 {: .note-to-balloters}
-> US Quality Core currently provides guidance for implementing United States Core Data for Interoperability Plus (USCDI+ Quality) Draft Version 2 (V2). This guidance will be updated through the ballot reconciliation process when the final USCDI+ Quality V2 dataset is published.
+> US Quality Core currently provides guidance for implementing United States Core Data for Interoperability Plus (USCDI+ Quality) Draft Version 2 (V2). This guidance will be updated through the ballot reconciliation process when the final USCDI+ Quality V2 dataset is published, which is expected in September 2026.
 >
 > [USCDI+ Quality Page](uscdiquality.html): Implementor feedback is requested on the proposed United States Core Data for Interoperability (USCDI+ Quality) mappings to US Quality Core and US Core profiles below. Specific feedback on the following elements are requested:  
 > - **Diagnostic Imaging: Diagnostic Imaging Reference:** We are seeking feedback on the level of detail necessary for quality reporting. This element is currently mapped to the `DiagnosticReport` profile. Additional considered mappings to `DocumentReference.content.attachment.url` or `ImagingStudy.endpoint` were considered to semantically align with the USCDI+ Quality data element definition by identifying the location of the referenced document content, but feedback through the US Quality Core IG will help determine if these additional mappings should be added.

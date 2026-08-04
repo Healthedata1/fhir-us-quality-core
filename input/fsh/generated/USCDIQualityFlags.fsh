@@ -33,7 +33,7 @@ RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCoreAllergyIntolerance
 * recordedDate ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
 * recordedDate ^short = "(USCDI+ Quality) Date first version of the resource instance was recorded"
 * recorder ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
-* recorder ^short = "(USCDI+ Quality) 𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the sensitivity"
+* recorder ^short = "(USCDI+ Quality) Who recorded the sensitivity"
 
 RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCoreCarePlan
 * addresses ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
@@ -251,7 +251,7 @@ RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCoreConditionEncounterDiagnosis
 * recordedDate ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
 * recordedDate ^short = "(USCDI+ Quality) Date record was first recorded"
 * recorder ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
-* recorder ^short = "(USCDI+ Quality) 𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the condition"
+* recorder ^short = "(USCDI+ Quality) Who recorded the condition"
 
 RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCoreLocation
 * address ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true

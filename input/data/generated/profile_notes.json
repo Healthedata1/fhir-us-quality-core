@@ -279,7 +279,7 @@
       },
       {
         "path": "recorder",
-        "short": "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the sensitivity",
+        "short": "Who recorded the sensitivity",
         "dataElements": [
           {
             "class": "Provenance",
@@ -1313,7 +1313,7 @@
       },
       {
         "path": "recorder",
-        "short": "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the condition",
+        "short": "Who recorded the condition",
         "dataElements": [
           {
             "class": "Provenance",

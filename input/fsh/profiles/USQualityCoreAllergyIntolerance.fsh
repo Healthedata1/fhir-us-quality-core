@@ -33,6 +33,6 @@ Description: "Profile of AllergyIntolerance for decision support/quality metrics
 * lastOccurrence ^short = "Date(/time) of last known occurrence of a reaction"
 * reaction ^short = "Adverse Reaction Events linked to exposure to substance"
   * severity ^short = "mild | moderate | severe (of event as a whole)"
-* recorder ^short = "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the sensitivity"
+* recorder ^short = "Who recorded the sensitivity"
 // Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.
 * insert GeneratedUSCDIQualityFlagsForUSQualityCoreAllergyIntolerance

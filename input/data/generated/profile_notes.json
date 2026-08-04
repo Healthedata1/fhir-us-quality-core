@@ -116,7 +116,9 @@
           "fhir": {
             "mandatory": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "date",
@@ -134,13 +136,6 @@
         },
         {
           "path": "recordedDate",
-          "fhir": {},
-          "usQualityCore": {
-            "uscdiQuality": true
-          }
-        },
-        {
-          "path": "resultingCondition",
           "fhir": {},
           "usQualityCore": {
             "uscdiQuality": true
@@ -359,7 +354,9 @@
           "usCore": {
             "uscdi": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "lastOccurrence",
@@ -1421,7 +1418,9 @@
           "usCore": {
             "uscdi": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         }
       ]
     },
@@ -1765,7 +1764,9 @@
           "usCore": {
             "uscdi": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         }
       ]
     },
@@ -3109,7 +3110,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "resultsInterpreter",
@@ -3400,7 +3403,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "resultsInterpreter",
@@ -3408,7 +3413,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "result",
@@ -4130,7 +4137,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         }
       ]
     },
@@ -4468,7 +4477,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "protocolApplied.doseNumber[x]",
@@ -6175,7 +6186,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "authorizingPrescription",
@@ -7816,7 +7829,7 @@
         ]
       },
       {
-        "path": "reported[x][reportedReference]",
+        "path": "reported[x]:reportedReference",
         "short": "Reported rather than primary record",
         "dataElements": [
           {
@@ -7922,6 +7935,14 @@
           "usQualityCore": {}
         },
         {
+          "path": "reported[x]:reportedReference",
+          "fhir": {},
+          "usCore": {},
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
+        },
+        {
           "path": "medication[x]",
           "fhir": {
             "mandatory": true
@@ -7975,7 +7996,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "reasonCode",
@@ -9341,7 +9364,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "value[x]",
@@ -9706,7 +9731,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "value[x]",
@@ -10149,7 +10176,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "value[x]",
@@ -12295,7 +12324,9 @@
           "usCore": {
             "uscdi": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "reasonCode",
@@ -12582,14 +12613,6 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {
-            "uscdiQuality": true
-          }
-        },
-        {
-          "path": "asserter",
-          "fhir": {},
-          "usCore": {},
           "usQualityCore": {
             "uscdiQuality": true
           }
@@ -12909,14 +12932,6 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {
-            "uscdiQuality": true
-          }
-        },
-        {
-          "path": "asserter",
-          "fhir": {},
-          "usCore": {},
           "usQualityCore": {
             "uscdiQuality": true
           }
@@ -13304,7 +13319,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "source.extension:r5Source.url",
@@ -14391,7 +14408,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "reasonCode",
@@ -15424,7 +15443,9 @@
           "usCore": {
             "mustSupport": true
           },
-          "usQualityCore": {}
+          "usQualityCore": {
+            "uscdiQuality": true
+          }
         },
         {
           "path": "value[x]",

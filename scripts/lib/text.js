@@ -3,10 +3,6 @@ function getOrSet(map, key, createValue) {
   return map.get(key);
 }
 
-function normalizeTrailingNewline(text) {
-  return text.replace(/\n*$/, '\n');
-}
-
 function splitLines(text) {
   const lines = text.split('\n');
   const trailingNewline = lines.at(-1) === '';
@@ -16,14 +12,6 @@ function splitLines(text) {
 
 function joinLines(lines, trailingNewline) {
   return `${lines.join('\n')}${trailingNewline ? '\n' : ''}`;
-}
-
-function escapeHtml(value) {
-  return String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
 }
 
 function markdownText(value) {
@@ -56,11 +44,14 @@ function jsonPathToFshPath(elementPath) {
 function fshPathToDisplayPath(fshPath) {
   return fshPath
     .split('.')
-    .map(part =>
-      part.replace(/^([^[]+)\[([^\]]+)]$/, (_, name, bracket) =>
+    .map(part => {
+      const choiceSlice = part.match(/^([^[]+)\[x]\[([^\]]+)]$/);
+      if (choiceSlice) return `${choiceSlice[1]}[x]:${choiceSlice[2]}`;
+
+      return part.replace(/^([^[]+)\[([^\]]+)]$/, (_, name, bracket) =>
         bracket === 'x' ? `${name}[x]` : `${name}:${bracket}`
-      )
-    )
+      );
+    })
     .join('.');
 }
 
@@ -76,13 +67,11 @@ module.exports = {
   canonicalUrl,
   canonicalWithVersion,
   elementIdToFshPath,
-  escapeHtml,
   fshPathToDisplayPath,
   getOrSet,
   joinLines,
   jsonPathToFshPath,
   markdownText,
-  normalizeTrailingNewline,
   splitLines,
   urlTail
 };

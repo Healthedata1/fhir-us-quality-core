@@ -374,8 +374,6 @@ RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCoreConditionProblemsHealthConcer
 * severity ^short = "(USCDI+ Quality) Subjective severity of condition"
 
 RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCoreProcedureNotDone
-* asserter ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
-* asserter ^short = "(USCDI+ Quality) Person who asserts this procedure"
 * code ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
 * code ^short = "(USCDI+ Quality) What procedure"
 * code.extension[codeOptions] ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
@@ -982,8 +980,6 @@ RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCoreProcedure
 * statusReason ^short = "(USCDI+ Quality) Reason for current status"
 
 RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCoreProcedureDone
-* asserter ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
-* asserter ^short = "(USCDI+ Quality) Person who asserts this procedure"
 * code ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
 * code ^short = "(USCDI+ Quality) What procedure"
 * partOf ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true

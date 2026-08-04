@@ -12376,17 +12376,6 @@
     "title": "US Quality Core Procedure Done",
     "uscdiQualityElements": [
       {
-        "path": "asserter",
-        "short": "Person who asserts this procedure",
-        "dataElements": [
-          {
-            "class": "Provenance",
-            "name": "Author",
-            "path": "uscdiquality.html#data-element-provenance-author"
-          }
-        ]
-      },
-      {
         "path": "code",
         "short": "What procedure",
         "dataElements": [
@@ -12703,17 +12692,6 @@
   "us-quality-core-procedurenotdone": {
     "title": "US Quality Core Procedure Not Done",
     "uscdiQualityElements": [
-      {
-        "path": "asserter",
-        "short": "Person who asserts this procedure",
-        "dataElements": [
-          {
-            "class": "Provenance",
-            "name": "Author",
-            "path": "uscdiquality.html#data-element-provenance-author"
-          }
-        ]
-      },
       {
         "path": "code",
         "short": "What procedure",

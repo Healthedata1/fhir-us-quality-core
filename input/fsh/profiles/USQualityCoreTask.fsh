@@ -1,8 +1,7 @@
 Invariant: tsk-1
-Description: "to indicate what, either at least one coding in the code or a codeOptions extension shall be provided"
+Description: "when code is present, either at least one coding or a codeOptions extension shall be provided, but not both"
 * severity = #error
-* expression = "code.extension('http://hl7.org/fhir/StructureDefinition/codeOptions').exists() xor code.coding.exists()"
-* xpath = "exists(f:extension)"
+* expression = "code.empty() or (code.extension('http://hl7.org/fhir/StructureDefinition/codeOptions').exists() xor code.coding.exists())"
 
 Profile: USQualityCoreTask
 Parent: Task
@@ -24,9 +23,9 @@ Description: "Profile of Task for decision support/quality metrics. Defines the 
 * status ^short = "draft | requested | received | accepted | rejected | ready | cancelled | in-progress | on-hold | failed | completed | entered-in-error"
 * statusReason ^short = "Reason for current status"
 * intent ^short = "unknown | proposal | plan | order | original-order | reflex-order | filler-order | instance"
-* priority 1..1
+* priority 0..1
   * ^short = "routine | urgent | asap | stat"
-* code 1..1
+* code 0..1
 * code from TaskCode (preferred)
   * ^short = "Task Type"
   * ^condition = "tsk-1"

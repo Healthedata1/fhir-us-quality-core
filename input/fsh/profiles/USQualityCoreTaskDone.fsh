@@ -14,7 +14,8 @@ Description: "Positive profile of Task for decision support/quality metrics. Ind
 * status from USQualityCorePositiveTaskStatus (required)
   * ^short = "draft | requested | received | accepted | ready | in-progress | on-hold | completed"
 * basedOn ^short = "Request fulfilled by this task"
-* code ^short = "Task Type"
+* code 1..1
+  * ^short = "Task Type"
 * executionPeriod ^short = "Start and end time of execution"
 * focus ^short = "What task is acting on"
 * reasonCode ^short = "Why task is needed"

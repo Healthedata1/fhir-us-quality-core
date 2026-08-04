@@ -15680,17 +15680,9 @@
           "usQualityCore": {}
         },
         {
-          "path": "priority",
-          "fhir": {},
-          "usQualityCore": {
-            "mandatory": true
-          }
-        },
-        {
           "path": "code",
           "fhir": {},
           "usQualityCore": {
-            "mandatory": true,
             "uscdiQuality": true
           }
         },
@@ -15937,13 +15929,6 @@
             "mandatory": true
           },
           "usQualityCore": {}
-        },
-        {
-          "path": "priority",
-          "fhir": {},
-          "usQualityCore": {
-            "mandatory": true
-          }
         },
         {
           "path": "code",

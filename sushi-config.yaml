@@ -73,14 +73,14 @@ pages:
     uscdiquality.md:
       title: USCDI+ Quality
       generation: markdown
+    relationship-with-uscore-qicore.md:
+      title: Relationship with US Core and QI-Core
+      generation: markdown
     negation.md:
       title: US Quality Core Negation
       generation: markdown
     provenance.md:
       title: Provenance
-      generation: markdown
-    relationship-with-uscore-qicore.md:
-      title: Relationship with US Core and QI-Core
       generation: markdown
   fhir-artifacts.md:
     title: FHIR Artifacts

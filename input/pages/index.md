@@ -25,7 +25,7 @@
 ### Summary
 {: #summary}
 
-The US Quality Core Implementation Guide provides guidance for implementing [United States Core Data for Interoperability (USCDI)+ Quality)](https://uscdiplus.healthit.gov/uscdiplus) in FHIR to support
+The US Quality Core Implementation Guide provides guidance for implementing [United States Core Data for Interoperability (USCDI)+ Quality)](https://uscdiplus.healthit.gov/uscdiplus?id=uscdi_record&table=x_g_sshh_uscdi_domain&sys_id=7ddf78228745b95098e5edb90cbb3525&view=sp) in FHIR to support
 standardized, interoperable representation and exchange of quality data for
 quality measurement and reporting programs. It defines profiles that derive from
 and extend the base [FHIR version R4](http://hl7.org/fhir/R4/index.html)
@@ -58,58 +58,55 @@ Quality](uscdiquality.html) page in this guide.
 
 US Quality Core descends from [Quality Improvement Core
 (QI-Core)](https://hl7.org/fhir/us/qicore/) and is aligned to [US
-Core](https://hl7.org/fhir/us/core/). For more information on the relationship
-between US Quality Core and these guides, see [Relationship with US Core and
-QI-Core](relationship-with-uscore-qicore.html).
+Core](https://hl7.org/fhir/us/core/). For more information, see [Relationship
+with US Core and QI-Core](relationship-with-uscore-qicore.html).
 
 ### Scope
 
 The US Quality Core IG provides requirements and guidance for representing and
 exchanging clinical data used in quality measurement programs in FHIR within the
 US Realm.  The scope of the data described in this guide is defined by the
-USCDI+ Quality Data Element List, which establishes a consistent baseline of
-harmonized data elements for a wide range of quality measurement use cases.
+[USCDI+ Quality Data Element List](https://uscdiplus.healthit.gov/uscdiplus?id=uscdi_record&table=x_g_sshh_uscdi_domain&sys_id=7ddf78228745b95098e5edb90cbb3525&view=sp), which establishes a consistent baseline of
+harmonized data elements for a wide range of quality measurement use cases. The scope of this implementation guide is limited to the representation and
+exchange of data described in the USCDI+ Quality Data Element List. This IG includes
+only those FHIR profiles, extensions, and constraints needed to represent and
+exchange data relevant to USCDI+ Quality.
+
 This guide defines a standardized method for exchanging this data between
-producers of data (e.g., EHRs) and the quality measurement systems that
-calculate measure reports based on this data.  This exchange definition does not
+producers of data (e.g., electronic health records (EHRs)) and the quality measurement systems thatcalculate measure reports based on this data.  This exchange definition does not
 introduce use-case-specific or novel methods for exchanging these data, instead,
 it extends the US Core RESTful API to provide a flexible and widely-adopted
 method for accessing quality related data.
 
-The scope of this implementation guide is limited to the representation and
-exchange of data described in the USCDI+ Quality Data Element List. It includes
-only those FHIR profiles, extensions, and constraints needed to represent and
-exchange data relevant to USCDI+ Quality.
-
 Additionally, the following topics are outside the scope of this guide:
 * How consumers of the quality data described in this guide calculate quality measures
-* How to reference data elements in this guide within quality measures, including those represented using standards such as CQL
+* How to reference data elements in this guide within quality measures, including those represented using standards such as Clinical Quality Language (CQL)
 * How to represent and exchange quality measurement reports using FHIR
 * Specifics of quality program policy, such as who reports, when, and the "form and manner" of submission
 
 ### How to read this Guide
 {: #contents}
 
-This guide is divided into several pages, which are listed at the top of each page in the menu bar.
+This guide is divided into several pages, which are listed in the menu bar at the top of each page:
 
-* [Home](index.html): Overview of US Quality Core, including its background and scope
-* [Conformance](conformance.html): Requirements for claiming conformance to this implementation guide
+* [Home](index.html): Overview of US Quality Core, including background and scope
+* [Conformance](conformance.html): Requirements for claiming conformance to this IG  
     * [General Requirements](us-quality-core-general-requirements.html): Requirements common to all profiles used in this guide
-    * [Must Support](must-support.html): Expectations for Must Support and USCDI+ Quality flagged elements
+    * [Must Support](must-support.html): Expectations for elements flagged as “Must Support” and “USCDI+ Quality”
     * [Security](security.html): General security requirements
 * [Guidance](guidance.html): Implementation guidance for using US Quality Core profiles
     * [USCDI+ Quality](uscdiquality.html): Description of the relationship between USCDI+ Quality and US Quality Core, including profile mappings and conformance scope
+    * [Relationship with US Core and QI-Core](relationship-with-uscore-qicore.html): Relationship of US Quality Core to US Core and QI-Core
     * [US Quality Core Negation](negation.html): Guidance on using US Quality Core negation profiles
     * [Provenance](provenance.html): Description of the use of Provenance in US Quality Core
-    * [Relationship with US Core and QI-Core](relationship-with-uscore-qicore.html): Relationship between US Quality Core, US Core, and QI-Core
-* [FHIR Artifacts](fhir-artifacts.html): Computable artifacts and examples defined by this guide
+* [FHIR Artifacts](fhir-artifacts.html): Computable artifacts and examples
     * [Capability Statements](capability-statements.html): Expected FHIR capabilities of the US Quality Core Servers and Clients
-    * [Profiles](profiles.html): All profiles defined in or used by US Quality Core
+    * [Profiles](profiles.html): Profiles defined in or used by US Quality Core
     * [Extensions](extensions.html): Extensions defined as part of US Quality Core
     * [Terminology](terminology.html): US Quality Core ValueSets and Code Systems defined for the profiles
     * [Examples](examples.html): Examples used in this guide
 * [Downloads](downloads.html): Downloadable artifacts
-* [Change Log](changes.html): Change Log that lists changes to this guide across versions
+* [Change Log](changes.html): List of changes to this guide across versions
 
 ---
 

@@ -1,98 +1,98 @@
 {:toc}
 
-**USQualityCoreAdverseEvent**
+### USQualityCoreAdverseEvent
 * [Mild Rash Example](AdverseEvent-example.html)
 
-**USQualityCoreAllergyIntolerance**
+### USQualityCoreAllergyIntolerance
 * [Typical Food Allergy](AllergyIntolerance-example.html)
 * [Refuted Food Allergy](AllergyIntolerance-example-refuted.html)
 
-**USQualityCoreCarePlan**
+### USQualityCoreCarePlan
 * [Assessment and care plan for a pregnancy](CarePlan-example.html)
 
-**USQualityCoreCareTeam**
+### USQualityCoreCareTeam
 * [Example of a CareTeam involved in the delivery of care for a pregnancy](CareTeam-example.html)
 
-**USQualityCoreCommunication**
+### USQualityCoreCommunication
 * [Radiology Report Notification Example](Communication-example.html)
 
-**USQualityCoreCommunicationNotDone**
+### USQualityCoreCommunicationNotDone
 * [Negation Example](Communication-negation-example.html)
 
-**USQualityCoreConditionEncounterDiagnosis**
+### USQualityCoreConditionEncounterDiagnosis
 * [Severe Burn Example](Condition-example.html)
 * [Appendicitis Example](Condition-appendicitis-example.html)
 
-**USQualityCoreConditionProblemsHealthConcerns**
+### USQualityCoreConditionProblemsHealthConcerns
 * [Patient with a fear of blood](Condition-health-concern-example.html)
 
-**USQualityCoreCoverage**
+### USQualityCoreCoverage
 * [General Person Primary Coverage Example](Coverage-example.html)
 
-**USQualityCoreDeviceNotRequested**
+### USQualityCoreDeviceNotRequested
 * [Negation Example with valueset](DeviceRequest-negation-example.html)
 * [Negation Example with code](DeviceRequest-negation-with-code-example.html)
 
-**USQualityCoreDeviceRequest**
+### USQualityCoreDeviceRequest
 * [General DeviceRequest Example](DeviceRequest-example.html)
 
-**USQualityCoreDiagnosticReportLab**
+### USQualityCoreDiagnosticReportLab
 * [Blood Panel Example](DiagnosticReport-example.html)
 
-**USQualityCoreDiagnosticReportNote**
+### USQualityCoreDiagnosticReportNote
 * [Radiology Diagnostic Report Example](DiagnosticReport-note-example.html)
 
-**USQualityCoreEncounter**
+### USQualityCoreEncounter
 * [Inpatient Admission for Appendicitis](Encounter-example.html)
 
-**USQualityCoreGoal**
+### USQualityCoreGoal
 * [Weight Loss Example](Goal-example.html)
 
-**USQualityCoreImagingStudy**
+### USQualityCoreImagingStudy
 * [Chest CT](ImagingStudy-example.html)
 
-**USQualityCoreImmunization**
+### USQualityCoreImmunization
 * [Example of Influenza immunization shot](Immunization-example.html)
 * [Example of completed Influenza immunization record](Immunization-done-example.html)
 
-**USQualityCoreImmunizationNotDone**
+### USQualityCoreImmunizationNotDone
 * [Negation Example using valueset reference](Immunization-negation-example.html)
 * [Negation Example using coding](Immunization-negation-example-code.html)
 
-**USQualityCoreMedication**
+### USQualityCoreMedication
 * [Example of an IV medication - Alemtuzumab](Medication-example.html)
 
-**USQualityCoreMedicationAdministration**
+### USQualityCoreMedicationAdministration
 * [Intravenous medication example](MedicationAdministration-example.html)
 
-**USQualityCoreMedicationAdministrationNotDone**
+### USQualityCoreMedicationAdministrationNotDone
 * [Medication not administered using a value set to indicate what was not administered](MedicationAdministration-negation-example.html)
 * [Medication not administered using a code to indicate that a particular medication was not administered](MedicationAdministration-negation-with-code-example.html)
 
-**USQualityCoreMedicationDispense**
+### USQualityCoreMedicationDispense
 * [Alemtuzumab MedicationDispense Example](MedicationDispense-example.html)
 
-**USQualityCoreMedicationDispenseDeclined**
+### USQualityCoreMedicationDispenseDeclined
 * [Negation Example with valueset](MedicationDispense-negation-example.html)
 * [Negation Example with code](MedicationDispense-negation-with-code-example.html)
 
-**USQualityCoreMedicationNotRequested**
+### USQualityCoreMedicationNotRequested
 * [Negation Example using Valueset](MedicationRequest-negation-example.html)
 * [Negation Example using code](MedicationRequest-negation-example-code.html)
 
-**USQualityCoreMedicationRequest**
+### USQualityCoreMedicationRequest
 * [Alemtuzumab MedicationRequest Example](MedicationRequest-example.html)
 * [Patient Reported MedicationRequest Example](MedicationRequest-patient-reported-example.html)
 * [Patient Requested MedicationRequest Example](MedicationRequest-patient-requester-example.html)
 * [Practitioner Ordered MedicationRequest Example](MedicationRequest-practitioner-ordered-example.html)
 
-**USQualityCoreNutritionOrder**
+### USQualityCoreNutritionOrder
 * [Diabetic diet example](NutritionOrder-example.html)
 
-**USQualityCoreQuestionnaireResponse**
+### USQualityCoreQuestionnaireResponse
 * [PHQ-9 Questionnaire Response Example](QuestionnaireResponse-phq-9-example.html)
 
-**USQualityCoreSimpleObservation**
+### USQualityCoreSimpleObservation
 * [Frailty Observation Example](Observation-example-frailty.html)
 * [Gestational Age at Birth Example](Observation-example-gestation.html)
 * [Date and Time of Obstetric Delivery Example](Observation-example-obstetric-delivery.html)
@@ -102,53 +102,53 @@
 * [Number of Parity Example](Observation-example-parity.html)
 * [Number of Pregnancies Example](Observation-example-pregnancies.html)
 
-**USQualityCoreLaboratoryResultObservation**
+### USQualityCoreLaboratoryResultObservation
 * [Glucose Lab Result Observation](Observation-laboratory-result-observation-example-blood-glucose.html)
 
-**USQualityCoreObservationClinicalResult**
+### USQualityCoreObservationClinicalResult
 * [Heart Rate Rhythm Clinical Result Observation](Observation-clinical-result-heart-rate-rhythm.html)
 
-**USQualityCoreObservationScreeningAssessment**
+### USQualityCoreObservationScreeningAssessment
 * [10 minute Apgar Heart Rate Screening Assessment Observation](Observation-example-screening-assessment-10-minute-apgar-heart-rate.html)
 
-**USQualityCoreOrganization**
+### USQualityCoreOrganization
 * [HL7 Organization Example](Organization-example.html)
 
-**USQualityCorePatient**
+### USQualityCorePatient
 * [Basic Patient Example](Patient-example.html)
 * [Senior Patient Example](Patient-example-2.html)
 * [Infant Patient Example](Patient-infant-example.html)
 
-**USQualityCorePractitioner**
+### USQualityCorePractitioner
 * [Referring Practitioner Example](Practitioner-example.html)
 
-**USQualityCorePractitionerRole**
+### USQualityCorePractitionerRole
 * [PractitionerRole Example](PractitionerRole-example.html)
 
-**USQualityCoreProcedure**
+### USQualityCoreProcedure
 * [Appendectomy Example](Procedure-example.html)
 
-**USQualityCoreProcedureNotDone**
+### USQualityCoreProcedureNotDone
 * [Negation Example with valueset](Procedure-negation-example.html)
 * [Negation Example with code](Procedure-negation-with-code-example.html)
 
-**USQualityCoreRelatedPerson**
+### USQualityCoreRelatedPerson
 * [Emergency Contact Example](RelatedPerson-example.html)
 
-**USQualityCoreServiceNotRequested**
+### USQualityCoreServiceNotRequested
 * [Negation Example with valueset](ServiceRequest-negation-example.html)
 * [Negation Example with code](ServiceRequest-negation-example-code.html)
 
-**USQualityCoreServiceRequest**
+### USQualityCoreServiceRequest
 * [Request for Appendectomy Example](ServiceRequest-example.html)
 * [Request for Myringotomy Procedure Example](ServiceRequest-myringotomy-example.html)
 
-**USQualityCoreTask**
+### USQualityCoreTask
 * [Task Example](Task-example.html)
 
-**USQualityCoreTaskRejected**
+### USQualityCoreTaskRejected
 * [Task rejected using a value set to indicate what was not done](Task-negation-example.html)
 * [Task rejected using a code to indicate what was not done](Task-negation-with-code-example.html)
 
-**Additional Examples**
+### Additional Examples
 * [ODH Example](Observation-example-odh.html)

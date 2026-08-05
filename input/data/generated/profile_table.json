@@ -880,8 +880,8 @@
         {
           "title": "US Quality Core Task Rejected",
           "path": "StructureDefinition-us-quality-core-taskrejected.html",
-          "depth": 0,
-          "showResource": true,
+          "depth": 1,
+          "showResource": false,
           "usCore": null
         }
       ]

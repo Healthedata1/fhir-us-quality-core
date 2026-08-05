@@ -20,6 +20,7 @@ alignment to <a href="https://hl7.org/fhir/us/core/STU9/">US Core v9.0.0</a>.
 The following changes have been made for 1.0.0-ballot from the 2026 US Quality Core IG. :
 
 * Updates US Quality Core profiles and resources to derive from, or align with, QI-Core v8.0.0-ballot profiles and resources where possible.
+* Task Done/Rejected profile and example refactors.
 * Updates US Quality Core US Core dependency to v9.0.0.
 * Updates USCDI+ Quality mapping guidance to reflect USCDI+ Quality V2.
 * Replaces legacy locally carried US Core terminology artifacts with references to upstream US Core artifacts where possible, leaving only terminology introduced by US Quality Core in this guide.

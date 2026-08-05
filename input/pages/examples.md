@@ -147,8 +147,8 @@
 * [Task Example](Task-example.html)
 
 **USQualityCoreTaskRejected**
-* [Task rejected using a value set to indicate what was not done](Task-negation-example.html)
-* [Task rejected using a code to indicate what was not done](Task-negation-with-code-example.html)
+* [Task rejecting a proposal for an activity identified by a value set](Task-negation-example.html)
+* [Task rejecting a proposal for an activity identified by a code](Task-negation-with-code-example.html)
 
 **Additional Examples**
 * [ODH Example](Observation-example-odh.html)

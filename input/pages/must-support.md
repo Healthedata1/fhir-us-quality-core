@@ -8,7 +8,7 @@ Each US Quality Core profile includes a summary of USCDI+ Quality elements in th
 
 {% include img-portrait.html img="must-support-uscdi-plus-expectations.png" caption="Figure 1. Summary of USCDI+ Quality Elements in a US Quality Core Profile"%}
 
-Figure 2 below illustrates how the USCDI+ Quality flag is presented in the Formal View of Profile Content, the "Key Elements Table" tab, on the US Quality Core profile pages.
+Figure 2 illustrates how the USCDI+ Quality flag is presented in the Formal View of Profile Content, the "Key Elements Table" tab, on the US Quality Core profile pages.
 
 {% include img-portrait.html img="must-support-formal-view-example.png" caption="Figure 2. USCDI+ Quality Flag in Formal View of Profile Content"%}
 

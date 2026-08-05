@@ -57,5 +57,6 @@ Description: "The US Quality Core Condition Encounter Diagnosis Profile is based
   * ^short = "When in resolution/remission"
 * recordedDate ^short = "Date record was first recorded"
   * ^definition = "The recordedDate represents when this particular Condition record was created in the system, which is often a system-generated date."
+* recorder ^short = "Who recorded the condition"
 // Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.
 * insert GeneratedUSCDIQualityFlagsForUSQualityCoreConditionEncounterDiagnosis

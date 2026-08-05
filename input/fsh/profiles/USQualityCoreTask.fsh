@@ -23,8 +23,6 @@ Description: "Profile of Task for decision support/quality metrics. Defines the 
 * status ^short = "draft | requested | received | accepted | rejected | ready | cancelled | in-progress | on-hold | failed | completed | entered-in-error"
 * statusReason ^short = "Reason for current status"
 * intent ^short = "unknown | proposal | plan | order | original-order | reflex-order | filler-order | instance"
-* priority 0..1
-  * ^short = "routine | urgent | asap | stat"
 * code 0..1
 * code from TaskCode (preferred)
   * ^short = "Task Type"

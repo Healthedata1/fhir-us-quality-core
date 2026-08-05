@@ -8,10 +8,10 @@ Usage: #example
   * system = "http://www.acme.org/tasks"
   * value = "19009"
 * status = #completed
-* intent = #proposal
+* intent = #order
 * priority = #routine
-* code = $cpt#99483
-  * text = "Medication Reconciliation"
+* code = $task-code#fulfill "Fulfill the focal request"
+* focus.reference = "ServiceRequest/service-requested-example"
 * for.reference = "Patient/example"
 * executionPeriod
   * start = "2018-06-11"

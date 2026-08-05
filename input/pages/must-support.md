@@ -14,4 +14,4 @@ Figure 2 illustrates how the USCDI+ Quality flag is presented in the Formal View
 
 Figure 3 shows the profile's elements and identifies the profile layer where each conformance indicator is first introduced.
 
-{% include img-landscape.html img="element-conformance-indicators-by-profile.png" caption="Figure 3. Element Conformance Indicators by Profile Layer"%}
+{% include img-portrait.html img="element-conformance-indicators-by-profile.png" caption="Figure 3. Element Conformance Indicators by Profile Layer"%}

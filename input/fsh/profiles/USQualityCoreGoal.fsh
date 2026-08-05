@@ -30,5 +30,6 @@ Description: "Profile of Goal for decision support/quality metrics. Defines the 
   * ^binding.extension.valueString = "GoalStartEvent"
   * ^binding.description = "Codes describing events that can trigger the initiation of a goal."
 * target ^short = "Target outcome for the goal"
+* expressedBy ^short = "Who's responsible for creating Goal?"
 // Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.
 * insert GeneratedUSCDIQualityFlagsForUSQualityCoreGoal

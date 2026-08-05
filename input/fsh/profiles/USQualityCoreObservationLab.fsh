@@ -94,5 +94,6 @@ Description: "The US Quality Core Laboratory Result Observation Profile is based
 * referenceRange 0..* MS
   * ^short = "Result reference range"
 * specimen ^short = "Specimen used for this observation"
+* performer ^short = "Who is responsible for the observation"
 // Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.
 * insert GeneratedUSCDIQualityFlagsForUSQualityCoreObservationLab

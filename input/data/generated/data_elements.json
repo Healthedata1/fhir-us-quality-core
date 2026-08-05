@@ -513,7 +513,7 @@
           "name": "Diagnostic Imaging Reference",
           "description": "The technical details of the retrieval access path to indicate network services that can be used to access DICOM studies, series, or instances content and metadata (e.g., a DICOMweb server endpoint providing QIDO-RS, WADO-RS, or WADO-URI).",
           "dataElementId": "data-element-diagnostic-imaging-diagnostic-imaging-reference",
-          "noteId": "diagnostic-imaging-diagnostic-imaging-reference",
+          "noteId": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -586,7 +586,7 @@
           "name": "Diagnosis Rank",
           "description": "Ordinal number or code that identifies the priority or significance of a diagnosis for a given encounter.",
           "dataElementId": "data-element-encounter-information-diagnosis-rank",
-          "noteId": "encounter-information-diagnosis-rank",
+          "noteId": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -716,7 +716,7 @@
           "name": "Present on Admission",
           "description": "An indicator of whether a patient's condition or diagnosis was known to be present at the time of admission.",
           "dataElementId": "data-element-encounter-information-present-on-admission",
-          "noteId": "encounter-information-present-on-admission",
+          "noteId": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -847,7 +847,7 @@
           "name": "Patient Goals",
           "description": "Desired outcomes of patient's care. Examples include but are not limited to blood pressure control, functional ability, and nutrition.",
           "dataElementId": "data-element-goals-and-preferences-patient-goals",
-          "noteId": "goals-and-preferences-patient-goals",
+          "noteId": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -861,7 +861,7 @@
           "name": "SDOH Goals",
           "description": "Desired future states for an identified Social Determinants of Health-related health concern, condition, or diagnosis. Examples include but are not limited to food security, transportation security, and ability to access health care.",
           "dataElementId": "data-element-goals-and-preferences-sdoh-goals",
-          "noteId": "goals-and-preferences-sdoh-goals",
+          "noteId": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -2227,7 +2227,7 @@
           "name": "Nutrition Order",
           "description": "A provider-authored request for nutrition support such as therapeutic diets, enteral feedings, parenteral nutrition, or oral nutritional supplements.",
           "dataElementId": "data-element-orders-nutrition-order",
-          "noteId": "orders-nutrition-order",
+          "noteId": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -2963,7 +2963,7 @@
           "name": "Procedures",
           "description": "Activity performed for or on a patient as part of the provision of care.",
           "dataElementId": "data-element-procedures-procedures",
-          "noteId": "procedures-procedures",
+          "noteId": null,
           "profileOverride": null,
           "usQualityCore": [
             {
@@ -3078,6 +3078,10 @@
               "path": "StructureDefinition-us-quality-core-imagingstudy.html"
             },
             {
+              "title": "US Quality Core Immunization",
+              "path": "StructureDefinition-us-quality-core-immunization.html"
+            },
+            {
               "title": "US Quality Core Immunization Done",
               "path": "StructureDefinition-us-quality-core-immunizationdone.html"
             },
@@ -3098,12 +3102,20 @@
               "path": "StructureDefinition-us-quality-core-medicationadministrationnotdone.html"
             },
             {
+              "title": "US Quality Core MedicationDispense",
+              "path": "StructureDefinition-us-quality-core-medicationdispense.html"
+            },
+            {
               "title": "US Quality Core MedicationDispense Done",
               "path": "StructureDefinition-us-quality-core-medicationdispensedone.html"
             },
             {
               "title": "US Quality Core MedicationDispense Declined",
               "path": "StructureDefinition-us-quality-core-medicationdispensedeclined.html"
+            },
+            {
+              "title": "US Quality Core MedicationRequest",
+              "path": "StructureDefinition-us-quality-core-medicationrequest.html"
             },
             {
               "title": "US Quality Core MedicationRequested",
@@ -3118,12 +3130,20 @@
               "path": "StructureDefinition-us-quality-core-nutritionorder.html"
             },
             {
+              "title": "US Quality Core Procedure",
+              "path": "StructureDefinition-us-quality-core-procedure.html"
+            },
+            {
               "title": "US Quality Core Procedure Done",
               "path": "StructureDefinition-us-quality-core-proceduredone.html"
             },
             {
               "title": "US Quality Core Procedure Not Done",
               "path": "StructureDefinition-us-quality-core-procedurenotdone.html"
+            },
+            {
+              "title": "US Quality Core ServiceRequest",
+              "path": "StructureDefinition-us-quality-core-servicerequest.html"
             },
             {
               "title": "US Quality Core ServiceRequested",
@@ -3144,6 +3164,54 @@
             {
               "title": "US Quality Core Task Rejected",
               "path": "StructureDefinition-us-quality-core-taskrejected.html"
+            },
+            {
+              "title": "US Quality Core AllergyIntolerance",
+              "path": "StructureDefinition-us-quality-core-allergyintolerance.html"
+            },
+            {
+              "title": "US Quality Core CarePlan",
+              "path": "StructureDefinition-us-quality-core-careplan.html"
+            },
+            {
+              "title": "US Quality Core Condition Encounter Diagnosis",
+              "path": "StructureDefinition-us-quality-core-condition-encounter-diagnosis.html"
+            },
+            {
+              "title": "US Quality Core Condition Problems Health Concerns",
+              "path": "StructureDefinition-us-quality-core-condition-problems-health-concerns.html"
+            },
+            {
+              "title": "US Quality Core DiagnosticReport Profile for Laboratory Results Reporting",
+              "path": "StructureDefinition-us-quality-core-diagnosticreport-lab.html"
+            },
+            {
+              "title": "US Quality Core DiagnosticReport Profile for Report and Note Exchange",
+              "path": "StructureDefinition-us-quality-core-diagnosticreport-note.html"
+            },
+            {
+              "title": "US Quality Core Goal",
+              "path": "StructureDefinition-us-quality-core-goal.html"
+            },
+            {
+              "title": "US Quality Core Laboratory Result Observation",
+              "path": "StructureDefinition-us-quality-core-observation-lab.html"
+            },
+            {
+              "title": "US Quality Core Observation Clinical Result",
+              "path": "StructureDefinition-us-quality-core-observation-clinical-result.html"
+            },
+            {
+              "title": "US Quality Core Observation Screening Assessment",
+              "path": "StructureDefinition-us-quality-core-observation-screening-assessment.html"
+            },
+            {
+              "title": "US Quality Core Simple Observation",
+              "path": "StructureDefinition-us-quality-core-simple-observation.html"
+            },
+            {
+              "title": "US Quality Core QuestionnaireResponse",
+              "path": "StructureDefinition-us-quality-core-questionnaireresponse.html"
             }
           ],
           "usCore": []
@@ -3506,41 +3574,5 @@
       ]
     }
   ],
-  "notes": [
-    {
-      "class": "Diagnostic Imaging",
-      "name": "Diagnostic Imaging Reference",
-      "note": "We are seeking implementer feedback on whether this level of detail is necessary for quality reporting. The proposed mapping to DocumentReference.content.attachment.url semantically aligns with the USCDI+ Quality data element definition by identifying the location of the referenced document content, but feedback through US Quality Core will help determine whether this mapping should be retained."
-    },
-    {
-      "class": "Encounter Information",
-      "name": "Diagnosis Rank",
-      "note": "In QI-Core, information about principal diagnosis is represented using the Claim profile. In US Quality Core v1.0.0-ballot, support for the Claim profile is not required for conformance. We encourage the quality community to provide additional input on information needed to support quality measurement use cases through the HL7 ballot process for US Quality Core."
-    },
-    {
-      "class": "Encounter Information",
-      "name": "Present on Admission",
-      "note": "In QI-Core, information about present on admission is represented using the Claim profile. In US Quality Core v1.0.0, support for the Claim profile is not required for conformance. We have reintroduced the Present on Admission extension for Encounter.diagnosis in this US Quality Core v1.0.0-ballot and it is (USCDI+ Quality) tagged."
-    },
-    {
-      "class": "Goals and Preferences",
-      "name": "Patient Goals",
-      "note": "We are seeking feedback on the use of additional Goal elements (e.g., Goal.target) as it relates to this USCDI+ Quality data element."
-    },
-    {
-      "class": "Goals and Preferences",
-      "name": "SDOH Goals",
-      "note": "We are seeking feedback on the use of additional Goal elements (e.g., Goal.target) as it relates to this USCDI+ Quality data element."
-    },
-    {
-      "class": "Orders",
-      "name": "Nutrition Order",
-      "note": "We are seeking implementer feedback on whether US Quality Core should include mappings for Nutrition Order beyond NutritionOrder.oralDiet to also include NutritionOrder.enteralFormula and NutritionOrder.supplement. These elements align with the broader Nutrition Order definition which includes enteral feedings and nutritional supplements; however, their implementation support and need in quality reporting requires additional feedback."
-    },
-    {
-      "class": "Procedures",
-      "name": "Procedures",
-      "note": "In QI-Core, information about principal procedure is represented using the Claim profile. In US Quality Core v1.0.0, support for the Claim profile is not required for conformance. Implementers may determine the appropriate implementation approach to support this USCDI+ Quality data element. We encourage the quality community to provide additional input on information needed to support quality measurement use cases through the HL7 ballot process for US Quality Core."
-    }
-  ]
+  "notes": []
 }

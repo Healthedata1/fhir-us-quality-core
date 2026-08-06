@@ -43,12 +43,6 @@ Description: "Profile of Practitioner for decision support/quality metrics. Defi
   * value 1..1
   * value only string
     * ^short = "The value that is unique"
-* identifier[ein].system 1..1
-* identifier[ein].system only uri
-* identifier[ein].system ^short = "The namespace for the identifier value"
-* identifier[ein].value 1..1
-* identifier[ein].value only string
-* identifier[ein].value ^short = "The value that is unique"
 * name ^short = "The name(s) associated with the practitioner"
   * family ^short = "Family name (often called 'Surname')"
 * telecom ^short = "A contact detail for the practitioner (that apply to all roles)"

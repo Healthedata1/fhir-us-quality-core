@@ -10,7 +10,7 @@
 ### US Quality Core CarePlan
 * [Assessment and care plan for a pregnancy](CarePlan-example.html)
 
-### USQualityCoreCareTeam
+### US Quality Core CareTeam
 * [Example of a CareTeam involved in the delivery of care for a pregnancy](CareTeam-example.html)
 
 ### USQualityCoreCommunication

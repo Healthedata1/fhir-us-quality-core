@@ -19,7 +19,6 @@
 <artifact id="Condition/health-concern-example" key="Condition-health-concern-example" name="Condition Problems Health Concerns example"/>
 <artifact id="Condition/appendicitis-example" key="Condition-appendicitis-example" name="Condition example - appendicitis"/>
 <artifact id="Coverage/example" key="Coverage-example" name="Coverage example"/>
-<artifact id="Coverage/example-new" key="Coverage-example-new" name="Coverage example - Subscriber ID"/>
 <artifact id="Observation/example-obstetric-delivery" key="Observation-example-obstetric-delivery" name="Date and time of obstetric delivery example"/>
 <artifact id="Observation/example-delivery-date-estimate" key="Observation-example-delivery-date-estimate" name="Delivery date estimated example"/>
 <artifact id="DeviceRequest/example" key="DeviceRequest-example" name="DeviceRequest general example"/>

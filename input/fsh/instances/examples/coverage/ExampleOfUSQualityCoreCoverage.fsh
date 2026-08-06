@@ -10,10 +10,6 @@ Usage: #example
   * system = "http://example.org/payer/member-ids"
   * value = "MB123456789"
 * status = #active
-* type
-  * coding[0] = https://nahdo.org/sopt#72 "PPO"
-  * coding[+] = $v3-ActCode#PPO "preferred provider organization policy"
-  * text = "Preferred Provider Organization (PPO)"
 * policyHolder.reference = "Patient/example"
 * subscriber.reference = "Patient/example"
 * subscriberId = "SUB987654321"

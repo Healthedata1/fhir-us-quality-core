@@ -7,10 +7,6 @@ Usage: #example
 * status = #available
 * subject = Reference(Patient/example) "Example Patient"
 * started = "2026-08-05T10:00:00-04:00"
-* procedureCode
-  * coding[0] = $loinc#79086-5 "CT Chest for screening WO contrast"
-  * coding[+] = http://radlex.org#RPID6002 "CT Chest wo IV Contrast Screening"
-  * text = "Computed tomography of chest for screening without IV contrast"
 * interpreter = Reference(Practitioner/example) "Example Practitioner"
 * numberOfSeries = 1
 * numberOfInstances = 450
@@ -24,10 +20,3 @@ Usage: #example
   * performer
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PRF "performer"
     * actor = Reference(Practitioner/example) "Example Practitioner"
-  * instance
-    * uid = "2.25.37710966450514622421997837258855027209"
-    * sopClass
-      * system = "urn:ietf:rfc:3986"
-      * code = #urn:oid:1.2.840.10008.5.1.4.1.1.2
-    * number = 1
-    * title = "CT Axial Slice 1"

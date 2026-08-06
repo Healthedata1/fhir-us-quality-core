@@ -1,5 +1,5 @@
 Profile: USQualityCoreTaskRejected
-Parent: Task
+Parent: USQualityCoreTask
 Id: us-quality-core-taskrejected
 Title: "US Quality Core Task Rejected"
 Description: "Profile of TaskRejected for decision support/quality metrics. Defines the core set of elements and extensions for quality rule and measure authors."
@@ -12,10 +12,8 @@ Description: "Profile of TaskRejected for decision support/quality metrics. Defi
 * ^contact.telecom.system = #url
 * ^contact.telecom.value = "http://www.hl7.org/Special/committees/cqi"
 * ^jurisdiction = urn:iso:std:iso:3166#US
-* . ^mustSupport = false
 * basedOn ^short = "Request fulfilled by this task"
 * status 1..1
-* status only code
 * status = #rejected (exactly)
   * ^short = "The potential performer who claimed ownership of the task has decided not to execute it prior to performing any action"
 * statusReason 1..1
@@ -23,17 +21,10 @@ Description: "Profile of TaskRejected for decision support/quality metrics. Defi
   * ^short = "Reason for current status"
   * ^mustSupport = false
 * code ^short = "Task Type"
-  * extension contains $codeOptions named codeOptions 0..1
-  * extension[codeOptions] ^short = "Url of a value set of candidate tasks"
-    * ^definition = "A logical reference (e.g. a reference to ValueSet.url) to a value set/version that identifies a set of possible coded values representing the task."
-* focus only Reference(Resource)
-  * ^short = "What task is acting on"
-  * ^mustSupport = false
-* for only Reference(USQualityCorePatient)
-  * ^short = "Beneficiary of the Task"
-  * ^mustSupport = false
-* executionPeriod 1..1
-  * ^short = "The time action first taken meets expectation of the rejected use case."
+* code.extension[codeOptions] ^short = "Url of a value set of candidate tasks"
+* focus ^short = "What task is acting on"
+* for ^short = "Beneficiary of the Task"
+* executionPeriod ^short = "The time action first taken meets expectation of the rejected use case."
 * reasonCode ^short = "Why task is needed"
 * requester ^short = "Who is asking for task to be done"
 // Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.

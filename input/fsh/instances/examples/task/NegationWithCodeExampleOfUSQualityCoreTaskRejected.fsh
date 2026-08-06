@@ -1,7 +1,7 @@
 Instance: negation-with-code-example-of-us-quality-core-task-rejected
 InstanceOf: USQualityCoreTaskRejected
-Title: "TaskRejected with code example"
-Description: "Example of task not done using a code"
+Title: "Task Rejected example rejecting a proposal using a code"
+Description: "Example of a task rejecting a proposal that identifies the requested activity with a code"
 Usage: #example
 * id = "negation-with-code-example"
 * identifier
@@ -10,8 +10,8 @@ Usage: #example
 * status = #rejected
 * statusReason = $sct#275936005 "Patient noncompliance - general (situation)"
 * intent = #proposal
-* code = $sct#430193006 "Medication reconciliation (procedure)"
-* focus.reference = "Procedure/example"
+* code = $task-code#fulfill "Fulfill the focal request"
+* focus.reference = "ServiceRequest/proposal-example-code"
 * for.reference = "Patient/example"
 * executionPeriod
   * start = "2018-06-11"

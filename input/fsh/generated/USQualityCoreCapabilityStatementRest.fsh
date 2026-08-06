@@ -1217,8 +1217,8 @@ RuleSet: GeneratedUSQualityCoreCapabilityStatementRest
 * resource[33].extension[2].extension[2].valueString = "code"
 * resource[33].extension[2].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination"
 * resource[33].type = #Task
-* resource[33].supportedProfile[0] = "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-taskrejected"
-* resource[33].supportedProfile[1] = "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-task"
+* resource[33].supportedProfile[0] = "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-task"
+* resource[33].supportedProfile[1] = "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-taskrejected"
 * resource[33].supportedProfile[2] = "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-taskdone"
 * resource[33].documentation = "Search requirements are selected according to the rules described in [Search Requirement Selection](us-quality-core-general-requirements.html#search-requirement-selection). The table below summarizes why each required individual search or required search parameter combination is included for this resource.\n\n| Required search | US Core alignment | Rationale |\n|---|---|---|\n| `patient` | Added in US Quality Core. | Supports patient-scoped retrieval of Task resources for USCDI+ Quality workflows. |\n| `patient` + `status` | Added in US Quality Core. | Supports patient-scoped retrieval of Task resources filtered by status; status is used to indicate negation. |\n| `patient` + `code` | Added in US Quality Core. | Supports patient-scoped retrieval of Task resources filtered by code for USCDI+ Quality workflows. |"
 * resource[33].interaction[0].extension[0].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"

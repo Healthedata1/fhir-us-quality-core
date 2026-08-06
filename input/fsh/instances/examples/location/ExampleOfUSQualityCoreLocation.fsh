@@ -38,8 +38,4 @@ Usage: #example
   * postalCode = "99999"
   * country = "US"
 * physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#wi "Wing"
-* position
-  * longitude = 0
-  * latitude = 0
-  * altitude = 0
 * managingOrganization.reference = "Organization/example"

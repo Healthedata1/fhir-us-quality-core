@@ -101,6 +101,7 @@
 * [Number of Term Births Example](Observation-example-births.html)
 * [Number of Parity Example](Observation-example-parity.html)
 * [Number of Pregnancies Example](Observation-example-pregnancies.html)
+* [ODH Example](Observation-example-odh.html)
 
 ### US Quality Core LaboratoryResultObservation
 * [Glucose Lab Result Observation](Observation-laboratory-result-observation-example-blood-glucose.html)
@@ -149,6 +150,3 @@
 ### US Quality Core TaskRejected**
 * [Task rejecting a proposal for an activity identified by a value set](Task-negation-example.html)
 * [Task rejecting a proposal for an activity identified by a code](Task-negation-with-code-example.html)
-
-### Additional Examples
-* [ODH Example](Observation-example-odh.html)

@@ -11,7 +11,7 @@ Usage: #example
     * url = "http://hl7.org/fhir/StructureDefinition/instance-description"
     * valueMarkdown = "This is a blood glucose example for the *US Quality Core Observation Lab Profile*."
   * versionId = "1165"
-  * lastUpdated = "2016-03-09T15:29:58.328+00:00"
+  * lastUpdated = "2026-08-05T09:15:00-04:00"
 * status = #final
 * category[us-core] = $observation-category#laboratory "Laboratory"
   * text = "Laboratory"
@@ -19,11 +19,11 @@ Usage: #example
   * text = "Glucose Bld-mCnc"
 * subject
   * reference = "Patient/example"
-  * display = "Amy Shaw"
-* effectiveDateTime = "2005-07-05"
+  * display = "Example Patient"
+* effectiveDateTime = "2026-08-05"
 * performer
   * reference = "Organization/example-1"
-  * display = "Hendricks Country Hospital"
+  * display = "Example Hospital"
 * valueQuantity
   * value = 76.0
   * system = "http://unitsofmeasure.org"

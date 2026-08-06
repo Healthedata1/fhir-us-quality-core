@@ -14,7 +14,7 @@ Usage: #example
 * category[LaboratorySlice] = $v2-0074#LAB "Laboratory"
 * code = $loinc#58410-2 "CBC panel - Blood by Automated count"
   * text = "CBC panel - Blood by Automated count"
-* subject = Reference(Patient/example) "Peter Chalmers"
+* subject = Reference(Patient/example) "Example Patient"
 * effectiveDateTime = "2026-08-05T08:00:00-04:00"
 * issued = "2026-08-05T09:15:00-04:00"
 * performer = Reference(Organization/example-1)
@@ -128,5 +128,5 @@ Instance: whole-blood-specimen
 InstanceOf: USCoreSpecimenProfile
 Usage: #inline
 * type = $sct#258580003 "Whole blood specimen"
-* subject = Reference(Patient/example) "Peter Chalmers"
+* subject = Reference(Patient/example) "Example Patient"
 * collection.collectedDateTime = "2026-08-05T08:00:00-04:00"

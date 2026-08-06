@@ -6,7 +6,8 @@
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
 <artifact id="Observation/example-screening-assessment-10-minute-apgar-heart-rate" key="Observation-example-screening-assessment-10-minute-apgar-heart-rate" name="10 minute Apgar Heart Rate Observation Screening Assessment Example"/>
-<artifact id="Patient/example-2" key="Patient-example-2" name="65+ Female patient example"/>
+<artifact id="Patient/example-2" key="Patient-example-2" name="Older adult patient example"/>
+<artifact id="Patient/reproductive-health-example" key="Patient-reproductive-health-example" name="Reproductive health patient example"/>
 <artifact id="AdverseEvent/example" key="AdverseEvent-example" name="AdverseEvent example"/>
 <artifact id="AllergyIntolerance/example" key="AllergyIntolerance-example" name="AllergyIntolerance example"/>
 <artifact id="AllergyIntolerance/example-refuted" key="AllergyIntolerance-example-refuted" name="AllergyIntolerance refuted example"/>
@@ -28,7 +29,7 @@
 <artifact id="DiagnosticReport/example" key="DiagnosticReport-example" name="DiagnosticReportLab example"/>
 <artifact id="DiagnosticReport/note-example" key="DiagnosticReport-note-example" name="DiagnosticReportNote example"/>
 <artifact id="Encounter/example" key="Encounter-example" name="Encounter example"/>
-<artifact id="Observation/example-frailty" key="Observation-example-frailty" name="Frailty observation example"/>
+<artifact id="Observation/example-frailty" key="Observation-example-frailty" name="Mobility aid use observation example"/>
 <artifact id="Observation/example-gestation" key="Observation-example-gestation" name="Gestation age at birth observation example"/>
 <artifact id="Observation/laboratory-result-observation-example-blood-glucose" key="Observation-laboratory-result-observation-example-blood-glucose" name="Glucose Laboratory Result Observation Example"/>
 <artifact id="Goal/example" key="Goal-example" name="Goal example"/>
@@ -59,11 +60,11 @@
 <artifact id="MedicationRequest/practitioner-ordered-example" key="MedicationRequest-practitioner-ordered-example" name="MedicationRequest Practitioner Ordered Example"/>
 <artifact id="MedicationRequest/example" key="MedicationRequest-example" name="MedicationRequest general example"/>
 <artifact id="MedicationRequest/requested-example" key="MedicationRequest-requested-example" name="MedicationRequest positive example"/>
-<artifact id="Observation/example-births" key="Observation-example-births" name="Number of full-term births obeservation example"/>
-<artifact id="Observation/example-parity" key="Observation-example-parity" name="Number of parity obeservation example"/>
-<artifact id="Observation/example-pregnancies" key="Observation-example-pregnancies" name="Number of pregnancies obeservation example"/>
-<artifact id="Observation/example-preterm-births" key="Observation-example-preterm-births" name="Number of preterm births obeservation example"/>
-<artifact id="NutritionOrder/example" key="NutritionOrder-example" name="NutrientOrder example"/>
+<artifact id="Observation/example-births" key="Observation-example-births" name="Number of full-term births observation example"/>
+<artifact id="Observation/example-parity" key="Observation-example-parity" name="Number of parity observation example"/>
+<artifact id="Observation/example-pregnancies" key="Observation-example-pregnancies" name="Number of pregnancies observation example"/>
+<artifact id="Observation/example-preterm-births" key="Observation-example-preterm-births" name="Number of preterm births observation example"/>
+<artifact id="NutritionOrder/example" key="NutritionOrder-example" name="NutritionOrder example"/>
 <artifact id="Observation/example-odh" key="Observation-example-odh" name="ODH Observation example"/>
 <artifact id="Observation/example" key="Observation-example" name="Observation example"/>
 <artifact id="Organization/example" key="Organization-example" name="Organization example"/>

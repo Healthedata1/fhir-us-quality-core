@@ -27,8 +27,8 @@ Usage: #example
 * class[group]
   * type = http://terminology.hl7.org/CodeSystem/coverage-class#group "Group"
   * value = "GRP-99482"
-  * name = "Acme Corporation Employee Health Plan"
+  * name = "Example Employer Health Plan"
 * class[plan]
   * type = http://terminology.hl7.org/CodeSystem/coverage-class#plan "Plan"
   * value = "PLN-GOLD-2026"
-  * name = "Gold Premier PPO Option"
+  * name = "Example PPO Option"

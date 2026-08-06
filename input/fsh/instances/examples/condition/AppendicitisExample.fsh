@@ -15,4 +15,4 @@ Usage: #example
 * onsetDateTime = "2026-08-01T10:30:00-04:00"
 * abatementDateTime = "2026-08-05T14:00:00-04:00"
 * recordedDate = "2026-08-01T10:30:00-04:00"
-* recorder = Reference(Practitioner/example) "Dr Adam Careful"
+* recorder = Reference(Practitioner/example) "Example Practitioner"

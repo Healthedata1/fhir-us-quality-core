@@ -6,7 +6,7 @@ Usage: #example
 * id = "negation-example"
 * extension
   * url = "http://hl7.org/fhir/StructureDefinition/event-recorded"
-  * valueDateTime = "2014-12-12T18:01:10-08:00"
+  * valueDateTime = "2026-08-05T13:01:10-04:00"
 * status = #not-done
 * statusReason = $sct#107724000 "Patient transfer"
 * category = $communication-category#alert
@@ -16,10 +16,10 @@ Usage: #example
 * subject.reference = "Patient/example"
 * topic = http://terminology.hl7.org/CodeSystem/communication-topic#progress-update "Progress Update"
 * encounter.reference = "Encounter/example"
-* sent = "2014-12-12T18:01:10-08:00"
-* received = "2014-12-12T18:01:11-08:00"
+* sent = "2026-08-05T13:01:10-04:00"
+* received = "2026-08-05T13:01:11-04:00"
 * recipient.reference = "Practitioner/example"
 * sender
   * reference = "Organization/example-1"
-  * display = "Hendricks County Hospital"
+  * display = "Example Hospital"
 * payload.contentString = "Patient example has moved away"

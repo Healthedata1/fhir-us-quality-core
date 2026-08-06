@@ -8,6 +8,6 @@ Usage: #example
 * code = $sct#442338001 "Bypass of stomach (procedure)"
   * text = "Stomach Bypass"
 * subject = Reference(Patient/example)
-* authoredOn = "2015-03-30"
-* requester.display = "Dr. Beverly Crusher"
-* performer = Reference(Practitioner/example) "Dr Cecil Surgeon"
+* authoredOn = "2026-07-30"
+* requester = Reference(Practitioner/example) "Example Practitioner"
+* performer = Reference(Practitioner/example) "Example Practitioner"

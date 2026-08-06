@@ -15,7 +15,7 @@ Usage: #example
   * coding[+] = $cpt#99223 "Initial hospital inpatient or observation care, per day, for the evaluation and management of a patient, which requires a medically appropriate history and/or examination and high level of medical decision making. When using total time on the date of the encounter for code selection, 75 minutes must be met or exceeded."
   * text = "Inpatient Hospital Admission"
 * priority = http://terminology.hl7.org/CodeSystem/v3-ActPriority#UR "urgent"
-* subject = Reference(Patient/example) "Peter James Chalmers"
+* subject = Reference(Patient/example) "Example Patient"
 * period
   * start = "2026-08-01T10:30:00-04:00"
   * end = "2026-08-05T14:00:00-04:00"

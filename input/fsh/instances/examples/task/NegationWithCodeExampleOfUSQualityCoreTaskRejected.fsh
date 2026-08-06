@@ -8,11 +8,11 @@ Usage: #example
   * system = "http://www.acme.org/tasks"
   * value = "19009"
 * status = #rejected
-* statusReason = $sct#275936005 "Patient noncompliance - general (situation)"
+* statusReason = $sct#1296859006 "Procedure declined (situation)"
 * intent = #proposal
 * code = $task-code#fulfill "Fulfill the focal request"
 * focus.reference = "ServiceRequest/proposal-example-code"
 * for.reference = "Patient/example"
 * executionPeriod
-  * start = "2018-06-11"
-  * end = "2018-06-11"
+  * start = "2026-07-31"
+  * end = "2026-07-31"

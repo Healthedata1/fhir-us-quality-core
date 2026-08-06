@@ -8,7 +8,7 @@ Usage: #example
 * questionnaire = "http://hl7.org/fhir/uv/sdc/Questionnaire/questionnaire-sdc-profile-example-PHQ9"
 * status = #completed
 * subject.reference = "Patient/example"
-* authored = "2020-07-31T22:14:07.387Z"
+* authored = "2026-08-05T10:14:07-04:00"
 * author.reference = "Practitioner/example"
 * item
   * linkId = "H1/T1"
@@ -43,7 +43,7 @@ Usage: #example
     * answer.valueCoding = $CSPHQ9#"Nearly every day" "Nearly every day"
   * item[+]
     * linkId = "H1/T1/Q8"
-    * text = "Moving or speaking so slowly that other people could gave noticed? Or so fidgety or restless that you have been moving a lot more than usual?"
+    * text = "Moving or speaking so slowly that other people could have noticed? Or so fidgety or restless that you have been moving a lot more than usual?"
     * answer.valueCoding = $CSPHQ9#"More than half the days" "More than half the days"
   * item[+]
     * linkId = "H1/T1/Q9"

@@ -9,9 +9,9 @@ Usage: #example
 * subject.reference = "Patient/example"
 * encounter.reference = "Encounter/example"
 * effectivePeriod
-  * start = "2020-04-09T06:30:00+05:00"
-  * end = "2023-10-22T08:30:10+05:00"
+  * start = "2024-04-09T08:00:00-04:00"
+  * end = "2026-08-01T10:30:00-04:00"
 * performer
   * reference = "Practitioner/example"
-  * display = "Practitioner"
+  * display = "Example Practitioner"
 * valueCodeableConcept.text = "Radiology Technician (Radiology Tech) [Radiologic Technicians]"

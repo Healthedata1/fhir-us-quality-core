@@ -1,7 +1,7 @@
 Instance: example-1
 InstanceOf: USQualityCoreOrganization
 Title: "Hospital Organization example"
-Description: "Hendricks County Hospital example"
+Description: "Example hospital organization"
 Usage: #example
 * identifier
   * use = #temp
@@ -9,19 +9,19 @@ Usage: #example
   * value = "1285243618"
 * active = true
 * type = $organization-type#prov "Healthcare Provider"
-* name = "HENDRICKS COUNTY HOSPITAL"
+* name = "Example Hospital"
 * telecom[0]
   * system = #phone
-  * value = "(+1) 712-456-7777"
+  * value = "+1-555-555-0100"
 * telecom[+]
   * system = #fax
-  * value = "(+1) 712-456-6622"
+  * value = "+1-555-555-0101"
 * telecom[+]
   * system = #email
-  * value = "staff@countyhospital.org"
+  * value = "staff@example.org"
 * address
-  * line = "3300 Washtenaw Avenue, Suite 227"
-  * city = "Avon"
-  * state = "IN"
-  * postalCode = "46123"
-  * country = "USA"
+  * line = "700 Example Hospital Way"
+  * city = "Example City"
+  * state = "VA"
+  * postalCode = "99999"
+  * country = "US"

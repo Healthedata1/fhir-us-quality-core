@@ -15,7 +15,7 @@ Usage: #example
     * denominator = 1.2 'mL'
 * batch
   * lotNumber = "9494788"
-  * expirationDate = "2017-05-22"
+  * expirationDate = "2027-05-22"
 
 Instance: org-6
 InstanceOf: USQualityCoreOrganization
@@ -25,13 +25,15 @@ Usage: #inline
   * system = "http://hl7.org/fhir/sid/us-npi"
   * value = "8635143786"
 * active = true
-* name = "Genzyme"
+* name = "Example Manufacturer"
 * telecom
   * system = #url
-  * value = "https://www.sanofigenzyme.com/"
+  * value = "https://example.org/manufacturer"
   * use = #work
 * address
   * use = #work
-  * city = "Cambridge"
-  * state = "MA"
-  * country = "USA"
+  * line = "900 Example Industrial Road"
+  * city = "Example City"
+  * state = "VA"
+  * postalCode = "99999"
+  * country = "US"

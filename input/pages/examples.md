@@ -50,6 +50,7 @@
 
 ### US Quality Core ImagingStudy
 * [Chest CT](ImagingStudy-example.html)
+* [Portable Chest X-Ray DICOM Study](ImagingStudy-portable-cxr-study.html)
 
 ### US Quality Core Immunization
 * [Example of Influenza immunization shot](Immunization-example.html)
@@ -108,6 +109,7 @@
 
 ### US Quality Core ObservationClinicalResult
 * [Heart Rate Rhythm Clinical Result Observation](Observation-clinical-result-heart-rate-rhythm.html)
+* [Portable Chest X-Ray Lung Fields Finding](Observation-cxr-finding-lung-fields.html)
 
 ### US Quality Core ObservationScreeningAssessment
 * [10 minute Apgar Heart Rate Screening Assessment Observation](Observation-example-screening-assessment-10-minute-apgar-heart-rate.html)

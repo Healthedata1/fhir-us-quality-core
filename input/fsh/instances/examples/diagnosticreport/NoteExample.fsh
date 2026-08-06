@@ -4,11 +4,21 @@ Title: "DiagnosticReportNote example"
 Description: "Example of a DiagnosticReport Note"
 Usage: #example
 * status = #final
-* category = $loinc#LP29684-5 "Radiology"
+* category[us-core]
+  * coding[0] = $v2-0074#RAD "Radiology"
+  * coding[+] = $loinc#LP29684-5 "Radiology"
+  * text = "Radiology"
 * code = $loinc#30746-2 "Portable XR Chest Views"
   * text = "Portable XR Chest Views"
-* subject.reference = "Patient/example"
-* effectiveDateTime = "2019-02-03T19:43:30.000Z"
+* subject = Reference(Patient/example) "Peter Chalmers"
+* effectiveDateTime = "2026-08-05T08:15:00-04:00"
+* issued = "2026-08-05T09:00:00-04:00"
+* performer = Reference(Practitioner/example) "Dr Adam Careful"
+* resultsInterpreter = Reference(Practitioner/example) "Dr Adam Careful"
+* result = Reference(cxr-finding-lung-fields) "Radiology Finding: Lungs"
+* imagingStudy = Reference(portable-cxr-study) "Portable Chest X-Ray DICOM Study"
+* conclusion = "Single view portable AP chest radiograph demonstrates clear lung fields without focal consolidation, pleural effusion, or pneumothorax. Heart size is within normal limits."
+* conclusionCode.text = "No acute cardiopulmonary process"
 * presentedForm
-  * contentType = #application/xhtml
-  * data = "PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFsLy9FTiIgIkRURC94aHRtbDEtdHJhbnNpdGlvbmFsLmR0ZCI+CgkJPGh0bWwgeG1sOmxhbmc9ImVuIiBsYW5nPSJlbiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPgkJCiAgPGhlYWQ+CiAgICA8dGl0bGU+Q2hlc3QgUG9ydGFibGU8L3RpdGxlPgogIDwvaGVhZD4KICA8Ym9keT4KICAgIDxwPlJlc3VsdDwvcD4KICAgIDxici8+Q2hlc3QgUG9ydGFibGUgCiAgICAgIAogICAgICA8cD5JTkRJQ0FUSU9OL0NMSU5JQ0FMIFFVRVNUSU9OOiBGZXZlciAvIFBuZXVtb25pYTwvcD4KICAgICAgCiAgICAgIDxwPkNPTVBBUklTT046IE5vbmUuPC9wPgogICAgICAKICAgICAgPHA+RklORElOR1M6PC9wPgogICAgICAKICAgICAgPHA+TElORVMgQU5EIFRVQkVTOiBOb25lLjwvcD4KICAgICAgCiAgICAgIDxwPkxVTkdTIEFORCBQTEVVUkE6PC9wPgogICAgICA8YnIvPkNsZWFyIGx1bmdzLiBOb3JtYWwgcHVsbW9uYXJ5IHZhc2N1bGFyaXR5LgogICAgICA8YnIvPk5vIHBsZXVyYWwgZWZmdXNpb24uCiAgICAgIDxici8+Tm8gcG5ldW1vdGhvcmF4LgogICAgICAKICAgICAgPHA+SEVBUlQsIE1FRElBU1RJTlVNIEFORCBISUxBOjwvcD4KICAgICAgPGJyLz5IZWFydCBpcyBub3JtYWwgaW4gc2l6ZS4KICAgICAgPGJyLz5Ob3JtYWwgbWVkaWFzdGluYWwgYW5kIGhpbGFyIGNvbnRvdXIuCiAgICAgIAogICAgICA8cD5CT05FUyBBTkQgU09GVCBUSVNTVUVTOjwvcD4KICAgICAgPGJyLz5ObyBhY3V0ZSBhYm5vcm1hbGl0eS4KICAgICAgCiAgICAgIDxwPklNUFJFU1NJT046PC9wPgogICAgICA8YnIvPk5vIGFjdXRlIGFibm9ybWFsaXR5LgogICAgICAKICAgICAgPHA+V1NOOiBPMTlJQy1TQy0wMjExPC9wPgogICAgICAKICAgICAgPHA+RGljdGF0ZWQgQnk6IEN1cmUgTUQsIENocmlzdGluZSBKCiAgICAgICAgRGljdGF0ZWQgRGF0ZS9UaW1lOiAwMi8wMy8xOSA3OjQ0IHBtCiAgICAgICAgUmV2aWV3ZWQgQnk6IEN1cmUgTUQsIENocmlzdGluZSBKCiAgICAgICAgU2lnbmVkIEJ5OiBDdXJlIE1ELCBDaHJpc3RpbmUgSgogICAgICAgIFNpZ25lZCBEYXRlL1RpbWU6IDAyLzAzLzE5IDc6NDQgcG0KICAgICAgICBUcmFuc2NyaWJlZCBCeTogQ1NCCiAgICAgICAgVHJhbnNjcmliZWQgRGF0ZS9UaW1lOiAwMi8wMy8xOSA3OjQzIHBtPC9wPgogICAgICAKICAgICAgCiAgPC9ib2R5Pgo8L2h0bWw+Cg=="
+  * contentType = #application/xhtml+xml
+  * data = "PGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiIHhtbDpsYW5nPSJlbiIgbGFuZz0iZW4iPjxoZWFkPjx0aXRsZT5Qb3J0YWJsZSBYUiBDaGVzdCBWaWV3czwvdGl0bGU+PC9oZWFkPjxib2R5PjxoMT5Qb3J0YWJsZSBYUiBDaGVzdCBWaWV3czwvaDE+PHA+PHN0cm9uZz5QYXRpZW50Ojwvc3Ryb25nPiBQZXRlciBDaGFsbWVyczwvcD48cD48c3Ryb25nPlN0dWR5IGRhdGU6PC9zdHJvbmc+IDIwMjYtMDgtMDVUMDg6MTU6MDAtMDQ6MDA8L3A+PHA+PHN0cm9uZz5GaW5kaW5nczo8L3N0cm9uZz4gU2luZ2xlIHZpZXcgcG9ydGFibGUgQVAgY2hlc3QgcmFkaW9ncmFwaCBkZW1vbnN0cmF0ZXMgY2xlYXIgbHVuZyBmaWVsZHMgd2l0aG91dCBmb2NhbCBjb25zb2xpZGF0aW9uLCBwbGV1cmFsIGVmZnVzaW9uLCBvciBwbmV1bW90aG9yYXguIEhlYXJ0IHNpemUgaXMgd2l0aGluIG5vcm1hbCBsaW1pdHMuPC9wPjxwPjxzdHJvbmc+SW1wcmVzc2lvbjo8L3N0cm9uZz4gTm8gYWN1dGUgY2FyZGlvcHVsbW9uYXJ5IHByb2Nlc3MuPC9wPjxwPjxzdHJvbmc+SW50ZXJwcmV0ZWQgYnk6PC9zdHJvbmc+IERyIEFkYW0gQ2FyZWZ1bDwvcD48cD48c3Ryb25nPklzc3VlZDo8L3N0cm9uZz4gMjAyNi0wOC0wNVQwOTowMDowMC0wNDowMDwvcD48L2JvZHk+PC9odG1sPg=="

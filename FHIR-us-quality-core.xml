@@ -34,8 +34,10 @@
 <artifact id="Observation/laboratory-result-observation-example-blood-glucose" key="Observation-laboratory-result-observation-example-blood-glucose" name="Glucose Laboratory Result Observation Example"/>
 <artifact id="Goal/example" key="Goal-example" name="Goal example"/>
 <artifact id="Observation/clinical-result-heart-rate-rhythm" key="Observation-clinical-result-heart-rate-rhythm" name="Heart rate rhythm clinical result observation example"/>
+<artifact id="Observation/cxr-finding-lung-fields" key="Observation-cxr-finding-lung-fields" name="Portable chest X-ray lung fields finding example"/>
 <artifact id="Organization/example-1" key="Organization-example-1" name="Hospital Organization example"/>
 <artifact id="ImagingStudy/example" key="ImagingStudy-example" name="ImagingStudy example"/>
+<artifact id="ImagingStudy/portable-cxr-study" key="ImagingStudy-portable-cxr-study" name="Portable chest X-ray DICOM study example"/>
 <artifact id="Immunization/example" key="Immunization-example" name="Immunization general example"/>
 <artifact id="Immunization/negation-example-code" key="Immunization-negation-example-code" name="Immunization negation with code example"/>
 <artifact id="Immunization/negation-example" key="Immunization-negation-example" name="Immunization negation with value set example"/>

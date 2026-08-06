@@ -2003,7 +2003,7 @@
       },
       {
         "path": "type",
-        "short": "Owner of the policy",
+        "short": "Coverage category such as medical or accident",
         "dataElements": [
           {
             "class": "Health Insurance Information",
@@ -3273,7 +3273,7 @@
       },
       {
         "path": "result",
-        "short": "Reference to full details of imaging associated with the diagnostic report",
+        "short": "Observations",
         "dataElements": [
           {
             "class": "Clinical Tests",
@@ -15680,17 +15680,9 @@
           "usQualityCore": {}
         },
         {
-          "path": "priority",
-          "fhir": {},
-          "usQualityCore": {
-            "mandatory": true
-          }
-        },
-        {
           "path": "code",
           "fhir": {},
           "usQualityCore": {
-            "mandatory": true,
             "uscdiQuality": true
           }
         },
@@ -15937,13 +15929,6 @@
             "mandatory": true
           },
           "usQualityCore": {}
-        },
-        {
-          "path": "priority",
-          "fhir": {},
-          "usQualityCore": {
-            "mandatory": true
-          }
         },
         {
           "path": "code",

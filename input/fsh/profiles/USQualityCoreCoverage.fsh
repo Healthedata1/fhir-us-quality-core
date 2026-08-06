@@ -21,7 +21,6 @@ Description: "Profile of Coverage for decision support/quality metrics. Defines 
 * type from http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591 (extensible)
   * ^short = "Coverage category such as medical or accident"
   * ^binding.description = "Categories of types of health care payor entities as defined by the US Public Health Data Consortium SOP code system"
-  * ^short = "Owner of the policy"
 * subscriberId 0..1
   * ^short = "ID assigned to the subscriber"
 * beneficiary only Reference(USQualityCorePatient)

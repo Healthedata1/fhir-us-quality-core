@@ -266,7 +266,7 @@ Second, a fulfillment task with a status of `rejected` and the `focus` referenci
 ```json
 {
   "resourceType" : "Task",
-  "id" : "rejected-with-code-example",
+  "id" : "negation-with-code-example",
   "meta" : {
     "profile" : ["http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-taskrejected"]
   },
@@ -294,7 +294,7 @@ Second, a fulfillment task with a status of `rejected` and the `focus` referenci
 }
 ```
 
-See the [Service Requested With Code](ServiceRequest-proposal-example-code.html) and [Task Rejected With Code Example](Task-rejected-with-code-example.html) for complete examples.
+See the [Service Requested With Code](ServiceRequest-proposal-example-code.html) and [Task Rejected With Code Example](Task-negation-with-code-example.html) for complete examples.
 
 ##### Rejecting a proposal to perform any of a class of activities
 
@@ -338,7 +338,7 @@ Followed by a fulfillment task with a status of `rejected` and the `focus` refer
 ```json
 {
   "resourceType" : "Task",
-  "id" : "rejected-example",
+  "id" : "negation-example",
   "meta" : {
     "profile" : ["http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-taskrejected"]
   },
@@ -366,4 +366,4 @@ Followed by a fulfillment task with a status of `rejected` and the `focus` refer
 }
 ```
 
-See the [Service Requested Example](ServiceRequest-proposal-example.html) and [Task Rejected Example](Task-rejected-example.html) for complete examples.
+See the [Service Requested Example](ServiceRequest-proposal-example.html) and [Task Rejected Example](Task-negation-example.html) for complete examples.

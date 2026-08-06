@@ -143,7 +143,7 @@ RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCoreDiagnosticReportNote
 * presentedForm ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
 * presentedForm ^short = "(USCDI+ Quality) Entire report as issued"
 * result ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
-* result ^short = "(USCDI+ Quality) Reference to full details of imaging associated with the diagnostic report"
+* result ^short = "(USCDI+ Quality) Observations"
 * resultsInterpreter ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
 * resultsInterpreter ^short = "(USCDI+ Quality) Primary result interpreter"
 * status ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
@@ -303,7 +303,7 @@ RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCoreCoverage
 * subscriberId ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
 * subscriberId ^short = "(USCDI+ Quality) ID assigned to the subscriber"
 * type ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
-* type ^short = "(USCDI+ Quality) Owner of the policy"
+* type ^short = "(USCDI+ Quality) Coverage category such as medical or accident"
 
 RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCoreOrganization
 * identifier ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true

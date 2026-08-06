@@ -20,7 +20,8 @@ Usage: #example
 * subject
   * reference = "Patient/example"
   * display = "Example Patient"
-* effectiveDateTime = "2026-08-05"
+* effectiveDateTime = "2026-08-05T08:00:00-04:00"
+* issued = "2026-08-05T09:15:00-04:00"
 * performer
   * reference = "Organization/example-1"
   * display = "Example Hospital"
@@ -28,8 +29,19 @@ Usage: #example
   * value = 76.0
   * system = "http://unitsofmeasure.org"
   * unit = "mg/dL"
+* interpretation = $v3-ObservationInterpretation#N "Normal"
+* specimen = Reference(whole-blood-specimen) "Whole blood specimen"
 * referenceRange
   * low = 40.0 'mg/dL' "mg/dL"
   * high = 109.0 'mg/dL' "mg/dL"
   * type = http://terminology.hl7.org/CodeSystem/referencerange-meaning#normal "Normal Range"
     * text = "Normal Range"
+
+Instance: whole-blood-specimen
+InstanceOf: USCoreSpecimenProfile
+Title: "Whole Blood Specimen Example"
+Description: "Example of a whole blood specimen collected for a laboratory result"
+Usage: #example
+* type = $sct#258580003 "Whole blood specimen"
+* subject = Reference(Patient/example) "Example Patient"
+* collection.collectedDateTime = "2026-08-05T08:00:00-04:00"

@@ -32,6 +32,7 @@
 <artifact id="Observation/example-frailty" key="Observation-example-frailty" name="Mobility aid use observation example"/>
 <artifact id="Observation/example-gestation" key="Observation-example-gestation" name="Gestation age at birth observation example"/>
 <artifact id="Observation/laboratory-result-observation-example-blood-glucose" key="Observation-laboratory-result-observation-example-blood-glucose" name="Glucose Laboratory Result Observation Example"/>
+<artifact id="Specimen/whole-blood-specimen" key="Specimen-whole-blood-specimen" name="Whole Blood Specimen Example"/>
 <artifact id="Goal/example" key="Goal-example" name="Goal example"/>
 <artifact id="Observation/clinical-result-heart-rate-rhythm" key="Observation-clinical-result-heart-rate-rhythm" name="Heart rate rhythm clinical result observation example"/>
 <artifact id="Observation/cxr-finding-lung-fields" key="Observation-cxr-finding-lung-fields" name="Portable chest X-ray lung fields finding example"/>

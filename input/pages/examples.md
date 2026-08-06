@@ -13,7 +13,7 @@
 ### US Quality Core CareTeam
 * [Example of a CareTeam involved in the delivery of care for a pregnancy](CareTeam-example.html)
 
-### USQualityCoreCommunication
+### US Quality Core Communication
 * [Radiology Report Notification Example](Communication-example.html)
 
 ### USQualityCoreCommunicationNotDone

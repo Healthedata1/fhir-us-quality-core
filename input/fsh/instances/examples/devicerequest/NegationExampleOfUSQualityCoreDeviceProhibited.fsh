@@ -15,5 +15,6 @@ Usage: #example
     * valueCanonical = "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.230"
   * text = "Value Set: Venous Foot Pumps (VFP)"
 * subject.reference = "Patient/example"
-* authoredOn = "2016-04-05T09:20:00-04:00"
+* authoredOn = "2026-04-05T09:20:00-04:00"
+* requester.reference = "Practitioner/example"
 * reasonCode = $sct#1303950002 "Request for alternative treatment"

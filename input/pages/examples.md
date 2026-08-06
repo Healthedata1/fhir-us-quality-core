@@ -7,7 +7,7 @@
 * [Typical Food Allergy](AllergyIntolerance-example.html)
 * [Refuted Food Allergy](AllergyIntolerance-example-refuted.html)
 
-### USQualityCoreCarePlan
+### US Quality Core CarePlan
 * [Assessment and care plan for a pregnancy](CarePlan-example.html)
 
 ### USQualityCoreCareTeam

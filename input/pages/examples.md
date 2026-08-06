@@ -16,7 +16,7 @@
 ### US Quality Core Communication
 * [Radiology Report Notification Example](Communication-example.html)
 
-### USQualityCoreCommunicationNotDone
+### US Quality Core CommunicationNotDone
 * [Negation Example](Communication-negation-example.html)
 
 ### USQualityCoreConditionEncounterDiagnosis

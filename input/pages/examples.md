@@ -139,7 +139,7 @@
 * [Negation Example with valueset](ServiceRequest-negation-example.html)
 * [Negation Example with code](ServiceRequest-negation-example-code.html)
 
-### USQualityCoreServiceRequest
+### US Quality Core ServiceRequest
 * [Request for Appendectomy Example](ServiceRequest-example.html)
 * [Request for Myringotomy Procedure Example](ServiceRequest-myringotomy-example.html)
 

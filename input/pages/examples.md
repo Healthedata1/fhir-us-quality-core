@@ -3,7 +3,7 @@
 ### US Quality Core AdverseEvent
 * [Mild Rash Example](AdverseEvent-example.html)
 
-### USQualityCoreAllergyIntolerance
+### US Quality Core AllergyIntolerance
 * [Typical Food Allergy](AllergyIntolerance-example.html)
 * [Refuted Food Allergy](AllergyIntolerance-example-refuted.html)
 

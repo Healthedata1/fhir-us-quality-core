@@ -22,7 +22,7 @@ USCDI+ Quality includes [two data element lists](https://uscdiplus.healthit.gov/
 
 **USCDI+ Quality** defines high-level data requirements, and the **US Quality Core Implementation Guide** provides detailed FHIR-based profiles to meet those requirements. This guidance is necessary to achieve interoperability and consistency in quality-related healthcare data exchange in the United States given the flexibility of the FHIR standard in representing this data.
 
-The US Quality Core Implementation Guide defines profiles and specific requirements for USCDI+ Quality. Through [CapabilityStatements](capability-statements.html) the IG also defines for specific expectations for accessing the data over a standard FHIR RESTful API.
+The US Quality Core Implementation Guide defines profiles and specific requirements for USCDI+ Quality. The IG also defines specific expectations for accessing the data over a standard FHIR RESTful API through [US Quality Core Capability Statements](capability-statements.html), 
 In the cases where US Core meets the requirements for implementing a USCDI+ Quality data element in FHIR, US Quality Core references the relevant profile in US Core.
 
 

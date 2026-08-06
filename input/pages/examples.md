@@ -146,7 +146,7 @@
 ### US Quality Core Task
 * [Task Example](Task-example.html)
 
-### USQualityCoreTaskRejected
+### US Quality Core TaskRejected
 * [Task rejected using a value set to indicate what was not done](Task-negation-example.html)
 * [Task rejected using a code to indicate what was not done](Task-negation-with-code-example.html)
 

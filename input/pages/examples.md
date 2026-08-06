@@ -135,7 +135,7 @@
 ### USQualityCoreRelatedPerson
 * [Emergency Contact Example](RelatedPerson-example.html)
 
-### USQualityCoreServiceNotRequested
+### US Quality Core ServiceNotRequested
 * [Negation Example with valueset](ServiceRequest-negation-example.html)
 * [Negation Example with code](ServiceRequest-negation-example-code.html)
 

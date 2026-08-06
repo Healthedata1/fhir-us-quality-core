@@ -73,7 +73,7 @@ only those FHIR profiles, extensions, and constraints needed to represent and
 exchange data relevant to USCDI+ Quality.
 
 This guide defines a standardized method for exchanging this data between
-producers of data (e.g., electronic health records (EHRs)) and the quality measurement systems thatcalculate measure reports based on this data.  This exchange definition does not
+producers of data (e.g., health information systems that store the data and respond to data requests) and the quality measurement systems that calculate measure reports based on this data.  This exchange definition does not
 introduce use-case-specific or novel methods for exchanging these data, instead,
 it extends the US Core RESTful API to provide a flexible and widely-adopted
 method for accessing quality related data.

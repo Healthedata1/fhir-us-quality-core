@@ -10,6 +10,7 @@ Usage: #example
   * system = "http://example.org/payer/member-ids"
   * value = "MB123456789"
 * status = #active
+* type.text = "Preferred Provider Organization (PPO)"
 * policyHolder.reference = "Patient/example"
 * subscriber.reference = "Patient/example"
 * subscriberId = "SUB987654321"

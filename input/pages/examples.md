@@ -143,7 +143,7 @@
 * [Request for Appendectomy Example](ServiceRequest-example.html)
 * [Request for Myringotomy Procedure Example](ServiceRequest-myringotomy-example.html)
 
-### USQualityCoreTask
+### US Quality Core Task
 * [Task Example](Task-example.html)
 
 ### USQualityCoreTaskRejected

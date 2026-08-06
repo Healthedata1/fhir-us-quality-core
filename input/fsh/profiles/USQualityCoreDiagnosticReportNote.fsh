@@ -57,7 +57,6 @@ Description: "Profile of DiagnosticReport for Note exchange for decision support
   * ^short = "Responsible Diagnostic Service"
 * result only Reference(USQualityCoreObservationLab or USQualityCoreObservationClinicalResult)
   * ^short = "Observations"
-  * ^short = "Reference to full details of imaging associated with the diagnostic report"
 * imagingStudy ^type[0].targetProfile[0] = "http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-imagingstudy"
 * media ^short = "Key images associated with this report"
 * presentedForm ^short = "Entire report as issued"

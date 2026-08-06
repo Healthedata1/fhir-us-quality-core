@@ -1,6 +1,6 @@
 {:toc}
 
-### USQualityCoreAdverseEvent
+### US Quality Core AdverseEvent
 * [Mild Rash Example](AdverseEvent-example.html)
 
 ### USQualityCoreAllergyIntolerance

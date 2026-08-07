@@ -44,7 +44,8 @@ Description: "Profile of Condition for decision support/quality metrics. Defines
   * ^binding.extension.valueString = "ConditionCategory"
   * ^binding.description = "A category assigned to the condition."
 * category[us-core] ^short = "problem-list-item | health-concern"
-* category[screening-assessment] MS
+// trailing '.' forces element into differential; do not remove
+* category[screening-assessment] ^requirements = "Used for filtering condition."
 * severity ^short = "Subjective severity of condition"
   * ^definition = "A subjective assessment of the severity of the condition as evaluated by the clinician."
   * ^comment = "Coding of the severity with a terminology is preferred, where possible."

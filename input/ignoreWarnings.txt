@@ -73,3 +73,7 @@ INFORMATION: Task/example: Task.code: None of the codings provided are in the va
 # 11. RelatedPerson.relationship (Personal And Legal Relationship Role Type) carries a preferred binding. The example models an emergency contact (v2-0131 C), for which the preferred value set has no appropriate substitute. The code in this example is appropriate for the example.
 
 INFORMATION: RelatedPerson/example: RelatedPerson.relationship[0]: None of the codings provided are in the value set 'Personal And Legal Relationship Role Type' (http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.11.20.12.1|20251204), and a coding is recommended to come from this value set (codes = http://terminology.hl7.org/CodeSystem/v2-0131#C)
+
+# 12. These Task examples use the `fulfill` code, which is explicitly included in the published FHIR R4 Task Codes value set. Suppress the validator's false non-membership messages for these examples.
+
+%Task.code: None of the codings provided are in the value set 'Task Codes' (http://hl7.org/fhir/ValueSet/task-code|4.0.1), and a coding is recommended to come from this value set (codes = http://hl7.org/fhir/CodeSystem/task-code#fulfill)%

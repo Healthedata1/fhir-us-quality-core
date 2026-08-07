@@ -1593,7 +1593,7 @@
       },
       {
         "path": "recorder",
-        "short": "𝗔𝗗𝗗𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the condition",
+        "short": "Who recorded the condition",
         "dataElements": [
           {
             "class": "Provenance",
@@ -1695,9 +1695,7 @@
           "usCore": {
             "uscdi": true
           },
-          "usQualityCore": {
-            "mustSupport": true
-          }
+          "usQualityCore": {}
         },
         {
           "path": "severity",
@@ -10135,9 +10133,7 @@
           "usCore": {
             "uscdi": true
           },
-          "usQualityCore": {
-            "mustSupport": true
-          }
+          "usQualityCore": {}
         },
         {
           "path": "code",
@@ -10717,7 +10713,7 @@
       },
       {
         "path": "extension:ethnicity",
-        "short": "US Core ethnicity Extension",
+        "short": "US Core ethnicity Extension (multiple ethnicities are supported in the extension)",
         "dataElements": [
           {
             "class": "Patient Demographics/Information",
@@ -10739,7 +10735,7 @@
       },
       {
         "path": "extension:race",
-        "short": "US Core Race Extension",
+        "short": "US Core Race Extension (multiple races are supported in the extension)",
         "dataElements": [
           {
             "class": "Patient Demographics/Information",
@@ -11628,14 +11624,6 @@
           },
           "usQualityCore": {
             "uscdiQuality": true
-          }
-        },
-        {
-          "path": "identifier:NCSBNID",
-          "fhir": {},
-          "usCore": {},
-          "usQualityCore": {
-            "mustSupport": true
           }
         },
         {

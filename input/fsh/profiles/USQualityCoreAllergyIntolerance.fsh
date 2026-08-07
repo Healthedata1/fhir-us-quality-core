@@ -11,8 +11,7 @@ Description: "Profile of AllergyIntolerance for decision support/quality metrics
 * ^contact.telecom.system = #url
 * ^contact.telecom.value = "http://www.hl7.org/Special/committees/cqi"
 * ^jurisdiction = urn:iso:std:iso:3166#US
-* . ^definition = "The US Quality Core AllergyIntolerance Profile is based upon the US Core AllergyIntolerance Profile which is based upon the core FHIR AllergyIntolerance Resource and created to meet the 2015 Edition Common Clinical Data Set 'Medical allergies' requirements."
-  * ^mustSupport = false
+* . ^mustSupport = false
 * clinicalStatus ^short = "active | inactive | resolved"
   * ^definition = "The clinical status of the allergy or intolerance."
   * ^comment = "Refer to [discussion](http://hl7.org/fhir/R4/extensibility.html#Special-Case) if clincalStatus is missing data.\nThe data type is CodeableConcept because clinicalStatus has some clinical judgment involved, such that there might need to be more specificity than the required FHIR value set allows. For example, a SNOMED coding might allow for additional specificity."

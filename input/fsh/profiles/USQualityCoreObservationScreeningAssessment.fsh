@@ -47,7 +47,7 @@ Description: "The US Quality Core Observation Screening Assessment Profile is ba
 * category[screening-assessment] 0..*
 * category[screening-assessment] only CodeableConcept
 * category[screening-assessment] from USCoreScreeningAssessmentObservationMaximumCategory (required)
-  * ^short = "Classification of  type of observation"
+  * ^short = "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: USCDI Health Status/Assessments Data Class"
   * ^definition = "Categories that a provider may use in their workflow to classify that this Observation is related to a USCDI Health Status/Assessments Data Class."
   * ^comment = "In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once.  The level of granularity is defined by the category concepts in the value set."
   * ^requirements = "Used for filtering the type of screening or assessment observation."

@@ -1,7 +1,7 @@
 Instance: example-2
 InstanceOf: USQualityCorePatient
-Title: "65+ Female patient example"
-Description: "65+ Female patient example"
+Title: "Older adult patient example"
+Description: "Older adult patient example"
 Usage: #example
 * identifier
   * use = #usual
@@ -9,15 +9,15 @@ Usage: #example
   * system = "http://example.org/patient/identifiers"
   * value = "12345"
   * period.start = "1995-05-06"
-  * assigner.display = "Acme Healthcare"
+  * assigner.display = "Example Healthcare Organization"
 * active = true
 * name
   * use = #official
   * family = "Patient"
-  * given = "Sarah"
+  * given = "Older Adult Example"
 * telecom
   * system = #phone
-  * value = "(202) 212 1212"
+  * value = "+1-555-555-0130"
   * use = #mobile
   * rank = 1
 * gender = #female
@@ -29,31 +29,28 @@ Usage: #example
 * address
   * use = #home
   * type = #both
-  * text = "1600 Pennslyvania Ave"
-  * line = "1600 Pennslyvania Ave"
-  * city = "Washington DC"
-  * state = "DC"
-  * postalCode = "20500"
+  * text = "200 Example Street, Example City, VA 99999"
+  * line = "200 Example Street"
+  * city = "Example City"
+  * state = "VA"
+  * postalCode = "99999"
   * period.start = "1946-12-25"
 * contact
   * relationship = $v2-0131#N
   * name
-    * family = "du Marché"
-      * extension
-        * url = "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix"
-        * valueString = "VV"
-    * given = "Bénédicte"
+    * family = "Emergency Contact"
+    * given = "Example"
   * telecom
     * system = #phone
-    * value = "+33 (237) 998327"
+    * value = "+1-555-555-0131"
   * address
     * use = #home
     * type = #both
-    * line = "534 Erewhon St"
-    * city = "PleasantVille"
-    * district = "Rainbow"
-    * state = "VT"
-    * postalCode = "3999"
+    * line = "201 Example Street"
+    * city = "Example City"
+    * district = "Example District"
+    * state = "VA"
+    * postalCode = "99999"
     * period.start = "1974-12-25"
   * gender = #female
   * period.start = "2012"

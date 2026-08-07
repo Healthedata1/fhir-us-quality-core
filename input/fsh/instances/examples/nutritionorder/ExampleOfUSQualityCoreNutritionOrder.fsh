@@ -1,7 +1,7 @@
 Instance: example-of-us-quality-core-nutrition-order
 InstanceOf: USQualityCoreNutritionOrder
-Title: "NutrientOrder example"
-Description: "Example of NutrientOrder for diabetic diet"
+Title: "NutritionOrder example"
+Description: "Example of a NutritionOrder for a consistent carbohydrate diet"
 Usage: #example
 * id = "example"
 * identifier
@@ -11,24 +11,24 @@ Usage: #example
 * intent = #order
 * patient
   * reference = "Patient/example"
-  * display = "Peter Chalmers"
+  * display = "Example Patient"
 * encounter
   * reference = "Encounter/example"
   * display = "Inpatient"
-* dateTime = "2014-09-17"
+* dateTime = "2026-08-01"
 * orderer
   * reference = "Practitioner/example"
-  * display = "Dr Adam Careful"
+  * display = "Example Practitioner"
 * allergyIntolerance
   * reference = "AllergyIntolerance/example"
   * display = "Cashew Nuts"
 * foodPreferenceModifier = http://terminology.hl7.org/CodeSystem/diet#dairy-free
 * oralDiet
-  * type = $sct#160670007 "Diabetic diet"
-    * text = "Diabetic diet"
+  * type = $sct#435651000124106 "Consistent carbohydrate diet"
+    * text = "Consistent carbohydrate diet"
   * schedule
     * repeat
-      * boundsPeriod.start = "2015-02-10"
+      * boundsPeriod.start = "2026-08-01"
       * frequency = 3
       * period = 1
       * periodUnit = #d

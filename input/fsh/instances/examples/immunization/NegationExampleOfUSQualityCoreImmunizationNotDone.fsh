@@ -1,7 +1,7 @@
 Instance: negation-example-of-us-quality-core-immunization-not-done
 InstanceOf: USQualityCoreImmunizationNotDone
 Title: "Immunization negation with value set example"
-Description: "Example of immunization that was refused/failed to be administered using value set"
+Description: "Example of an immunization that was not administered, with the vaccine identified by value set"
 Usage: #example
 * id = "negation-example"
 * status = #not-done
@@ -13,6 +13,6 @@ Usage: #example
   * text = "Value Set: DTaP Vaccine"
 * patient.reference = "Patient/example"
 * encounter.reference = "Encounter/example"
-* occurrenceDateTime = "2013-01-10"
-* recorded = "2013-01-10"
+* occurrenceDateTime = "2026-08-01"
+* recorded = "2026-08-01"
 * primarySource = true

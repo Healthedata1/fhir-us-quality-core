@@ -1,7 +1,7 @@
 Instance: example-of-us-quality-core-organization
 InstanceOf: USQualityCoreOrganization
 Title: "Organization example"
-Description: "HL7 Organization example"
+Description: "Example organization"
 Usage: #example
 * id = "example"
 * identifier
@@ -10,19 +10,19 @@ Usage: #example
   * value = "8635143786"
 * active = true
 * type = $organization-type#team "Organizational team"
-* name = "Health Level Seven International"
+* name = "Example Organization"
 * telecom[0]
   * system = #phone
-  * value = "(+1) 734-677-7777"
+  * value = "+1-555-555-0110"
 * telecom[+]
   * system = #fax
-  * value = "(+1) 734-677-6622"
+  * value = "+1-555-555-0111"
 * telecom[+]
   * system = #email
-  * value = "hq@HL7.org"
+  * value = "organization@example.org"
 * address
-  * line = "3300 Washtenaw Avenue, Suite 227"
-  * city = "Ann Arbor"
-  * state = "MI"
-  * postalCode = "48104"
-  * country = "USA"
+  * line = "800 Example Organization Avenue"
+  * city = "Example City"
+  * state = "VA"
+  * postalCode = "99999"
+  * country = "US"

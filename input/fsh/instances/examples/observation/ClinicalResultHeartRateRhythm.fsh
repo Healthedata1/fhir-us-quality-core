@@ -17,8 +17,8 @@ Usage: #example
   * text = "Heart rate rhythm"
 * subject.reference = "Patient/example"
 * encounter.display = "Cardiology Consult"
-* effectiveDateTime = "2021-11-10T16:48:57.246958-08:00"
+* effectiveDateTime = "2026-08-04T16:48:57-04:00"
 * performer
   * reference = "Practitioner/example"
-  * display = "Practitioner"
+  * display = "Example Practitioner"
 * valueString = "Regular (R)"

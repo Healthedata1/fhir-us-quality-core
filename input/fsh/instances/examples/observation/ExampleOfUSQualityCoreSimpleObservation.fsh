@@ -15,12 +15,12 @@ Usage: #example
 * subject.reference = "Patient/example"
 * encounter.reference = "Encounter/example"
 * effectivePeriod
-  * start = "2013-04-02T10:30:10+01:00"
-  * end = "2013-04-05T10:30:10+01:00"
-* issued = "2013-04-03T15:30:10+01:00"
+  * start = "2026-08-02T10:30:00-04:00"
+  * end = "2026-08-02T10:45:00-04:00"
+* issued = "2026-08-02T11:00:00-04:00"
 * performer
   * reference = "Practitioner/example"
-  * display = "Practitioner"
+  * display = "Example Practitioner"
 * valueQuantity = 7.2 'g/dL' "g/dl"
 * interpretation = $v3-ObservationInterpretation#L "Low"
   * text = "Below low normal"

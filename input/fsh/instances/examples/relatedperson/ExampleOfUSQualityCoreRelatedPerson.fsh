@@ -9,20 +9,19 @@ Usage: #example
 * relationship = $v2-0131#C
 * name
   * use = #official
-  * family = "Chalmers"
-  * given[0] = "Peter"
-  * given[+] = "James"
+  * family = "Related Person"
+  * given = "Example"
 * telecom
   * system = #phone
-  * value = "(03) 5555 6473"
+  * value = "+1-555-555-0150"
   * use = #work
 * gender = #male
 * address
   * use = #home
-  * line = "534 Erewhon St"
-  * city = "PleasantVille"
-  * state = "UT"
-  * postalCode = "84414"
+  * line = "600 Example Street"
+  * city = "Example City"
+  * state = "VA"
+  * postalCode = "99999"
 * photo
   * contentType = #image/jpeg
   * url = "http://example.org/Binary/f012"

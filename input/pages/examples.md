@@ -45,11 +45,12 @@
 ### US Quality Core Encounter
 * [Inpatient Admission for Appendicitis](Encounter-example.html)
 
-### US Quality Core Goal
-* [Weight Loss Example](Goal-example.html)
+### US Quality Core Goal**
+* [Weight-management Goal Example](Goal-example.html)
 
 ### US Quality Core ImagingStudy
 * [Chest CT](ImagingStudy-example.html)
+* [Portable Chest X-Ray DICOM Study](ImagingStudy-portable-cxr-study.html)
 
 ### US Quality Core Immunization
 * [Example of Influenza immunization shot](Immunization-example.html)
@@ -87,13 +88,13 @@
 * [Practitioner Ordered MedicationRequest Example](MedicationRequest-practitioner-ordered-example.html)
 
 ### US Quality Core NutritionOrder
-* [Diabetic diet example](NutritionOrder-example.html)
+* [Consistent carbohydrate diet example](NutritionOrder-example.html)
 
 ### US Quality Core QuestionnaireResponse
 * [PHQ-9 Questionnaire Response Example](QuestionnaireResponse-phq-9-example.html)
 
 ### US Quality Core SimpleObservation
-* [Frailty Observation Example](Observation-example-frailty.html)
+* [Mobility Aid Use Observation Example](Observation-example-frailty.html)
 * [Gestational Age at Birth Example](Observation-example-gestation.html)
 * [Date and Time of Obstetric Delivery Example](Observation-example-obstetric-delivery.html)
 * [Delivery Date Estimated Example](Observation-example-delivery-date-estimate.html)
@@ -108,16 +109,18 @@
 
 ### US Quality Core ObservationClinicalResult
 * [Heart Rate Rhythm Clinical Result Observation](Observation-clinical-result-heart-rate-rhythm.html)
+* [Portable Chest X-Ray Lung Fields Finding](Observation-cxr-finding-lung-fields.html)
 
 ### US Quality Core ObservationScreeningAssessment
 * [10 minute Apgar Heart Rate Screening Assessment Observation](Observation-example-screening-assessment-10-minute-apgar-heart-rate.html)
 
 ### US Quality Core Organization
-* [HL7 Organization Example](Organization-example.html)
+* [Example Organization](Organization-example.html)
 
 ### US Quality Core Patient
 * [Basic Patient Example](Patient-example.html)
-* [Senior Patient Example](Patient-example-2.html)
+* [Older Adult Patient Example](Patient-example-2.html)
+* [Reproductive Health Patient Example](Patient-reproductive-health-example.html)
 * [Infant Patient Example](Patient-infant-example.html)
 
 ### US Quality Core Practitioner
@@ -147,6 +150,6 @@
 ### US Quality Core Task
 * [Task Example](Task-example.html)
 
-### US Quality Core TaskRejected**
+### US Quality Core TaskRejected
 * [Task rejecting a proposal for an activity identified by a value set](Task-negation-example.html)
 * [Task rejecting a proposal for an activity identified by a code](Task-negation-with-code-example.html)

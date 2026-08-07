@@ -8,12 +8,12 @@ Usage: #example
 * medicationReference.reference = "Medication/example"
 * subject
   * reference = "Patient/example"
-  * display = "Donald Duck"
+  * display = "Example Patient"
 * context.reference = "Encounter/example"
 * supportingInformation.reference = "Condition/example"
 * effectivePeriod
-  * start = "2015-01-15T14:30:00+01:00"
-  * end = "2015-01-15T14:30:00+01:00"
+  * start = "2026-08-02T14:30:00-04:00"
+  * end = "2026-08-02T14:45:00-04:00"
 * request.reference = "MedicationRequest/example"
 * dosage
   * route = $sct#47625008 "Intravenous route (qualifier value)"

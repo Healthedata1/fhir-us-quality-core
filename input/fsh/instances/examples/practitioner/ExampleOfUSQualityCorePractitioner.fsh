@@ -10,15 +10,14 @@ Usage: #example
   * value = "Practitioner-23"
 * active = true
 * name
-  * family = "Careful"
-  * given = "Adam"
-  * prefix = "Dr"
+  * family = "Practitioner"
+  * given = "Example"
 * address
   * use = #home
-  * line = "534 Erewhon St"
-  * city = "PleasantVille"
-  * state = "UT"
-  * postalCode = "84414"
+  * line = "500 Example Street"
+  * city = "Example City"
+  * state = "VA"
+  * postalCode = "99999"
 * qualification
   * identifier
     * system = "http://example.org/UniversityIdentifier"

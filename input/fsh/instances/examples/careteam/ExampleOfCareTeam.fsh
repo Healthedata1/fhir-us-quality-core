@@ -5,7 +5,7 @@ Description: "Example of a CareTeam involved in the delivery of care for a pregn
 Usage: #example
 * id = "example"
 * status = #active
-* subject.display = "Eve Everywoman"
+* subject = Reference(Patient/reproductive-health-example) "Example Reproductive Health Patient"
 * participant
   * role = http://terminology.hl7.org/CodeSystem/v3-ParticipationFunction#MDWF "midwife"
-  * member.display = "Mabel Midwife"
+  * member.display = "Example Midwife"

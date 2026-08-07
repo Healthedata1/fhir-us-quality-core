@@ -1,7 +1,7 @@
 Instance: negation-example-code-of-us-quality-core-immunization-not-done
 InstanceOf: USQualityCoreImmunizationNotDone
 Title: "Immunization negation with code example"
-Description: "Example of immunization that was refused/failed to be administered using code"
+Description: "Example of an immunization that was not administered, with the vaccine identified by code"
 Usage: #example
 * id = "negation-example-code"
 * status = #not-done
@@ -11,6 +11,6 @@ Usage: #example
   * coding[+] = http://hl7.org/fhir/sid/ndc#49281012165
 * patient.reference = "Patient/example"
 * encounter.reference = "Encounter/example"
-* occurrenceDateTime = "2013-01-10"
-* recorded = "2013-01-10"
+* occurrenceDateTime = "2026-08-01"
+* recorded = "2026-08-01"
 * primarySource = true

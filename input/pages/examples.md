@@ -150,6 +150,6 @@
 ### US Quality Core Task
 * [Task Example](Task-example.html)
 
-### US Quality Core TaskRejected**
+### US Quality Core TaskRejected
 * [Task rejecting a proposal for an activity identified by a value set](Task-negation-example.html)
 * [Task rejecting a proposal for an activity identified by a code](Task-negation-with-code-example.html)

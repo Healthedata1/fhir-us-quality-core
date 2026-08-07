@@ -14,8 +14,8 @@ Description: "Defines constraints and extensions on the CarePlan resource for th
 * text ^short = "Text summary of the resource, for human interpretation"
 // US Core 9 removes the assess-plan category slice: there is no distinction
 // between a Care Plan and an Assessment and Plan of Treatment. Align with the
-// US Core 9 parent element: 0..1, preferred binding to CarePlanCategory.
-* category 0..1 SU
+// US Core 9 parent element: 0..*, preferred binding to CarePlanCategory.
+* category 0..* SU
 * category only CodeableConcept
 * category from CarePlanCategory (preferred)
 * subject 1..1

@@ -14,7 +14,7 @@ Description: "Profile of Patient for decision support/quality metrics. Defines t
 * extension[race] 0..1
 * extension[race] only http://hl7.org/fhir/us/core/StructureDefinition/us-core-race|9.0.0
   * ^type[0].profile[0] = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race|9.0.0"
-  * ^short = "US Core Race Extension. (multiple races are supported in the extension)"
+  * ^short = "US Core Race Extension (multiple races are supported in the extension)"
   * ^definition = "Concepts classifying the person into a named category of humans sharing common history, traits, geographical origin or nationality.  The race codes used to represent these concepts are based upon the [CDC Race and Ethnicity Code Set Version 1.0](http://www.cdc.gov/phin/resources/vocabulary/index.html) which includes over 900 concepts for representing race and ethnicity of which 921 reference race.  The race concepts are grouped by and pre-mapped to the 5 OMB race categories:\n\n   - American Indian or Alaska Native\n   - Asian\n   - Black or African American\n   - Native Hawaiian or Other Pacific Islander\n   - White."
   * ^base.path = "DomainResource.extension"
   * ^base.min = 0

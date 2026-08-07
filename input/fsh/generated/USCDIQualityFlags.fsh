@@ -929,7 +929,7 @@ RuleSet: GeneratedUSCDIQualityFlagsForUSQualityCorePatient
 * extension[interpreterRequired] ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
 * extension[interpreterRequired] ^short = "(USCDI+ Quality) Whether the patient needs an interpreter"
 * extension[race] ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
-* extension[race] ^short = "(USCDI+ Quality) US Core Race Extension. (multiple races are supported in the extension)"
+* extension[race] ^short = "(USCDI+ Quality) US Core Race Extension (multiple races are supported in the extension)"
 * extension[sex] ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true
 * extension[sex] ^short = "(USCDI+ Quality) Sex Extension"
 * extension[tribalAffiliation] ^extension[http://hl7.org/fhir/us/quality-core/StructureDefinition/us-quality-core-uscdi-quality-extension].valueBoolean = true

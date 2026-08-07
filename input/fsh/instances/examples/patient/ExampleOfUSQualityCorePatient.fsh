@@ -10,36 +10,34 @@ Usage: #example
   * system = "http://example.org/patient/identifiers"
   * value = "12345"
   * period.start = "2001-05-06"
-  * assigner.display = "Acme Healthcare"
+  * assigner.display = "Example Healthcare Organization"
 * active = true
 * name[0]
   * use = #official
-  * family = "Chalmers"
-  * given[0] = "Peter"
-  * given[+] = "James"
+  * family = "Patient"
+  * given = "Example"
 * name[+]
   * use = #usual
-  * family = "Chalmers"
-  * given = "Jim"
+  * family = "Patient"
+  * given = "Example"
 * name[+]
   * use = #maiden
-  * family = "Windsor"
-  * given[0] = "Peter"
-  * given[+] = "James"
+  * family = "Previous Patient"
+  * given = "Example"
   * period.end = "2002"
 * telecom[0]
   * system = #phone
-  * value = "(03) 5555 6473"
+  * value = "+1-555-555-0120"
   * use = #work
   * rank = 1
 * telecom[+]
   * system = #phone
-  * value = "(03) 3410 5613"
+  * value = "+1-555-555-0121"
   * use = #mobile
   * rank = 2
 * telecom[+]
   * system = #phone
-  * value = "(03) 5555 8834"
+  * value = "+1-555-555-0122"
   * use = #old
   * period.end = "2014"
 * gender = #male
@@ -51,32 +49,29 @@ Usage: #example
 * address
   * use = #home
   * type = #both
-  * text = "534 Erewhon St PeasantVille, Utah 84414"
-  * line = "534 Erewhon St"
-  * city = "PleasantVille"
-  * district = "Rainbow"
-  * state = "UT"
-  * postalCode = "84414"
+  * text = "100 Example Street, Example City, VA 99999"
+  * line = "100 Example Street"
+  * city = "Example City"
+  * district = "Example District"
+  * state = "VA"
+  * postalCode = "99999"
   * period.start = "1974-12-25"
 * contact
   * relationship = $v2-0131#N
   * name
-    * family = "du Marché"
-      * extension
-        * url = "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix"
-        * valueString = "VV"
-    * given = "Bénédicte"
+    * family = "Emergency Contact"
+    * given = "Example"
   * telecom
     * system = #phone
-    * value = "+33 (237) 998327"
+    * value = "+1-555-555-0123"
   * address
     * use = #home
     * type = #both
-    * line = "534 Erewhon St"
-    * city = "PleasantVille"
-    * district = "Rainbow"
-    * state = "VT"
-    * postalCode = "3999"
+    * line = "101 Example Street"
+    * city = "Example City"
+    * district = "Example District"
+    * state = "VA"
+    * postalCode = "99999"
     * period.start = "1974-12-25"
   * gender = #female
   * period.start = "2012"

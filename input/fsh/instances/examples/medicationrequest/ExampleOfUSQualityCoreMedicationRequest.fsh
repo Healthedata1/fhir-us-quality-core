@@ -8,7 +8,7 @@ Usage: #example
 * intent = #order
 * medicationReference.reference = "Medication/example"
 * subject.reference = "Patient/example"
-* authoredOn = "2015-03-25T19:32:52-05:00"
+* authoredOn = "2026-08-01T19:32:52-04:00"
 * requester.reference = "Practitioner/example"
 * dosageInstruction
   * timing

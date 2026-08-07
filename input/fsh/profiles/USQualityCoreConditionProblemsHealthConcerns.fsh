@@ -61,6 +61,6 @@ Description: "Profile of Condition for decision support/quality metrics. Defines
   * ^short = "When in resolution/remission"
 * recordedDate ^short = "Date record was first recorded"
   * ^definition = "The recordedDate represents when this particular Condition record was created in the system, which is often a system-generated date."
-* recorder ^short = "𝗔𝗗𝗗𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the condition"
+* recorder ^short = "Who recorded the condition"
 // Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.
 * insert GeneratedUSCDIQualityFlagsForUSQualityCoreConditionProblemsHealthConcerns

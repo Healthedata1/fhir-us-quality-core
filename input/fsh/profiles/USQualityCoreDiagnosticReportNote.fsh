@@ -44,7 +44,7 @@ Description: "Profile of DiagnosticReport for Note exchange for decision support
 * subject only Reference(USQualityCorePatient)
   * ^short = "The subject of the report - usually, but not always, the patient"
 * encounter only Reference(USQualityCoreEncounter)
-  * ^short = "Health care event when test ordered"
+  * ^short = "Encounter associated with DiagnosticReport"
 * effective[x] 0..1 SU
 * effective[x] only dateTime or Period
   * ^short = "Diagnostically relevant time (typically the time of the procedure)"

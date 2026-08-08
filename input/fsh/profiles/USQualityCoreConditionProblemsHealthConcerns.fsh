@@ -44,7 +44,8 @@ Description: "Profile of Condition for decision support/quality metrics. Defines
   * ^binding.extension.valueString = "ConditionCategory"
   * ^binding.description = "A category assigned to the condition."
 * category[us-core] ^short = "problem-list-item | health-concern"
-* category[screening-assessment] MS
+// trailing '.' forces element into differential; do not remove
+* category[screening-assessment] ^requirements = "Used for filtering condition."
 * severity ^short = "Subjective severity of condition"
   * ^definition = "A subjective assessment of the severity of the condition as evaluated by the clinician."
   * ^comment = "Coding of the severity with a terminology is preferred, where possible."
@@ -61,6 +62,6 @@ Description: "Profile of Condition for decision support/quality metrics. Defines
   * ^short = "When in resolution/remission"
 * recordedDate ^short = "Date record was first recorded"
   * ^definition = "The recordedDate represents when this particular Condition record was created in the system, which is often a system-generated date."
-* recorder ^short = "𝗔𝗗𝗗𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: Who recorded the condition"
+* recorder ^short = "Who recorded the condition"
 // Generated USCDI+ Quality flag insert. Keep this at the end of the profile so all element and slice rules exist before the RuleSet is applied.
 * insert GeneratedUSCDIQualityFlagsForUSQualityCoreConditionProblemsHealthConcerns

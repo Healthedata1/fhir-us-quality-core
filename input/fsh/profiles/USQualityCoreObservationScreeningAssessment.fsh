@@ -13,7 +13,6 @@ Description: "The US Quality Core Observation Screening Assessment Profile is ba
 * status ^short = "registered | preliminary | final | amended | corrected | cancelled | entered-in-error | unknown"
 * category ..*
 * category only CodeableConcept
-* category from $observation-category-vs (required)
   * ^slicing.discriminator.type = #value
   * ^slicing.discriminator.path = "$this"
   * ^slicing.rules = #open
@@ -32,8 +31,8 @@ Description: "The US Quality Core Observation Screening Assessment Profile is ba
 * category[survey] 1..1
 * category[survey] only CodeableConcept
 * category[survey] = $observation-category#survey
-* category[survey] from $observation-category-vs (required)
-  * ^short = "Classification of  type of observation"
+  // updated short prevents the survey slice from being stripped from the differential
+  * ^short = "Fixed Value: survey"
   * ^definition = "A code that classifies the general type of observation being made."
   * ^comment = "In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once.  The level of granularity is defined by the category concepts in the value set."
   * ^requirements = "Used for filtering if the observation is an assessment or screening."
@@ -45,10 +44,10 @@ Description: "The US Quality Core Observation Screening Assessment Profile is ba
   * ^binding.extension.url = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"
   * ^binding.extension.valueString = "ObservationCategory"
   * ^binding.description = "Codes for high level observation categories."
-* category[screening-assessment] 0..* MS
+* category[screening-assessment] 0..*
 * category[screening-assessment] only CodeableConcept
 * category[screening-assessment] from USCoreScreeningAssessmentObservationMaximumCategory (required)
-  * ^short = "Classification of  type of observation"
+  * ^short = "𝗔𝗗𝗗𝗜𝗧𝗜𝗢𝗡𝗔𝗟 𝗨𝗦𝗖𝗗𝗜: USCDI Health Status/Assessments Data Class"
   * ^definition = "Categories that a provider may use in their workflow to classify that this Observation is related to a USCDI Health Status/Assessments Data Class."
   * ^comment = "In addition to the required category valueset, this element allows various categorization schemes based on the owner’s definition of the category and effectively multiple categories can be used at once.  The level of granularity is defined by the category concepts in the value set."
   * ^requirements = "Used for filtering the type of screening or assessment observation."

@@ -162,8 +162,8 @@ The following example illustrates a request not to apply Graduated compression e
   },
   "subject" : ...,
   "encounter" : ...,
-  "occurrenceDateTime" : "2013-04-05",
-  "authoredOn" : "2013-04-04",
+  "occurrenceDateTime" : "2026-08-02",
+  "authoredOn" : "2026-07-30",
   "reasonCode" : [{
     "coding" : [{
       "system" : "http://snomed.info/sct",
@@ -207,8 +207,8 @@ The following example illustrates a request not to apply any of a class of devic
   },
   "subject" : ...,
   "encounter" : ...,
-  "occurrenceDateTime" : "2013-04-05",
-  "authoredOn" : "2013-04-04",
+  "occurrenceDateTime" : "2026-08-02",
+  "authoredOn" : "2026-07-30",
   "reasonCode" : [{
     "coding" : [{
       "system" : "http://snomed.info/sct",
@@ -256,8 +256,8 @@ First, the request to perform a specific activity as a ServiceRequest:
   },
   "subject" : ...,
   "encounter" : ...,
-  "occurrenceDateTime" : "2013-04-05",
-  "authoredOn" : "2013-04-04"
+  "occurrenceDateTime" : "2026-08-02",
+  "authoredOn" : "2026-07-30"
 }
 ```
 
@@ -274,8 +274,8 @@ Second, a fulfillment task with a status of `rejected` and the `focus` referenci
   "statusReason" : {
     "coding" : [{
       "system" : "http://snomed.info/sct",
-      "code" : "275936005",
-      "display" : "Patient noncompliance - general (situation)"
+      "code" : "1296859006",
+      "display" : "Procedure declined (situation)"
     }]
   },
   "intent" : "proposal",
@@ -328,8 +328,8 @@ Similar to the specific activity case, first a request to perform any of a class
   },
   "subject" : ...,
   "encounter" : ...,
-  "occurrenceDateTime" : "2013-04-05",
-  "authoredOn" : "2013-04-04"
+  "occurrenceDateTime" : "2026-08-02",
+  "authoredOn" : "2026-07-30"
 }
 ```
 
@@ -346,8 +346,8 @@ Followed by a fulfillment task with a status of `rejected` and the `focus` refer
   "statusReason" : {
     "coding" : [{
       "system" : "http://snomed.info/sct",
-      "code" : "275936005",
-      "display" : "Patient noncompliance - general (situation)"
+      "code" : "1296859006",
+      "display" : "Procedure declined (situation)"
     }]
   },
   "intent" : "proposal",

@@ -1,0 +1,63 @@
+name: Check generated IG content
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check-generated-content:
+    name: Verify generated content is current
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Install generator dependencies
+        run: npm --prefix scripts install
+
+      - name: Run IG generators
+        run: npm --prefix scripts run generate
+
+      - name: Check generated content
+        shell: bash
+        env:
+          GENERATOR_DOCS_URL: ${{ github.server_url }}/${{ github.repository }}/blob/${{ github.event.repository.default_branch }}/DEVELOPER.md#generators
+        run: |
+          changes="$(git status --porcelain=v1 --untracked-files=all)"
+          if [[ -z "${changes}" ]]; then
+            exit 0
+          fi
+
+          echo "${changes}"
+          git diff -- .
+
+          message="Changes were made that affect auto-generated IG content. Run 'npm --prefix scripts run generate' and commit the updated content. See ${GENERATOR_DOCS_URL}"
+          echo "::error title=Generated IG content is out of date::${message}"
+
+          {
+            echo "## Generated IG content is out of date"
+            echo
+            echo "Changes were made that affect auto-generated IG content."
+            echo
+            echo "Run \`npm --prefix scripts run generate\` and commit the updated content."
+            echo
+            echo "See the [generator documentation](${GENERATOR_DOCS_URL}) for reference."
+            echo
+            echo '```text'
+            echo "${changes}"
+            echo '```'
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+          exit 1

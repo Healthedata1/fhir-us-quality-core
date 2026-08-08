@@ -7,6 +7,6 @@ Usage: #example
 * intent = #order
 * code.coding = $cpt#70450 "Computed tomography, head or brain; without contrast material"
 * subject = Reference(Patient/example)
-* authoredOn = "2015-03-30"
-* requester.display = "Dr. Beverly Crusher"
+* authoredOn = "2026-07-30"
+* requester = Reference(Practitioner/example) "Example Practitioner"
 * reasonCode.coding = $sct#330007 "Occipital headache"

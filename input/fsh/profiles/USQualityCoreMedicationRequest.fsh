@@ -68,8 +68,6 @@ Description: "Profile of MedicationRequest for decision support/quality metrics.
   * doseAndRate ^short = "Amount of medication administered"
     * dose[x] ^short = "Amount of medication per dose"
 * dispenseRequest ^short = "Medication supply authorization"
-  * initialFill 0..0
-  * dispenseInterval ^short = "Minimum period of time between dispenses"
   * validityPeriod ^short = "Time period supply is authorized for"
   * numberOfRepeatsAllowed ^short = "Number of refills authorized"
   * quantity ^short = "Amount of medication to supply per dispense"

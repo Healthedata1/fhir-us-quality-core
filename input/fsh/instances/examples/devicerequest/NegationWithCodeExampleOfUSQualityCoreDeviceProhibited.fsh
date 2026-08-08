@@ -12,5 +12,6 @@ Usage: #example
 * codeCodeableConcept.coding = $sct#442023007 "Venous foot pump, device (physical object)"
   * version = "http://snomed.info/sct/731000124108"
 * subject.reference = "Patient/example"
-* authoredOn = "2016-04-05T09:20:00-04:00"
+* authoredOn = "2026-04-05T09:20:00-04:00"
+* requester.reference = "Practitioner/example"
 * reasonCode = $sct#1303950002 "Request for alternative treatment"

@@ -30,7 +30,6 @@ Description: "Profile of Practitioner for decision support/quality metrics. Defi
   * ^condition[+] = "us-core-17"
   * system ^short = "The namespace for the identifier value"
   * value ^short = "The value that is unique"
-* identifier[NCSBNID] MS
 * identifier[ein] only Identifier
   * ^short = "There is not a general Tax Identifier Numer (TIN) OID. There is an SSN, a PTIN, and an ITIN, but no TIN generally. So the only slice specified here is EIN, if consumers determine a need for an SSN, submit a comment to that effect."
   * ^patternIdentifier.system = "urn:oid:2.16.840.1.113883.4.4"

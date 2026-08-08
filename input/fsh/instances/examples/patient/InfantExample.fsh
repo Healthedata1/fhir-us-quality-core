@@ -11,17 +11,17 @@ Usage: #example
   * value = "1032703"
 * active = true
 * name
-  * family = "Example"
-  * given = "Infant"
+  * family = "Infant Patient"
+  * given = "Example"
 * telecom
   * system = #phone
-  * value = "555-555-5555"
+  * value = "+1-555-555-0140"
   * use = #home
 * gender = #male
 * birthDate = "2020-06-02"
 * address
-  * line = "49 Meadow St"
-  * city = "Mounds"
-  * state = "OK"
-  * postalCode = "74047"
+  * line = "300 Example Street"
+  * city = "Example City"
+  * state = "VA"
+  * postalCode = "99999"
   * country = "US"

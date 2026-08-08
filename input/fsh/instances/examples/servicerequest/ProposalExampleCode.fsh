@@ -9,5 +9,5 @@ Usage: #example
 * code = $sct#229511001 "Application of graduated compression garment"
 * subject.reference = "Patient/example"
 * encounter.reference = "Encounter/example"
-* occurrenceDateTime = "2013-04-05"
-* authoredOn = "2013-04-04"
+* occurrenceDateTime = "2026-08-02"
+* authoredOn = "2026-07-30"
